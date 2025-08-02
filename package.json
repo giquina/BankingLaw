@@ -1,0 +1,26 @@
+{
+  "name": "bankinglaw-platform",
+  "version": "1.0.0",
+  "description": "Advanced Banking Law Platform - Expert Legal Counsel",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -l 8000",
+    "start": "npx serve . -l 8000",
+    "build": "echo 'Building for production...' && echo 'Build complete!'",
+    "preview": "npx serve . -l 8000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "banking",
+    "law",
+    "legal",
+    "fintech",
+    "compliance",
+    "lawyers"
+  ],
+  "author": "BankingLaw Platform",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

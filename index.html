@@ -3,107 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BankingLaw - Expert Financial Legal Platform</title>
-    <meta name="description" content="Connect with specialized banking and financial law experts. Modern AI-powered platform for regulatory compliance and legal expertise.">
+    <title>BankingLaw - Elite Financial Legal Platform</title>
+    <meta name="description" content="Connect with world-class banking and financial law experts. Premium AI-powered platform for sophisticated legal counsel.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern CSS Reset & Variables */
-        *, *::before, *::after { box-sizing: border-box; }
-        * { margin: 0; padding: 0; }
+        /* Advanced CSS Reset & Variables */
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
         
         :root {
-            /* Colors */
+            /* Advanced Color Palette */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
             --primary-600: #2563eb;
             --primary-700: #1d4ed8;
             --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            
+            --accent-50: #fef7ff;
+            --accent-100: #fce7ff;
+            --accent-200: #f8c4fe;
+            --accent-300: #f19efe;
+            --accent-400: #e569fb;
             --accent-500: #d946ef;
             --accent-600: #c026d3;
-            --secondary-50: #f8fafc;
-            --secondary-100: #f1f5f9;
-            --secondary-200: #e2e8f0;
-            --secondary-600: #475569;
-            --secondary-800: #1e293b;
-            --secondary-900: #0f172a;
-            --success: #10b981;
-            --white: #ffffff;
+            --accent-700: #a21caf;
+            --accent-800: #86198f;
+            --accent-900: #701a75;
+            
+            --neutral-50: #fafafa;
+            --neutral-100: #f5f5f5;
+            --neutral-200: #e5e5e5;
+            --neutral-300: #d4d4d4;
+            --neutral-400: #a3a3a3;
+            --neutral-500: #737373;
+            --neutral-600: #525252;
+            --neutral-700: #404040;
+            --neutral-800: #262626;
+            --neutral-900: #171717;
+            
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            
+            /* Premium Gradients */
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-primary: linear-gradient(135deg, var(--primary-600) 0%, var(--accent-600) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-600) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --gradient-aurora: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
             
             /* Typography */
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-weight-light: 300;
             --font-weight-normal: 400;
             --font-weight-medium: 500;
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
             --font-weight-extrabold: 800;
+            --font-weight-black: 900;
             
-            /* Spacing */
+            /* Advanced Spacing */
+            --space-px: 1px;
+            --space-1: 0.25rem;
             --space-2: 0.5rem;
             --space-3: 0.75rem;
             --space-4: 1rem;
+            --space-5: 1.25rem;
             --space-6: 1.5rem;
             --space-8: 2rem;
+            --space-10: 2.5rem;
             --space-12: 3rem;
             --space-16: 4rem;
+            --space-20: 5rem;
             --space-24: 6rem;
+            --space-32: 8rem;
+            --space-40: 10rem;
             
-            /* Border radius */
+            /* Border Radius */
+            --radius-none: 0;
+            --radius-sm: 0.125rem;
+            --radius-base: 0.25rem;
             --radius-md: 0.375rem;
             --radius-lg: 0.5rem;
             --radius-xl: 0.75rem;
             --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
             
-            /* Shadows */
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            /* Advanced Shadows */
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.4);
+            --shadow-glow-accent: 0 0 30px rgba(217, 70, 239, 0.5);
+            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --shadow-float: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
+            --shadow-massive: 0 32px 64px -12px rgba(0, 0, 0, 0.25);
             
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
-            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Z-index */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal: 1050;
+            --z-toast: 1060;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         /* Base Styles */
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+        }
+        
         body {
-            font-family: var(--font-family);
+            font-family: var(--font-primary);
             line-height: 1.6;
-            color: var(--secondary-800);
-            background: var(--secondary-50);
+            color: var(--neutral-800);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-
-        /* Header */
-        .navbar {
+        /* Animated Background */
+        .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-aurora);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Glass Container */
+        .glass-container {
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--secondary-200);
-            z-index: 1000;
-            transition: all 0.2s ease;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-3xl);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* Premium Navigation */
+        .navbar {
+            position: fixed;
+            top: var(--space-6);
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - var(--space-12));
+            max-width: 1200px;
+            z-index: var(--z-fixed);
+            transition: all var(--transition-base);
         }
 
         .nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
+            padding: var(--space-4) var(--space-8);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-glass);
         }
 
         .logo {
+            font-family: var(--font-display);
             font-size: 1.75rem;
             font-weight: var(--font-weight-bold);
-            color: var(--primary-600);
+            background: linear-gradient(135deg, var(--primary-300), var(--accent-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
         }
 
         .nav-links {
@@ -114,334 +257,652 @@
         }
 
         .nav-link {
-            color: var(--secondary-600);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: var(--font-weight-medium);
-            transition: color 0.2s ease;
+            transition: all var(--transition-base);
+            position: relative;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-lg);
         }
 
-        .nav-link:hover { color: var(--primary-600); }
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
 
-        /* Buttons */
+        /* Premium Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: var(--space-2);
             padding: var(--space-3) var(--space-6);
             border: none;
-            border-radius: var(--radius-lg);
-            font-weight: var(--font-weight-medium);
+            border-radius: var(--radius-xl);
+            font-weight: var(--font-weight-semibold);
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-glow), var(--shadow-float);
+        }
+
+        .btn-glass {
+            background: var(--glass-bg);
+            color: white;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
         }
 
         .btn-large {
-            padding: var(--space-4) var(--space-8);
-            font-size: 1rem;
+            padding: var(--space-4) var(--space-10);
+            font-size: 1.125rem;
+            border-radius: var(--radius-2xl);
         }
 
-        /* Hero Section */
+        /* Hero Section with 3D Elements */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: var(--gradient-hero);
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding: var(--space-32) 0;
         }
 
         .hero-content {
             text-align: center;
             color: white;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-6);
+            backdrop-filter: blur(20px);
+            animation: float 3s ease-in-out infinite;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: var(--font-weight-extrabold);
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: var(--font-weight-black);
+            line-height: 1.1;
             margin-bottom: var(--space-6);
-            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: titleSlideIn 1s ease-out;
+        }
+
+        @keyframes titleSlideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-subtitle {
-            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
             margin-bottom: var(--space-12);
             opacity: 0.95;
+            font-weight: var(--font-weight-normal);
+            line-height: 1.5;
+            animation: subtitleSlideIn 1s ease-out 0.2s both;
         }
 
-        .hero-actions {
-            display: flex;
-            gap: var(--space-4);
-            justify-content: center;
-            margin-bottom: var(--space-16);
-            flex-wrap: wrap;
+        @keyframes subtitleSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 0.95; transform: translateY(0); }
         }
 
-        /* AI Chat Interface */
+        /* Futuristic AI Chat Interface */
         .ai-chat {
-            background: white;
-            border-radius: var(--radius-2xl);
-            padding: var(--space-8);
+            max-width: 800px;
             margin: 0 auto var(--space-16);
-            max-width: 700px;
-            box-shadow: var(--shadow-xl);
+            position: relative;
+            animation: chatSlideIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes chatSlideIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-3xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-glass), var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
         }
 
         .chat-header {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
-            margin-bottom: var(--space-6);
-            padding: var(--space-4);
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: var(--radius-lg);
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+            padding: var(--space-4) var(--space-6);
+            background: linear-gradient(135deg, var(--primary-600), var(--accent-600));
+            border-radius: var(--radius-2xl);
+            position: relative;
+            overflow: hidden;
         }
 
         .ai-avatar {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: var(--font-weight-bold);
+            font-size: 1.125rem;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .chat-input-group {
-            margin-bottom: var(--space-4);
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
         }
 
-        .user-type-selector, .question-input {
+        .chat-info h3 {
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .chat-info p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: var(--space-6);
+        }
+
+        .modern-select, .modern-textarea {
             width: 100%;
-            padding: var(--space-4);
-            border: 2px solid var(--secondary-200);
-            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-2xl);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: var(--font-primary);
             font-size: 1rem;
-            font-family: var(--font-family);
+            transition: all var(--transition-base);
+            backdrop-filter: blur(10px);
         }
 
-        .question-input {
-            min-height: 100px;
+        .modern-select:focus, .modern-textarea:focus {
+            outline: none;
+            border-color: var(--primary-300);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .modern-textarea {
+            min-height: 120px;
             resize: vertical;
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-6);
         }
 
-        /* Stats */
+        .modern-select option {
+            background: var(--neutral-800);
+            color: white;
+        }
+
+        /* Stats with 3D Effect */
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: var(--space-12);
+            gap: var(--space-16);
             flex-wrap: wrap;
+            margin-top: var(--space-16);
+            animation: statsSlideIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes statsSlideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .stat-item {
             text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6) var(--space-8);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: var(--shadow-float);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: var(--font-weight-bold);
+            font-size: 3rem;
+            font-weight: var(--font-weight-black);
             margin-bottom: var(--space-2);
+            background: linear-gradient(135deg, var(--primary-300), var(--accent-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-label {
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             opacity: 0.9;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            font-weight: var(--font-weight-medium);
         }
 
-        /* Sections */
+        /* Sections with Advanced Styling */
         section {
-            padding: var(--space-24) 0;
+            padding: var(--space-32) 0;
+            position: relative;
+        }
+
+        .section-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-3xl);
+            padding: var(--space-24);
+            margin: var(--space-16) 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-massive);
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: var(--font-weight-bold);
             text-align: center;
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, var(--neutral-800), var(--neutral-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--secondary-600);
+            font-size: 1.375rem;
+            color: var(--neutral-600);
             text-align: center;
             margin-bottom: var(--space-16);
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
-        /* Lawyers Grid */
+        /* Premium Lawyer Cards */
         .lawyers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: var(--space-8);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-10);
+            margin-top: var(--space-16);
         }
 
         .lawyer-card {
             background: white;
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-3xl);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-float);
+            transition: all var(--transition-slow);
+            position: relative;
+            border: 1px solid var(--neutral-200);
         }
 
         .lawyer-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-10px) rotateY(5deg) rotateX(5deg);
+            box-shadow: var(--shadow-massive), var(--shadow-glow);
         }
 
         .lawyer-avatar {
             width: 100%;
-            height: 200px;
-            background: var(--secondary-200);
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--secondary-600);
+            font-size: 5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lawyer-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .lawyer-card:hover .lawyer-avatar::before {
+            left: 100%;
         }
 
         .lawyer-info {
-            padding: var(--space-6);
+            padding: var(--space-8);
         }
 
         .lawyer-name {
-            font-size: 1.375rem;
-            font-weight: var(--font-weight-semibold);
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
             margin-bottom: var(--space-2);
+            color: var(--neutral-800);
         }
 
         .lawyer-specialty {
             color: var(--primary-600);
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-semibold);
             margin-bottom: var(--space-3);
+            font-size: 1.1rem;
         }
 
         .lawyer-experience {
-            color: var(--secondary-600);
-            margin-bottom: var(--space-4);
+            color: var(--neutral-600);
+            margin-bottom: var(--space-6);
         }
 
         .lawyer-rate {
-            font-size: 1.125rem;
-            font-weight: var(--font-weight-semibold);
-            margin-bottom: var(--space-4);
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-6);
+            color: var(--neutral-800);
         }
 
-        /* Practice Areas */
+        /* Practice Areas with Stunning Effects */
         .practice-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: var(--space-8);
+            margin-top: var(--space-16);
         }
 
         .practice-card {
             background: white;
-            padding: var(--space-8);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
+            padding: var(--space-10);
+            border-radius: var(--radius-3xl);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--neutral-200);
+            box-shadow: var(--shadow-float);
+        }
+
+        .practice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
         }
 
         .practice-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-massive);
         }
 
         .practice-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-4);
+            font-size: 4rem;
+            margin-bottom: var(--space-6);
+            display: block;
+            transition: all var(--transition-base);
+        }
+
+        .practice-card:hover .practice-icon {
+            transform: scale(1.2) rotateY(360deg);
         }
 
         .practice-title {
-            font-size: 1.375rem;
-            font-weight: var(--font-weight-semibold);
-            margin-bottom: var(--space-3);
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-4);
+            color: var(--neutral-800);
         }
 
         .practice-description {
-            color: var(--secondary-600);
+            color: var(--neutral-600);
+            line-height: 1.7;
         }
 
-        /* Footer */
+        /* Premium Footer */
         .footer {
-            background: var(--secondary-900);
+            background: linear-gradient(135deg, var(--neutral-900), var(--neutral-700));
             color: white;
-            padding: var(--space-16) 0 var(--space-8);
+            padding: var(--space-24) 0 var(--space-12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-12);
-            margin-bottom: var(--space-12);
+            gap: var(--space-16);
+            margin-bottom: var(--space-16);
         }
 
         .footer-title {
-            font-size: 1.75rem;
-            margin-bottom: var(--space-4);
-            color: var(--primary-600);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, var(--primary-300), var(--accent-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-6);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: var(--space-8);
-            border-top: 1px solid var(--secondary-600);
-            color: var(--secondary-600);
+            padding-top: var(--space-12);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .navbar {
+                top: var(--space-4);
+                width: calc(100% - var(--space-8));
+            }
+            
             .nav-links { display: none; }
-            .hero { min-height: 80vh; }
-            .hero-actions { flex-direction: column; align-items: center; }
-            .hero-stats { gap: var(--space-8); }
-            .lawyers-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            
+            .hero {
+                min-height: 90vh;
+                padding: var(--space-20) 0;
+            }
+            
+            .hero-stats {
+                gap: var(--space-8);
+            }
+            
+            .lawyers-grid, .practice-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-8);
+            }
+            
+            .section-container {
+                padding: var(--space-12);
+                margin: var(--space-8) 0;
+            }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Advanced Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all var(--transition-slow);
         }
 
-        .animate-fade-up { animation: fadeInUp 0.6s ease-out; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-600), var(--accent-600));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out 2s forwards;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Loading Screen -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Premium Navigation -->
     <nav class="navbar">
-        <div class="container nav">
+        <div class="nav">
             <a href="#" class="logo">BankingLaw</a>
             <ul class="nav-links">
                 <li><a href="#lawyers" class="nav-link">Expert Lawyers</a></li>
                 <li><a href="#practice-areas" class="nav-link">Practice Areas</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="#" class="btn btn-primary">Get Started</a></li>
+                <li><a href="#" class="btn btn-glass">Get Started</a></li>
             </ul>
         </div>
     </nav>
@@ -449,58 +910,66 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1 class="hero-title animate-fade-up">
-                Expert Banking Law Counsel at Your Fingertips
-            </h1>
-            
-            <p class="hero-subtitle animate-fade-up delay-1">
-                Connect with specialized attorneys who understand the complexities of financial regulation, 
-                compliance, and banking law. Get expert guidance for your institution's legal needs.
-            </p>
-            
-            <!-- AI Chat Interface -->
-            <div class="ai-chat animate-fade-up delay-2">
-                <div class="chat-header">
-                    <div class="ai-avatar">AI</div>
-                    <div>
-                        <h3>Legal Assistant</h3>
-                        <p>Specialized in Banking & Financial Law</p>
-                    </div>
-                </div>
-                
-                <div class="chat-input-group">
-                    <select class="user-type-selector" id="userType">
-                        <option value="compliance">Regulatory Compliance</option>
-                        <option value="lending">Lending & Credit</option>
-                        <option value="securities">Securities Law</option>
-                        <option value="fintech">FinTech Regulations</option>
-                        <option value="privacy">Data Privacy</option>
-                    </select>
-                </div>
-                
-                <textarea 
-                    class="question-input" 
-                    placeholder="Ask me anything about banking law..."
-                    id="questionInput"
-                ></textarea>
-                
-                <button class="btn btn-primary btn-large" onclick="handleSearch()">
-                    Get Expert Counsel
-                </button>
+            <div class="hero-badge">
+                <span>✨</span>
+                <span>Elite Legal Platform</span>
             </div>
             
-            <div class="hero-stats animate-fade-up delay-3">
+            <h1 class="hero-title">
+                The Future of Banking Law Expertise
+            </h1>
+            
+            <p class="hero-subtitle">
+                Connect with world-class attorneys who shape the future of financial regulation. 
+                Experience premium legal counsel powered by advanced AI and unmatched expertise.
+            </p>
+            
+            <!-- Futuristic AI Chat -->
+            <div class="ai-chat">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="ai-avatar">AI</div>
+                        <div class="chat-info">
+                            <h3>LegalMind Pro</h3>
+                            <p>Advanced Banking Law Intelligence</p>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <select class="modern-select" id="userType">
+                            <option value="compliance">🏛️ Regulatory Compliance</option>
+                            <option value="fintech">💳 FinTech Innovation</option>
+                            <option value="securities">📈 Securities & Capital Markets</option>
+                            <option value="lending">💰 Commercial Lending</option>
+                            <option value="privacy">🔒 Data Privacy & Security</option>
+                        </select>
+                    </div>
+                    
+                    <textarea 
+                        class="modern-textarea" 
+                        placeholder="Describe your legal challenge... Our AI will connect you with the perfect expert."
+                        id="questionInput"
+                    ></textarea>
+                    
+                    <button class="btn btn-primary btn-large" onclick="handleSearch()">
+                        🚀 Find Expert Counsel
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Premium Stats -->
+            <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">Expert Lawyers</div>
+                    <div class="stat-label">Elite Lawyers</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">Practice Areas</div>
+                    <div class="stat-label">Specializations</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
                 </div>
             </div>
         </div>
@@ -509,40 +978,42 @@
     <!-- Expert Lawyers Section -->
     <section id="lawyers">
         <div class="container">
-            <h2 class="section-title">Meet Our Expert Lawyers</h2>
-            <p class="section-subtitle">Connect with top-rated attorneys specializing in banking and financial law</p>
-            
-            <div class="lawyers-grid">
-                <div class="lawyer-card">
-                    <div class="lawyer-avatar">👩‍💼</div>
-                    <div class="lawyer-info">
-                        <h3 class="lawyer-name">Sarah Mitchell</h3>
-                        <p class="lawyer-specialty">Banking Regulation</p>
-                        <p class="lawyer-experience">15+ years experience</p>
-                        <p class="lawyer-rate">$850/hour</p>
-                        <button class="btn btn-primary">Contact Sarah</button>
-                    </div>
-                </div>
+            <div class="section-container reveal">
+                <h2 class="section-title">World-Class Legal Minds</h2>
+                <p class="section-subtitle">Connect with the most respected attorneys in banking and financial law</p>
                 
-                <div class="lawyer-card">
-                    <div class="lawyer-avatar">👨‍💼</div>
-                    <div class="lawyer-info">
-                        <h3 class="lawyer-name">Michael Rodriguez</h3>
-                        <p class="lawyer-specialty">Securities Law</p>
-                        <p class="lawyer-experience">12+ years experience</p>
-                        <p class="lawyer-rate">$750/hour</p>
-                        <button class="btn btn-primary">Contact Michael</button>
+                <div class="lawyers-grid">
+                    <div class="lawyer-card">
+                        <div class="lawyer-avatar">⚖️</div>
+                        <div class="lawyer-info">
+                            <h3 class="lawyer-name">Sarah Mitchell</h3>
+                            <p class="lawyer-specialty">Banking Regulation Expert</p>
+                            <p class="lawyer-experience">15+ years • Harvard Law School</p>
+                            <p class="lawyer-rate">$850/hour</p>
+                            <button class="btn btn-primary">Connect with Sarah</button>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="lawyer-card">
-                    <div class="lawyer-avatar">👩‍💼</div>
-                    <div class="lawyer-info">
-                        <h3 class="lawyer-name">Jennifer Chen</h3>
-                        <p class="lawyer-specialty">FinTech Regulation</p>
-                        <p class="lawyer-experience">10+ years experience</p>
-                        <p class="lawyer-rate">$700/hour</p>
-                        <button class="btn btn-primary">Contact Jennifer</button>
+                    
+                    <div class="lawyer-card">
+                        <div class="lawyer-avatar">🏛️</div>
+                        <div class="lawyer-info">
+                            <h3 class="lawyer-name">Michael Rodriguez</h3>
+                            <p class="lawyer-specialty">Securities Law Specialist</p>
+                            <p class="lawyer-experience">12+ years • Stanford Law</p>
+                            <p class="lawyer-rate">$750/hour</p>
+                            <button class="btn btn-primary">Connect with Michael</button>
+                        </div>
+                    </div>
+                    
+                    <div class="lawyer-card">
+                        <div class="lawyer-avatar">💡</div>
+                        <div class="lawyer-info">
+                            <h3 class="lawyer-name">Jennifer Chen</h3>
+                            <p class="lawyer-specialty">FinTech Innovation Leader</p>
+                            <p class="lawyer-experience">10+ years • MIT & Harvard</p>
+                            <p class="lawyer-rate">$700/hour</p>
+                            <button class="btn btn-primary">Connect with Jennifer</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -550,108 +1021,226 @@
     </section>
 
     <!-- Practice Areas Section -->
-    <section id="practice-areas" style="background: white;">
+    <section id="practice-areas">
         <div class="container">
-            <h2 class="section-title">Specialized Practice Areas</h2>
-            <p class="section-subtitle">Comprehensive legal expertise across all aspects of banking and financial law</p>
-            
-            <div class="practice-grid">
-                <div class="practice-card">
-                    <div class="practice-icon">🏦</div>
-                    <h3 class="practice-title">Banking Regulation</h3>
-                    <p class="practice-description">Expert guidance on banking laws, regulatory compliance, and financial institution governance.</p>
-                </div>
+            <div class="section-container reveal">
+                <h2 class="section-title">Specialized Expertise</h2>
+                <p class="section-subtitle">Comprehensive legal solutions across all aspects of modern finance</p>
                 
-                <div class="practice-card">
-                    <div class="practice-icon">📈</div>
-                    <h3 class="practice-title">Securities & Capital Markets</h3>
-                    <p class="practice-description">Comprehensive securities law services for public and private transactions.</p>
-                </div>
-                
-                <div class="practice-card">
-                    <div class="practice-icon">💳</div>
-                    <h3 class="practice-title">FinTech & Digital Banking</h3>
-                    <p class="practice-description">Cutting-edge legal support for financial technology and digital payment innovations.</p>
-                </div>
-                
-                <div class="practice-card">
-                    <div class="practice-icon">⚖️</div>
-                    <h3 class="practice-title">Regulatory Compliance</h3>
-                    <p class="practice-description">Comprehensive compliance programs and risk management solutions.</p>
-                </div>
-                
-                <div class="practice-card">
-                    <div class="practice-icon">💰</div>
-                    <h3 class="practice-title">Lending & Credit</h3>
-                    <p class="practice-description">Legal expertise for all aspects of commercial and consumer lending.</p>
-                </div>
-                
-                <div class="practice-card">
-                    <div class="practice-icon">🔒</div>
-                    <h3 class="practice-title">Data Privacy & Security</h3>
-                    <p class="practice-description">Protecting financial institutions and their customers' sensitive data.</p>
+                <div class="practice-grid">
+                    <div class="practice-card">
+                        <div class="practice-icon">🏦</div>
+                        <h3 class="practice-title">Banking Regulation</h3>
+                        <p class="practice-description">Navigate complex regulatory frameworks with expert guidance on compliance, licensing, and governance.</p>
+                    </div>
+                    
+                    <div class="practice-card">
+                        <div class="practice-icon">📈</div>
+                        <h3 class="practice-title">Capital Markets</h3>
+                        <p class="practice-description">Comprehensive securities law services for public offerings, private placements, and regulatory compliance.</p>
+                    </div>
+                    
+                    <div class="practice-card">
+                        <div class="practice-icon">💳</div>
+                        <h3 class="practice-title">FinTech Innovation</h3>
+                        <p class="practice-description">Cutting-edge legal support for digital banking, cryptocurrency, and emerging financial technologies.</p>
+                    </div>
+                    
+                    <div class="practice-card">
+                        <div class="practice-icon">🛡️</div>
+                        <h3 class="practice-title">Compliance</h3>
+                        <p class="practice-description">Comprehensive risk management and regulatory compliance programs tailored to your institution.</p>
+                    </div>
+                    
+                    <div class="practice-card">
+                        <div class="practice-icon">💰</div>
+                        <h3 class="practice-title">Commercial Lending</h3>
+                        <p class="practice-description">Expert guidance on lending regulations, documentation, and risk management strategies.</p>
+                    </div>
+                    
+                    <div class="practice-card">
+                        <div class="practice-icon">🔒</div>
+                        <h3 class="practice-title">Data Security</h3>
+                        <p class="practice-description">Protect your institution with comprehensive privacy law compliance and cybersecurity frameworks.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Premium Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div>
                     <h3 class="footer-title">BankingLaw</h3>
-                    <p>Connecting financial institutions with specialized legal expertise. Expert counsel for the complex world of banking and financial law.</p>
+                    <p class="footer-description">
+                        Pioneering the future of legal technology. Connecting financial institutions 
+                        with world-class legal expertise through advanced AI and premium service.
+                    </p>
                 </div>
-                <div>
-                    <h4>Practice Areas</h4>
-                    <p>Banking Regulation<br>Compliance<br>FinTech Law<br>Securities</p>
+                <div class="footer-section">
+                    <h4>Expertise</h4>
+                    <p>Banking Regulation<br>Securities Law<br>FinTech Innovation<br>Compliance</p>
                 </div>
-                <div>
-                    <h4>Company</h4>
-                    <p>About Us<br>Careers<br>Privacy Policy<br>Terms of Service</p>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <p>AI Assistant<br>Expert Network<br>Premium Support<br>Legal Resources</p>
                 </div>
-                <div>
+                <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>+1 (555) 123-4567<br>legal@bankinglaw.com<br>Financial District, NYC</p>
+                    <p>+1 (555) 123-4567<br>elite@bankinglaw.com<br>Financial District, NYC</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 BankingLaw Platform. All rights reserved.</p>
+                <p>&copy; 2024 BankingLaw Platform. Redefining Legal Excellence.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Advanced JavaScript -->
     <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Advanced search handler
         function handleSearch() {
             const input = document.getElementById('questionInput');
             const userType = document.getElementById('userType');
             
             if (input.value.trim()) {
-                alert(`Thank you for your ${userType.value} question: "${input.value}". Our AI assistant would provide expert guidance here. In the full application, this would connect you with specialized lawyers.`);
+                // Create premium notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 30px;
+                    background: linear-gradient(135deg, var(--primary-600), var(--accent-600));
+                    color: white;
+                    padding: 20px 30px;
+                    border-radius: 20px;
+                    box-shadow: var(--shadow-massive);
+                    z-index: 10000;
+                    animation: slideInRight 0.5s ease-out;
+                    backdrop-filter: blur(20px);
+                `;
+                notification.innerHTML = `
+                    <h4 style="margin-bottom: 10px;">🚀 AI Analysis Complete</h4>
+                    <p>Connecting you with ${userType.options[userType.selectedIndex].text} experts...</p>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOutRight 0.5s ease-out forwards';
+                    setTimeout(() => notification.remove(), 500);
+                }, 3000);
+                
+                // Clear input with animation
+                input.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    input.value = '';
+                    input.style.transform = 'scale(1)';
+                }, 200);
             }
         }
 
-        // Handle enter key
-        document.getElementById('questionInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSearch();
-            }
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('revealed');
                 }
             });
+        }
+
+        // Enhanced navbar scroll effect
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            const scrolled = window.scrollY;
+            
+            if (scrolled > 100) {
+                navbar.style.transform = 'translateX(-50%) translateY(-10px)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+            } else {
+                navbar.style.transform = 'translateX(-50%) translateY(0)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        }
+
+        // Smooth scrolling with easing
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }
+
+        // Enhanced event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Scroll animations
+            window.addEventListener('scroll', () => {
+                revealOnScroll();
+                handleNavbarScroll();
+            });
+            
+            // Enhanced chat input
+            const chatInput = document.getElementById('questionInput');
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSearch();
+                }
+            });
+            
+            // Smooth scrolling for nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    smoothScroll(this.getAttribute('href'));
+                });
+            });
+            
+            // Initial reveal check
+            revealOnScroll();
         });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
