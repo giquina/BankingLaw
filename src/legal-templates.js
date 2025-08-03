@@ -1,5 +1,5 @@
 // Smart Legal Templates System
-// UK Banking Law Platform - AI-Powered Document Templates
+// JuriBank - UK Banking Law Intelligence Platform
 
 class LegalTemplatesEngine {
     constructor() {
@@ -13,7 +13,7 @@ class LegalTemplatesEngine {
 
     // Initialize comprehensive legal templates
     initializeTemplates() {
-        console.log('📝 Initializing Smart Legal Templates System...');
+        console.log('📝 Initializing JuriBank Legal Templates System...');
         
         // Corporate Governance Templates
         this.addTemplate({
@@ -448,7 +448,7 @@ class LegalTemplatesEngine {
             }
         });
 
-        console.log('✅ Smart Legal Templates initialized with AI-powered assistance');
+        console.log('✅ JuriBank legal templates initialized with intelligent assistance');
     }
 
     // Add template to database

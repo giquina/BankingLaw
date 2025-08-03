@@ -1,5 +1,5 @@
 // Auto-Regulatory Monitoring System
-// UK Banking Law Platform - Automated Regulatory Change Detection and Alerts
+// JuriBank - UK Banking Law Intelligence Platform
 
 class AutoRegulatoryMonitoring {
     constructor() {
@@ -15,7 +15,7 @@ class AutoRegulatoryMonitoring {
 
     // Initialize comprehensive monitoring sources
     initializeMonitoringSources() {
-        console.log('🤖 Initializing Auto-Regulatory Monitoring System...');
+        console.log('🤖 Initializing JuriBank Auto-Regulatory Monitoring...');
         
         // PRA Monitoring Sources
         this.addMonitoringSource({
@@ -193,7 +193,7 @@ class AutoRegulatoryMonitoring {
             }
         });
 
-        console.log('✅ Automation rules configured');
+        console.log('✅ JuriBank automation rules configured');
     }
 
     // Add automation rule

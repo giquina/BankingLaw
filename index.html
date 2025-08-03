@@ -672,7 +672,7 @@
             transform: translateY(0);
         }
 
-        /* Claude Chat Styles */
+        /* JuriBank Chat Styles */
         .quick-question-btn {
             background: var(--gray-100);
             color: var(--gray-700);
@@ -690,7 +690,7 @@
             border-color: var(--blue-300);
         }
 
-        #claude-search:focus, #chat-input:focus {
+        #juribank-search:focus, #chat-input:focus {
             outline: none;
             border-color: var(--blue-500);
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
@@ -764,13 +764,13 @@
                 the intricacies of banking law, securities regulation, and financial compliance.
             </p>
             
-            <!-- Claude Search Box -->
+            <!-- JuriBank Search Box -->
             <div style="max-width: 600px; margin: 0 auto var(--space-8);">
                 <div style="position: relative;">
                     <input 
                         type="text" 
-                        id="claude-search"
-                        placeholder="Ask Claude: How does MiFID II apply to ETFs? What are PRA capital requirements?"
+                        id="juribank-search"
+                        placeholder="Ask JuriBank: How does MiFID II apply to ETFs? What are PRA capital requirements?"
                         style="
                             width: 100%;
                             padding: var(--space-4) var(--space-6) var(--space-4) 3.5rem;
@@ -783,7 +783,7 @@
                             font-family: var(--font-primary);
                             transition: all var(--transition-base);
                         "
-                        onkeypress="handleClaudeSearch(event)"
+                        onkeypress="handleJuriBankSearch(event)"
                     >
                     <div style="
                         position: absolute;
@@ -794,7 +794,7 @@
                         font-size: 1.25rem;
                     ">🤖</div>
                     <button 
-                        onclick="askClaude()"
+                        onclick="askJuriBank()"
                         style="
                             position: absolute;
                             right: var(--space-2);
@@ -818,7 +818,7 @@
             </div>
             
             <div class="hero-actions">
-                <a href="#claude-assistant" class="btn btn-primary btn-large">🤖 Ask Claude Now</a>
+                <a href="#juribank-assistant" class="btn btn-primary btn-large">🤖 Ask JuriBank Now</a>
                 <a href="#services" class="btn btn-outline btn-large">View Legal Services</a>
             </div>
             
@@ -1296,11 +1296,11 @@
         </div>
     </section>
 
-    <!-- Claude Assistant Section -->
-    <section id="claude-assistant" class="section-gray">
+    <!-- JuriBank Assistant Section -->
+    <section id="juribank-assistant" class="section-gray">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">🤖 Claude Legal Assistant</h2>
+                <h2 class="section-title">🤖 JuriBank Legal Assistant</h2>
                 <p class="section-subtitle">
                     Advanced banking law intelligence at your fingertips. Ask questions, get instant answers, and access expert legal guidance.
                 </p>
@@ -1308,7 +1308,7 @@
             
             <!-- Claude Chat Interface -->
             <div style="max-width: 900px; margin: 0 auto;">
-                <div id="claude-chat-container" style="
+                <div id="juribank-chat-container" style="
                     background: var(--white);
                     border: 1px solid var(--gray-200);
                     border-radius: var(--radius-xl);
@@ -1335,7 +1335,7 @@
                             font-size: 1.5rem;
                         ">🤖</div>
                         <div>
-                            <h3 style="margin: 0; font-size: 1.25rem;">Claude Legal Assistant</h3>
+                            <h3 style="margin: 0; font-size: 1.25rem;">JuriBank Legal Assistant</h3>
                             <p style="margin: 0; opacity: 0.9; font-size: 0.875rem;">Specialist in UK Banking & Financial Law</p>
                         </div>
                         <div style="margin-left: auto;">
@@ -1368,11 +1368,11 @@
                             ">
                                 <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
                                     <span style="font-size: 1.25rem;">🤖</span>
-                                    <strong style="color: var(--blue-600);">Claude</strong>
+                                    <strong style="color: var(--blue-600);">JuriBank</strong>
                                     <span style="color: var(--gray-500); font-size: 0.875rem;">now</span>
                                 </div>
                                 <p style="margin: 0; color: var(--gray-700);">
-                                    Hello! I'm Claude, your specialist UK banking law assistant. I can help you with:
+                                    Hello! I'm JuriBank, your specialist UK banking law assistant. I can help you with:
                                 </p>
                                 <ul style="margin: var(--space-3) 0 0 var(--space-4); color: var(--gray-700);">
                                     <li>PRA and FCA regulatory requirements</li>
@@ -1409,7 +1409,7 @@
                                 ">
                                     <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
                                         <span style="font-size: 1rem;">🤖</span>
-                                        <strong style="color: var(--blue-600); font-size: 0.875rem;">Claude</strong>
+                                        <strong style="color: var(--blue-600); font-size: 0.875rem;">JuriBank</strong>
                                     </div>
                                     <p style="margin: 0; color: var(--gray-700); line-height: 1.6;">
                                         UK banks must maintain minimum capital ratios under Basel III as implemented by the PRA:
@@ -1479,7 +1479,7 @@
                 </div>
             </div>
             
-            <!-- Claude Features -->
+            <!-- JuriBank Features -->
             <div style="margin-top: var(--space-16);">
                 <div class="services-grid">
                     <div class="service-card fade-in">
@@ -1603,11 +1603,11 @@
                     <div class="service-icon">📝</div>
                     <h3 class="service-title">Smart Legal Templates</h3>
                     <p class="service-description">
-                        Claude-powered template generation with role-based customization and automated clause selection.
+                        JuriBank-powered template generation with role-based customization and automated clause selection.
                     </p>
                     <ul class="service-features">
                         <li>Role-based templates</li>
-                        <li>Claude pre-filling</li>
+                        <li>JuriBank pre-filling</li>
                         <li>Compliance checklists</li>
                         <li>Automated updates</li>
                     </ul>
@@ -1646,7 +1646,7 @@
                             <div style="text-align: center;">
                                 <div style="font-size: 2rem; margin-bottom: var(--space-2);">🤖</div>
                                 <div style="font-size: 1.5rem; font-weight: var(--font-weight-bold); margin-bottom: var(--space-1);">Intelligent</div>
-                                <div style="opacity: 0.8;">Claude integration</div>
+                                <div style="opacity: 0.8;">JuriBank integration</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="font-size: 2rem; margin-bottom: var(--space-2);">🔒</div>
@@ -1655,7 +1655,7 @@
                             </div>
                         </div>
                         
-                        <a href="#claude-assistant" class="btn btn-primary btn-large" style="margin-right: var(--space-4);">
+                        <a href="#juribank-assistant" class="btn btn-primary btn-large" style="margin-right: var(--space-4);">
                             🚀 Try Platform Demo
                         </a>
                         <a href="#contact" class="btn btn-outline btn-large" style="border-color: rgba(255,255,255,0.3); color: white;">
@@ -1829,20 +1829,20 @@
             event.target.reset();
         }
 
-        // Claude Assistant Functionality
-        function handleClaudeSearch(event) {
+        // JuriBank Assistant Functionality
+        function handleJuriBankSearch(event) {
             if (event.key === 'Enter') {
-                askClaude();
+                askJuriBank();
             }
         }
 
-        function askClaude() {
-            const searchInput = document.getElementById('claude-search');
+        function askJuriBank() {
+            const searchInput = document.getElementById('juribank-search');
             const query = searchInput.value.trim();
             
             if (query) {
-                // Scroll to Claude section and focus
-                document.getElementById('claude-assistant').scrollIntoView({ behavior: 'smooth' });
+                // Scroll to JuriBank section and focus
+                document.getElementById('juribank-assistant').scrollIntoView({ behavior: 'smooth' });
                 
                 // Set the query in chat input
                 setTimeout(() => {
@@ -1874,11 +1874,11 @@
             // Show typing indicator
             showTypingIndicator();
             
-            // Simulate Claude response
+            // Simulate JuriBank response
             setTimeout(() => {
                 hideTypingIndicator();
-                const response = generateClaudeResponse(query);
-                addChatMessage(response, 'claude');
+                const response = generateJuriBankResponse(query);
+                addChatMessage(response, 'juribank');
             }, 2000 + Math.random() * 1000);
         }
 
@@ -1919,7 +1919,7 @@
                         ">
                             <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
                                 <span style="font-size: 1rem;">🤖</span>
-                                <strong style="color: var(--blue-600); font-size: 0.875rem;">Claude</strong>
+                                <strong style="color: var(--blue-600); font-size: 0.875rem;">JuriBank</strong>
                                 <span style="color: var(--gray-500); font-size: 0.75rem;">now</span>
                             </div>
                             <div style="color: var(--gray-700); line-height: 1.6;">
@@ -1967,7 +1967,7 @@
             }
         }
 
-        function generateClaudeResponse(query) {
+        function generateJuriBankResponse(query) {
             const lowerQuery = query.toLowerCase();
             
             // Banking law responses

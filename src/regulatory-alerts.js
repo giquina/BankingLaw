@@ -1,5 +1,5 @@
 // Regulatory Change Alerts System
-// UK Banking Law Platform - Advanced Alert Management and Distribution
+// JuriBank - UK Banking Law Intelligence Platform
 
 class RegulatoryAlertsSystem {
     constructor() {
@@ -15,14 +15,14 @@ class RegulatoryAlertsSystem {
 
     // Initialize comprehensive alert system
     initializeAlertSystem() {
-        console.log('🚨 Initializing Regulatory Change Alerts System...');
+        console.log('🚨 Initializing JuriBank Regulatory Alerts System...');
         
         this.setupAlertTemplates();
         this.setupEscalationRules();
         this.setupDistributionLists();
         this.startAlertProcessor();
         
-        console.log('✅ Regulatory alerts system initialized');
+        console.log('✅ JuriBank regulatory alerts system initialized');
     }
 
     // Setup alert templates

@@ -1,5 +1,5 @@
 // Interactive Learning and Case Database
-// UK Banking Law Platform - Educational Resources and Case Studies
+// JuriBank - UK Banking Law Intelligence Platform
 
 class LearningDatabase {
     constructor() {
@@ -15,7 +15,7 @@ class LearningDatabase {
 
     // Initialize comprehensive learning content
     initializeLearningContent() {
-        console.log('📚 Initializing UK Banking Law Learning Database...');
+        console.log('📚 Initializing JuriBank Learning Database...');
         
         this.addCourse({
             id: 'uk-banking-regulation-fundamentals',
@@ -262,7 +262,7 @@ class LearningDatabase {
         });
 
         this.buildSearchIndex();
-        console.log('✅ Learning database initialized with comprehensive educational content');
+        console.log('✅ JuriBank learning database initialized with comprehensive educational content');
     }
 
     // Add course to database
