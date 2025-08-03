@@ -688,9 +688,89 @@
             color: var(--gray-400);
         }
 
+        /* Sticky Sidebar Navigation */
+        .sidebar-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-4);
+            box-shadow: var(--shadow-elevated);
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .sidebar-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-bottom: var(--space-2);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        
+        .sidebar-nav-item:hover {
+            background: var(--juribank-gold);
+            color: var(--juribank-navy);
+            transform: scale(1.1);
+        }
+        
+        .sidebar-nav-item.active {
+            background: var(--juribank-navy);
+            color: var(--juribank-gold);
+        }
+        
+        .sidebar-nav-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Tooltip for sidebar items */
+        .sidebar-nav-item::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-fast);
+            margin-right: var(--space-2);
+            pointer-events: none;
+        }
+        
+        .sidebar-nav-item:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .sidebar-nav { display: none; }
             
             .hero {
                 padding: calc(72px + var(--space-16)) 0 var(--space-16);
@@ -809,6 +889,16 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Sticky Sidebar Navigation -->
+    <div class="sidebar-nav" id="sidebar-nav">
+        <a href="#services" class="sidebar-nav-item" data-tooltip="Legal Services">LS</a>
+        <a href="#expertise" class="sidebar-nav-item" data-tooltip="Practice Areas">PA</a>
+        <a href="#team" class="sidebar-nav-item" data-tooltip="Our Team">OT</a>
+        <a href="#juribank-assistant" class="sidebar-nav-item" data-tooltip="AI Assistant">AI</a>
+        <a href="#legal-intelligence" class="sidebar-nav-item" data-tooltip="Intelligence">LI</a>
+        <a href="#contact" class="sidebar-nav-item" data-tooltip="Contact">CT</a>
+    </div>
 
     <!-- Corporate Hero Section -->
     <section class="hero">
@@ -2224,9 +2314,69 @@
             }
         }
 
+        // Sticky Sidebar Navigation Functionality
+        function initializeSidebarNav() {
+            const sidebar = document.getElementById('sidebar-nav');
+            const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
+            
+            // Show sidebar after scrolling past hero
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                const heroHeight = 600; // Approximate hero height
+                
+                if (scrollY > heroHeight) {
+                    sidebar.classList.add('visible');
+                } else {
+                    sidebar.classList.remove('visible');
+                }
+                
+                // Update active states based on scroll position
+                updateActiveSection();
+            }
+            
+            // Update active section indicator
+            function updateActiveSection() {
+                const sections = ['services', 'expertise', 'team', 'juribank-assistant', 'legal-intelligence', 'contact'];
+                const scrollPosition = window.scrollY + 200;
+                
+                sidebarItems.forEach(item => item.classList.remove('active'));
+                
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const section = document.getElementById(sections[i]);
+                    if (section && section.offsetTop <= scrollPosition) {
+                        const activeItem = document.querySelector(`[href="#${sections[i]}"]`);
+                        if (activeItem && activeItem.classList.contains('sidebar-nav-item')) {
+                            activeItem.classList.add('active');
+                        }
+                        break;
+                    }
+                }
+            }
+            
+            // Throttled scroll event
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            
+            // Initial check
+            handleScroll();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize theme
             initializeTheme();
+            
+            // Initialize sidebar navigation
+            initializeSidebarNav();
             
             const fadeElements = document.querySelectorAll('.fade-in');
             fadeElements.forEach(el => observer.observe(el));
