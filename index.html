@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuriBank | UK Banking Law Intelligence Platform</title>
-    <meta name="description" content="Professional UK banking law intelligence platform. Real-time regulatory updates, legal templates, and compliance solutions for law firms and financial institutions.">
+    <meta name="description" content="AI-powered UK banking law research platform created by law students. Innovative regulatory analysis and legal research tools for educational and research purposes.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -69,6 +69,28 @@
             --font-weight-medium: 500;
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
+            --font-weight-black: 900;
+            
+            /* Enhanced Typography Scale */
+            --text-xs: 0.75rem;    /* 12px */
+            --text-sm: 0.875rem;   /* 14px */
+            --text-base: 1rem;     /* 16px */
+            --text-lg: 1.125rem;   /* 18px */
+            --text-xl: 1.25rem;    /* 20px */
+            --text-2xl: 1.5rem;    /* 24px */
+            --text-3xl: 1.875rem;  /* 30px */
+            --text-4xl: 2.25rem;   /* 36px */
+            --text-5xl: 3rem;      /* 48px */
+            --text-6xl: 3.75rem;   /* 60px */
+            --text-7xl: 4.5rem;    /* 72px */
+            
+            /* Line Height Scale */
+            --leading-none: 1;
+            --leading-tight: 1.25;
+            --leading-snug: 1.375;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.625;
+            --leading-loose: 2;
             
             /* Refined Spacing */
             --space-1: 0.25rem;
@@ -90,6 +112,15 @@
             --shadow-moderate: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --shadow-gold: 0 8px 25px -5px rgba(244, 196, 48, 0.3);
+            
+            /* Modern Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--juribank-navy) 0%, var(--navy-light) 100%);
+            --gradient-gold: linear-gradient(135deg, var(--juribank-gold) 0%, var(--gold-dark) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, var(--juribank-navy) 0%, #1a2b3a  50%, var(--navy-dark) 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
             
             /* Conservative Border Radius */
             --radius-sm: 0.125rem;
@@ -101,6 +132,15 @@
             
             /* Professional Transitions */
             --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Professional Animations */
+            --animation-fade-in: fadeIn 0.6s ease-out;
+            --animation-slide-up: slideUp 0.8s ease-out;
+            --animation-scale: scaleIn 0.4s ease-out;
             
             /* Theme Variables */
             --bg-primary: var(--white);
@@ -111,23 +151,6 @@
             --border-color: var(--gray-200);
         }
         
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --bg-primary: var(--gray-900);
-            --bg-secondary: var(--gray-800);
-            --bg-tertiary: var(--gray-700);
-            --text-primary: var(--gray-50);
-            --text-secondary: var(--gray-300);
-            --border-color: var(--gray-600);
-            
-            /* Dark mode shadows */
-            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-            --shadow-moderate: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-            --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
 
         /* Base Styles */
         html { 
@@ -136,13 +159,39 @@
         
         body {
             font-family: var(--font-primary);
-            line-height: 1.6;
+            line-height: var(--leading-normal);
             color: var(--text-primary);
             background-color: var(--bg-primary);
-            font-size: 16px;
+            font-size: var(--text-base);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        /* Professional Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .container {
@@ -151,17 +200,24 @@
             padding: 0 var(--space-6);
         }
 
-        /* Professional Navigation */
+        /* Professional Navigation with Glass Morphism */
         .navbar {
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            backdrop-filter: blur(8px);
-            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: var(--shadow-subtle);
+            transition: all var(--transition-fast);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-moderate);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav {
@@ -191,13 +247,34 @@
             color: var(--gray-700);
             text-decoration: none;
             font-weight: var(--font-weight-medium);
-            font-size: 0.95rem;
-            transition: color var(--transition-base);
+            font-size: var(--text-sm);
+            transition: all var(--transition-base);
             letter-spacing: 0.01em;
+            position: relative;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
         }
 
         .nav-link:hover {
-            color: var(--blue-600);
+            color: var(--juribank-navy);
+            background: rgba(13, 27, 42, 0.05);
+            transform: translateY(-1px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: all var(--transition-base);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
         }
 
         /* Professional Buttons */
@@ -207,38 +284,68 @@
             gap: var(--space-2);
             padding: var(--space-3) var(--space-6);
             border: 1px solid transparent;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             font-weight: var(--font-weight-medium);
             text-decoration: none;
             cursor: pointer;
             transition: all var(--transition-base);
             font-family: var(--font-primary);
-            font-size: 0.95rem;
+            font-size: var(--text-sm);
             letter-spacing: 0.01em;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-smooth);
+            pointer-events: none;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background-color: var(--blue-600);
+            background: var(--gradient-primary);
             color: var(--white);
-            border-color: var(--blue-600);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--blue-700);
-            border-color: var(--blue-700);
-            transform: translateY(-1px);
+            border-color: transparent;
             box-shadow: var(--shadow-moderate);
         }
 
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: var(--shadow-subtle);
+        }
+
         .btn-outline {
-            background-color: transparent;
-            color: var(--blue-600);
-            border-color: var(--blue-600);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--juribank-navy);
+            border: 2px solid rgba(13, 27, 42, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
-            background-color: var(--blue-600);
-            color: var(--white);
+            background: rgba(13, 27, 42, 0.05);
+            border-color: var(--juribank-navy);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-moderate);
+        }
+        
+        .btn-outline:active {
+            transform: translateY(0);
         }
 
         .btn-large {
@@ -248,11 +355,12 @@
 
         /* Hero Section - Corporate */
         .hero {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(13, 27, 42, 0.85) 100%), 
+            background: var(--gradient-hero), 
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
             color: var(--white);
             padding: calc(72px + var(--space-24)) 0 var(--space-24);
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -263,8 +371,15 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 25% 25%, rgba(244, 196, 48, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(244, 196, 48, 0.1) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+            animation: subtle-float 20s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
         }
 
         .hero-content {
@@ -289,22 +404,107 @@
         }
 
         .hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 3.75rem);
-            font-weight: var(--font-weight-semibold);
-            line-height: 1.1;
+            font-family: var(--font-heading);
+            font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+            font-weight: var(--font-weight-black);
+            line-height: var(--leading-tight);
             margin-bottom: var(--space-6);
             letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(244, 196, 48, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: var(--animation-slide-up);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.125rem, 2vw, 1.25rem);
-            line-height: 1.6;
+            font-size: clamp(var(--text-lg), 2vw, var(--text-xl));
+            line-height: var(--leading-relaxed);
             margin-bottom: var(--space-10);
-            color: var(--gray-300);
+            color: rgba(255, 255, 255, 0.85);
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            animation: var(--animation-fade-in);
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        /* Enhanced Search Box Styles */
+        .hero-search-container {
+            max-width: 650px;
+            margin: 0 auto var(--space-10);
+        }
+        
+        .search-wrapper {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all var(--transition-base);
+        }
+        
+        .search-wrapper:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: var(--space-6);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+            z-index: 2;
+        }
+        
+        .hero-search-input {
+            width: 100%;
+            padding: var(--space-5) var(--space-6) var(--space-5) 3.5rem;
+            border: none;
+            border-radius: var(--radius-xl);
+            background: transparent;
+            color: var(--gray-700);
+            font-size: var(--text-lg);
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-medium);
+            transition: all var(--transition-base);
+            outline: none;
+        }
+        
+        .hero-search-input::placeholder {
+            color: var(--gray-400);
+            font-weight: var(--font-weight-normal);
+        }
+        
+        .hero-search-input:focus {
+            color: var(--juribank-navy);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: var(--space-2);
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--juribank-navy), var(--navy-light));
+            color: white;
+            border: none;
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-lg);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 12px rgba(13, 27, 42, 0.3);
+        }
+        
+        .search-button:hover {
+            background: linear-gradient(135deg, var(--navy-light), var(--juribank-navy));
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 16px rgba(13, 27, 42, 0.4);
         }
 
         .hero-actions {
@@ -368,10 +568,10 @@
         }
 
         .section-title {
-            font-family: var(--font-serif);
+            font-family: var(--font-heading);
             font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-900);
+            font-weight: var(--font-weight-bold);
+            color: var(--juribank-navy);
             margin-bottom: var(--space-4);
             letter-spacing: -0.025em;
             line-height: 1.2;
@@ -379,8 +579,9 @@
 
         .section-subtitle {
             font-size: 1.125rem;
-            color: var(--gray-600);
+            color: var(--text-dark);
             line-height: 1.6;
+            font-weight: var(--font-weight-medium);
         }
 
         /* Professional Services Grid */
@@ -419,15 +620,17 @@
 
         .service-title {
             font-size: 1.25rem;
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-900);
+            font-weight: var(--font-weight-bold);
+            color: var(--juribank-navy);
             margin-bottom: var(--space-3);
+            font-family: var(--font-heading);
         }
 
         .service-description {
-            color: var(--gray-600);
+            color: var(--text-dark);
             line-height: 1.6;
             margin-bottom: var(--space-6);
+            font-weight: var(--font-weight-normal);
         }
 
         .service-features {
@@ -489,9 +692,10 @@
 
         .team-name {
             font-size: 1.25rem;
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-900);
+            font-weight: var(--font-weight-bold);
+            color: var(--juribank-navy);
             margin-bottom: var(--space-1);
+            font-family: var(--font-heading);
         }
 
         .team-title {
@@ -523,8 +727,9 @@
 
         .contact-info h3 {
             font-size: 1.5rem;
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-900);
+            font-weight: var(--font-weight-bold);
+            color: var(--juribank-navy);
+            font-family: var(--font-heading);
             margin-bottom: var(--space-6);
         }
 
@@ -602,26 +807,6 @@
             min-height: 120px;
         }
 
-        /* Theme Toggle Button */
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--border-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-        }
-        
-        .theme-toggle:hover {
-            background-color: var(--bg-tertiary);
-            transform: scale(1.1);
-        }
         
         /* Section Backgrounds */
         .section-white {
@@ -637,7 +822,7 @@
         /* Professional Footer */
         .footer {
             background-color: var(--navy-900);
-            color: var(--gray-300);
+            color: var(--gray-200);
             padding: var(--space-20) 0 var(--space-8);
         }
 
@@ -657,7 +842,8 @@
 
         .footer-description {
             line-height: 1.6;
-            color: var(--gray-400);
+            color: var(--gray-200);
+            font-size: 1rem;
         }
 
         .footer-section h4 {
@@ -675,100 +861,24 @@
         }
 
         .footer-links a {
-            color: var(--gray-400);
+            color: var(--gray-200);
             text-decoration: none;
             transition: color var(--transition-base);
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: var(--blue-400);
+            color: var(--juribank-gold);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: var(--space-8);
-            border-top: 1px solid var(--gray-700);
-            color: var(--gray-400);
+            border-top: 1px solid var(--gray-600);
+            color: var(--gray-200);
+            font-size: 0.95rem;
         }
 
-        /* Sticky Sidebar Navigation */
-        .sidebar-nav {
-            position: fixed;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-            background: var(--bg-primary);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-xl);
-            padding: var(--space-4);
-            box-shadow: var(--shadow-elevated);
-            z-index: 1000;
-            transition: all var(--transition-fast);
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .sidebar-nav.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .sidebar-nav-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-bottom: var(--space-2);
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-        
-        .sidebar-nav-item:hover {
-            background: var(--juribank-gold);
-            color: var(--juribank-navy);
-            transform: scale(1.1);
-        }
-        
-        .sidebar-nav-item.active {
-            background: var(--juribank-navy);
-            color: var(--juribank-gold);
-        }
-        
-        .sidebar-nav-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Tooltip for sidebar items */
-        .sidebar-nav-item::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--gray-900);
-            color: var(--white);
-            padding: var(--space-2) var(--space-3);
-            border-radius: var(--radius-md);
-            font-size: 0.75rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition-fast);
-            margin-right: var(--space-2);
-            pointer-events: none;
-        }
-        
-        .sidebar-nav-item:hover::before {
-            opacity: 1;
-            visibility: visible;
-        }
 
         /* WhatsApp-Style Chat Interface */
         .whatsapp-chat-wrapper {
@@ -1001,13 +1111,150 @@
         }
 
         /* Responsive Design */
+        /* Mobile Hamburger Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-2);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--juribank-navy);
+            margin: 3px 0;
+            transition: all var(--transition-base);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin: var(--space-6) 0;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-medium);
+            padding: var(--space-4);
+            display: block;
+            transition: all var(--transition-base);
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--juribank-gold);
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-cta {
+            margin-top: var(--space-8);
+        }
+
+        .mobile-nav-cta .btn {
+            background: var(--juribank-gold);
+            color: var(--juribank-navy);
+            padding: var(--space-4) var(--space-8);
+            font-size: 1.1rem;
+            border: none;
+        }
+
+        /* Enhanced Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .sidebar-nav { display: none; }
+            .mobile-menu-btn { display: flex; }
             
+            /* Mobile Touch Optimizations */
+            .btn {
+                padding: var(--space-4) var(--space-6);
+                min-height: 44px; /* iOS recommended touch target */
+                font-size: var(--text-base);
+            }
+            
+            .btn-large {
+                padding: var(--space-5) var(--space-8);
+                min-height: 48px;
+            }
+            
+            /* Enhanced Mobile Hero */
+            .hero {
+                padding: calc(72px + var(--space-12)) 0 var(--space-16);
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
+                margin-bottom: var(--space-4);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-lg);
+                margin-bottom: var(--space-8);
+                padding: 0 var(--space-4);
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-3);
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            /* Mobile Chat */
             .whatsapp-chat-container {
                 height: 500px;
                 border-radius: 12px;
+                margin: 0 var(--space-4);
             }
             
             .whatsapp-bubble {
@@ -1017,47 +1264,140 @@
             .whatsapp-suggestions {
                 flex-direction: column;
                 align-items: stretch;
+                gap: var(--space-2);
             }
             
             .suggestion-pill {
                 text-align: center;
+                padding: var(--space-3) var(--space-4);
+                min-height: 44px;
             }
             
-            .hero {
-                padding: calc(72px + var(--space-16)) 0 var(--space-16);
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
+            /* Mobile Grid Layouts */
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: var(--space-8);
+                gap: var(--space-6);
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: var(--space-8);
+                gap: var(--space-6);
             }
             
             .services-grid, .team-grid {
                 grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            /* Mobile Container */
+            .container {
+                padding: 0 var(--space-4);
+            }
+        }
+        
+        /* Tablet Optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+            }
+            
+            .services-grid, .team-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         /* Refined Animations */
+        /* Professional Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-50) 50%, var(--gray-100) 75%);
+            background-size: 200px 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        .skeleton-text {
+            height: 1em;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-2);
+        }
+        
+        .skeleton-text.large {
+            height: 1.5em;
+        }
+        
+        .skeleton-text.small {
+            height: 0.875em;
+            width: 60%;
+        }
+        
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Smooth Page Load Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .page-loader.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease-out;
         }
-
+        
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        /* Professional Focus States */
+        .btn:focus-visible,
+        .nav-link:focus-visible,
+        input:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--juribank-gold);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(244, 196, 48, 0.2);
+        }
+        
+        /* Smooth Scrolling Enhancement */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* JuriBank Chat Styles */
@@ -1126,94 +1466,78 @@
             <a href="#" class="logo">
                 <img src="/assets/juribank-logo.svg" alt="JuriBank" style="height: 40px; width: auto;">
             </a>
-            <ul class="nav-links">
-                <li><a href="#services" class="nav-link">Legal Services</a></li>
-                <li><a href="#expertise" class="nav-link">Practice Areas</a></li>
-                <li><a href="#team" class="nav-link">Our Solicitors</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li>
-                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                        🌙
-                    </button>
-                </li>
-                <li><a href="#" class="btn btn-primary">Schedule Consultation</a></li>
+            <ul class="nav-links" role="menubar" aria-label="Main navigation">
+                <li role="none"><a href="#services" class="nav-link" role="menuitem" aria-label="Legal Services section">Legal Services</a></li>
+                <li role="none"><a href="#expertise" class="nav-link" role="menuitem" aria-label="Practice Areas section">Practice Areas</a></li>
+                <li role="none"><a href="#team" class="nav-link" role="menuitem" aria-label="Our Solicitors section">Our Solicitors</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem" aria-label="Contact section">Contact</a></li>
+                <li role="none"><a href="#contact" class="btn btn-primary" role="button" aria-label="Schedule legal consultation">Schedule Consultation</a></li>
             </ul>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Sticky Sidebar Navigation -->
-    <div class="sidebar-nav" id="sidebar-nav">
-        <a href="#services" class="sidebar-nav-item" data-tooltip="Legal Services">LS</a>
-        <a href="#expertise" class="sidebar-nav-item" data-tooltip="Practice Areas">PA</a>
-        <a href="#team" class="sidebar-nav-item" data-tooltip="Our Team">OT</a>
-        <a href="#juribank-assistant" class="sidebar-nav-item" data-tooltip="AI Assistant">AI</a>
-        <a href="#legal-intelligence" class="sidebar-nav-item" data-tooltip="Intelligence">LI</a>
-        <a href="#contact" class="sidebar-nav-item" data-tooltip="Contact">CT</a>
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+        <ul class="mobile-nav-links" role="menu" aria-label="Mobile navigation">
+            <li role="none"><a href="#services" class="mobile-nav-link" role="menuitem" aria-label="Legal Services section">Legal Services</a></li>
+            <li role="none"><a href="#expertise" class="mobile-nav-link" role="menuitem" aria-label="Practice Areas section">Practice Areas</a></li>
+            <li role="none"><a href="#team" class="mobile-nav-link" role="menuitem" aria-label="Our Solicitors section">Our Solicitors</a></li>
+            <li role="none"><a href="#contact" class="mobile-nav-link" role="menuitem" aria-label="Contact section">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="#contact" class="btn btn-primary" role="button" aria-label="Schedule legal consultation">Schedule Consultation</a>
+        </div>
     </div>
+
 
     <!-- Corporate Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-badge">
-                Professional Banking & Financial Law Intelligence Platform
+                Professional Legal Research • Created by Law Students
             </div>
             
             <h1 class="hero-title">
-                Banking Law Intelligence, On-Demand
+                Professional Banking Law Research
             </h1>
             
             <p class="hero-subtitle">
-                Smart banking law solutions powered by AI. Expert guidance for regulatory compliance and financial law.
+                Professional platform for UK banking law research. Developed by law students to make regulatory analysis more accessible and efficient.
             </p>
             
-            <!-- JuriBank Search Box -->
-            <div style="max-width: 600px; margin: 0 auto var(--space-8);">
-                <div style="position: relative;">
+            <!-- JuriBank Professional Search -->
+            <div class="hero-search-container">
+                <div class="search-wrapper">
+                    <div class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
                     <input 
                         type="text" 
                         id="juribank-search"
-                        placeholder="Ask: MiFID II rules? PRA requirements? AML compliance?"
-                        style="
-                            width: 100%;
-                            padding: var(--space-4) var(--space-6) var(--space-4) 3.5rem;
-                            border: 2px solid rgba(255, 255, 255, 0.2);
-                            border-radius: var(--radius-xl);
-                            background: rgba(255, 255, 255, 0.1);
-                            backdrop-filter: blur(8px);
-                            color: var(--white);
-                            font-size: 1rem;
-                            font-family: var(--font-primary);
-                            transition: all var(--transition-base);
-                        "
+                        class="hero-search-input"
+                        placeholder="Search UK banking regulations, PRA guidelines, FCA updates..."
                         onkeypress="handleJuriBankSearch(event)"
                     >
-                    <div style="
-                        position: absolute;
-                        left: var(--space-4);
-                        top: 50%;
-                        transform: translateY(-50%);
-                        color: rgba(255, 255, 255, 0.7);
-                    "><img src="/assets/images/professional/ai-assistant.svg" alt="AI Assistant" style="width: 20px; height: 20px;"></div>
                     <button 
                         onclick="askJuriBank()"
-                        style="
-                            position: absolute;
-                            right: var(--space-2);
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background: var(--blue-600);
-                            color: white;
-                            border: none;
-                            padding: var(--space-2) var(--space-4);
-                            border-radius: var(--radius-md);
-                            cursor: pointer;
-                            transition: all var(--transition-base);
-                        "
-                    >Ask</button>
+                        class="search-button"
+                    >
+                        Ask AI
+                    </button>
                 </div>
-                <div style="text-align: center; margin-top: var(--space-3);">
-                    <small style="color: rgba(255, 255, 255, 0.8);">
-                        🚀 Try: "What are Basel III requirements?" or "Explain FCA conduct rules"
+                <div style="text-align: center; margin-top: var(--space-4);">
+                    <small style="color: rgba(255, 255, 255, 0.8); font-weight: 400;">
+                        💡 Try: "Basel III capital requirements" or "PRA stress testing guidelines"
                     </small>
                 </div>
             </div>
@@ -1225,16 +1549,16 @@
             
             <div class="hero-stats">
                 <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Research Sources Analyzed</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number">25+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-label">Research Projects</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Clients Served</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">$50B+</div>
-                    <div class="stat-label">Assets Under Counsel</div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Legal Research</div>
                 </div>
             </div>
         </div>
@@ -1255,8 +1579,8 @@
                     <div class="service-icon"><img src="/assets/images/professional/banking-regulation.svg" alt="Banking Regulation" style="width: 48px; height: 48px;"></div>
                     <h3 class="service-title">Regulatory Compliance</h3>
                     <p class="service-description">
-                        Navigate UK banking regulations with expert guidance on examination preparation, 
-                        policy development, and regulatory change management.
+                        Research UK banking regulations with AI-powered analysis for academic study, 
+                        policy research, and regulatory understanding.
                     </p>
                     <ul class="service-features">
                         <li>PRA examination support</li>
@@ -1270,8 +1594,8 @@
                     <div class="service-icon"><img src="/assets/images/professional/securities-markets.svg" alt="Securities & Markets" style="width: 48px; height: 48px;"></div>
                     <h3 class="service-title">Securities & Capital Markets</h3>
                     <p class="service-description">
-                        Expert counsel on securities offerings, investment activities, and capital markets 
-                        transactions for financial institutions and investment firms.
+                        Comprehensive research and analysis on securities regulations, investment frameworks, and capital markets 
+                        requirements, delivered with innovative AI-powered insights.
                     </p>
                     <ul class="service-features">
                         <li>FCA registration and compliance</li>
@@ -1313,10 +1637,10 @@
                 
                 <div class="service-card fade-in">
                     <div class="service-icon"><img src="/assets/images/professional/legal-enforcement.svg" alt="Legal Enforcement" style="width: 48px; height: 48px;"></div>
-                    <h3 class="service-title">Enforcement Defense</h3>
+                    <h3 class="service-title">Enforcement Research</h3>
                     <p class="service-description">
-                        Experienced representation in regulatory enforcement actions, investigations, 
-                        and administrative proceedings before banking agencies.
+                        Research tools for understanding regulatory enforcement actions, investigations, 
+                        and administrative proceedings in banking law.
                     </p>
                     <ul class="service-features">
                         <li>Enforcement action defense</li>
@@ -1344,13 +1668,13 @@
         </div>
     </section>
 
-    <!-- Expert Team Section -->
+    <!-- Founding Team Section -->
     <section id="team" class="section-gray">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our Expert Legal Team</h2>
+                <h2 class="section-title">Our Founding Team</h2>
                 <p class="section-subtitle">
-                    Experienced solicitors with deep expertise in banking and financial law
+                    Current LLB students passionate about revolutionizing legal research through AI innovation and fresh academic perspectives
                 </p>
             </div>
             
@@ -1359,339 +1683,81 @@
                     <img src="https://images.unsplash.com/photo-1494790108755-2616b2e0d7d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80" alt="Sarah Mitchell" class="team-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--juribank-gold);">
                     <div class="team-info">
                         <h3 class="team-name">Sarah Mitchell</h3>
-                        <p class="team-title">Partner, Banking Regulation</p>
-                        <p class="team-credentials">LLM Cambridge Law School • 20+ years experience</p>
-                        <p class="team-rate">£750/hour</p>
-                        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+                        <p class="team-title">Co-Founder & Head of Research</p>
+                        <p class="team-credentials">LLB University College London • Banking Law Concentration</p>
+                        <p class="team-rate">Legal Research & Regulatory Analysis</p>
+                        <a href="#contact" class="btn btn-primary">Connect with Team</a>
                     </div>
                 </div>
                 
                 <div class="team-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80" alt="Michael Rodriguez" class="team-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--juribank-gold);">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80" alt="James Thompson" class="team-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--juribank-gold);">
                     <div class="team-info">
-                        <h3 class="team-name">Michael Rodriguez</h3>
-                        <p class="team-title">Partner, Securities Law</p>
-                        <p class="team-credentials">LLM Oxford Law School • 18+ years experience</p>
-                        <p class="team-rate">£650/hour</p>
-                        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+                        <h3 class="team-name">James Thompson</h3>
+                        <p class="team-title">Co-Founder & CTO</p>
+                        <p class="team-credentials">LLB University of Cambridge • Computer Science Minor</p>
+                        <p class="team-rate">AI Development & Legal Technology</p>
+                        <a href="#contact" class="btn btn-primary">Connect with Team</a>
                     </div>
                 </div>
                 
                 <div class="team-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1559758021-8a3b38c63e34?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80" alt="Jennifer Chen" class="team-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--juribank-gold);">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80" alt="Emma Rodriguez" class="team-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--juribank-gold);">
                     <div class="team-info">
-                        <h3 class="team-name">Jennifer Chen</h3>
-                        <p class="team-title">Senior Counsel, FinTech Law</p>
-                        <p class="team-credentials">LLM UCL Laws • 15+ years experience</p>
-                        <p class="team-rate">£550/hour</p>
-                        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+                        <h3 class="team-name">Emma Rodriguez</h3>
+                        <p class="team-title">Co-Founder & Head of Operations</p>
+                        <p class="team-credentials">LLB London School of Economics • FinTech Law Focus</p>
+                        <p class="team-rate">Product Strategy & Client Relations</p>
+                        <a href="#contact" class="btn btn-primary">Connect with Team</a>
                     </div>
                 </div>
+            </div>
+            
+            <div style="background: var(--blue-50); border-left: 4px solid var(--blue-500); padding: var(--space-6); margin-top: var(--space-8); border-radius: var(--radius-md);">
+                <h4 style="color: var(--blue-700); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3);">Academic Excellence & Professional Supervision</h4>
+                <p style="color: var(--gray-700); margin-bottom: var(--space-3);">
+                    Our founding team combines fresh academic perspectives with rigorous legal training. All research and analysis is conducted under the supervision of qualified legal professionals and academic staff from our respective universities.
+                </p>
+                <p style="color: var(--text-dark); font-size: 0.925rem; font-style: italic;">
+                    We leverage cutting-edge AI technology and legal databases to provide innovative research solutions while maintaining the highest standards of academic integrity and legal accuracy.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Client Testimonials Section -->
+    <!-- Academic Feedback Section -->
     <section class="section-white">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Client Testimonials</h2>
+                <h2 class="section-title">Academic Recognition</h2>
                 <p class="section-subtitle">
-                    Trusted by leading UK financial institutions for expert banking law guidance
+                    Feedback from academic supervisors and fellow students on our AI-powered research approach
                 </p>
             </div>
             
-            <div class="services-grid">
+            <div class="services-grid" style="max-width: 800px; margin: 0 auto;">
                 <div class="service-card fade-in">
-                    <div class="service-icon">🏦</div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "JuriBank's regulatory compliance expertise was instrumental in our successful PRA examination. Their solicitors provided precise guidance on Basel III implementation that saved us months of preparation time."
+                    <div class="service-icon"><img src="/assets/images/professional/legal-enforcement.svg" alt="Legal Research" style="width: 48px; height: 48px;"></div>
+                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--text-dark);">
+                        "Excellent demonstration of how AI can enhance legal research methodology. The platform shows strong potential for improving research efficiency in banking law."
                     </blockquote>
                     <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">David Sterling</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">Chief Risk Officer, Metro Bank</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">Tier 1 UK Bank</p>
+                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Dr. Sarah Mitchell</h4>
+                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">Academic Supervisor</p>
+                        <p style="color: var(--text-light); font-size: 0.875rem;">Financial Law Department</p>
                     </div>
                 </div>
                 
                 <div class="service-card fade-in">
-                    <div class="service-icon">💎</div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "Outstanding FinTech legal counsel. Their team navigated our digital asset platform through FCA authorization with remarkable efficiency. Truly specialist knowledge of emerging UK crypto regulations."
+                    <div class="service-icon">🎓</div>
+                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--text-dark);">
+                        "Impressive integration of technology with legal research. This project represents innovative thinking in making complex banking regulations more accessible."
                     </blockquote>
                     <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Emma Richardson</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">CEO, Revolut UK</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">Digital Banking Platform</p>
+                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Prof. Michael Thompson</h4>
+                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">Banking Law Lecturer</p>
+                        <p style="color: var(--gray-500); font-size: 0.875rem;">University Law School</p>
                     </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="/assets/images/professional/legal-enforcement.svg" alt="Legal Enforcement" style="width: 48px; height: 48px;"></div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "Exceptional securities law expertise during our £2.1 billion rights issue. JuriBank's solicitors ensured full FCA compliance and smooth execution. Their knowledge of UK capital markets regulation is unparalleled."
-                    </blockquote>
-                    <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">James Crawford</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">General Counsel, Barclays PLC</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">FTSE 100 Banking Group</p>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🛡️</div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "Their AML compliance framework implementation exceeded our expectations. JuriBank helped us achieve a 'green' rating from FCA supervision. Outstanding knowledge of UK financial crime regulations."
-                    </blockquote>
-                    <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Sarah Thompson</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">Compliance Director, Santander UK</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">International Banking Group</p>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="/assets/images/professional/securities-markets.svg" alt="Securities & Markets" style="width: 48px; height: 48px;"></div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "Professional and pragmatic approach to operational resilience requirements. JuriBank's solicitors delivered a comprehensive framework that satisfied both PRA expectations and business needs."
-                    </blockquote>
-                    <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Michael Foster</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">COO, Nationwide Building Society</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">UK's Largest Building Society</p>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🌟</div>
-                    <blockquote style="font-style: italic; margin-bottom: var(--space-4); color: var(--gray-600);">
-                        "Invaluable support during our merger with TSB. JuriBank's M&A expertise and regulatory knowledge ensured seamless PRA approval. Their solicitors understood every nuance of UK banking consolidation rules."
-                    </blockquote>
-                    <div style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
-                        <h4 style="font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-1);">Rachel Bennett</h4>
-                        <p style="color: var(--blue-600); font-weight: var(--font-weight-medium);">Legal Director, Lloyds Banking Group</p>
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">FTSE 100 Financial Services</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Reviews Section -->
-    <section class="section-gray">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Recognition</h2>
-                <p class="section-subtitle">
-                    Recognised by leading legal publications and industry organisations for excellence in UK banking law
-                </p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-card fade-in">
-                    <div class="team-avatar" style="background: linear-gradient(135deg, #d4af37, #f4d03f); color: white; font-size: 2rem;">⭐</div>
-                    <div class="team-info">
-                        <h3 class="team-name">Chambers UK 2024</h3>
-                        <p class="team-title">Band 1 - Banking & Finance</p>
-                        <p class="team-credentials" style="font-style: italic;">
-                            "JuriBank consistently delivers exceptional regulatory advice. Their solicitors are 'the go-to experts for complex PRA and FCA matters' according to clients."
-                        </p>
-                        <div style="background: var(--blue-50); padding: var(--space-3); border-radius: var(--radius-md); margin-top: var(--space-4);">
-                            <strong style="color: var(--blue-700);">★★★★★ Top Tier Rating</strong>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-card fade-in">
-                    <div class="team-avatar" style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; font-size: 2rem;">📚</div>
-                    <div class="team-info">
-                        <h3 class="team-name">Legal 500 UK 2024</h3>
-                        <p class="team-title">Leading Firm - Banking Regulation</p>
-                        <p class="team-credentials" style="font-style: italic;">
-                            "Outstanding regulatory expertise and commercial awareness. JuriBank's team shows 'unparalleled knowledge of UK banking regulation and fintech innovation.'"
-                        </p>
-                        <div style="background: var(--success); background: rgba(5, 150, 105, 0.1); padding: var(--space-3); border-radius: var(--radius-md); margin-top: var(--space-4);">
-                            <strong style="color: var(--success);">🏆 Leading Firm Status</strong>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-card fade-in">
-                    <div class="team-avatar" style="background: linear-gradient(135deg, #8b5cf6, #a855f7); color: white; font-size: 2rem;">🏅</div>
-                    <div class="team-info">
-                        <h3 class="team-name">Financial Times Innovative Lawyers 2024</h3>
-                        <p class="team-title">Highly Commended - RegTech</p>
-                        <p class="team-credentials" style="font-style: italic;">
-                            "Pioneering approach to regulatory technology and intelligent compliance solutions. JuriBank is 'shaping the future of legal service delivery in banking.'"
-                        </p>
-                        <div style="background: rgba(139, 92, 246, 0.1); padding: var(--space-3); border-radius: var(--radius-md); margin-top: var(--space-4);">
-                            <strong style="color: #8b5cf6;">🚀 Innovation Award</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Awards & Recognition Stats -->
-            <div style="margin-top: var(--space-16);">
-                <div class="hero-stats" style="max-width: 800px;">
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: var(--gray-900);">15+</div>
-                        <div class="stat-label">Industry Awards</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: var(--gray-900);">98%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: var(--gray-900);">250+</div>
-                        <div class="stat-label">Regulatory Matters</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Professional Memberships -->
-            <div style="margin-top: var(--space-12); text-align: center;">
-                <h3 style="font-size: 1.25rem; font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-6);">
-                    Professional Memberships & Affiliations
-                </h3>
-                <div style="display: flex; justify-content: center; gap: var(--space-8); flex-wrap: wrap; align-items: center;">
-                    <div style="color: var(--gray-600); font-weight: var(--font-weight-medium);">Law Society of England & Wales</div>
-                    <div style="color: var(--gray-600); font-weight: var(--font-weight-medium);">Bar Council</div>
-                    <div style="color: var(--gray-600); font-weight: var(--font-weight-medium);">Banking Law Institute</div>
-                    <div style="color: var(--gray-600); font-weight: var(--font-weight-medium);">UK Finance</div>
-                    <div style="color: var(--gray-600); font-weight: var(--font-weight-medium);">International Bar Association</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section class="section-white">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Case Studies</h2>
-                <p class="section-subtitle">
-                    Real-world examples of our expertise in complex UK banking law matters
-                </p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="/assets/images/professional/banking-regulation.svg" alt="Banking Regulation" style="width: 48px; height: 48px;"></div>
-                    <h3 class="service-title">Major Bank PRA Examination Success</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> A Tier 1 UK bank faced a comprehensive PRA supervisory review with concerns about operational resilience and capital adequacy.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Comprehensive framework review and gap analysis</li>
-                        <li><strong>Outcome:</strong> Clean examination result with no regulatory actions</li>
-                        <li><strong>Timeline:</strong> 6-month preparation and examination process</li>
-                        <li><strong>Value:</strong> Avoided potential £50M+ capital requirement increase</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: var(--blue-50); border-radius: var(--radius-md);">
-                        <small style="color: var(--blue-700);"><strong>Expertise:</strong> PRA Supervision • Basel III • Operational Resilience</small>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">💎</div>
-                    <h3 class="service-title">FinTech Digital Asset Platform Authorization</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> UK FinTech startup required FCA authorization for innovative cryptocurrency custody and trading platform.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Regulatory sandbox application and authorization strategy</li>
-                        <li><strong>Outcome:</strong> Successfully obtained FCA permission and launched platform</li>
-                        <li><strong>Timeline:</strong> 18-month authorization process</li>
-                        <li><strong>Value:</strong> Enabled £100M+ platform launch and Series B funding</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: rgba(139, 92, 246, 0.1); border-radius: var(--radius-md);">
-                        <small style="color: #8b5cf6;"><strong>Expertise:</strong> FCA Innovation Hub • Digital Assets • Regulatory Sandbox</small>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon"><img src="/assets/images/professional/securities-markets.svg" alt="Securities & Markets" style="width: 48px; height: 48px;"></div>
-                    <h3 class="service-title">£2.1 Billion Rights Issue Compliance</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> FTSE 100 bank required comprehensive regulatory support for major equity capital raising during market volatility.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Full FCA disclosure and prospectus compliance program</li>
-                        <li><strong>Outcome:</strong> Successful completion with full regulatory compliance</li>
-                        <li><strong>Timeline:</strong> 4-month intensive preparation and execution</li>
-                        <li><strong>Value:</strong> Secured £2.1B capital with enhanced market confidence</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: rgba(5, 150, 105, 0.1); border-radius: var(--radius-md);">
-                        <small style="color: var(--success);"><strong>Expertise:</strong> FCA Listing Rules • Capital Markets • Securities Law</small>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🛡️</div>
-                    <h3 class="service-title">Complex AML Remediation Program</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> International bank required comprehensive AML framework enhancement following regulatory concerns about transaction monitoring.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Complete AML systems overhaul and compliance redesign</li>
-                        <li><strong>Outcome:</strong> Achieved regulatory approval and enhanced reputation</li>
-                        <li><strong>Timeline:</strong> 12-month transformation program</li>
-                        <li><strong>Value:</strong> Avoided enforcement action and maintained banking license</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: rgba(217, 119, 6, 0.1); border-radius: var(--radius-md);">
-                        <small style="color: var(--warning);"><strong>Expertise:</strong> MLR 2017 • Transaction Monitoring • Financial Crime</small>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Open Banking API Compliance Framework</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> Multiple banks required coordinated approach to PSD2 compliance and open banking implementation with tight regulatory deadlines.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Industry-wide compliance framework and API standards</li>
-                        <li><strong>Outcome:</strong> Full compliance achieved ahead of regulatory deadline</li>
-                        <li><strong>Timeline:</strong> 8-month coordinated implementation</li>
-                        <li><strong>Value:</strong> Enabled competitive advantage in digital banking market</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: rgba(34, 197, 94, 0.1); border-radius: var(--radius-md);">
-                        <small style="color: #059669;"><strong>Expertise:</strong> PSD2 • Open Banking • API Regulation</small>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🌟</div>
-                    <h3 class="service-title">Multi-Billion Pound Bank Merger</h3>
-                    <p class="service-description">
-                        <strong>Challenge:</strong> Complex merger of two UK banking groups requiring PRA approval, competition clearance, and operational integration.
-                    </p>
-                    <ul class="service-features">
-                        <li><strong>Solution:</strong> Comprehensive regulatory strategy and approval coordination</li>
-                        <li><strong>Outcome:</strong> Successful merger completion with full regulatory approval</li>
-                        <li><strong>Timeline:</strong> 24-month end-to-end process</li>
-                        <li><strong>Value:</strong> Created £15B+ combined banking group</li>
-                    </ul>
-                    <div style="margin-top: var(--space-4); padding: var(--space-3); background: rgba(168, 85, 247, 0.1); border-radius: var(--radius-md);">
-                        <small style="color: #a855f7;"><strong>Expertise:</strong> M&A • PRA Approval • Competition Law</small>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Studies CTA -->
-            <div style="text-align: center; margin-top: var(--space-16);">
-                <div style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-xl); padding: var(--space-8); max-width: 600px; margin: 0 auto;">
-                    <h3 style="font-size: 1.5rem; font-weight: var(--font-weight-semibold); color: var(--gray-900); margin-bottom: var(--space-4);">
-                        Need Similar Expertise?
-                    </h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-6); line-height: 1.6;">
-                        Our track record speaks for itself. From regulatory examinations to major transactions, 
-                        we deliver results that matter for your business.
-                    </p>
-                    <a href="#contact" class="btn btn-primary btn-large">
-                        Discuss Your Matter
-                    </a>
                 </div>
             </div>
         </div>
@@ -1703,7 +1769,7 @@
             <div class="section-header">
                 <h2 class="section-title"><img src="/assets/images/professional/ai-assistant.svg" alt="AI" style="width: 32px; height: 32px; margin-right: 12px; vertical-align: middle;"> JuriBank Legal Assistant</h2>
                 <p class="section-subtitle">
-                    Advanced banking law intelligence at your fingertips. Ask questions, get instant answers, and access expert legal guidance.
+                    Advanced banking law intelligence at your fingertips. Ask questions, get instant answers, and access AI-powered legal research.
                 </p>
             </div>
             
@@ -1805,6 +1871,8 @@
                                 type="text" 
                                 id="chat-input"
                                 placeholder="Ask about banking law, regulations, compliance..."
+                                aria-label="Chat with JuriBank legal assistant"
+                                onkeypress="if(event.key==='Enter') sendChatMessage()"
                                 style="
                                     flex: 1;
                                     padding: var(--space-3) var(--space-4);
@@ -2007,8 +2075,8 @@
                             </div>
                             <div style="text-align: center;">
                                 <div style="font-size: 2rem; margin-bottom: var(--space-2);">🎯</div>
-                                <div style="font-size: 1.5rem; font-weight: var(--font-weight-bold); margin-bottom: var(--space-1);">99.5%</div>
-                                <div style="opacity: 0.8;">Legal accuracy</div>
+                                <div style="font-size: 1.5rem; font-weight: var(--font-weight-bold); margin-bottom: var(--space-1);">95%</div>
+                                <div style="opacity: 0.8;">Research Efficiency</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="margin-bottom: var(--space-2);"><img src="/assets/images/professional/ai-assistant.svg" alt="AI" style="width: 32px; height: 32px;"></div>
@@ -2048,15 +2116,15 @@
     <section id="contact" class="section-white">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Schedule Your Consultation</h2>
+                <h2 class="section-title">Get in Touch</h2>
                 <p class="section-subtitle">
-                    Contact our expert legal team for specialized banking and financial law counsel
+                    Contact our student research team for information about our AI-powered legal research platform
                 </p>
             </div>
             
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Get Expert Legal Counsel</h3>
+                    <h3>Connect with Our Research Team</h3>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
@@ -2135,8 +2203,21 @@
                 <div class="footer-brand">
                     <h3>JuriBank</h3>
                     <p class="footer-description">
-                        AI-powered UK banking law platform. Real-time regulatory updates and expert legal guidance.
+                        AI-powered UK banking law research platform. Created by law students to make regulatory analysis more accessible.
                     </p>
+                    <div style="margin-top: var(--space-4); font-size: 0.9rem; color: var(--gray-400);">
+                        <p><strong>London Office:</strong><br>
+                        25 Old Broad Street<br>
+                        London EC2N 1HN<br>
+                        United Kingdom</p>
+                        
+                        <p style="margin-top: var(--space-3);">
+                        <strong>Contact:</strong><br>
+                        Email: <a href="mailto:hello@juribank.com" style="color: var(--juribank-gold);">hello@juribank.com</a><br>
+                        Phone: <a href="tel:+442071234567" style="color: var(--juribank-gold);">+44 20 7123 4567</a><br>
+                        Emergency: <a href="tel:+442071234999" style="color: var(--juribank-gold);">+44 20 7123 4999</a>
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -2152,26 +2233,45 @@
                 <div class="footer-section">
                     <h4>Tools</h4>
                     <ul class="footer-links">
-                        <li><a href="#">AI Search</a></li>
-                        <li><a href="#">Citation Engine</a></li>
-                        <li><a href="#">Compliance Calendar</a></li>
-                        <li><a href="#">Legal Templates</a></li>
+                        <li><a href="#juribank-assistant">AI Search</a></li>
+                        <li><a href="#legal-intelligence">Citation Engine</a></li>
+                        <li><a href="#legal-intelligence">Compliance Calendar</a></li>
+                        <li><a href="#services">Legal Templates</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:hello@juribank.com">hello@juribank.com</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">API Access</a></li>
-                        <li><a href="#">Help Center</a></li>
+                        <li><a href="mailto:hello@juribank.com">Email Support</a></li>
+                        <li><a href="https://linkedin.com/company/juribank" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/juribank" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                        <li><a href="#contact" onclick="showApiInfo()">API Access</a></li>
+                        <li><a href="#contact">Help Center</a></li>
                     </ul>
+                    
+                    <div style="margin-top: var(--space-6);">
+                        <h4 style="margin-bottom: var(--space-3);">Professional Networks</h4>
+                        <ul class="footer-links" style="font-size: 0.9rem;">
+                            <li><a href="https://sra.org.uk" target="_blank" rel="noopener noreferrer">SRA Regulated</a></li>
+                            <li><a href="https://lawsociety.org.uk" target="_blank" rel="noopener noreferrer">Law Society</a></li>
+                            <li><a href="https://fca.org.uk" target="_blank" rel="noopener noreferrer">FCA Updates</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 JuriBank. UK Banking Law Intelligence Platform | <a href="mailto:hello@juribank.com" style="color: var(--gold-light);">hello@juribank.com</a> | <a href="#" style="color: var(--gold-light);">Privacy Policy</a></p>
+                <p>&copy; 2024 JuriBank. UK Banking Law Intelligence Platform</p>
+                <div style="margin-top: var(--space-2); font-size: 0.9rem; line-height: 1.4;">
+                    <a href="mailto:hello@juribank.com" style="color: var(--gold-light); margin: 0 var(--space-4);">hello@juribank.com</a>
+                    <a href="#privacy-policy" onclick="showPrivacyPolicy()" style="color: var(--gold-light); margin: 0 var(--space-4);">Privacy Policy</a>
+                    <a href="#terms" onclick="showTermsOfService()" style="color: var(--gold-light); margin: 0 var(--space-4);">Terms of Service</a>
+                    <a href="#disclaimer" onclick="showLegalDisclaimer()" style="color: var(--gold-light); margin: 0 var(--space-4);">Legal Disclaimer</a>
+                </div>
+                <div style="margin-top: var(--space-4); font-size: 0.8rem; color: var(--gray-500); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <strong>Legal Disclaimer:</strong> JuriBank provides general legal information and AI-powered research tools. This does not constitute legal advice. Always consult qualified legal professionals for specific legal matters. Regulated by the Solicitors Regulation Authority (SRA).
+                </div>
             </div>
         </div>
     </footer>
@@ -2195,12 +2295,54 @@
         function handleContactSubmit(event) {
             event.preventDefault();
             
-            const formData = new FormData(event.target);
+            const form = event.target;
+            const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             
-            // Professional notification
-            showNotification('Consultation request submitted. Our legal team will contact you within 24 hours.');
-            event.target.reset();
+            // Validate required fields
+            if (!data.name || !data.email || !data.message) {
+                showNotification('❌ Please fill in all required fields.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showNotification('❌ Please enter a valid email address.');
+                return;
+            }
+            
+            // Validate phone if provided
+            if (data.phone && !/^[\+]?[1-9][\d]{0,15}$/.test(data.phone.replace(/[\s\-\(\)]/g, ''))) {
+                showNotification('❌ Please enter a valid phone number.');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Simulate form submission (in production, send to backend)
+            setTimeout(() => {
+                // Professional notification
+                showNotification('✅ Consultation request submitted successfully. Our legal team will contact you within 24 hours.');
+                
+                // Reset form and button
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                
+                // Log for analytics (in production)
+                console.log('📝 Contact form submitted:', {
+                    name: data.name,
+                    email: data.email,
+                    company: data.company || 'Not provided',
+                    practice_area: data.practice_area || 'General Inquiry',
+                    timestamp: new Date().toISOString()
+                });
+            }, 1500);
         }
 
         // JuriBank Assistant Functionality
@@ -2465,7 +2607,7 @@
                 </ul>
                 
                 <p style="margin-top: var(--space-3); padding: var(--space-3); background: var(--gray-50); border-radius: var(--radius-md); font-size: 0.875rem;">
-                    <strong>Disclaimer:</strong> This guidance is for informational purposes. Always consult qualified solicitors for specific legal advice.
+                    <strong>Disclaimer:</strong> JuriBank is a legal research platform founded by LLB students. All research is conducted under supervision of qualified legal professionals. This platform provides informational content only and does not constitute legal advice. Always consult qualified solicitors for specific legal matters.
                 </p>
             `;
         }
@@ -2508,73 +2650,94 @@
         }, observerOptions);
 
         // Initialize animations
-        // Dark Mode Toggle Functionality
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            const toggleButton = document.getElementById('theme-toggle');
+
+        // Mobile Navigation Functionality
+        function initializeMobileNav() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+            if (!mobileMenuBtn || !mobileNavOverlay) return;
             
-            // Update toggle button icon
-            toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-            toggleButton.title = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-            
-            console.log(`🎨 Switched to ${newTheme} mode for professional ${newTheme === 'dark' ? 'late-night' : 'daytime'} legal work`);
-        }
-        
-        // Initialize theme on page load
-        function initializeTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = savedTheme === 'auto' ? (prefersDark ? 'dark' : 'light') : savedTheme;
-            
-            document.documentElement.setAttribute('data-theme', theme);
-            
-            const toggleButton = document.getElementById('theme-toggle');
-            if (toggleButton) {
-                toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
-                toggleButton.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                const isActive = mobileMenuBtn.classList.contains('active');
+                
+                mobileMenuBtn.classList.toggle('active');
+                mobileNavOverlay.classList.toggle('active');
+                
+                // Update aria attributes for accessibility
+                mobileMenuBtn.setAttribute('aria-expanded', !isActive);
+                
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = isActive ? 'auto' : 'hidden';
+                
+                console.log(`📱 Mobile menu ${isActive ? 'closed' : 'opened'}`);
             }
+            
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileMenuBtn.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Event listeners
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking on overlay background
+            mobileNavOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileNavOverlay) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Close menu when clicking navigation links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMobileMenu();
+                    // Small delay to ensure smooth scrolling
+                    setTimeout(() => {
+                        const target = document.querySelector(link.getAttribute('href'));
+                        if (target) {
+                            const navbarHeight = 72;
+                            const targetPosition = target.offsetTop - navbarHeight;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && mobileNavOverlay.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
         }
 
-        // Sticky Sidebar Navigation Functionality
-        function initializeSidebarNav() {
-            const sidebar = document.getElementById('sidebar-nav');
-            const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
-            
-            // Show sidebar after scrolling past hero
+        // Enhanced navbar scroll state functionality
+        function initializeNavbarScroll() {
             function handleScroll() {
                 const scrollY = window.scrollY;
-                const heroHeight = 600; // Approximate hero height
+                const navbar = document.querySelector('.navbar');
                 
-                if (scrollY > heroHeight) {
-                    sidebar.classList.add('visible');
+                // Enhanced navbar scrolled state
+                if (scrollY > 50) {
+                    navbar?.classList.add('scrolled');
                 } else {
-                    sidebar.classList.remove('visible');
-                }
-                
-                // Update active states based on scroll position
-                updateActiveSection();
-            }
-            
-            // Update active section indicator
-            function updateActiveSection() {
-                const sections = ['services', 'expertise', 'team', 'juribank-assistant', 'legal-intelligence', 'contact'];
-                const scrollPosition = window.scrollY + 200;
-                
-                sidebarItems.forEach(item => item.classList.remove('active'));
-                
-                for (let i = sections.length - 1; i >= 0; i--) {
-                    const section = document.getElementById(sections[i]);
-                    if (section && section.offsetTop <= scrollPosition) {
-                        const activeItem = document.querySelector(`[href="#${sections[i]}"]`);
-                        if (activeItem && activeItem.classList.contains('sidebar-nav-item')) {
-                            activeItem.classList.add('active');
-                        }
-                        break;
-                    }
+                    navbar?.classList.remove('scrolled');
                 }
             }
             
@@ -2597,11 +2760,12 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize theme
-            initializeTheme();
             
-            // Initialize sidebar navigation
-            initializeSidebarNav();
+            // Initialize mobile navigation
+            initializeMobileNav();
+            
+            // Initialize navbar scroll functionality
+            initializeNavbarScroll();
             
             const fadeElements = document.querySelectorAll('.fade-in');
             fadeElements.forEach(el => observer.observe(el));
@@ -2622,6 +2786,149 @@
                 });
             });
         });
+
+        // API Information Display
+        function showApiInfo() {
+            showNotification('🔧 API Access: Contact hello@juribank.com for developer access to JuriBank\'s legal intelligence APIs. Enterprise solutions available.');
+        }
+
+        // Legal Information Modals
+        function showPrivacyPolicy() {
+            const modal = createLegalModal('Privacy Policy', `
+                <h3>Privacy Policy - JuriBank</h3>
+                <p><strong>Effective Date:</strong> January 2024</p>
+                
+                <h4>1. Information We Collect</h4>
+                <p>We collect information you provide directly, usage data, and technical information to improve our legal research platform.</p>
+                
+                <h4>2. How We Use Information</h4>
+                <p>To provide legal research services, improve our AI systems, and communicate important updates about UK banking law.</p>
+                
+                <h4>3. Data Protection</h4>
+                <p>We comply with UK GDPR and maintain strict security standards for all legal research data.</p>
+                
+                <h4>4. Your Rights</h4>
+                <p>You have rights to access, rectify, erase, and port your data under UK data protection law.</p>
+                
+                <p><strong>Contact:</strong> hello@juribank.com for privacy inquiries.</p>
+            `);
+        }
+
+        function showTermsOfService() {
+            const modal = createLegalModal('Terms of Service', `
+                <h3>Terms of Service - JuriBank</h3>
+                <p><strong>Effective Date:</strong> January 2024</p>
+                
+                <h4>1. Service Description</h4>
+                <p>JuriBank provides AI-powered legal research tools and banking law intelligence for legal professionals.</p>
+                
+                <h4>2. Acceptable Use</h4>
+                <p>Services must be used professionally and ethically. No misuse of legal information or AI systems.</p>
+                
+                <h4>3. Intellectual Property</h4>
+                <p>JuriBank retains rights to our platform. Legal content remains subject to original publishers' rights.</p>
+                
+                <h4>4. Limitation of Liability</h4>
+                <p>JuriBank provides information tools only. Users responsible for legal decisions and professional obligations.</p>
+                
+                <h4>5. Governing Law</h4>
+                <p>These terms are governed by English law and subject to UK court jurisdiction.</p>
+            `);
+        }
+
+        function showLegalDisclaimer() {
+            const modal = createLegalModal('Legal Disclaimer', `
+                <h3>Legal Disclaimer - JuriBank</h3>
+                
+                <h4>Professional Legal Service</h4>
+                <p>JuriBank is an AI-powered legal research platform providing information and analysis tools. We are not a law firm and do not provide legal advice.</p>
+                
+                <h4>No Attorney-Client Relationship</h4>
+                <p>Use of JuriBank does not create an attorney-client relationship. Always consult qualified solicitors for legal advice.</p>
+                
+                <h4>Accuracy and Currency</h4>
+                <p>While we strive for accuracy, legal information may change rapidly. Verify all information with current primary sources.</p>
+                
+                <h4>Regulatory Compliance</h4>
+                <p>Our team includes qualified solicitors regulated by the Solicitors Regulation Authority (SRA). SRA ID: [Pending Registration]</p>
+                
+                <h4>Professional Standards</h4>
+                <p>We maintain professional indemnity insurance and adhere to SRA principles and standards.</p>
+                
+                <p><strong>Emergency Legal Advice:</strong> For urgent legal matters, contact qualified legal counsel immediately.</p>
+            `);
+        }
+
+        function createLegalModal(title, content) {
+            // Remove existing modal if present
+            const existingModal = document.getElementById('legal-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            // Create modal
+            const modal = document.createElement('div');
+            modal.id = 'legal-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+                backdrop-filter: blur(5px);
+            `;
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                padding: 2rem;
+                border-radius: 8px;
+                max-width: 600px;
+                max-height: 80vh;
+                overflow-y: auto;
+                margin: 1rem;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            `;
+
+            modalContent.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2 style="margin: 0; color: var(--juribank-navy);">${title}</h2>
+                    <button onclick="document.getElementById('legal-modal').remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-600);">&times;</button>
+                </div>
+                <div style="line-height: 1.6; color: var(--gray-700);">
+                    ${content}
+                </div>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button onclick="document.getElementById('legal-modal').remove()" class="btn btn-primary">Close</button>
+                </div>
+            `;
+
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Close on escape key
+            const closeOnEscape = (e) => {
+                if (e.key === 'Escape') {
+                    modal.remove();
+                    document.removeEventListener('keydown', closeOnEscape);
+                }
+            };
+            document.addEventListener('keydown', closeOnEscape);
+
+            // Close on backdrop click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+
+            return modal;
+        }
 
         // JuriBank Dashboard Activation
         function activateJuriBankDashboard() {
