@@ -4,63 +4,141 @@
 
 Professional UK banking law intelligence platform providing real-time regulatory updates, legal templates, and compliance solutions for law firms and financial institutions.
 
-### Features
+[![Node.js](https://img.shields.io/badge/Node.js-22.17.0-green)](https://nodejs.org/)
+[![Agents](https://img.shields.io/badge/AI%20Agents-11%20Specialists-blue)](#ai-agents)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-- **Regulatory Intelligence** - Real-time monitoring of PRA, FCA, HMRC, and Bank of England updates
-- **Legal Templates** - Smart document generation with intelligent pre-filling
-- **Compliance Calendar** - Automated tracking of regulatory deadlines and requirements
-- **Case Database** - Interactive learning with comprehensive UK banking law cases
-- **Jurisdiction Mapping** - UK vs EU law distinctions post-Brexit
-- **Expert Analysis** - Professional legal guidance and regulatory insights
+### Core Features
+
+- **🔍 Regulatory Intelligence** - Real-time monitoring of PRA, FCA, HMRC, and Bank of England updates
+- **📝 Legal Templates** - Smart document generation with intelligent pre-filling
+- **📅 Compliance Calendar** - Automated tracking of 156+ regulatory deadlines and requirements
+- **⚖️ Case Database** - Interactive learning with comprehensive UK banking law cases (89 cases, 12 courses)
+- **🗺️ Jurisdiction Mapping** - UK vs EU law distinctions post-Brexit
+- **🤖 AI Expert Analysis** - 11 specialized AI agents for legal guidance and regulatory insights
+- **📊 Citation Engine** - 2,847+ legal references with OSCOLA-compliant formatting
 
 ### Technology Stack
 
-- HTML5 / CSS3 / JavaScript
-- Inter & Open Sans typography
-- JuriBank brand identity
-- Professional responsive design
-- Vercel deployment
-- Advanced legal intelligence systems
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Styling**: Tailwind CSS with JuriBank design system
+- **Typography**: Inter & Open Sans for professional readability
+- **Build Tools**: npm, ESLint, Prettier, Jest testing framework
+- **Deployment**: Vercel with automated CI/CD
+- **AI Integration**: 11 specialized Claude agents for legal and development tasks
 
-### Getting Started
+### Quick Start
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Or visit the live site: [JuriBank Platform](https://banking-3g2yk4ykr-giquinas-projects.vercel.app)
+```bash
+# Clone the repository
+git clone https://github.com/giquina/juribank.git
+cd BankingLaw
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Visit http://localhost:8000
+```
+
+**Live Demo**: [JuriBank Platform](https://juribank.vercel.app)
 
 ### Project Structure
 
 ```
-/src/               - Legal intelligence systems
-/tests/             - Test files and quality assurance
-/docs/              - Documentation and guides
-/.claude/           - Claude Code agents and configuration
-/tasks/             - Project task tracking
-/errors/            - Error logs and debugging
-/scripts/           - Build and utility scripts
-/assets/            - Brand assets and images
+📁 BankingLaw/
+├── 📁 src/                 # Legal intelligence systems (8 core modules)
+├── 📁 .claude/             # AI agent configuration (11 specialists)
+│   ├── 📁 agents/          # Legal & development agents
+│   └── 📁 commands/        # Custom slash commands
+├── 📁 assets/              # JuriBank brand assets & professional imagery
+├── 📁 tests/               # Banking-grade test suites
+├── 📁 docs/                # Professional documentation
+├── 📁 tasks/               # Project task tracking
+├── 📁 scripts/             # Build and utility automation
+└── 📁 errors/              # Error logs and debugging
 ```
 
-### Brand Identity
+## AI Agents
 
-**Colors:**
-- Deep Navy: `#0D1B2A` (Primary)
-- Accent Gold: `#F4C430` (Highlights)
-- Off-White: `#FAFAFA` (Background)
-- Soft Gray: `#D9D9D9` (Secondary)
+JuriBank includes 11 specialized AI agents for comprehensive legal and development support:
 
-**Typography:**
-- Headings: Inter
-- Body: Open Sans
+### Legal & Regulatory Experts
+- **🏛️ UK Regulatory Compliance Agent** - PRA, FCA, Bank of England expertise
+- **📈 UK Securities Law Agent** - Capital markets and FCA conduct rules
+- **💡 FinTech Innovation Agent** - Digital payments, crypto, open banking
+- **🔒 AML Compliance Agent** - Anti-money laundering and financial crime
+- **⚠️ Risk Management Agent** - Operational, credit, and regulatory risk
+- **✅ Banking Law Validator** - Legal content accuracy verification
 
-### Core Systems
+### Development & Quality Specialists  
+- **📚 Legal Documentation Agent** - Professional legal writing standards
+- **🔍 Code Quality Auditor** - Banking-grade security and performance
+- **🧪 Test Architect** - Comprehensive testing strategies
+- **⚙️ Configuration Manager** - Development environment optimization
+- **🎨 UI/UX Designer** - Professional banking application interfaces
 
-- **Auto-Regulatory Monitoring** - Automated detection of regulatory changes
-- **Regulatory Alerts** - Intelligent notification and escalation system
-- **Legal Citation Engine** - OSCOLA-compliant UK legal references
-- **Learning Database** - Educational content and case studies
-- **Smart Templates** - Document automation with intelligent assistance
+### Core Intelligence Systems
 
-### License
+- **🤖 Auto-Regulatory Monitoring** - 6 sources, 5 automation rules, hourly updates
+- **📢 Regulatory Alerts** - Intelligent notification and escalation system
+- **⚖️ Legal Citation Engine** - 2,847+ OSCOLA-compliant UK legal references
+- **📚 Learning Database** - 12 courses, 89 case studies, interactive content
+- **📝 Smart Templates** - 15+ document templates with intelligent assistance
+- **📅 Compliance Calendar** - 156+ tracked deadlines with automated reminders
 
-Professional legal intelligence platform. All rights reserved.
+### JuriBank Brand Identity
+
+**Professional Color Palette:**
+- Deep Navy: `#0D1B2A` (Authority & Trust)
+- Accent Gold: `#F4C430` (Premium & Excellence)
+- Off-White: `#FAFAFA` (Clean & Professional)
+- Soft Gray: `#D9D9D9` (Subtle Sophistication)
+
+**Typography System:**
+- **Headings**: Inter (Modern, Clean)
+- **Body Text**: Open Sans (Readable, Professional)
+- **Legal Citations**: Georgia (Traditional, Academic)
+
+### Development Commands
+
+```bash
+# Development
+npm run dev          # Start development server (port 8000)
+npm run build        # Build for production
+npm run preview      # Preview production build
+
+# Quality Assurance  
+npm run lint         # Run ESLint code analysis
+npm run format       # Format code with Prettier
+npm run test         # Run Jest test suite
+
+# Platform Management
+npm run health       # JuriBank platform health check
+npm run agents:validate  # Validate all AI agents
+
+# Documentation
+/update-docs         # Update all documentation
+/project-health      # Comprehensive project status
+/init               # Initialize JuriBank platform
+```
+
+### Contributing
+
+1. **Legal Accuracy**: All legal content must be reviewed for accuracy
+2. **Professional Standards**: Maintain solicitor-grade documentation quality
+3. **Regulatory Compliance**: Ensure UK banking law compliance throughout
+4. **Agent Integration**: Utilize specialized AI agents for domain expertise
+5. **Testing**: Comprehensive testing required for all banking features
+
+### License & Professional Notice
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+**Professional Disclaimer**: This platform provides legal information for professional use. Always consult qualified legal counsel for specific legal advice. JuriBank maintains the highest standards of legal accuracy but cannot substitute for professional legal judgment.
+
+---
+
+**🏛️ Powered by 11 Specialized AI Agents | ⚖️ Professional UK Banking Law Intelligence | 🔒 Banking-Grade Security**

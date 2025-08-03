@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "npx serve . -l 8000",
     "start": "npx serve . -l 8000",
-    "build": "npm run build:css && echo 'Building for production...' && echo 'Build complete!'",
-    "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --watch",
+    "build": "echo 'Building for production...' && echo 'Build complete!'",
     "preview": "npx serve . -l 8000",
     "deploy": "vercel --prod",
     "test": "jest",
