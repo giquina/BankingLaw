@@ -98,6 +98,30 @@
             
             /* Professional Transitions */
             --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Theme Variables */
+            --bg-primary: var(--white);
+            --bg-secondary: var(--gray-50);
+            --bg-tertiary: var(--gray-100);
+            --text-primary: var(--gray-900);
+            --text-secondary: var(--gray-600);
+            --border-color: var(--gray-200);
+        }
+        
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --bg-primary: var(--gray-900);
+            --bg-secondary: var(--gray-800);
+            --bg-tertiary: var(--gray-700);
+            --text-primary: var(--gray-50);
+            --text-secondary: var(--gray-300);
+            --border-color: var(--gray-600);
+            
+            /* Dark mode shadows */
+            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            --shadow-moderate: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
             --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -110,11 +134,12 @@
         body {
             font-family: var(--font-primary);
             line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--gray-50);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
         }
 
         .container {
@@ -574,6 +599,38 @@
             min-height: 120px;
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--bg-tertiary);
+            transform: scale(1.1);
+        }
+        
+        /* Section Backgrounds */
+        .section-white {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .section-gray {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
         /* Professional Footer */
         .footer {
             background-color: var(--navy-900);
@@ -743,6 +800,11 @@
                 <li><a href="#expertise" class="nav-link">Practice Areas</a></li>
                 <li><a href="#team" class="nav-link">Our Solicitors</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                        🌙
+                    </button>
+                </li>
                 <li><a href="#" class="btn btn-primary">Schedule Consultation</a></li>
             </ul>
         </div>
@@ -2131,7 +2193,41 @@
         }, observerOptions);
 
         // Initialize animations
+        // Dark Mode Toggle Functionality
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const toggleButton = document.getElementById('theme-toggle');
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update toggle button icon
+            toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            toggleButton.title = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            
+            console.log(`🎨 Switched to ${newTheme} mode for professional ${newTheme === 'dark' ? 'late-night' : 'daytime'} legal work`);
+        }
+        
+        // Initialize theme on page load
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme === 'auto' ? (prefersDark ? 'dark' : 'light') : savedTheme;
+            
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            const toggleButton = document.getElementById('theme-toggle');
+            if (toggleButton) {
+                toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+                toggleButton.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize theme
+            initializeTheme();
+            
             const fadeElements = document.querySelectorAll('.fade-in');
             fadeElements.forEach(el => observer.observe(el));
             
