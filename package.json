@@ -1,7 +1,7 @@
 {
   "name": "juribank-platform",
   "version": "2.0.0",
-  "description": "JuriBank - UK Banking Law Intelligence Platform",
+  "description": "Professional UK banking law intelligence platform with 11 specialized AI agents, real-time regulatory monitoring, and comprehensive compliance solutions for legal professionals and financial institutions.",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -l 8000",
@@ -28,7 +28,15 @@
     "pra",
     "fca",
     "hmrc",
-    "bank-of-england"
+    "bank-of-england",
+    "ai-agents",
+    "legal-tech",
+    "regulatory-monitoring",
+    "legal-citations",
+    "compliance-calendar",
+    "banking-regulations",
+    "oscola",
+    "claude-agents"
   ],
   "author": "JuriBank Platform",
   "license": "MIT",
