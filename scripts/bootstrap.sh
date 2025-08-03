@@ -5,9 +5,9 @@
 
 set -e  # Exit on any error
 
-echo "🏛️  BankingLaw Platform Bootstrap"
+echo "🏛️  JuriBank Platform Bootstrap"
 echo "=================================="
-echo "Setting up UK Banking Law Platform development environment..."
+echo "Setting up UK Banking Law Intelligence Platform..."
 echo ""
 
 # Colors for output

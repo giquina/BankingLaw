@@ -100,13 +100,19 @@
 
   /* Professional Cards */
   .card {
-    @apply bg-white rounded-xl shadow-moderate border border-gray-200;
+    @apply bg-white rounded-xl border border-gray-200;
     @apply p-6 transition-shadow duration-200;
+    box-shadow: var(--shadow-moderate);
   }
   
   .card-elevated {
-    @apply bg-white rounded-xl shadow-elevated border border-gray-200;
-    @apply p-8 hover:shadow-premium transition-shadow duration-300;
+    @apply bg-white rounded-xl border border-gray-200;
+    @apply p-8 transition-shadow duration-300;
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .card-elevated:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   /* Professional Form Elements */
@@ -144,7 +150,12 @@
   /* Agent Interface Components */
   .agent-widget {
     @apply bg-white border-2 border-juribank-gold rounded-xl p-4;
-    @apply shadow-moderate hover:shadow-elevated transition-shadow duration-300;
+    @apply transition-shadow duration-300;
+    box-shadow: var(--shadow-moderate);
+  }
+  
+  .agent-widget:hover {
+    box-shadow: var(--shadow-elevated);
   }
   
   .agent-avatar {
@@ -154,15 +165,18 @@
 
   /* Status Indicators */
   .status-active {
-    @apply bg-security-green text-white px-3 py-1 rounded-full text-sm font-medium;
+    @apply text-white px-3 py-1 rounded-full text-sm font-medium;
+    background-color: var(--security-green);
   }
   
   .status-warning {
-    @apply bg-warning-amber text-white px-3 py-1 rounded-full text-sm font-medium;
+    @apply text-white px-3 py-1 rounded-full text-sm font-medium;
+    background-color: var(--warning-amber);
   }
   
   .status-alert {
-    @apply bg-alert-red text-white px-3 py-1 rounded-full text-sm font-medium;
+    @apply text-white px-3 py-1 rounded-full text-sm font-medium;
+    background-color: var(--alert-red);
   }
 
   /* Professional Badges */
@@ -203,15 +217,18 @@
 
   /* Banking Security Indicators */
   .security-border {
-    @apply border-l-4 border-security-green pl-4;
+    @apply border-l-4 pl-4;
+    border-left-color: var(--security-green);
   }
   
   .warning-border {
-    @apply border-l-4 border-warning-amber pl-4;
+    @apply border-l-4 pl-4;
+    border-left-color: var(--warning-amber);
   }
   
   .alert-border {
-    @apply border-l-4 border-alert-red pl-4;
+    @apply border-l-4 pl-4;
+    border-left-color: var(--alert-red);
   }
 
   /* Professional Animations */

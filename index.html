@@ -2022,9 +2022,9 @@
                             </div>
                         </div>
                         
-                        <a href="#juribank-assistant" class="btn btn-primary btn-large" style="margin-right: var(--space-4);">
-                            🚀 Try Platform Demo
-                        </a>
+                        <button onclick="activateJuriBankDashboard()" class="btn btn-primary btn-large" style="margin-right: var(--space-4);">
+                            🚀 Launch Intelligence Dashboard
+                        </button>
                         <a href="#contact" class="btn btn-outline btn-large" style="border-color: rgba(255,255,255,0.3); color: white;">
                             Schedule Demo
                         </a>
@@ -2177,10 +2177,17 @@
     </footer>
 
     <!-- Legal Intelligence Systems -->
-    <script src="src/regulatory-updates.js"></script>
+    <script src="src/auto-regulatory-monitoring.js"></script>
     <script src="src/legal-citation-engine.js"></script>
     <script src="src/compliance-calendar.js"></script>
+    <script src="src/learning-database.js"></script>
+    <script src="src/legal-templates.js"></script>
+    <script src="src/regulatory-alerts.js"></script>
+    <script src="src/regulatory-updates.js"></script>
     <script src="src/jurisdiction-mapping.js"></script>
+    
+    <!-- JuriBank Core System -->
+    <script src="src/juribank-core.js"></script>
 
     <!-- Professional JavaScript -->
     <script>
@@ -2615,6 +2622,37 @@
                 });
             });
         });
+
+        // JuriBank Dashboard Activation
+        function activateJuriBankDashboard() {
+            if (window.JuriBankCore && window.JuriBankCore.initialized) {
+                // Show dashboard
+                window.JuriBankCore.showDashboard();
+                
+                // Show notification
+                showNotification('🚀 JuriBank Intelligence Dashboard activated! All systems operational.');
+                
+                // Smooth scroll to dashboard
+                setTimeout(() => {
+                    const dashboard = document.getElementById('juribank-dashboard');
+                    if (dashboard) {
+                        dashboard.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 500);
+            } else {
+                // Show loading message
+                showNotification('⚡ Initializing JuriBank Intelligence Systems...');
+                
+                // Wait for initialization and try again
+                setTimeout(() => {
+                    if (window.JuriBankCore && window.JuriBankCore.initialized) {
+                        activateJuriBankDashboard();
+                    } else {
+                        showNotification('❌ JuriBank systems not ready. Please refresh the page.');
+                    }
+                }, 2000);
+            }
+        }
     </script>
 </body>
 </html>
