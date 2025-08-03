@@ -1,0 +1,264 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* JuriBank Design System - Professional Banking Law Platform */
+
+@layer base {
+  /* Typography System */
+  @font-face {
+    font-family: 'Inter';
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+  }
+
+  /* CSS Custom Properties - JuriBank Brand System */
+  :root {
+    /* JuriBank Brand Colors */
+    --juribank-navy: #0D1B2A;
+    --juribank-gold: #F4C430;
+    --juribank-off-white: #FAFAFA;
+    --juribank-gray: #D9D9D9;
+    
+    /* Extended Professional Palette */
+    --navy-dark: #081117;
+    --navy-light: #1a2b3a;
+    --gold-light: #f6d155;
+    --gold-dark: #e6b520;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    
+    /* Professional Typography */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-legal: 'Georgia', serif;
+    
+    /* Professional Shadows */
+    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-moderate: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Banking-Grade Security Colors */
+    --security-green: #059669;
+    --warning-amber: #d97706;
+    --alert-red: #dc2626;
+  }
+
+  /* Base Typography */
+  html {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--juribank-navy);
+  }
+
+  /* Professional Focus States */
+  *:focus {
+    outline: 2px solid var(--juribank-gold);
+    outline-offset: 2px;
+  }
+
+  /* Legal Citation Styling */
+  .citation {
+    font-family: var(--font-legal);
+    font-style: italic;
+    color: var(--text-dark);
+  }
+}
+
+@layer components {
+  /* JuriBank Component System */
+  
+  /* Professional Buttons */
+  .btn-primary {
+    @apply bg-juribank-navy text-white px-6 py-3 rounded-lg font-semibold;
+    @apply hover:bg-navy-dark transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-juribank-gold focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-juribank-gold text-juribank-navy px-6 py-3 rounded-lg font-semibold;
+    @apply hover:bg-gold-dark transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-juribank-navy focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-juribank-navy text-juribank-navy px-6 py-3 rounded-lg font-semibold;
+    @apply hover:bg-juribank-navy hover:text-white transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-juribank-gold focus:ring-offset-2;
+  }
+
+  /* Professional Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-moderate border border-gray-200;
+    @apply p-6 transition-shadow duration-200;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-elevated border border-gray-200;
+    @apply p-8 hover:shadow-premium transition-shadow duration-300;
+  }
+
+  /* Professional Form Elements */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg;
+    @apply focus:border-juribank-gold focus:ring-1 focus:ring-juribank-gold;
+    @apply placeholder-gray-500 transition-colors duration-200;
+  }
+  
+  .form-select {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg;
+    @apply focus:border-juribank-gold focus:ring-1 focus:ring-juribank-gold;
+    @apply transition-colors duration-200;
+  }
+
+  /* Professional Navigation */
+  .nav-link {
+    @apply text-gray-700 hover:text-juribank-navy px-4 py-2 rounded-lg;
+    @apply transition-colors duration-200 font-medium;
+  }
+  
+  .nav-link-active {
+    @apply text-juribank-navy bg-juribank-off-white px-4 py-2 rounded-lg font-semibold;
+  }
+
+  /* Legal Content Styling */
+  .legal-content {
+    @apply prose prose-lg max-w-none;
+    @apply prose-headings:text-juribank-navy prose-headings:font-semibold;
+    @apply prose-p:text-gray-700 prose-p:leading-relaxed;
+    @apply prose-a:text-juribank-navy prose-a:font-medium;
+    @apply prose-strong:text-juribank-navy prose-strong:font-semibold;
+  }
+
+  /* Agent Interface Components */
+  .agent-widget {
+    @apply bg-white border-2 border-juribank-gold rounded-xl p-4;
+    @apply shadow-moderate hover:shadow-elevated transition-shadow duration-300;
+  }
+  
+  .agent-avatar {
+    @apply w-12 h-12 bg-juribank-navy text-white rounded-full;
+    @apply flex items-center justify-center font-semibold text-lg;
+  }
+
+  /* Status Indicators */
+  .status-active {
+    @apply bg-security-green text-white px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .status-warning {
+    @apply bg-warning-amber text-white px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .status-alert {
+    @apply bg-alert-red text-white px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Professional Badges */
+  .badge-professional {
+    @apply bg-juribank-navy text-white px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-regulatory {
+    @apply bg-juribank-gold text-juribank-navy px-3 py-1 rounded-full text-sm font-medium;
+  }
+}
+
+@layer utilities {
+  /* Custom JuriBank Utilities */
+  
+  /* Professional Spacing */
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-professional {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Professional Text Styles */
+  .text-professional {
+    @apply text-gray-700 leading-relaxed;
+  }
+  
+  .text-legal {
+    font-family: var(--font-legal);
+    @apply text-gray-800 leading-relaxed;
+  }
+  
+  .text-heading-professional {
+    @apply text-juribank-navy font-semibold tracking-tight;
+  }
+
+  /* Banking Security Indicators */
+  .security-border {
+    @apply border-l-4 border-security-green pl-4;
+  }
+  
+  .warning-border {
+    @apply border-l-4 border-warning-amber pl-4;
+  }
+  
+  .alert-border {
+    @apply border-l-4 border-alert-red pl-4;
+  }
+
+  /* Professional Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Banking-Grade Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Professional Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-professional {
+    color: #000 !important;
+    background: #fff !important;
+  }
+}

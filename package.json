@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "npx serve . -l 8000",
     "start": "npx serve . -l 8000",
-    "build": "echo 'Building for production...' && echo 'Build complete!'",
+    "build": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify && echo 'JuriBank production build complete!'",
     "preview": "npx serve . -l 8000",
     "deploy": "vercel --prod",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts",
     "format": "prettier --write .",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --watch",
+    "build:css-prod": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify",
     "agents:validate": "echo 'Validating Claude agents...' && find .claude/agents -name '*.md' -exec echo 'Validated: {}' \\;",
     "health": "echo 'JuriBank Platform Health Check' && npm run agents:validate"
   },

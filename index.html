@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- JuriBank Professional Styles -->
+    <link href="/assets/styles.css" rel="stylesheet">
+    
     <style>
         /* Professional CSS Reset & Variables */
         *, *::before, *::after { 
@@ -767,10 +770,258 @@
             visibility: visible;
         }
 
+        /* WhatsApp-Style Chat Interface */
+        .whatsapp-chat-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .whatsapp-chat-container {
+            background: #f0f2f5;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-elevated);
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .whatsapp-header {
+            background: linear-gradient(135deg, var(--juribank-navy), var(--navy-light));
+            color: white;
+            padding: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--juribank-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .whatsapp-info {
+            flex: 1;
+        }
+        
+        .whatsapp-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .whatsapp-status {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        .whatsapp-online {
+            background: #25d366;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        
+        .whatsapp-messages {
+            flex: 1;
+            padding: var(--space-4);
+            overflow-y: auto;
+            background: #efeae2;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 11.046-8.954 20-20 20v20h40V20c0-11.046-8.954-20-20-20z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .whatsapp-message {
+            margin-bottom: var(--space-4);
+            display: flex;
+            animation: slideInUp 0.3s ease-out;
+        }
+        
+        .whatsapp-message.user {
+            justify-content: flex-end;
+        }
+        
+        .whatsapp-message.bot {
+            justify-content: flex-start;
+        }
+        
+        .whatsapp-bubble {
+            max-width: 70%;
+            padding: var(--space-3) var(--space-4);
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+        }
+        
+        .whatsapp-message.user .whatsapp-bubble {
+            background: #dcf8c6;
+            color: #000;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .whatsapp-message.bot .whatsapp-bubble {
+            background: white;
+            color: #000;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-time {
+            font-size: 0.7rem;
+            color: #667781;
+            margin-top: var(--space-1);
+            text-align: right;
+        }
+        
+        .whatsapp-input-container {
+            background: #f0f2f5;
+            padding: var(--space-3);
+            display: flex;
+            gap: var(--space-2);
+            align-items: flex-end;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .whatsapp-input {
+            flex: 1;
+            background: white;
+            border: none;
+            border-radius: 20px;
+            padding: var(--space-3) var(--space-4);
+            font-size: 0.9rem;
+            min-height: 40px;
+            max-height: 100px;
+            resize: none;
+            outline: none;
+            font-family: var(--font-primary);
+        }
+        
+        .whatsapp-send-btn {
+            background: var(--juribank-gold);
+            color: var(--juribank-navy);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1.1rem;
+        }
+        
+        .whatsapp-send-btn:hover {
+            background: var(--gold-dark);
+            transform: scale(1.05);
+        }
+        
+        .whatsapp-typing {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: #667781;
+            font-size: 0.8rem;
+            padding: var(--space-2) var(--space-4);
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .typing-dots span {
+            width: 4px;
+            height: 4px;
+            background: #667781;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Quick Suggestion Pills */
+        .whatsapp-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            background: white;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .suggestion-pill {
+            background: #f8f9fa;
+            border: 1px solid #e1e5e9;
+            border-radius: 20px;
+            padding: var(--space-2) var(--space-3);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+        
+        .suggestion-pill:hover {
+            background: var(--juribank-gold);
+            color: var(--juribank-navy);
+            border-color: var(--juribank-gold);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .sidebar-nav { display: none; }
+            
+            .whatsapp-chat-container {
+                height: 500px;
+                border-radius: 12px;
+            }
+            
+            .whatsapp-bubble {
+                max-width: 85%;
+            }
+            
+            .whatsapp-suggestions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .suggestion-pill {
+                text-align: center;
+            }
             
             .hero {
                 padding: calc(72px + var(--space-16)) 0 var(--space-16);
@@ -1456,56 +1707,23 @@
                 </p>
             </div>
             
-            <!-- Claude Chat Interface -->
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div id="juribank-chat-container" style="
-                    background: var(--white);
-                    border: 1px solid var(--gray-200);
-                    border-radius: var(--radius-xl);
-                    overflow: hidden;
-                    box-shadow: var(--shadow-elevated);
-                ">
-                    <!-- Chat Header -->
-                    <div style="
-                        background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
-                        color: white;
-                        padding: var(--space-6);
-                        display: flex;
-                        align-items: center;
-                        gap: var(--space-4);
-                    ">
-                        <div style="
-                            width: 48px;
-                            height: 48px;
-                            background: rgba(255, 255, 255, 0.2);
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        "><img src="/assets/images/professional/ai-assistant.svg" alt="AI" style="width: 24px; height: 24px;"></div>
-                        <div>
-                            <h3 style="margin: 0; font-size: 1.25rem;">JuriBank Legal Assistant</h3>
-                            <p style="margin: 0; opacity: 0.9; font-size: 0.875rem;">Specialist in UK Banking & Financial Law</p>
+            <!-- WhatsApp-Style Chat Interface -->
+            <div class="whatsapp-chat-wrapper">
+                <div id="juribank-chat-container" class="whatsapp-chat-container">
+                    <!-- WhatsApp-Style Header -->
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">
+                            <img src="/assets/images/professional/ai-assistant.svg" alt="JuriBank Assistant" style="width: 24px; height: 24px;">
                         </div>
-                        <div style="margin-left: auto;">
-                            <span style="
-                                background: rgba(34, 197, 94, 0.2);
-                                color: #10b981;
-                                padding: var(--space-1) var(--space-3);
-                                border-radius: var(--radius-lg);
-                                font-size: 0.75rem;
-                                font-weight: var(--font-weight-medium);
-                            ">● Online</span>
+                        <div class="whatsapp-info">
+                            <h3 class="whatsapp-name">JuriBank Legal Assistant</h3>
+                            <p class="whatsapp-status">Specialist in UK Banking & Financial Law</p>
                         </div>
+                        <div class="whatsapp-online">● Online</div>
                     </div>
                     
-                    <!-- Chat Messages -->
-                    <div id="chat-messages" style="
-                        height: 400px;
-                        overflow-y: auto;
-                        padding: var(--space-6);
-                        background: var(--gray-50);
-                    ">
+                    <!-- WhatsApp Messages Container -->
+                    <div id="chat-messages" class="whatsapp-messages">
                         <!-- Welcome Message -->
                         <div style="margin-bottom: var(--space-6);">
                             <div style="
