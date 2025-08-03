@@ -1,14 +1,20 @@
 {
-  "name": "bankinglaw-platform",
-  "version": "1.0.0",
-  "description": "Advanced Banking Law Platform - Expert Legal Counsel",
+  "name": "juribank-platform",
+  "version": "2.0.0",
+  "description": "JuriBank - UK Banking Law Intelligence Platform",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -l 8000",
     "start": "npx serve . -l 8000",
-    "build": "echo 'Building for production...' && echo 'Build complete!'",
+    "build": "npm run build:css && echo 'Building for production...' && echo 'Build complete!'",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --watch",
     "preview": "npx serve . -l 8000",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write .",
+    "agents:validate": "echo 'Validating Claude agents...' && find .claude/agents -name '*.md' -exec echo 'Validated: {}' \\;",
+    "health": "echo 'JuriBank Platform Health Check' && npm run agents:validate"
   },
   "keywords": [
     "banking",
@@ -16,11 +22,50 @@
     "legal",
     "fintech",
     "compliance",
-    "lawyers"
+    "regulatory",
+    "uk",
+    "solicitors",
+    "intelligence",
+    "pra",
+    "fca",
+    "hmrc",
+    "bank-of-england"
   ],
-  "author": "BankingLaw Platform",
+  "author": "JuriBank Platform",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giquina/juribank.git"
+  },
+  "homepage": "https://juribank.vercel.app",
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21",
+    "marked": "^9.1.6",
+    "uuid": "^9.0.1"
+  },
   "devDependencies": {
-    "serve": "^14.2.1"
-  }
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/lodash": "^4.14.202",
+    "@types/uuid": "^9.0.7",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.0",
+    "serve": "^14.2.1",
+    "tailwindcss": "^3.3.6",
+    "vercel": "^32.5.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

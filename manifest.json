@@ -1,0 +1,89 @@
+{
+  "name": "JuriBank - UK Banking Law Intelligence",
+  "short_name": "JuriBank",
+  "description": "Professional UK banking law intelligence platform with real-time regulatory updates and compliance solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#F4C430",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/juribank-logo.svg",
+      "sizes": "200x60",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": [
+    "legal",
+    "business",
+    "finance",
+    "education",
+    "productivity"
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "JuriBank Desktop Interface"
+    },
+    {
+      "src": "/assets/images/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "JuriBank Mobile Interface"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Regulatory Updates",
+      "short_name": "Updates",
+      "description": "View latest regulatory changes",
+      "url": "/#regulatory-updates",
+      "icons": [
+        {
+          "src": "/assets/favicon.svg",
+          "sizes": "32x32"
+        }
+      ]
+    },
+    {
+      "name": "Legal Templates",
+      "short_name": "Templates",
+      "description": "Access smart legal templates",
+      "url": "/#templates",
+      "icons": [
+        {
+          "src": "/assets/favicon.svg",
+          "sizes": "32x32"
+        }
+      ]
+    },
+    {
+      "name": "Compliance Calendar",
+      "short_name": "Calendar",
+      "description": "Check regulatory deadlines",
+      "url": "/#calendar",
+      "icons": [
+        {
+          "src": "/assets/favicon.svg",
+          "sizes": "32x32"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
