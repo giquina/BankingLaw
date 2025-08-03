@@ -8,30 +8,54 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // JuriBank Brand Colors
+        // JuriBank Professional Banking Colors
+        'juribank-navy': '#0D1B2A',
+        'juribank-gold': '#F4C430',
+        'juribank-off-white': '#FAFAFA',
+        'juribank-gray': '#D9D9D9',
+        'navy-dark': '#081117',
+        'navy-light': '#1a2b3a',
+        'gold-light': '#f6d155',
+        'gold-dark': '#e6b520',
+        'text-dark': '#2d3748',
+        'text-light': '#718096',
+        'security-green': '#059669',
+        'warning-amber': '#d97706',
+        'alert-red': '#dc2626',
+        // JuriBank Modern Brand Colors (Legacy Support)
         'juribank': {
-          'navy': '#0D1B2A',
-          'gold': '#F4C430',
-          'off-white': '#FAFAFA',
-          'gray': '#D9D9D9',
+          'charcoal': '#121212',
+          'blue': '#3A86FF',
+          'background': '#F4F4F4',
+          'alert': '#E63946',
+          'success': '#0B8B6E',
         },
-        // Extended Palette
-        'navy': {
-          'dark': '#081117',
-          'light': '#1a2b3a',
+        // Extended Palette for depth
+        'charcoal': {
+          'light': '#2D3748',
+          'dark': '#0A0A0A',
         },
-        'gold': {
-          'light': '#f6d155',
-          'dark': '#e6b520',
+        'blue': {
+          'light': '#5A9AFF',
+          'dark': '#2A76EF',
         },
-        'text': {
-          'dark': '#2d3748',
-          'light': '#718096',
+        'gray': {
+          '50': '#F9FAFB',
+          '100': '#F3F4F6',
+          '200': '#E5E7EB',
+          '300': '#D1D5DB',
+          '400': '#9CA3AF',
+          '500': '#6B7280',
+          '600': '#4B5563',
+          '700': '#374151',
+          '800': '#1F2937',
+          '900': '#111827',
         }
       },
       fontFamily: {
-        'heading': ['Inter', 'sans-serif'],
-        'body': ['Open Sans', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'heading': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
         'mono': ['Monaco', 'Courier New', 'monospace'],
       },
       spacing: {
@@ -40,11 +64,13 @@ module.exports = {
         '128': '32rem',
       },
       borderRadius: {
-        'juribank': '0.375rem',
+        'juribank': '16px',
+        'card': '16px',
       },
       boxShadow: {
-        'juribank': '0 4px 6px -1px rgba(13, 27, 42, 0.1), 0 2px 4px -1px rgba(13, 27, 42, 0.06)',
-        'juribank-lg': '0 10px 15px -3px rgba(13, 27, 42, 0.1), 0 4px 6px -2px rgba(13, 27, 42, 0.05)',
+        'card': '0 4px 6px -1px rgba(18, 18, 18, 0.1), 0 2px 4px -1px rgba(18, 18, 18, 0.06)',
+        'card-lg': '0 10px 15px -3px rgba(18, 18, 18, 0.1), 0 4px 6px -2px rgba(18, 18, 18, 0.05)',
+        'card-xl': '0 20px 25px -5px rgba(18, 18, 18, 0.1), 0 10px 10px -5px rgba(18, 18, 18, 0.04)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
