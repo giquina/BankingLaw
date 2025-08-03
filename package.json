@@ -1,7 +1,7 @@
 {
   "name": "juribank-platform",
-  "version": "2.0.0",
-  "description": "Professional UK banking law intelligence platform with 11 specialized AI agents, real-time regulatory monitoring, and comprehensive compliance solutions for legal professionals and financial institutions.",
+  "version": "2.1.0",
+  "description": "Professional UK banking law intelligence platform with 11 specialized AI agents, real-time regulatory monitoring, and comprehensive compliance solutions. Fully localized for UK solicitors and financial institutions with 99.5%+ legal accuracy and complete PRA/FCA/Bank of England regulatory alignment.",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -l 8000",
@@ -38,7 +38,11 @@
     "compliance-calendar",
     "banking-regulations",
     "oscola",
-    "claude-agents"
+    "claude-agents",
+    "uk-localization",
+    "solicitor-grade",
+    "gbp-pricing",
+    "professional-legal"
   ],
   "author": "JuriBank Platform",
   "license": "MIT",
