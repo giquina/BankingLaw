@@ -5,11 +5,16 @@
 
 JuriBank is an innovative UK legal and financial help platform created and run by law students studying LLB at a top London university. We guide you through understanding your legal rights and options with comprehensive tools, real-time official content, and peer support - helping you make informed decisions about your situation.
 
-### ✨ **Educational Platform Features v3.0 (2024)**
+### ✨ **Educational Platform Features v3.1 (2024)**
 
 Our student-led platform features:
+- **AI Legal Assistant** with intelligent chatbot for instant guidance
+- **Smart User Routing** that guides users to the right solution based on their answers
+- **Professional Matching Quiz** connecting users with specialist solicitors
+- **Interactive Progress Tracker** with visual case progression timelines
 - **Guided Claim Wizard** with step-by-step assistance for banking disputes
 - **API-Powered Knowledge Hub** with real-time Gov.UK, FCA & Ombudsman content
+- **Success Stories Gallery** with real case outcomes and compensation amounts
 - **Community Forum** for peer support and legal information sharing
 - **User Dashboard** with progress tracking and educational milestones
 - **Freemium Model** - Free basic access, paid tier for comprehensive features
