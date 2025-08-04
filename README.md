@@ -3,7 +3,7 @@
 
 **Making Legal Rights Accessible • Law Student Led • Educational First**
 
-JuriBank is an innovative UK legal and financial help platform created and run by LLB students. We guide you through understanding your legal rights and options with comprehensive tools, real-time official content, and peer support - helping you make informed decisions about your situation.
+JuriBank is an innovative UK legal and financial help platform created and run by law students studying LLB at a top London university. We guide you through understanding your legal rights and options with comprehensive tools, real-time official content, and peer support - helping you make informed decisions about your situation.
 
 ### ✨ **Educational Platform Features v3.0 (2024)**
 
@@ -15,7 +15,7 @@ Our student-led platform features:
 - **Freemium Model** - Free basic access, paid tier for comprehensive features
 - **Mobile-First Design** optimized for accessibility and ease of use
 
-[![Student Led](https://img.shields.io/badge/Student%20Led-LLB%20Students-blue)](#about-us)
+[![Student Led](https://img.shields.io/badge/Student%20Led-Law%20Students-blue)](#about-us)
 [![Educational](https://img.shields.io/badge/Educational-Information%20Only-green)](#disclaimers)
 [![API Driven](https://img.shields.io/badge/API%20Driven-Real%20Time%20Content-orange)](#api-integrations)
 
@@ -30,7 +30,7 @@ In-depth guidance on banking disputes, consumer rights, and regulatory complianc
 Our step-by-step wizards guide you through understanding your rights and exploring your options for banking disputes. We break down complex processes into clear, manageable steps so you know exactly what to do next.
 
 ### 🤝 **Community Support**
-Connect with others who've faced similar banking issues in our peer support forum. Share experiences, get insights, and learn from the community. Our LLB student moderators help ensure discussions stay helpful and accurate.
+Connect with others who've faced similar banking issues in our peer support forum. Share experiences, get insights, and learn from the community. Our law student moderators help ensure discussions stay helpful and accurate.
 
 ### 📊 **Progress Tracking**
 Your personal dashboard shows your progress through our guides, tracks important deadlines, and helps you stay organized. Visual indicators keep you on track as you work through your banking dispute resolution.
@@ -59,7 +59,7 @@ With a clear understanding of your situation and options, you can take confident
 ## Why Choose JuriBank?
 
 ### 🎓 **Student-Led Innovation**
-- **LLB Student Team**: Current law students passionate about making legal information accessible
+- **Law Student Team**: Current law degree students passionate about making legal information accessible
 - **Educational Focus**: Committed to learning and teaching while maintaining compliance
 - **Modern Approach**: Digital-first platform designed for today's legal information needs
 - **Community Driven**: Built by students, for people who need legal information
@@ -162,9 +162,9 @@ JuriBank employs 11 specialized AI agents providing expert legal and technical s
 ## Educational Platform Standards
 
 ### 🎓 **Student-Led Initiative**
-JuriBank is created and maintained by dedicated LLB students who are passionate about making legal information accessible to everyone. We bring fresh perspectives and innovative approaches to helping people understand their rights.
+JuriBank is created and maintained by dedicated law students studying LLB at a top London university who are passionate about making legal information accessible to everyone. We bring fresh perspectives and innovative approaches to helping people understand their rights.
 
-**Academic Background**: Current LLB students from UK universities  
+**Academic Background**: Current law degree students from UK universities  
 **Educational Purpose**: Helping people understand legal information and their rights
 
 ### 📋 **Information Standards**
@@ -186,7 +186,7 @@ We maintain high standards for educational content while staying within regulato
 
 ## Important Disclaimers
 
-**Important Information**: JuriBank is an educational platform created by LLB students to help people understand legal information. For specific legal advice about your situation, always consult qualified solicitors or barristers.
+**Important Information**: JuriBank is an educational platform created by law students studying LLB at a top London university to help people understand legal information. For specific legal advice about your situation, always consult qualified solicitors or barristers.
 
 **Information Sources**: We use official government APIs and authoritative sources, but information can change. Always verify current details with official sources before taking action.
 
@@ -204,4 +204,4 @@ Web: [juribank.co.uk](https://juribank.co.uk) | Platform: [portal.juribank.co.uk
 
 ---
 
-*© 2024 JuriBank Educational Platform. Created by LLB students to make legal information accessible. This is an educational project and does not constitute a law firm or legal service provider.*
+*© 2024 JuriBank Educational Platform. Created by law students studying LLB at a top London university to make legal information accessible. This is an educational project and does not constitute a law firm or legal service provider.*
