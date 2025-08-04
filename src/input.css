@@ -29,8 +29,11 @@
     --navy-light: #1a2b3a;
     --gold-light: #f6d155;
     --gold-dark: #e6b520;
-    --text-dark: #2d3748;
-    --text-light: #718096;
+    --text-dark: #1a202c;        /* Darker for better contrast */
+    --text-light: #4a5568;       /* Darker for better readability */
+    --text-body: #2d3748;        /* Primary body text - high contrast */
+    --text-secondary: #4a5568;   /* Secondary text - good contrast */
+    --text-muted: #718096;       /* Muted text - minimum contrast */
     
     /* Professional Typography */
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -48,18 +51,56 @@
     --alert-red: #dc2626;
   }
 
-  /* Base Typography */
+  /* Base Typography - Enhanced Readability */
   html {
     font-family: var(--font-body);
     line-height: 1.6;
-    color: var(--text-dark);
+    color: var(--text-body);
+    font-size: 16px; /* Ensure minimum readable size */
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--text-body);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 700; /* Increased for better visibility */
     line-height: 1.3;
     color: var(--juribank-navy);
+    margin-bottom: 0.5em;
+  }
+
+  /* Improved text hierarchy */
+  h1 { font-size: 2.5rem; font-weight: 800; }
+  h2 { font-size: 2rem; font-weight: 700; }
+  h3 { font-size: 1.5rem; font-weight: 600; }
+  h4 { font-size: 1.25rem; font-weight: 600; }
+  h5 { font-size: 1.125rem; font-weight: 600; }
+  h6 { font-size: 1rem; font-weight: 600; }
+
+  /* Improved paragraph readability */
+  p {
+    color: var(--text-body);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Links with better contrast */
+  a {
+    color: var(--juribank-navy);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: var(--navy-dark);
+    text-decoration: underline;
   }
 
   /* Professional Focus States */
@@ -277,5 +318,435 @@
   .print-professional {
     color: #000 !important;
     background: #fff !important;
+  }
+}
+
+/* ========================================
+   ENHANCED UX IMPROVEMENTS
+   ======================================== */
+
+/* Claim Submission Wizard - Professional UX */
+.claim-submission-wizard {
+  @apply max-w-4xl mx-auto;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+  margin: 2rem auto;
+}
+
+.claim-step {
+  @apply bg-white rounded-2xl shadow-lg p-8 mb-6;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.claim-step:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--juribank-navy), var(--juribank-gold));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.claim-step.active {
+  @apply shadow-2xl;
+  border-color: var(--juribank-gold);
+  transform: translateY(-4px);
+}
+
+.claim-step.active:before {
+  opacity: 1;
+}
+
+.claim-step.completed {
+  border-color: var(--security-green);
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+}
+
+.claim-step-header {
+  @apply flex items-center mb-8 pb-6;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.claim-step-number {
+  @apply w-12 h-12 bg-juribank-navy text-white rounded-full flex items-center justify-center font-bold mr-6 text-lg;
+  box-shadow: 0 8px 16px rgba(13, 27, 42, 0.3);
+  transition: all 0.3s ease;
+}
+
+.claim-step.completed .claim-step-number {
+  @apply bg-green-600;
+  animation: pulse 2s infinite;
+}
+
+.claim-step-title {
+  @apply text-2xl font-bold text-gray-900;
+  letter-spacing: -0.025em;
+}
+
+.claim-step-subtitle {
+  @apply text-gray-600 text-lg mt-2;
+  font-weight: 400;
+}
+
+/* Enhanced Form Elements for Claims */
+.claim-form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.claim-form-full {
+  @apply col-span-full;
+}
+
+.claim-form-group {
+  @apply relative;
+}
+
+.claim-form-label {
+  @apply block text-base font-semibold text-gray-900 mb-3;
+  letter-spacing: -0.01em;
+}
+
+.claim-form-label.required::after {
+  content: ' *';
+  color: #dc2626;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.claim-form-input {
+  @apply w-full px-6 py-4 border-2 border-gray-300 rounded-xl;
+  @apply focus:border-juribank-navy focus:ring-4 focus:ring-juribank-gold focus:ring-opacity-20;
+  @apply placeholder-gray-400 transition-all duration-300;
+  @apply text-gray-900 bg-white text-lg;
+  font-family: inherit;
+  min-height: 56px;
+}
+
+.claim-form-input:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(13, 27, 42, 0.15);
+}
+
+.claim-form-textarea {
+  @apply claim-form-input;
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.claim-form-select {
+  @apply claim-form-input;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 3rem;
+}
+
+.claim-amount-input {
+  @apply claim-form-input text-center text-3xl font-bold;
+  color: var(--juribank-navy);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.claim-amount-input:focus {
+  color: var(--navy-dark);
+}
+
+.claim-form-help {
+  @apply text-sm text-gray-600 mt-2 leading-relaxed;
+  font-size: 0.9rem;
+}
+
+.claim-form-error {
+  @apply text-red-600 text-sm mt-2 font-semibold;
+  display: flex;
+  align-items: center;
+}
+
+.claim-form-error::before {
+  content: '⚠';
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Professional Buttons for Claim Submission */
+.btn-claim-primary {
+  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white rounded-xl;
+  background: linear-gradient(135deg, var(--juribank-navy) 0%, var(--navy-light) 100%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(13, 27, 42, 0.3);
+  min-height: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-claim-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(13, 27, 42, 0.4);
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--juribank-navy) 100%);
+}
+
+.btn-claim-primary:active {
+  transform: translateY(0);
+}
+
+.btn-claim-primary:disabled {
+  @apply bg-gray-400 cursor-not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: #9ca3af;
+}
+
+.btn-claim-secondary {
+  @apply btn-claim-primary;
+  background: white;
+  color: var(--juribank-navy);
+  border: 2px solid var(--juribank-navy);
+  box-shadow: 0 4px 12px rgba(13, 27, 42, 0.15);
+}
+
+.btn-claim-secondary:hover {
+  background: var(--juribank-navy);
+  color: white;
+}
+
+/* Progress Bar for Multi-Step Claims */
+.claim-progress-container {
+  @apply w-full mb-12;
+}
+
+.claim-progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-3 overflow-hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.claim-progress-fill {
+  @apply h-full rounded-full transition-all duration-700 ease-out;
+  background: linear-gradient(90deg, var(--juribank-navy), var(--juribank-gold));
+  box-shadow: 0 0 8px rgba(244, 196, 48, 0.5);
+}
+
+.claim-progress-text {
+  @apply text-center text-sm font-semibold text-gray-700 mt-3;
+}
+
+/* Summary Cards */
+.claim-summary-card {
+  @apply bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border-2 border-gray-100;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.claim-summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.claim-summary-highlight {
+  @apply claim-summary-card;
+  border-color: var(--juribank-gold);
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+}
+
+.claim-summary-title {
+  @apply text-xl font-bold text-gray-900 mb-4;
+}
+
+.claim-summary-item {
+  @apply flex justify-between items-center py-3 border-b border-gray-100 last:border-b-0;
+}
+
+.claim-summary-label {
+  @apply text-gray-700 font-medium;
+}
+
+.claim-summary-value {
+  @apply text-gray-900 font-semibold;
+}
+
+.claim-summary-amount {
+  @apply text-2xl font-bold;
+  color: var(--juribank-navy);
+}
+
+/* Interactive Help System */
+.claim-help-tooltip {
+  @apply absolute z-50 bg-gray-900 text-white text-sm rounded-xl px-4 py-3 max-w-sm;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.claim-help-tooltip.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-12px);
+}
+
+.claim-help-icon {
+  @apply inline-flex items-center justify-center w-5 h-5 bg-gray-400 text-white rounded-full text-xs font-bold cursor-help ml-2;
+  transition: all 0.2s ease;
+}
+
+.claim-help-icon:hover {
+  @apply bg-juribank-navy;
+  transform: scale(1.1);
+}
+
+/* Success States */
+.claim-success-animation {
+  @apply flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mx-auto mb-6;
+  animation: bounceIn 0.8s ease-out;
+}
+
+.claim-success-checkmark {
+  @apply text-green-600 text-3xl;
+}
+
+/* Error States */
+.claim-error-banner {
+  @apply bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-6;
+  animation: shake 0.5s ease-in-out;
+}
+
+.claim-error-title {
+  @apply text-red-800 font-bold text-lg mb-2;
+}
+
+.claim-error-message {
+  @apply text-red-700;
+}
+
+/* Loading States */
+.claim-loading-overlay {
+  @apply fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50;
+  backdrop-filter: blur(4px);
+}
+
+.claim-loading-spinner {
+  @apply w-12 h-12 border-4 border-gray-200 border-t-juribank-navy rounded-full;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .claim-submission-wizard {
+    @apply mx-4 p-4;
+    border-radius: 16px;
+  }
+  
+  .claim-step {
+    @apply px-4 py-6;
+  }
+  
+  .claim-step-header {
+    @apply flex-col items-start mb-6;
+  }
+  
+  .claim-step-number {
+    @apply mb-3 mr-0;
+  }
+  
+  .claim-step-title {
+    @apply text-xl;
+  }
+  
+  .claim-form-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .btn-claim-primary,
+  .btn-claim-secondary {
+    @apply w-full text-base px-6 py-4;
+  }
+  
+  .claim-amount-input {
+    @apply text-2xl;
+  }
+  
+  .claim-summary-card {
+    @apply p-6;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .claim-submission-wizard {
+    @apply max-w-3xl mx-8;
+  }
+}
+
+/* High DPI Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .claim-form-input,
+  .claim-form-textarea,
+  .claim-form-select {
+    font-size: 18px;
+    padding: 18px 24px;
+  }
+  
+  .btn-claim-primary,
+  .btn-claim-secondary {
+    font-size: 18px;
+    padding: 18px 32px;
+  }
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .claim-step,
+  .btn-claim-primary,
+  .btn-claim-secondary,
+  .claim-form-input {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .claim-step {
+    border: 3px solid #000;
+  }
+  
+  .claim-form-input {
+    border: 3px solid #000;
+  }
+  
+  .btn-claim-primary {
+    background: #000;
+    border: 3px solid #000;
+  }
+  
+  .btn-claim-secondary {
+    background: #fff;
+    color: #000;
+    border: 3px solid #000;
   }
 }

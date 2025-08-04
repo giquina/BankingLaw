@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Claim Submission - JuriBank</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <style>
+        /* Additional enhanced styles for claim submission demo */
+        .demo-header {
+            background: linear-gradient(135deg, var(--juribank-navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-notice {
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+            border: 2px solid var(--juribank-gold);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-weight: 600;
+            color: var(--navy-dark);
+        }
+        
+        .contrast-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .old-style {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .old-style h3 {
+            color: #666;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        
+        .old-style p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .old-style input {
+            border: 1px solid #ccc;
+            padding: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .new-style {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--juribank-gold);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .contrast-label {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--juribank-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--juribank-off-white);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .contrast-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1 class="text-4xl font-bold mb-4">Enhanced Claim Submission UX</h1>
+        <p class="text-xl">Improved readability, contrast, and user experience for banking law claims</p>
+    </div>
+
+    <div class="container-professional">
+        <div class="demo-notice">
+            🎯 <strong>UX Improvements Applied:</strong> Enhanced font contrast, larger touch targets, clearer visual hierarchy, 
+            streamlined forms, and mobile-first responsive design for better claim submission experience.
+        </div>
+
+        <!-- Contrast Comparison -->
+        <div class="contrast-demo">
+            <div class="old-style">
+                <div class="contrast-label" style="background: #f0f0f0; color: #999;">Before - Poor Contrast</div>
+                <h3>Submit Your Claim</h3>
+                <p>Please fill out the form below to submit your banking dispute claim.</p>
+                <input type="text" placeholder="Your name" style="width: 100%; margin: 8px 0;">
+                <button style="background: #ccc; color: #666; padding: 8px 16px; border: none; font-size: 12px;">Submit</button>
+            </div>
+            
+            <div class="new-style">
+                <div class="contrast-label">After - High Contrast</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Submit Your Claim</h3>
+                <p class="text-gray-800 text-lg mb-4 leading-relaxed">Please fill out the form below to submit your banking dispute claim with our enhanced interface.</p>
+                <input type="text" placeholder="Your name" class="claim-form-input mb-4">
+                <button class="btn-claim-primary">Submit Claim</button>
+            </div>
+        </div>
+
+        <!-- Enhanced Claim Submission Wizard -->
+        <div class="claim-submission-wizard">
+            <div class="claim-progress-container">
+                <div class="claim-progress-bar">
+                    <div class="claim-progress-fill" style="width: 33%;"></div>
+                </div>
+                <div class="claim-progress-text">Step 1 of 3 - Claim Details</div>
+            </div>
+
+            <div class="claim-step active">
+                <div class="claim-step-header">
+                    <div class="claim-step-number">1</div>
+                    <div>
+                        <div class="claim-step-title">Banking Dispute Details</div>
+                        <div class="claim-step-subtitle">Tell us about your banking issue</div>
+                    </div>
+                </div>
+
+                <div class="claim-form-grid">
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">Bank Name</label>
+                        <select class="claim-form-select">
+                            <option>Select your bank...</option>
+                            <option>Barclays</option>
+                            <option>HSBC</option>
+                            <option>Lloyds Banking Group</option>
+                            <option>NatWest Group</option>
+                            <option>Santander UK</option>
+                            <option>Other UK Bank</option>
+                        </select>
+                        <div class="claim-form-help">Choose the bank involved in your dispute</div>
+                    </div>
+
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">Dispute Type</label>
+                        <select class="claim-form-select">
+                            <option>Select dispute type...</option>
+                            <option>Unauthorized Transactions</option>
+                            <option>Account Fees & Charges</option>
+                            <option>Loan or Mortgage Issues</option>
+                            <option>Investment Losses</option>
+                            <option>Insurance Claims</option>
+                            <option>Data Protection Breach</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="claim-form-group claim-form-full">
+                        <label class="claim-form-label required">
+                            Claim Amount (£)
+                            <span class="claim-help-icon" title="Enter the total amount you are claiming. Include all losses, fees, and interest.">?</span>
+                        </label>
+                        <input type="number" class="claim-amount-input" placeholder="0.00" min="0" step="0.01">
+                        <div class="claim-form-help">Enter the total amount of your claim in British Pounds</div>
+                    </div>
+
+                    <div class="claim-form-group claim-form-full">
+                        <label class="claim-form-label required">Describe Your Issue</label>
+                        <textarea class="claim-form-textarea" rows="5" placeholder="Please provide a detailed description of your banking dispute, including dates, amounts, and any relevant account information..."></textarea>
+                        <div class="claim-form-help">Provide as much detail as possible to help us understand your case</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button class="btn-claim-secondary">Save Draft</button>
+                    <button class="btn-claim-primary">Continue to Step 2</button>
+                </div>
+            </div>
+
+            <div class="claim-step">
+                <div class="claim-step-header">
+                    <div class="claim-step-number">2</div>
+                    <div>
+                        <div class="claim-step-title">Personal Information</div>
+                        <div class="claim-step-subtitle">Your contact details for this claim</div>
+                    </div>
+                </div>
+
+                <div class="claim-form-grid">
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">First Name</label>
+                        <input type="text" class="claim-form-input" placeholder="Enter your first name">
+                    </div>
+
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">Last Name</label>
+                        <input type="text" class="claim-form-input" placeholder="Enter your last name">
+                    </div>
+
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">Email Address</label>
+                        <input type="email" class="claim-form-input" placeholder="your.email@example.com">
+                        <div class="claim-form-help">We'll use this to send updates about your claim</div>
+                    </div>
+
+                    <div class="claim-form-group">
+                        <label class="claim-form-label required">Phone Number</label>
+                        <input type="tel" class="claim-form-input" placeholder="+44 20 1234 5678">
+                        <div class="claim-form-help">UK phone number including area code</div>
+                    </div>
+
+                    <div class="claim-form-group claim-form-full">
+                        <label class="claim-form-label required">Address</label>
+                        <textarea class="claim-form-textarea" rows="3" placeholder="Enter your full postal address..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="claim-step">
+                <div class="claim-step-header">
+                    <div class="claim-step-number">3</div>
+                    <div>
+                        <div class="claim-step-title">Review & Submit</div>
+                        <div class="claim-step-subtitle">Confirm your claim details</div>
+                    </div>
+                </div>
+
+                <div class="claim-summary-highlight">
+                    <div class="claim-summary-title">Claim Summary</div>
+                    <div class="claim-summary-item">
+                        <div class="claim-summary-label">Bank:</div>
+                        <div class="claim-summary-value">HSBC</div>
+                    </div>
+                    <div class="claim-summary-item">
+                        <div class="claim-summary-label">Dispute Type:</div>
+                        <div class="claim-summary-value">Unauthorized Transactions</div>
+                    </div>
+                    <div class="claim-summary-item">
+                        <div class="claim-summary-label">Claim Amount:</div>
+                        <div class="claim-summary-amount">£2,450.00</div>
+                    </div>
+                    <div class="claim-summary-item">
+                        <div class="claim-summary-label">Claimant:</div>
+                        <div class="claim-summary-value">John Smith</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn-claim-primary" style="font-size: 1.25rem; padding: 1.25rem 3rem;">
+                        Submit Claim to JuriBank
+                    </button>
+                    <div style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                        By submitting, you agree to our terms of service and privacy policy
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success State Demo -->
+        <div class="claim-step completed" style="margin-top: 3rem;">
+            <div class="claim-success-animation">
+                <div class="claim-success-checkmark">✓</div>
+            </div>
+            <div style="text-align: center;">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">Claim Successfully Submitted!</h3>
+                <p class="text-lg text-gray-700 mb-6">
+                    Your claim reference number is <strong>JB-2024-001234</strong>. 
+                    We'll review your case and contact you within 48 hours.
+                </p>
+                <div class="claim-summary-card" style="max-width: 400px; margin: 0 auto;">
+                    <div class="text-center">
+                        <div class="text-sm text-gray-600 mb-2">Next Steps:</div>
+                        <ul class="text-left text-gray-800 space-y-2">
+                            <li>✓ Initial review within 48 hours</li>
+                            <li>✓ Case assessment by specialist solicitor</li>
+                            <li>✓ Regular updates via email and SMS</li>
+                            <li>✓ Direct contact with your legal team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced UX interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation and enhancement
+            const inputs = document.querySelectorAll('.claim-form-input, .claim-form-textarea, .claim-form-select');
+            
+            inputs.forEach(input => {
+                // Enhanced focus effects
+                input.addEventListener('focus', function() {
+                    this.closest('.claim-form-group')?.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.closest('.claim-form-group')?.classList.remove('focused');
+                });
+                
+                // Real-time validation feedback
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('error');
+                        this.classList.add('valid');
+                    }
+                });
+            });
+            
+            // Amount formatting
+            const amountInput = document.querySelector('.claim-amount-input');
+            if (amountInput) {
+                amountInput.addEventListener('input', function() {
+                    let value = this.value.replace(/[^\d.]/g, '');
+                    if (value) {
+                        this.style.color = 'var(--juribank-navy)';
+                        this.style.fontWeight = 'bold';
+                    }
+                });
+            }
+            
+            // Help tooltips
+            const helpIcons = document.querySelectorAll('.claim-help-icon');
+            helpIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'claim-help-tooltip show';
+                    tooltip.textContent = this.getAttribute('title');
+                    tooltip.style.left = '50%';
+                    tooltip.style.transform = 'translateX(-50%)';
+                    this.appendChild(tooltip);
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    const tooltip = this.querySelector('.claim-help-tooltip');
+                    if (tooltip) {
+                        tooltip.remove();
+                    }
+                });
+            });
+            
+            // Button interactions
+            const buttons = document.querySelectorAll('.btn-claim-primary, .btn-claim-secondary');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Submit Claim')) {
+                        e.preventDefault();
+                        
+                        // Show loading state
+                        const original = this.innerHTML;
+                        this.innerHTML = '<div class="claim-loading-spinner" style="width: 20px; height: 20px; margin-right: 8px; display: inline-block;"></div>Processing...';
+                        this.disabled = true;
+                        
+                        // Simulate processing
+                        setTimeout(() => {
+                            alert('Demo: Claim submitted successfully! In a real application, this would redirect to a confirmation page.');
+                            this.innerHTML = original;
+                            this.disabled = false;
+                        }, 2000);
+                    }
+                });
+            });
+            
+            console.log('🎯 Enhanced Claim Submission UX loaded successfully!');
+        });
+    </script>
+</body>
+</html>

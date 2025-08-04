@@ -1,21 +1,31 @@
 {
   "name": "juribank-platform",
-  "version": "2.1.0",
-  "description": "JuriBank - Digital-first banking law firm specializing in financial disputes, regulatory compliance, and banking legal clarity. Expert guidance on bank disputes, loan issues, payment problems, and financial regulatory matters with transparent pricing and swift resolution.",
+  "version": "2.2.0",
+  "description": "JuriBank - Premium UK banking law firm with modern Client Portal featuring 4 interactive tabs (Legal Services, Case Tracker, Claim Submission, AI Assistant). Complete website redesign with mobile-first responsive design, 11 specialized AI agents, and professional UI/UX for banking disputes, regulatory compliance, and financial legal services.",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -l 8000",
     "start": "npx serve . -l 8000",
-    "build": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify && echo 'JuriBank production build complete!'",
-    "preview": "npx serve . -l 8000",
-    "deploy": "vercel --prod",
-    "test": "jest",
-    "lint": "eslint . --ext .js,.ts",
-    "format": "prettier --write .",
+    "build": "npm run build:css-prod && npm run build:js && npm run optimize:images && npm run security:scan && echo '✅ JuriBank production build complete!'",
     "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --watch",
     "build:css-prod": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify",
+    "build:js": "node scripts/minify-js.js",
+    "optimize:images": "node scripts/optimize-images.js",
+    "preview": "npx serve . -l 8000",
+    "deploy": "npm run build && vercel --prod",
+    "test": "jest",
+    "test:performance": "node scripts/performance-test.js",
+    "lint": "eslint . --ext .js,.ts --config .eslintrc.banking.js",
+    "lint:security": "eslint . --ext .js,.ts --config .eslintrc.banking.js --env es6,browser,node",
+    "format": "prettier --write .",
+    "security:scan": "npm audit --audit-level=moderate && node scripts/security-scan.js",
+    "security:headers": "node scripts/test-security-headers.js",
+    "performance:analyze": "node scripts/bundle-analyzer.js",
+    "performance:budget": "node scripts/performance-budget.js",
     "agents:validate": "echo 'Validating Claude agents...' && find .claude/agents -name '*.md' -exec echo 'Validated: {}' \\;",
-    "health": "echo 'JuriBank Platform Health Check' && npm run agents:validate"
+    "health": "echo 'JuriBank Platform Health Check' && npm run agents:validate && npm run security:scan && npm run performance:budget",
+    "ci:test": "npm run lint:security && npm run test && npm run test:performance",
+    "ci:build": "npm run build && npm run security:headers"
   },
   "keywords": [
     "banking-law",
@@ -41,7 +51,17 @@
     "banking-legal-tech",
     "financial-ombudsman",
     "banking-compliance",
-    "financial-legal-automation"
+    "financial-legal-automation",
+    "client-portal",
+    "modern-ui-design",
+    "responsive-web-design",
+    "mobile-first",
+    "ai-legal-assistant",
+    "case-tracking",
+    "interactive-portal",
+    "professional-design-system",
+    "typescript-components",
+    "react-legal-platform"
   ],
   "author": "JuriBank Platform",
   "license": "MIT",
@@ -54,7 +74,10 @@
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
     "marked": "^9.1.6",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -64,12 +87,19 @@
     "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-sonarjs": "^0.23.0",
     "jest": "^29.7.0",
     "postcss": "^8.4.32",
     "prettier": "^3.1.0",
     "serve": "^14.2.1",
     "tailwindcss": "^3.3.6",
-    "vercel": "^32.5.6"
+    "terser": "^5.26.0",
+    "vercel": "^32.5.6",
+    "sharp": "^0.33.1",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^8.0.0",
+    "imagemin-svgo": "^10.0.1"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -79,5 +109,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "performance": {
+    "budgets": {
+      "initial": "200kb",
+      "maximum": "500kb",
+      "warning": "400kb"
+    }
+  },
+  "security": {
+    "audit": true,
+    "headers": true,
+    "dependencies": true
+  }
 }

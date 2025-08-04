@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuriBank Mobile Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .viewport-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 12px;
+            z-index: 9999;
+        }
+        .test-frame {
+            width: 375px;
+            height: 667px;
+            border: 2px solid #333;
+            margin: 20px auto;
+            overflow: auto;
+            border-radius: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewport-indicator" id="indicator">
+        Mobile Viewport: 375x667 (iPhone SE)
+    </div>
+    
+    <div class="controls">
+        <h2>JuriBank Mobile UX Test</h2>
+        <p>Test the mobile responsiveness and readability improvements</p>
+        <button onclick="setViewport(320, 568, 'iPhone 5')">iPhone 5 (320px)</button>
+        <button onclick="setViewport(375, 667, 'iPhone SE')">iPhone SE (375px)</button>
+        <button onclick="setViewport(414, 896, 'iPhone 11')">iPhone 11 (414px)</button>
+        <button onclick="setViewport(768, 1024, 'iPad')">iPad (768px)</button>
+    </div>
+    
+    <div class="test-frame" id="frame">
+        <iframe src="index.html" title="JuriBank Website"></iframe>
+    </div>
+
+    <div style="max-width: 800px; margin: 20px auto; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+        <h3>Testing Checklist:</h3>
+        <ul>
+            <li>✅ Hero title should be clearly visible (white text, no transparency)</li>
+            <li>✅ Font weights should be bold and readable</li>
+            <li>✅ Reduced vertical spacing on mobile</li>
+            <li>✅ Hero section should be more compact</li>
+            <li>✅ Text should meet WCAG AA contrast standards</li>
+            <li>✅ Content should require less scrolling on mobile</li>
+        </ul>
+        
+        <h3>Improvements Made:</h3>
+        <ul>
+            <li><strong>Header Visibility:</strong> Fixed transparent gradient text - now uses solid white with text shadow</li>
+            <li><strong>Font Weights:</strong> Increased to 900 for hero title, 500 for subtitle, extrabold for headings</li>
+            <li><strong>Mobile Spacing:</strong> Reduced section padding from 20rem to 12rem on mobile</li>
+            <li><strong>Hero Compactness:</strong> Reduced mobile hero from min-height 100vh to 80vh, padding from 8rem to 4rem</li>
+            <li><strong>Text Contrast:</strong> Enhanced gradient colors, added text shadows for better readability</li>
+        </ul>
+    </div>
+
+    <script>
+        function setViewport(width, height, device) {
+            const frame = document.getElementById('frame');
+            const indicator = document.getElementById('indicator');
+            
+            frame.style.width = width + 'px';
+            frame.style.height = height + 'px';
+            indicator.textContent = `Mobile Viewport: ${width}x${height} (${device})`;
+        }
+    </script>
+</body>
+</html>
