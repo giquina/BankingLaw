@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How JuriBank Works | Step-by-Step Guide to Legal Help</title>
+    <meta name="description" content="Learn exactly how JuriBank's legal help platform works. From free assessments to connecting with specialist solicitors - your complete guide.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
+        .step-number { 
+            background: linear-gradient(135deg, #2563eb 0%, #059669 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .process-arrow::after {
+            content: '→';
+            font-size: 2rem;
+            color: #e5e7eb;
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        @media (max-width: 768px) {
+            .process-arrow::after { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#tools" class="text-gray-700 hover:text-student-blue font-medium">Free Tools</a>
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">Knowledge Hub</a>
+                    <a href="index.html#community" class="text-gray-700 hover:text-student-blue font-medium">Community</a>
+                    <a href="index.html#pricing" class="text-gray-700 hover:text-student-blue font-medium">Pricing</a>
+                    <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Sign Up Free
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                How JuriBank Works
+            </h1>
+            <p class="text-xl mb-8 opacity-90">
+                Your complete guide to getting legal help through our student-led platform
+            </p>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto">
+                <p class="text-lg">
+                    From free assessments to connecting with specialist solicitors - learn exactly how we help you navigate legal issues step by step.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Three Simple Paths to Legal Help</h2>
+                <p class="text-xl text-gray-600">Choose the level of support that's right for your situation</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-2xl border-2 border-gray-100 hover:border-student-blue transition-colors">
+                    <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-search text-student-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Self-Help Tools</h3>
+                    <p class="text-gray-600 mb-4">Use our free tools to understand your situation and explore options independently.</p>
+                    <div class="text-sm text-student-blue font-medium">Perfect for: Initial research, simple cases</div>
+                </div>
+                
+                <div class="text-center p-6 rounded-2xl border-2 border-student-blue bg-student-blue/5">
+                    <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-student-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Student Guidance</h3>
+                    <p class="text-gray-600 mb-4">Get personalized guidance from law students with access to premium resources.</p>
+                    <div class="text-sm text-student-blue font-medium">Perfect for: Complex cases, ongoing support</div>
+                </div>
+                
+                <div class="text-center p-6 rounded-2xl border-2 border-gray-100 hover:border-student-blue transition-colors">
+                    <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-student-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Professional Referral</h3>
+                    <p class="text-gray-600 mb-4">Connect with specialist solicitors when you need formal legal representation.</p>
+                    <div class="text-sm text-student-blue font-medium">Perfect for: Serious cases, court proceedings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Process -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Your Step-by-Step Journey</h2>
+                <p class="text-xl text-gray-600">Here's exactly what happens when you use JuriBank</p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="mb-16">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 relative process-arrow">
+                        <div class="step-number mx-auto md:mx-0">1</div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Start with Free Assessment</h3>
+                        <p class="text-gray-600 mb-6">Begin by telling us about your situation using our guided questionnaire. No signup required - just answer a few questions about your banking issue, PPI claim, or other financial dispute.</p>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                            <h4 class="font-semibold mb-3">What You'll Get:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-student-green mr-2"></i>
+                                    Instant eligibility assessment
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-student-green mr-2"></i>
+                                    Estimated potential refund
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-student-green mr-2"></i>
+                                    Your next step recommendations
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <a href="claim-wizard.html" class="inline-flex items-center bg-student-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+                            Try Free Assessment <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-16">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2 relative process-arrow">
+                        <div class="step-number mx-auto md:mx-0">2</div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Explore Your Options</h3>
+                        <p class="text-gray-600 mb-6">Use our knowledge hub to understand your rights and explore different pathways forward. Access up-to-date information from Gov.UK, FCA, and ombudsman services.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h5 class="font-semibold text-student-blue mb-2">Free Resources</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Legal guides</li>
+                                    <li>• Template letters</li>
+                                    <li>• Success stories</li>
+                                    <li>• Community forum</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h5 class="font-semibold text-student-blue mb-2">Premium Access</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Advanced calculators</li>
+                                    <li>• Personal dashboard</li>
+                                    <li>• Priority support</li>
+                                    <li>• Document tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="knowledge-hub.html" class="inline-flex items-center bg-student-green text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700">
+                            Browse Knowledge Hub <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="mb-16">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 relative process-arrow">
+                        <div class="step-number mx-auto md:mx-0">3</div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Get Student Guidance</h3>
+                        <p class="text-gray-600 mb-6">Connect with law students studying LLB at top London universities. They'll help you understand your case, prepare documents, and navigate the process.</p>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                            <h4 class="font-semibold mb-3">How Students Help:</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-medium text-student-blue mb-2">Research & Analysis</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Case law research</li>
+                                        <li>• Regulation analysis</li>
+                                        <li>• Evidence gathering</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-student-blue mb-2">Practical Support</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Document preparation</li>
+                                        <li>• Letter drafting</li>
+                                        <li>• Process guidance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="inline-flex items-center bg-student-orange text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700" onclick="openAIChat()">
+                            Get Student Help <i class="fas fa-comments ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="mb-16">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2 relative">
+                        <div class="step-number mx-auto md:mx-0">4</div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Connect with Specialists</h3>
+                        <p class="text-gray-600 mb-6">When you need professional legal representation, we'll match you with specialist solicitors who have experience in your specific type of case.</p>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                            <h4 class="font-semibold mb-3">Professional Matching Process:</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-student-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</div>
+                                    <p class="text-sm text-gray-600">Complete our matching quiz to identify your needs</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-student-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</div>
+                                    <p class="text-sm text-gray-600">We match you with 2-3 specialist solicitors</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-student-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</div>
+                                    <p class="text-sm text-gray-600">Your case details transfer seamlessly to them</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-student-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</div>
+                                    <p class="text-sm text-gray-600">Choose your preferred solicitor for representation</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="professional-matching.html" class="inline-flex items-center bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700">
+                            Find Specialist <i class="fas fa-search ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Questions -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Common Questions</h2>
+                <p class="text-xl text-gray-600">Everything you need to know about using JuriBank</p>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Is JuriBank really free to start?</h3>
+                    <p class="text-gray-600">Yes! Our eligibility checker, basic calculators, knowledge base, and community forum are completely free. You only pay if you want premium features like advanced tools, personal dashboard, and priority student support.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Are law students qualified to help?</h3>
+                    <p class="text-gray-600">Our law students are studying LLB degrees at top London universities and are supervised by qualified solicitors. They provide educational guidance to help you understand your options - not legal advice. When you need professional representation, we connect you with qualified solicitors.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">How do you match me with the right solicitor?</h3>
+                    <p class="text-gray-600">Our matching quiz considers your case type, location, budget, and preferences. We only refer SRA-regulated solicitors with proven experience in your specific area. You get 2-3 carefully selected matches, not a generic directory.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">What if my case isn't successful?</h3>
+                    <p class="text-gray-600">We help you understand your realistic chances of success upfront. Many solicitors in our network offer "No Win, No Fee" arrangements. We'll also help you understand all your options, including alternative dispute resolution.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">How long does the process take?</h3>
+                    <p class="text-gray-600">It varies by case type: bank charge claims typically take 2-8 weeks, PPI claims can take 2-6 months, and complex investment disputes may take 6-18 months. We provide realistic timelines and keep you updated throughout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-6">Ready to Start Your Legal Journey?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Take the first step with our free assessment - no signup required, get instant results
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="claim-wizard.html" class="bg-white text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Start Free Assessment
+                </a>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors" onclick="openAIChat()">
+                    <i class="fas fa-comments mr-2"></i>
+                    Chat with AI Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold">JuriBank</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Legal and financial help by law students. Educational guidance to help you understand your options and connect you with verified legal professionals when needed.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Free Tools</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="claim-wizard.html" class="hover:text-white">Eligibility Checker</a></li>
+                        <li><a href="claim-wizard.html" class="hover:text-white">Refund Calculator</a></li>
+                        <li><a href="how-it-works.html" class="hover:text-white">Next Steps Guide</a></li>
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Document Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Knowledge Hub</a></li>
+                        <li><a href="index.html#community" class="hover:text-white">Community Forum</a></li>
+                        <li><a href="success-stories.html" class="hover:text-white">Success Stories</a></li>
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Legal Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="how-it-works.html" class="hover:text-white">How It Works</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+                        <li><a href="professional-matching.html" class="hover:text-white">Find Legal Professionals</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact Students</a></li>
+                        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2024 JuriBank. Educational platform by law students helping you find solutions.
+                    </p>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <span class="text-gray-400 text-sm">Powered by</span>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <span class="bg-blue-600 px-2 py-1 rounded">Gov.UK API</span>
+                            <span class="bg-green-600 px-2 py-1 rounded">FCA Data</span>
+                            <span class="bg-purple-600 px-2 py-1 rounded">Ombudsman</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Legal Assistant -->
+    <div id="ai-assistant-container"></div>
+    <script src="/src/ai-legal-assistant.js"></script>
+</body>
+</html>

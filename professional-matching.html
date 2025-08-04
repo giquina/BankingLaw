@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Ideal Legal Professional | JuriBank Professional Matching</title>
+    <meta name="description" content="Get matched with specialist solicitors perfect for your case. Take our quiz to find SRA-regulated legal professionals with experience in your specific legal issue.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#tools" class="text-gray-700 hover:text-student-blue font-medium">Free Tools</a>
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">Knowledge Hub</a>
+                    <a href="index.html#community" class="text-gray-700 hover:text-student-blue font-medium">Community</a>
+                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium">How It Works</a>
+                    <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Sign Up Free
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                Find Your Ideal Legal Professional
+            </h1>
+            <p class="text-xl mb-8 opacity-90">
+                Get matched with specialist solicitors who have proven experience in your type of case
+            </p>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto">
+                <p class="text-lg mb-4">
+                    Our intelligent matching system connects you with SRA-regulated solicitors based on your specific needs, location, and budget.
+                </p>
+                <div class="flex items-center justify-center gap-6 text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>SRA Regulated</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Specialist Experience</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Proven Track Record</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matching Quiz Container -->
+    <section class="py-20">
+        <div id="professional-matching-quiz"></div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Our Professional Network</h2>
+                <p class="text-xl text-gray-600">We maintain the highest standards for solicitors in our network</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Rigorous Vetting</h3>
+                    <p class="text-gray-600">All solicitors undergo comprehensive background checks, qualification verification, and performance review before joining our network.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Proven Results</h3>
+                    <p class="text-gray-600">We track success rates, client satisfaction, and case outcomes to ensure you're matched with high-performing legal professionals.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Seamless Introduction</h3>
+                    <p class="text-gray-600">Your case research and documentation transfer directly to your chosen solicitor, so you don't start from scratch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold">JuriBank</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Legal and financial help by law students. Educational guidance to help you understand your options and connect you with verified legal professionals when needed.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Free Tools</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="claim-wizard.html" class="hover:text-white">Eligibility Checker</a></li>
+                        <li><a href="claim-wizard.html" class="hover:text-white">Refund Calculator</a></li>
+                        <li><a href="how-it-works.html" class="hover:text-white">Next Steps Guide</a></li>
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Document Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Knowledge Hub</a></li>
+                        <li><a href="index.html#community" class="hover:text-white">Community Forum</a></li>
+                        <li><a href="success-stories.html" class="hover:text-white">Success Stories</a></li>
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Legal Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="how-it-works.html" class="hover:text-white">How It Works</a></li>
+                        <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+                        <li><a href="professional-matching.html" class="hover:text-white">Find Legal Professionals</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact Students</a></li>
+                        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="text-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2024 JuriBank. Educational platform by law students helping you find solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Professional Matching Quiz -->
+    <script src="/src/professional-matching-quiz.js"></script>
+    <script>
+        // Initialize the professional matching quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProfessionalMatchingQuiz('professional-matching-quiz');
+        });
+    </script>
+
+    <!-- AI Legal Assistant -->
+    <div id="ai-assistant-container"></div>
+    <script src="/src/ai-legal-assistant.js"></script>
+</body>
+</html>
