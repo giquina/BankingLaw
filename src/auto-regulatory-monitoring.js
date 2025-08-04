@@ -1,5 +1,5 @@
 // Auto-Regulatory Monitoring System
-// JuriBank - UK Banking Law Intelligence Platform
+// JuriBank - UK Money and Finance Help Educational Platform
 
 class AutoRegulatoryMonitoring {
     constructor() {
@@ -15,7 +15,7 @@ class AutoRegulatoryMonitoring {
 
     // Initialize comprehensive monitoring sources
     initializeMonitoringSources() {
-        console.log('🤖 Initializing JuriBank Auto-Regulatory Monitoring...');
+        console.log('🤖 Initializing JuriBank Educational Regulatory Monitoring...');
         
         // PRA Monitoring Sources
         this.addMonitoringSource({

@@ -1,43 +1,44 @@
-# JuriBank Legal Standards & Compliance
+# JuriBank Educational Standards & Compliance
 
-Professional legal standards and compliance requirements for the JuriBank platform, including Client Portal and modern digital service delivery standards.
+Educational platform standards and compliance requirements for the student-led JuriBank platform, including community features and information delivery standards.
 
-## Legal Accuracy Requirements
+## Educational Information Accuracy
 
-### Accuracy Standards
-- **99.5%+ accuracy rate** for all legal content (currently maintained across all Client Portal content)
-- **Primary source verification** for all legal references (2,847+ verified citations)
-- **Solicitor-grade accuracy** requirements (100% compliance including interactive portal features)
-- **Professional indemnity compliance** (banking-grade standards met for digital service delivery)
-- **UK legal terminology precision** (100% localization complete including AI assistant responses)
-- **Real-time validation** across 4-tab Client Portal (Legal Services, Case Tracker, Submit Claim, AI Assistant)
+### Information Standards
+- **High accuracy rate** for all educational content (maintained across all platform features)
+- **Official source verification** for all information (sourced from Gov.UK, FCA, Ombudsman APIs)
+- **Student-appropriate accuracy** requirements (educational standard with clear sourcing)
+- **Educational compliance** (appropriate boundaries maintained for student-led initiative)
+- **UK information precision** (100% focus on England & Wales with clear geographic scope)
+- **Real-time API validation** across educational platform (Learning Hub, Community Forum, Progress Tracker)
 
 ### Validation Process
-1. **Primary Source Check**: All legal statements verified against official sources
-2. **Currency Validation**: Ensure all legal information reflects current law
-3. **Professional Review**: Legal content reviewed by Banking Law Validator agent
-4. **Cross-Reference Verification**: Multiple source confirmation for critical information
+1. **Official Source Check**: All information verified against authoritative government sources
+2. **Currency Validation**: Ensure all information reflects current guidance via API updates
+3. **Educational Review**: Content reviewed by Educational Content Validator agent
+4. **Student Moderation**: Community content reviewed by trained LLB student moderators
+5. **Boundary Maintenance**: Regular checks to ensure educational focus is maintained
 
-## UK Banking Law Compliance
+## UK Legal Information Sources
 
-### Regulatory Framework
-- **PRA (Prudential Regulation Authority)** - Banking supervision and prudential regulation
-- **FCA (Financial Conduct Authority)** - Conduct regulation and consumer protection
-- **Bank of England** - Financial stability and monetary policy
-- **HMRC** - Tax and anti-money laundering oversight
-- **Parliament** - Primary legislation and statutory instruments
+### Official Information Framework
+- **Gov.UK** - Official government guidance and forms
+- **FCA (Financial Conduct Authority)** - Consumer guidance and regulatory updates
+- **Financial Ombudsman Service** - Complaint procedures and statistics
+- **Citizens Advice** - Consumer rights information
+- **Parliament.UK** - Legislation and parliamentary information
 
-### Key Legislation
-- **Financial Services and Markets Act 2000** (FSMA 2000)
-- **Banking Act 2009** - Bank resolution and insolvency framework
-- **Money Laundering Regulations 2017** (MLR 2017)
-- **Economic Crime and Corporate Transparency Act 2023**
-- **Consumer Duty** - FCA's new consumer protection regime
+### Key Educational Topics
+- **Consumer Rights** - Understanding your rights with financial services
+- **Complaint Procedures** - How to raise concerns with banks and regulators
+- **Financial Ombudsman Process** - Understanding the complaint resolution service
+- **FCA Consumer Guidance** - Regulatory protection for consumers
+- **Banking Standards** - What to expect from your bank
 
-## Citation Standards
+## Information Sourcing Standards
 
-### OSCOLA Compliance
-JuriBank follows the Oxford Standard for Citation of Legal Authorities (OSCOLA):
+### Source Attribution
+JuriBank maintains clear attribution for all educational information:
 
 #### Case Citations
 ```
@@ -63,49 +64,50 @@ Format: Regulator Sourcebook Section
 Example: FCA COBS 9.2 (Suitability assessment)
 ```
 
-### Citation Database
-JuriBank maintains 2,847+ legal references including:
-- UK banking statutes and regulations
-- Key banking law cases
-- FCA/PRA handbook references
-- Secondary legal authorities
-- International standards (Basel Committee)
+### Information Database
+JuriBank maintains 2,847+ educational references including:
+- Official government guidance documents
+- Consumer protection information
+- Regulatory guidance for consumers
+- Educational legal resources
+- Community-contributed insights (moderated)
 
-## Professional Standards
+## Educational Platform Standards
 
-### Legal Writing Standards
-- **Professional Terminology**: Use precise legal terminology throughout
-- **Neutral Tone**: Maintain objective, professional tone
-- **Clear Structure**: Logical organization of legal content
-- **Proper Attribution**: All legal authorities properly cited
+### Content Creation Standards
+- **Accessible Language**: Use clear, student-friendly language throughout
+- **Educational Tone**: Maintain helpful, supportive tone
+- **Logical Structure**: Clear organization of educational content
+- **Proper Attribution**: All official sources clearly cited and linked
 
-### Disclaimer Requirements
-All legal content must include appropriate disclaimers:
-- Professional legal advice disclaimer
-- Currency of information notice
-- Limitation of liability statement
-- Professional consultation recommendation
+### Educational Boundary Requirements
+All platform content maintains clear educational boundaries:
+- Educational information only disclaimer
+- Currency of information notice (API-updated content)
+- Student-led platform identification
+- Professional consultation pathway clearly provided
 
 ### Quality Assurance
-- **Banking Law Validator Agent** reviews all legal content
-- **Legal Documentation Agent** ensures writing standards
-- **Continuous monitoring** of regulatory changes
-- **Regular accuracy audits** of legal references
+- **Educational Content Validator Agent** reviews all educational content
+- **Community Moderation Team** ensures forum standards
+- **Continuous API monitoring** for information updates
+- **Regular accuracy audits** of educational references
+- **Student team oversight** of platform compliance
 
-## Regulatory Change Management
+## Information Change Management
 
-### Monitoring System
-- **Auto-Regulatory Monitoring**: 6 official sources monitored hourly
-- **Change Detection**: Automated identification of regulatory updates
-- **Impact Assessment**: Professional analysis of change implications
-- **Notification System**: Immediate alerts for critical changes
+### API Monitoring System
+- **Auto-Content Updates**: Official APIs monitored for changes
+- **Change Detection**: Automated identification of information updates
+- **Impact Assessment**: Educational team analysis of change implications
+- **User Notification**: Alerts for important information updates
 
 ### Update Process
-1. **Detection**: Automated monitoring identifies regulatory changes
-2. **Validation**: Banking Law Validator confirms accuracy and impact
-3. **Analysis**: Regulatory agents assess implications
-4. **Implementation**: Content updated to reflect current law
-5. **Notification**: Subscribers alerted to changes
+1. **Detection**: API monitoring identifies official information changes
+2. **Validation**: Educational Content Validator confirms accuracy and relevance
+3. **Analysis**: Student team assesses educational implications
+4. **Implementation**: Content updated to reflect current information
+5. **Notification**: Community members alerted to important updates
 
 ## Compliance Calendar
 
@@ -123,13 +125,13 @@ JuriBank tracks 156+ regulatory deadlines including:
 - **Business day calculations**: UK banking calendar compliance
 - **Automated notifications**: Multi-channel delivery
 
-## Risk Management
+## Educational Risk Management
 
-### Legal Risk Assessment
-- **Accuracy risk**: Continuous validation against primary sources
-- **Currency risk**: Regular monitoring for legal changes
-- **Professional liability**: Insurance and compliance standards
-- **Regulatory risk**: Adherence to FCA/PRA requirements
+### Information Risk Assessment
+- **Accuracy risk**: Continuous validation against official sources
+- **Currency risk**: API monitoring for information changes
+- **Educational boundaries**: Maintaining appropriate information/advice distinction
+- **Student safety**: Ensuring appropriate moderation and community guidelines
 
 ### Error Management
 - **Error Detection**: Automated and manual review processes
@@ -145,13 +147,13 @@ JuriBank tracks 156+ regulatory deadlines including:
 - **Keyboard navigation support**
 - **Color contrast standards**
 
-### Professional Accessibility
-- **Clear language**: Complex legal concepts explained clearly across Client Portal
-- **Logical navigation**: Intuitive 4-tab portal architecture with seamless transitions
-- **Mobile-first design**: Responsive interface optimized for all devices
-- **Interactive features**: Real-time case tracking and AI-powered legal assistance
-- **Professional tools**: Client Portal optimized for legal professional workflows
-- **Progressive web app**: Enhanced user experience with offline capabilities
+### Educational Accessibility
+- **Student-friendly language**: Complex concepts explained clearly for learners
+- **Intuitive navigation**: Clear educational pathways and progress tracking
+- **Mobile-first design**: Responsive interface optimized for all devices and students
+- **Interactive learning**: Progress tracking and community engagement features
+- **Educational tools**: Platform optimized for learning and understanding
+- **Progressive web app**: Enhanced user experience with accessibility features
 
 ## Data Protection
 
@@ -161,11 +163,11 @@ JuriBank tracks 156+ regulatory deadlines including:
 - **Storage limitation**: Data retention policies implemented
 - **Security measures**: Banking-grade data protection
 
-### Professional Confidentiality
-- **Client confidentiality**: Protection of sensitive legal information
-- **Professional privilege**: Respect for lawyer-client privilege
-- **Secure communication**: Encrypted data transmission
-- **Access controls**: Role-based access to sensitive information
+### Student Privacy & Safety
+- **User privacy**: Protection of student and user information
+- **Community safety**: Moderated discussions with clear guidelines
+- **Secure platform**: Encrypted data transmission and secure user accounts
+- **Access controls**: Appropriate access levels for different user types
 
 ## International Standards
 
@@ -185,35 +187,35 @@ JuriBank tracks 156+ regulatory deadlines including:
 
 **Professional Notice**: This platform provides legal information for professional use. Always consult qualified legal counsel for specific legal advice. JuriBank maintains the highest standards of legal accuracy but cannot substitute for professional legal judgment.
 
-### Recent Compliance Achievements
+### Recent Educational Achievements
 
-#### ✅ UK Legal Framework Implementation (December 2024)
-- **100% regulatory body conversion** - All US authorities replaced with UK equivalents
-- **Complete terminology alignment** - Full conversion to UK legal language standards
-- **Currency standardization** - Professional GBP rates throughout (£550-£750/hour)
-- **Contact localization** - City of London professional address and UK phone format
+#### ✅ UK Educational Platform Implementation (2024)
+- **100% UK information focus** - All content aligned with England & Wales legal system
+- **Student-led approach** - Platform created and maintained by LLB students
+- **API integration** - Real-time official information from government sources
+- **Community features** - Peer support with appropriate moderation
 
-#### ✅ Professional Standards Validation
-- **2,847+ legal references** verified for UK accuracy and currency (including Client Portal content)
-- **OSCOLA citation compliance** - All legal authorities properly formatted across platform
-- **156+ regulatory deadlines** tracked with UK business day calculations
-- **11 specialized AI agents** maintaining continuous compliance monitoring
-- **Client Portal compliance** - All 4 tabs meet professional legal service standards
-- **Modern UI/UX standards** - Professional design system with accessibility compliance
+#### ✅ Educational Standards Implementation
+- **2,847+ educational references** verified for UK accuracy and currency
+- **Official source compliance** - All information properly attributed to authoritative sources
+- **Real-time API updates** - Current information maintained through official data feeds
+- **11 specialized educational agents** maintaining continuous content monitoring
+- **Educational platform compliance** - All features maintain appropriate boundaries
+- **Accessible design standards** - Student-friendly interface with accessibility compliance
 
-#### ✅ Complete Website Redesign Compliance (2024)
-- **Client Portal standards** - 4-tab interactive portal meets professional legal service requirements
-- **Digital service delivery** - Modern UI/UX compliant with accessibility and professional standards
-- **Component architecture** - React/TypeScript implementation ensures reliability and maintainability
-- **AI assistant integration** - Legal chat functionality maintains professional accuracy standards
+#### ✅ Educational Platform Transformation (2024)
+- **Learning platform standards** - Educational tools meet accessibility and learning requirements
+- **Community platform** - Modern UI/UX compliant with educational and accessibility standards
+- **Technical architecture** - React/TypeScript implementation ensures reliability for educational use
+- **AI educational assistant** - Chat functionality maintains educational boundaries and accuracy
 
-#### 🔄 Ongoing Compliance Monitoring
-- **Real-time regulatory updates** from PRA, FCA, Bank of England, and Parliament
-- **Automated accuracy validation** via Banking Law Validator agent across all portal features
-- **Professional writing standards** enforced by Legal Documentation Agent
-- **Cross-reference verification** across all legal content including interactive components
+#### 🔄 Ongoing Educational Monitoring
+- **Real-time information updates** from Gov.UK, FCA, Ombudsman, and official sources
+- **Automated accuracy validation** via Educational Content Validator across all platform features
+- **Educational writing standards** enforced by content creation guidelines
+- **Cross-reference verification** across all educational content and community contributions
 
 ---
 
-*These standards are enforced by specialized AI agents and updated automatically through the `/update-docs` system.*
-**Current Compliance Status**: 100% UK Banking Law Alignment - All Standards Met Including Modern Client Portal
+*These standards are enforced by specialized educational AI agents and updated automatically through the `/update-docs` system.*
+**Current Compliance Status**: 100% UK Educational Platform Alignment - All Standards Met for Student-Led Initiative

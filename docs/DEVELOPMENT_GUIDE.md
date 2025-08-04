@@ -1,6 +1,6 @@
 # JuriBank Development Guide
 
-Complete development guide for the JuriBank UK Banking Law Intelligence Platform with modern Client Portal and responsive design.
+Complete development guide for the JuriBank UK Legal & Financial Education Platform with freemium subscription model, API integrations, and community features.
 
 ## Quick Start
 
@@ -9,8 +9,9 @@ Complete development guide for the JuriBank UK Banking Law Intelligence Platform
 - npm 9+
 - Git
 - Modern web browser
-- UK banking law knowledge (for legal content validation)
-- Professional legal writing standards understanding
+- Understanding of UK legal information sources and APIs
+- Educational content creation and accessibility standards
+- Student-led project management experience
 
 ### Installation
 ```bash
@@ -58,17 +59,18 @@ npm run agents:validate  # Validate all AI agents
 
 ## Architecture Overview
 
-### Modern Component Architecture
-JuriBank features a modern React/TypeScript component architecture with:
+### Educational Platform Architecture
+JuriBank features a modern React/TypeScript educational platform with:
 
-**Client Portal Components** (`/components/`):
-- **Client Portal Section** (`client-portal-section.html`) - 4-tab interactive portal
-- **Service Cards** (`service-cards.tsx`) - Dynamic service presentation
-- **Claim Tracker** (`claim-tracker.tsx`) - Real-time case progress visualization
-- **Intake Form** (`intake-form.tsx`) - Multi-step claim submission
-- **Legal Companion Chat** (`legal-companion-chat.tsx`) - AI-powered legal assistance
-- **Modern Design System** (`modern-design-system.css`) - Professional styling framework
-- **Portal Functionality** (`portal-functionality.js`) - Interactive tab management
+**Educational Components** (`/components/`):
+- **Learning Dashboard** (`learning-dashboard.tsx`) - Progress tracking and educational milestones
+- **Resource Cards** (`resource-cards.tsx`) - Educational content presentation
+- **Progress Tracker** (`progress-tracker.tsx`) - Learning journey visualization
+- **Guided Assessment** (`guided-assessment.tsx`) - Step-by-step situation understanding
+- **Educational Assistant** (`educational-assistant.tsx`) - AI-powered learning support
+- **Community Forum** (`community-forum.tsx`) - Peer support and information sharing
+- **Subscription Management** (`subscription-manager.tsx`) - Freemium tier management
+- **API Content Hub** (`api-content-hub.tsx`) - Real-time official information display
 
 **Mobile-First Responsive Design:**
 - Professional design system with consistent branding
@@ -76,59 +78,60 @@ JuriBank features a modern React/TypeScript component architecture with:
 - WCAG AA accessibility compliance throughout
 - Progressive web app features for enhanced user experience
 
-### Core Intelligence Systems
-JuriBank includes 8 intelligent systems located in `/src/`:
+### Core Educational Systems
+JuriBank includes 8 intelligent educational systems located in `/src/`:
 
-1. **Auto-Regulatory Monitoring** (`auto-regulatory-monitoring.js`)
-   - 6 monitoring sources (PRA, FCA, BoE, Parliament, Basel Committee)
-   - 5 automation rules for intelligent alerting
-   - Hourly monitoring of critical regulatory sources
+1. **API Content Integration** (`api-content-integration.js`)
+   - Real-time Gov.UK API integration for current forms and guidance
+   - FCA data feeds for regulatory updates and consumer alerts
+   - Financial Ombudsman API for complaint statistics and outcomes
+   - Automatic content refresh and currency validation
 
-2. **Legal Citation Engine** (`legal-citation-engine.js`)
-   - 2,847+ UK legal references
-   - OSCOLA-compliant citation formatting
-   - Pattern-based citation recognition
+2. **Educational Resource Engine** (`educational-resource-engine.js`)
+   - 2,847+ educational references from authoritative UK sources
+   - Student-friendly formatting and explanation
+   - Progressive disclosure for complex concepts
 
-3. **Compliance Calendar** (`compliance-calendar.js`)
-   - 156+ tracked regulatory deadlines
-   - Automated reminder system
-   - Business day calculations for UK banking
+3. **Learning Progress System** (`learning-progress-system.js`)
+   - Individual progress tracking through educational modules
+   - Achievement milestones for understanding key concepts
+   - Personalized learning pathways
 
-4. **Learning Database** (`learning-database.js`)
-   - 12 educational courses
-   - 89 case studies
-   - Interactive legal content
+4. **Community Platform** (`community-platform.js`)
+   - Peer support forum with topic categories
+   - Student moderation tools and guidelines
+   - Information sharing with compliance boundaries
 
-5. **Legal Templates** (`legal-templates.js`)
-   - 15+ smart document templates
-   - Intelligent pre-filling
-   - Banking compliance templates
+5. **Guided Tool Engine** (`guided-tool-engine.js`)
+   - Step-by-step educational wizards
+   - Situation assessment and option exploration
+   - Template generation for common documents
 
-6. **Regulatory Alerts** (`regulatory-alerts.js`)
-   - Intelligent notification system
-   - Priority-based escalation
-   - Multi-channel delivery
+6. **Subscription Management** (`subscription-management.js`)
+   - Freemium tier access control
+   - Feature gating and upgrade pathways
+   - Usage analytics and engagement tracking
 
-7. **Regulatory Updates** (`regulatory-updates.js`)
-   - Real-time regulatory change tracking
-   - Impact analysis and assessment
-   - Professional notification formatting
+7. **Information Updates** (`information-updates.js`)
+   - Real-time monitoring of official information sources
+   - Change detection and user notification
+   - Content freshness validation
 
-8. **Jurisdiction Mapping** (`jurisdiction-mapping.js`)
-   - UK vs EU law distinctions
-   - Post-Brexit regulatory mapping
-   - Cross-border compliance guidance
+8. **Educational Compliance** (`educational-compliance.js`)
+   - Boundary maintenance between information and advice
+   - Student moderator support tools
+   - Professional referral pathways
 
 ### AI Agent System
-11 specialized agents in `.claude/agents/`:
+11 specialized educational agents in `.claude/agents/`:
 
-**Legal & Regulatory (6 agents)**:
-- UK Regulatory Compliance Agent
-- UK Securities Law Agent  
-- FinTech Innovation Agent
-- AML Compliance Agent
-- Risk Management Agent
-- Banking Law Validator
+**Legal Information & Education (6 agents)**:
+- UK Regulatory Information Agent
+- UK Securities Education Agent  
+- FinTech Learning Agent
+- AML Education Agent
+- Risk Education Agent
+- Educational Content Validator
 
 **Development & Quality (5 agents)**:
 - Legal Documentation Agent
@@ -181,11 +184,12 @@ JuriBank includes 8 intelligent systems located in `/src/`:
 - Responsive design principles
 - Accessibility standards (WCAG AA)
 
-### Legal Content Standards
-- OSCOLA citation formatting
-- Professional legal terminology
-- UK regulatory compliance focus
-- Solicitor-grade accuracy requirements
+### Educational Content Standards
+- Clear, accessible language for learners
+- Accurate information from authoritative sources
+- UK regulatory information focus
+- Student-appropriate complexity levels
+- Educational boundaries maintained throughout
 
 ## Testing Strategy
 
@@ -202,18 +206,19 @@ tests/
 ```
 
 ### Testing Requirements
-- Banking-grade test coverage
-- Regulatory compliance validation
-- Financial data integrity testing
-- Security vulnerability assessment
+- Educational platform functionality testing
+- API integration reliability testing
+- User progress and subscription system testing
+- Information accuracy and currency validation
+- Community moderation feature testing
 
 ## Security Guidelines
 
-### Banking Security Standards
-- Secure by default configurations
-- Input validation and sanitization
-- Authentication and authorization patterns
-- Audit trail implementation
+### Educational Platform Security Standards
+- Student data protection and privacy
+- Secure API key management for external integrations
+- User authentication and subscription management
+- Community moderation and content filtering
 
 ### Development Security
 - Dependency vulnerability scanning
@@ -260,11 +265,11 @@ tests/
 ## Contributing Guidelines
 
 ### Code Contributions
-1. **Legal Accuracy**: All legal content must be reviewed for accuracy
-2. **Professional Standards**: Maintain solicitor-grade documentation quality
-3. **Regulatory Compliance**: Ensure UK banking law compliance throughout
-4. **Agent Integration**: Utilize specialized AI agents for domain expertise
-5. **Testing**: Comprehensive testing required for all banking features
+1. **Educational Accuracy**: All educational content must be reviewed for accuracy and clarity
+2. **Student Accessibility**: Maintain accessible language and learning progression
+3. **Information Compliance**: Ensure educational boundaries are maintained throughout
+4. **Agent Integration**: Utilize specialized educational AI agents for content guidance
+5. **Testing**: Comprehensive testing required for all educational platform features
 
 ### Documentation Requirements
 - Update relevant documentation for all changes
@@ -293,12 +298,12 @@ tests/
 - **5 development specialists** ensuring banking-grade quality
 - **Zero downtime** during agent deployment
 
-### ✅ Complete Website Redesign (2024)
-- **4-Tab Client Portal** with comprehensive legal service functionality
-- **Modern UI/UX** with mobile-first responsive design and professional aesthetics
-- **React/TypeScript Components** providing enhanced reliability and type safety
-- **Interactive Features** including real-time case tracking and AI legal assistant
-- **Performance Optimization** with fast loading times and smooth user interactions
+### ✅ Educational Platform Transformation (2024)
+- **Student-Led Platform** with comprehensive educational tools and community features
+- **Freemium Model** with free basic access and premium features
+- **API Integration** with Gov.UK, FCA, and Ombudsman for real-time information
+- **Community Features** including peer support forum and progress tracking
+- **Performance Optimization** with fast loading times and accessible design
 
 ### 🔄 Current Development Focus
 - **Documentation synchronization** completed via automated `/update-docs`
@@ -307,5 +312,5 @@ tests/
 
 ---
 
-*This guide is automatically maintained by the `/update-docs` command and specialized development agents.*
-**Current Version**: 2.2 - Complete Website Redesign & Modern Client Portal
+*This guide is automatically maintained by the `/update-docs` command and specialized educational development agents.*
+**Current Version**: 3.0 - Educational Platform with Freemium Model & API Integration

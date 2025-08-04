@@ -1,6 +1,6 @@
 /**
  * JuriBank Claim Tracker Component
- * Interactive banking dispute progress tracking system
+ * Interactive financial dispute progress tracking system for educational purposes
  */
 
 class ClaimTracker {
@@ -26,7 +26,7 @@ class ClaimTracker {
             {
                 id: 2,
                 title: 'Initial Assessment',
-                description: 'Our banking law specialists are reviewing your case details',
+                description: 'Our LLB student guides are reviewing your case details for learning purposes',
                 status: 'current',
                 date: '2024-01-16',
                 icon: 'search'
@@ -288,7 +288,7 @@ class ClaimTracker {
         const updates = [
             {
                 date: '2024-01-16 14:30',
-                message: 'Case assigned to Sarah Mitchell, Senior Banking Law Solicitor',
+                message: 'Case assigned to Sarah Mitchell, Senior LLB Student Guide',
                 type: 'info'
             },
             {

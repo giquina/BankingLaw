@@ -275,13 +275,13 @@ setupCSP() {
 
 #### SEO Implementation Example
 ```html
-<title>JuriBank | UK Banking Law Solicitors | Expert Banking Dispute Resolution</title>
-<meta name="description" content="Leading UK banking law firm specialising in bank complaints...">
+<title>JuriBank | UK Money and Finance Help | LLB Student Educational Guidance</title>
+<meta name="description" content="Leading UK money and finance help platform specialising in educational guidance...">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "JuriBank Legal Services"
+  "@type": "EducationalOrganization",
+  "name": "JuriBank Educational Services"
 }
 </script>
 ```

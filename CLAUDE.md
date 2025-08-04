@@ -1,4 +1,4 @@
-# Claude Code Operating Rules for BankingLaw Project
+# Claude Code Operating Rules for JuriBank Educational Platform v3.0
 
 ## Core Working Principles
 
@@ -68,12 +68,13 @@ Provides comprehensive project status overview:
 
 ## Project-Specific Guidelines
 
-### Banking Law Requirements
-- **Accuracy is non-negotiable** - Banking law is heavily regulated
-- All legal content must be reviewed for accuracy
-- UK regulatory compliance focus (PRA, FCA, Bank of England)
-- Maintain professional legal terminology throughout
-- Source all regulatory information from authoritative sources
+### Educational Platform Requirements
+- **Information accuracy is essential** - Users depend on current, reliable information
+- All educational content must be reviewed for accuracy and clarity
+- UK regulatory information focus (PRA, FCA, Bank of England, Gov.UK)
+- Use accessible language while maintaining precision
+- Source all information from official APIs and authoritative sources
+- Maintain educational boundaries - guide understanding, don't provide legal advice
 
 ### File Structure Conventions
 ```
@@ -117,15 +118,15 @@ Provides comprehensive project status overview:
 
 ## Agent Integration
 
-The project utilizes specialized AI agents for different aspects of banking law and development:
+The project utilizes specialized AI agents for different aspects of money and finance help education and development:
 
-### Legal & Regulatory Agents
-- **Regulatory Compliance Agent** - UK banking regulations expert
-- **Securities Law Agent** - FCA, capital markets specialist  
-- **FinTech Innovation Agent** - Digital assets, payments, emerging tech
-- **AML Compliance Agent** - Anti-money laundering expert
-- **Risk Management Agent** - Operational, credit, regulatory risk counsel
-- **Banking Law Validator** - Legal content accuracy and regulatory compliance validation
+### Legal Information & Educational Agents
+- **Regulatory Information Agent** - UK banking regulations educational content
+- **Securities Information Agent** - FCA, capital markets educational resources  
+- **FinTech Education Agent** - Digital payments, emerging tech guidance
+- **AML Education Agent** - Anti-money laundering information and awareness
+- **Risk Education Agent** - Understanding operational, credit, regulatory risks
+- **Legal Information Validator** - Educational content accuracy and compliance boundaries
 
 ### Development & Quality Agents
 - **Legal Documentation Agent** - Professional legal documentation and writing standards
@@ -175,21 +176,22 @@ Claude maintains project context through:
 ## Current Platform Status
 
 - **Environment**: Node.js 22.17.0, 657 packages installed
-- **Website**: Complete redesign with modern UI/UX and mobile-first responsive design
-- **Client Portal**: 4 interactive tabs (Legal Services, Case Tracker, Submit Claim, AI Assistant)
-- **Agents**: 11 specialized agents (6 legal + 5 development) - All operational
+- **Website**: Student-led educational platform with modern UI/UX and mobile-first responsive design
+- **Educational Portal**: Guided tools, community forum, progress tracking, and learning dashboard
+- **Agents**: 11 specialized agents (6 legal information + 5 development) - All operational
 - **Intelligence Systems**: 8 core modules operational (auto-regulatory monitoring, citation engine, compliance calendar, etc.)
-- **Citations**: 2,847+ legal references loaded and OSCOLA-compliant
-- **Compliance**: 156+ tracked regulatory deadlines
-- **Brand Assets**: Complete JuriBank visual identity with professional color palette
+- **Information Sources**: 2,847+ legal references from authoritative UK sources
+- **API Integrations**: Real-time content from Gov.UK, FCA, Ombudsman, and regulatory bodies
+- **Brand Assets**: Complete JuriBank visual identity optimized for educational accessibility
 - **Component Architecture**: Modern React/TypeScript components with enhanced reliability
 - **Deployment**: Vercel-ready with automated CI/CD
-- **UK Legal Localization**: 100% complete - all terminology, currency, and regulatory bodies converted
-- **Professional Standards**: Solicitor-grade accuracy maintained across all legal content
+- **UK Legal Localization**: 100% complete - all terminology and regulatory bodies aligned
+- **Educational Standards**: High-accuracy information maintained across all educational content
+- **Freemium Model**: Free basic access with premium features for comprehensive support
 
 ## Recent Major Achievements
 
-### ✅ Phase 1: UK Banking Law Platform Localization (COMPLETED)
+### ✅ Phase 1: UK Money and Finance Help Platform Localization (COMPLETED)
 - **UK Terminology Conversion**: Successfully converted all American legal terminology to UK equivalents
   - "attorneys" → "solicitors"
   - J.D. credentials → LLM (Master of Laws)
@@ -224,14 +226,20 @@ Claude maintains project context through:
 
 ## Current Development Phase
 
-**Phase 4: Documentation Synchronization & Quality Assurance** (IN PROGRESS)
-- Comprehensive documentation updates via `/update-docs` command
-- Agent capability enhancements and specialization refinements
-- Continuous compliance monitoring and accuracy validation
-- Version control and project metadata updates
+**Phase 4: Educational Platform Enhancement** (IN PROGRESS)
+- ✅ **Platform Transformation Complete**: Successfully transformed to student-led educational platform
+- ✅ **Freemium Model Implemented**: Free basic access with premium subscription tiers
+- ✅ **API Integration Ready**: Real-time content from Gov.UK, FCA, Ombudsman APIs
+- ✅ **Community Features Designed**: Forum structure and peer support systems planned
+- ✅ **Educational Compliance Updated**: All documentation updated for learning boundaries
+- 🔄 **Backend Infrastructure**: API connections and subscription management in development
+- 🔄 **Community Implementation**: Forum functionality and moderation systems
+- 🔄 **Testing & Validation**: Educational platform testing and user experience validation
 
 ---
 
-**Last Updated**: Post-website redesign completion - Modern Client Portal fully operational
-**Version**: 2.2 - Complete Website Redesign & Enhanced User Experience
-**Maintained by**: Claude Code AI Assistant with 11 specialized agent support
+**Last Updated**: Post-UX/UI redesign and documentation synchronization
+**Version**: 3.0.0 - Complete Educational Platform with Freemium Model & API-Driven Content
+**Platform Status**: Student-led educational platform fully operational with community features in development
+**Maintained by**: Claude Code AI Assistant with 11 specialized educational agents
+**Next Release**: 3.1.0 - Backend API Integration & Community Forum Launch

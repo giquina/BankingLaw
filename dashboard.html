@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | JuriBank - Your Legal Journey</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .progress-ring { transform: rotate(-90deg); }
+        .achievement-badge { 
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #92400e;
+        }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center bg-gray-100 rounded-full px-3 py-2">
+                        <i class="fas fa-user text-gray-600 mr-2"></i>
+                        <span class="text-sm text-gray-700">Welcome back!</span>
+                    </div>
+                    <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Upgrade
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Your Legal Journey Dashboard</h1>
+            <p class="text-gray-600">Track your progress and stay updated on your financial claims</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="bg-student-blue/10 w-12 h-12 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-student-blue text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">£1,247</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-1">Potential Refund</h3>
+                <p class="text-sm text-gray-600">Based on your assessments</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="bg-student-green/10 w-12 h-12 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-tasks text-student-green text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">3/5</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-1">Steps Complete</h3>
+                <p class="text-sm text-gray-600">Bank charge claim progress</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="bg-student-orange/10 w-12 h-12 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-bookmark text-student-orange text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">3/3</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-1">Saved Items</h3>
+                <p class="text-sm text-red-600">Limit reached</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg card-hover">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-trophy text-purple-600 text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">2</span>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-1">Achievements</h3>
+                <p class="text-sm text-gray-600">Milestones unlocked</p>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Current Claims -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Your Active Claims</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="border border-gray-200 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Bank Charges Refund</h3>
+                                    <p class="text-sm text-gray-600">Barclays Bank • Started 5 days ago</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">In Progress</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Progress</span>
+                                    <span class="text-sm font-medium text-gray-900">Step 3 of 5</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-student-blue h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-900 font-medium">Next: Submit complaint to bank</p>
+                                    <p class="text-xs text-gray-600">Estimated refund: £1,247</p>
+                                </div>
+                                <button class="bg-student-blue text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
+                                    Continue
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-xl p-6 opacity-60">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">PPI Assessment</h3>
+                                    <p class="text-sm text-gray-600">Multiple lenders • Assessment pending</p>
+                                </div>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Paused</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Progress</span>
+                                    <span class="text-sm font-medium text-gray-900">Step 1 of 4</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gray-400 h-2 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-900 font-medium">Complete eligibility check</p>
+                                    <p class="text-xs text-gray-600">Upgrade for full PPI assessment</p>
+                                </div>
+                                <button class="bg-gray-300 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium">
+                                    Resume
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-center">
+                        <button class="text-student-blue font-medium hover:underline">
+                            <i class="fas fa-plus mr-2"></i>
+                            Start New Assessment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Recent Activity</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-student-green w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Eligibility assessment completed</h4>
+                                <p class="text-gray-600 text-sm">You may be eligible for a refund of up to £1,200 for unfair bank charges</p>
+                                <p class="text-gray-500 text-xs mt-1">2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-student-blue w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-bookmark text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Saved: New FCA Rules on Bank Charges</h4>
+                                <p class="text-gray-600 text-sm">Important update that affects your current claim</p>
+                                <p class="text-gray-500 text-xs mt-1">Yesterday at 3:42 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-student-orange w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-calculator text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Refund calculation updated</h4>
+                                <p class="text-gray-600 text-sm">Based on your charge history: £1,247 potential refund</p>
+                                <p class="text-gray-500 text-xs mt-1">3 days ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-purple-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-comments text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Joined community discussion</h4>
+                                <p class="text-gray-600 text-sm">"Bank charged me £200 for going £5 overdrawn - is this fair?"</p>
+                                <p class="text-gray-500 text-xs mt-1">1 week ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Account Status -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Account Status</h3>
+                    
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-3">
+                            <i class="fas fa-user text-gray-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900">Free Explorer</h4>
+                        <p class="text-sm text-gray-600">Member since Nov 2024</p>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Assessments Used</span>
+                            <span class="text-sm font-medium">2/5</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-student-blue h-2 rounded-full" style="width: 40%"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Saved Items</span>
+                            <span class="text-sm font-medium text-red-600">3/3</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-student-blue text-white py-3 rounded-lg font-medium hover:bg-blue-700">
+                        Upgrade to Full Access
+                    </button>
+                    <p class="text-xs text-gray-500 text-center mt-2">£9.99/month • 7-day free trial</p>
+                </div>
+
+                <!-- Achievements -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Achievements</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="achievement-badge w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-rocket text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Getting Started</h4>
+                                <p class="text-xs text-gray-600">Completed first assessment</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="achievement-badge w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-bookmark text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Knowledge Seeker</h4>
+                                <p class="text-xs text-gray-600">Saved your first resource</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center opacity-50">
+                            <div class="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-users text-gray-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Community Helper</h4>
+                                <p class="text-xs text-gray-600">Help 5 community members</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-student-blue hover:bg-blue-50 transition-colors">
+                            <div class="flex items-center">
+                                <i class="fas fa-plus text-student-blue mr-3"></i>
+                                <span class="font-medium">New Assessment</span>
+                            </div>
+                        </button>
+
+                        <button class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-student-green hover:bg-green-50 transition-colors">
+                            <div class="flex items-center">
+                                <i class="fas fa-calculator text-student-green mr-3"></i>
+                                <span class="font-medium">Refund Calculator</span>
+                            </div>
+                        </button>
+
+                        <button class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-student-orange hover:bg-orange-50 transition-colors">
+                            <div class="flex items-center">
+                                <i class="fas fa-comments text-student-orange mr-3"></i>
+                                <span class="font-medium">Ask Community</span>
+                            </div>
+                        </button>
+
+                        <button class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-colors">
+                            <div class="flex items-center">
+                                <i class="fas fa-search text-purple-500 mr-3"></i>
+                                <span class="font-medium">Browse Resources</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upgrade Prompt -->
+                <div class="bg-gradient-to-r from-student-blue to-student-green rounded-2xl p-6 text-white">
+                    <h3 class="text-lg font-semibold mb-2">Unlock Full Power</h3>
+                    <p class="text-sm opacity-90 mb-4">Get unlimited assessments, priority support, and advanced tools</p>
+                    
+                    <ul class="text-sm space-y-1 mb-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-xs"></i>
+                            <span>All 25+ claim types</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-xs"></i>
+                            <span>Unlimited saves</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-xs"></i>
+                            <span>Real-time alerts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-xs"></i>
+                            <span>Priority student support</span>
+                        </li>
+                    </ul>
+
+                    <button class="w-full bg-white text-student-blue py-2 rounded-lg font-medium hover:bg-gray-50">
+                        Start Free Trial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-6 w-auto mr-2">
+                    <span class="text-lg font-semibold text-gray-900">JuriBank</span>
+                    <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Educational guidance to help you understand your legal options</p>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="index.html" class="text-gray-600 hover:text-student-blue">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Knowledge Hub</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Community</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

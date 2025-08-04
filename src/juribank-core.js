@@ -1,5 +1,5 @@
 // JuriBank Core Intelligence System
-// Professional UK Banking Law Intelligence Platform
+// Educational UK Money and Finance Help Platform
 
 class JuriBankCore {
     constructor() {
@@ -16,7 +16,7 @@ class JuriBankCore {
 
     // Initialize core intelligence systems
     async initializeCore() {
-        console.log('🏛️ JuriBank Intelligence Platform - Initializing...');
+        console.log('🏛️ JuriBank Educational Platform - Initializing...');
         
         try {
             // Initialize all intelligence modules
@@ -160,8 +160,8 @@ class JuriBankCore {
                     <div class="flex items-center space-x-4">
                         <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-10">
                         <div class="text-sm text-gray-600">
-                            <div class="font-semibold">Intelligence Dashboard</div>
-                            <div>Professional UK Banking Law Platform</div>
+                            <div class="font-semibold">Educational Dashboard</div>
+                            <div>UK Money and Finance Help Platform for LLB Students</div>
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -354,7 +354,7 @@ class JuriBankCore {
                         </div>
                         <div class="text-sm text-gray-600">
                             <div>• OSCOLA-compliant formatting</div>
-                            <div>• UK banking law database</div>
+                            <div>• UK money and finance database</div>
                             <div>• Real-time validation</div>
                         </div>
                         <button class="btn-primary w-full">Search Citations</button>
@@ -421,12 +421,12 @@ class JuriBankCore {
                         <div class="agent-selector">
                             <select class="form-select" id="agent-select">
                                 <option value="">Select an AI Agent...</option>
-                                <option value="regulatory-compliance">🏛️ UK Regulatory Compliance</option>
-                                <option value="securities-law">📈 UK Securities Law</option>
-                                <option value="fintech-innovation">💡 FinTech Innovation</option>
-                                <option value="aml-compliance">🔒 AML Compliance</option>
-                                <option value="risk-management">⚠️ Risk Management</option>
-                                <option value="banking-law-validator">✅ Banking Law Validator</option>
+                                <option value="regulatory-compliance">🏛️ UK Regulatory Information</option>
+                                <option value="securities-law">📈 UK Securities Information</option>
+                                <option value="fintech-innovation">💡 FinTech Learning</option>
+                                <option value="aml-compliance">🔒 AML Learning</option>
+                                <option value="risk-management">⚠️ Risk Management Learning</option>
+                                <option value="financial-information-validator">✅ Financial Information Validator</option>
                             </select>
                         </div>
                         <div class="chat-interface" id="agent-chat">
@@ -470,8 +470,8 @@ class JuriBankCore {
                                 <div class="font-medium">AI Legal Agent Ready</div>
                             </div>
                             <div class="text-gray-700">
-                                Hello! I'm your ${e.target.options[e.target.selectedIndex].text} specialist. 
-                                How can I assist you with UK banking law today?
+                                Hello! I'm your ${e.target.options[e.target.selectedIndex].text} educational guide. 
+                                How can I help you learn about UK money and finance today?
                             </div>
                         </div>
                     `;
@@ -514,7 +514,7 @@ class JuriBankCore {
                             <div class="typing-indicator">
                                 <span></span><span></span><span></span>
                             </div>
-                            Analyzing your legal query...
+                            Analyzing your learning query...
                         </div>
                     </div>
                 `;
@@ -550,15 +550,15 @@ class JuriBankCore {
         
         // Sample responses based on agent type
         const responses = {
-            'regulatory-compliance': `Based on current PRA and FCA regulations, I can provide guidance on your compliance query. For specific implementation, please consult the latest PRA Rulebook and FCA Handbook requirements.`,
-            'securities-law': `Regarding UK securities law, this falls under FCA jurisdiction. Please refer to MiFID II regulations and the FCA Conduct of Business Sourcebook (COBS) for detailed requirements.`,
-            'fintech-innovation': `For FinTech regulatory matters, consider the FCA's regulatory sandbox and innovation hub initiatives. Digital asset regulations are evolving rapidly in the UK.`,
-            'aml-compliance': `AML compliance requires adherence to the Money Laundering Regulations 2017. This involves customer due diligence, suspicious activity reporting, and ongoing monitoring.`,
-            'risk-management': `Risk management frameworks should align with PRA expectations and Basel III requirements. Consider operational resilience and stress testing obligations.`,
-            'banking-law-validator': `I've checked this against current UK banking law sources. Please ensure you're referencing the most recent regulatory updates and primary legislation.`
+            'regulatory-compliance': `Based on current PRA and FCA regulations, I can provide educational information on compliance topics. For study purposes, please review the latest PRA Rulebook and FCA Handbook requirements.`,
+            'securities-law': `Regarding UK securities information, this falls under FCA jurisdiction. For learning, please refer to MiFID II regulations and the FCA Conduct of Business Sourcebook (COBS).`,
+            'fintech-innovation': `For FinTech learning matters, consider studying the FCA's regulatory sandbox and innovation hub initiatives. Digital asset regulations are evolving rapidly in the UK.`,
+            'aml-compliance': `AML learning requires understanding the Money Laundering Regulations 2017. This involves customer due diligence, suspicious activity reporting, and ongoing monitoring concepts.`,
+            'risk-management': `Risk management learning frameworks should understand PRA expectations and Basel III requirements. Consider operational resilience and stress testing concepts.`,
+            'financial-information-validator': `I've checked this against current UK financial information sources. Please ensure you're referencing the most recent regulatory updates for your studies.`
         };
         
-        const response = responses[agentType] || "I'm ready to assist with your UK banking law query. Please provide more specific details for targeted guidance.";
+        const response = responses[agentType] || "I'm ready to assist with your UK money and finance learning query. Please provide more specific details for targeted educational guidance.";
         
         const responseMessage = document.createElement('div');
         responseMessage.className = 'mb-4';
@@ -568,7 +568,7 @@ class JuriBankCore {
                 <div class="bg-juribank-off-white p-4 rounded-lg flex-1">
                     <div class="text-gray-700">${response}</div>
                     <div class="mt-3 text-xs text-gray-500">
-                        ⚠️ This is AI-generated guidance. Always consult qualified legal counsel for specific advice.
+                        ⚠️ This is AI-generated educational information. Always consult qualified solicitors for specific legal advice. This is for LLB student learning purposes only.
                     </div>
                 </div>
             </div>

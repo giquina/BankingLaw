@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# BankingLaw Platform Bootstrap Script
-# Automated setup for UK Banking Law Platform development environment
+# FinanceHelp Platform Bootstrap Script
+# Automated setup for UK Money and Finance Help Platform development environment
 
 set -e  # Exit on any error
 
 echo "🏛️  JuriBank Platform Bootstrap"
 echo "=================================="
-echo "Setting up UK Banking Law Intelligence Platform..."
+echo "Setting up UK Money and Finance Help Educational Platform..."
 echo ""
 
 # Colors for output

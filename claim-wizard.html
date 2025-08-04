@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Assessment Wizard | JuriBank - Am I Eligible?</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .progress-bar { background: linear-gradient(90deg, #2563eb 0%, #059669 100%); }
+        .option-card { transition: all 0.3s ease; border: 2px solid transparent; }
+        .option-card:hover { border-color: #2563eb; background-color: #eff6ff; }
+        .option-card.selected { border-color: #2563eb; background-color: #dbeafe; }
+        .step-circle { transition: all 0.3s ease; }
+        .step-circle.active { background: #2563eb; color: white; }
+        .step-circle.completed { background: #059669; color: white; }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
+                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-question-circle mr-1"></i>
+                        Help
+                    </button>
+                    <a href="dashboard.html" class="text-student-blue hover:text-blue-700 font-medium">
+                        <i class="fas fa-tachometer-alt mr-1"></i>
+                        Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Am I Eligible for a Refund?</h1>
+            <p class="text-gray-600">Answer a few questions to understand your options</p>
+            <div class="mt-4 inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-info-circle mr-2"></i>
+                This is educational guidance, not legal advice
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center space-x-4 mb-4">
+                <div class="flex items-center">
+                    <div class="step-circle completed w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold">
+                        1
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-900">Claim Type</span>
+                </div>
+                <div class="w-12 h-1 bg-student-green rounded"></div>
+                
+                <div class="flex items-center">
+                    <div class="step-circle active w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold">
+                        2
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-900">Details</span>
+                </div>
+                <div class="w-12 h-1 bg-gray-300 rounded"></div>
+                
+                <div class="flex items-center">
+                    <div class="step-circle w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-sm font-semibold text-gray-600">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-600">Timeline</span>
+                </div>
+                <div class="w-12 h-1 bg-gray-300 rounded"></div>
+                
+                <div class="flex items-center">
+                    <div class="step-circle w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-sm font-semibold text-gray-600">
+                        4
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-600">Results</span>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                <div class="progress-bar h-3 rounded-full" style="width: 50%"></div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600">
+                <span>Step 2 of 4</span>
+                <span>50% Complete</span>
+            </div>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <!-- Current Step Content -->
+            <div id="step-content">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Tell us more about your bank charges</h2>
+                <p class="text-gray-600 mb-8">This helps us calculate your potential refund more accurately. All information is confidential and used for educational purposes only.</p>
+                
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-4">Which bank charged you these fees?</label>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="barclays" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">B</div>
+                                        <span class="font-medium">Barclays</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="hsbc" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-red-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">H</div>
+                                        <span class="font-medium">HSBC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="lloyds" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-green-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">L</div>
+                                        <span class="font-medium">Lloyds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="natwest" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-purple-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">N</div>
+                                        <span class="font-medium">NatWest</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="santander" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-red-500 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">S</div>
+                                        <span class="font-medium">Santander</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <input type="radio" name="bank" value="other" class="mr-3">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-gray-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">?</div>
+                                        <span class="font-medium">Other Bank</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-4">What types of charges did you pay?</label>
+                        <p class="text-sm text-gray-600 mb-4">Select all that apply - you can claim for multiple charge types</p>
+                        <div class="space-y-3">
+                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
+                                <input type="checkbox" name="charges" value="overdraft" class="mt-1 mr-4">
+                                <div>
+                                    <strong class="text-gray-900">Overdraft charges</strong>
+                                    <p class="text-gray-600 text-sm">Daily or monthly fees for going overdrawn</p>
+                                    <p class="text-green-600 text-sm">Average refund: £200-£800</p>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
+                                <input type="checkbox" name="charges" value="returned-payment" class="mt-1 mr-4">
+                                <div>
+                                    <strong class="text-gray-900">Returned payment fees</strong>
+                                    <p class="text-gray-600 text-sm">Charges when direct debits or payments bounce</p>
+                                    <p class="text-green-600 text-sm">Average refund: £150-£600</p>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
+                                <input type="checkbox" name="charges" value="late-payment" class="mt-1 mr-4">
+                                <div>
+                                    <strong class="text-gray-900">Late payment charges</strong>
+                                    <p class="text-gray-600 text-sm">Fees for missing credit card or loan payments</p>
+                                    <p class="text-green-600 text-sm">Average refund: £100-£500</p>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
+                                <input type="checkbox" name="charges" value="admin-fees" class="mt-1 mr-4">
+                                <div>
+                                    <strong class="text-gray-900">Administration fees</strong>
+                                    <p class="text-gray-600 text-sm">Letter fees, phone call charges, account maintenance</p>
+                                    <p class="text-green-600 text-sm">Average refund: £50-£300</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-4">Roughly how many charges have you paid?</label>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <input type="radio" name="frequency" value="1-5" class="mr-3">
+                                <div>
+                                    <strong>1-5 charges</strong>
+                                    <p class="text-gray-600 text-sm">Occasional charges</p>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <input type="radio" name="frequency" value="6-20" class="mr-3">
+                                <div>
+                                    <strong>6-20 charges</strong>
+                                    <p class="text-gray-600 text-sm">Regular charges</p>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <input type="radio" name="frequency" value="21-50" class="mr-3">
+                                <div>
+                                    <strong>21-50 charges</strong>
+                                    <p class="text-gray-600 text-sm">Frequent charges</p>
+                                </div>
+                            </div>
+                            <div class="option-card p-4 rounded-xl cursor-pointer">
+                                <input type="radio" name="frequency" value="50+" class="mr-3">
+                                <div>
+                                    <strong>50+ charges</strong>
+                                    <p class="text-gray-600 text-sm">Very frequent charges</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <button class="flex items-center px-6 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Previous
+                </button>
+                
+                <div class="text-center">
+                    <button class="text-student-blue hover:text-blue-700 text-sm">
+                        <i class="fas fa-save mr-1"></i>
+                        Save Progress
+                    </button>
+                </div>
+                
+                <button class="flex items-center px-6 py-3 bg-student-blue text-white rounded-lg font-medium hover:bg-blue-700">
+                    Continue
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Upgrade Prompt -->
+        <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+            <div class="flex items-start">
+                <div class="bg-student-blue w-12 h-12 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-star text-white"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Get Your Complete Assessment</h3>
+                    <p class="text-gray-600 mb-4">Upgrade to see your detailed eligibility analysis, evidence requirements, and step-by-step action plan.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Detailed refund calculation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Success probability rating</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Custom action plan</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Template letters included</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Priority student support</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-student-green mr-2"></i>
+                            <span class="text-sm">Progress tracking dashboard</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-student-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+                            Upgrade Now - £9.99/month
+                        </button>
+                        <span class="text-sm text-gray-600">7-day free trial • Cancel anytime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-600 mb-4">Need help with this assessment?</p>
+            <div class="flex justify-center space-x-6">
+                <button class="text-student-blue hover:text-blue-700 font-medium">
+                    <i class="fas fa-comments mr-2"></i>
+                    Ask Community
+                </button>
+                <button class="text-student-blue hover:text-blue-700 font-medium">
+                    <i class="fas fa-book mr-2"></i>
+                    View Guide
+                </button>
+                <button class="text-student-blue hover:text-blue-700 font-medium">
+                    <i class="fas fa-headset mr-2"></i>
+                    Contact Students
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-6 w-auto mr-2">
+                    <span class="text-lg font-semibold text-gray-900">JuriBank</span>
+                    <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Educational guidance to help you understand your legal options</p>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="index.html" class="text-gray-600 hover:text-student-blue">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Knowledge Hub</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Community</a>
+                    <a href="#" class="text-gray-600 hover:text-student-blue">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Handle option selection
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const input = this.querySelector('input');
+                if (input.type === 'radio') {
+                    // Remove selected class from all radio options in the same group
+                    document.querySelectorAll(`input[name="${input.name}"]`).forEach(radio => {
+                        radio.closest('.option-card').classList.remove('selected');
+                    });
+                }
+                
+                if (input.type === 'checkbox') {
+                    input.checked = !input.checked;
+                }
+                
+                if (input.checked) {
+                    this.classList.add('selected');
+                } else {
+                    this.classList.remove('selected');
+                }
+            });
+        });
+
+        // Save progress functionality
+        document.querySelector('[data-save]') && document.querySelector('[data-save]').addEventListener('click', function() {
+            // Simulate saving progress
+            this.innerHTML = '<i class="fas fa-check mr-1"></i>Saved!';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-save mr-1"></i>Save Progress';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
-  "name": "JuriBank - UK Banking Law Intelligence",
+  "name": "JuriBank - Legal & Financial Help Platform",
   "short_name": "JuriBank",
-  "description": "Professional UK banking law intelligence platform with 11 specialized AI agents, real-time regulatory monitoring, and comprehensive compliance solutions for legal professionals",
+  "description": "JuriBank v3.0 - Student-led UK legal help platform with freemium model, real-time Gov.UK/FCA/Ombudsman content, community support, and guided tools to help you understand your legal rights and options",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0D1B2A",
@@ -24,11 +24,11 @@
     }
   ],
   "categories": [
-    "legal",
-    "business",
-    "finance",
     "education",
-    "productivity"
+    "legal",
+    "finance",
+    "productivity",
+    "social"
   ],
   "screenshots": [
     {
@@ -48,10 +48,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Regulatory Updates",
-      "short_name": "Updates",
-      "description": "View latest regulatory changes",
-      "url": "/#regulatory-updates",
+      "name": "Guided Assessment",
+      "short_name": "Assessment",
+      "description": "Understand your situation with our step-by-step guide",
+      "url": "/#guided-assessment",
       "icons": [
         {
           "src": "/assets/favicon.svg",
@@ -60,10 +60,10 @@
       ]
     },
     {
-      "name": "Legal Templates",
-      "short_name": "Templates",
-      "description": "Access smart legal templates",
-      "url": "/#templates",
+      "name": "Community Forum",
+      "short_name": "Community",
+      "description": "Connect with peers and get support",
+      "url": "/#community",
       "icons": [
         {
           "src": "/assets/favicon.svg",
@@ -72,10 +72,10 @@
       ]
     },
     {
-      "name": "Compliance Calendar",
-      "short_name": "Calendar",
-      "description": "Check regulatory deadlines",
-      "url": "/#calendar",
+      "name": "Learning Dashboard",
+      "short_name": "Dashboard",
+      "description": "Track your progress and achievements",
+      "url": "/#dashboard",
       "icons": [
         {
           "src": "/assets/favicon.svg",

@@ -1,86 +1,86 @@
 # JuriBank
-## UK's Leading Digital Banking Law Firm
+## UK Legal & Financial Help Platform
 
-**Specialising in Banking Disputes • Regulatory Compliance • Financial Consumer Rights**
+**Making Legal Rights Accessible • Law Student Led • Educational First**
 
-JuriBank is a premium UK banking law firm that combines traditional legal expertise with cutting-edge digital technology to deliver exceptional outcomes for our clients. We specialise exclusively in banking law disputes, regulatory compliance, and financial consumer rights, serving individuals and businesses across England and Wales.
+JuriBank is an innovative UK legal and financial help platform created and run by LLB students. We guide you through understanding your legal rights and options with comprehensive tools, real-time official content, and peer support - helping you make informed decisions about your situation.
 
-### ✨ **Complete Platform Redesign 2024**
+### ✨ **Educational Platform Features v3.0 (2024)**
 
-Our newly redesigned platform features:
-- **Modern Client Portal** with 4 interactive tabs (Legal Services, Case Tracker, Submit Claim, AI Legal Assistant)
-- **Mobile-First Responsive Design** optimized for all devices
-- **Professional Design System** with modern UI/UX standards
-- **Improved User Guidance** with intuitive onboarding and clear navigation
-- **AI-Powered Legal Assistant** providing 24/7 client support
-- **Real-Time Case Tracking** with milestone updates and progress visualization
+Our student-led platform features:
+- **Guided Claim Wizard** with step-by-step assistance for banking disputes
+- **API-Powered Knowledge Hub** with real-time Gov.UK, FCA & Ombudsman content
+- **Community Forum** for peer support and legal information sharing
+- **User Dashboard** with progress tracking and educational milestones
+- **Freemium Model** - Free basic access, paid tier for comprehensive features
+- **Mobile-First Design** optimized for accessibility and ease of use
 
-[![SRA Regulated](https://img.shields.io/badge/SRA-Regulated%20Solicitors-blue)](https://www.sra.org.uk/)
-[![Professional Indemnity](https://img.shields.io/badge/PI%20Insurance-£6M%20Cover-green)](#professional-standards)
-[![Digital First](https://img.shields.io/badge/Digital%20First-24%2F7%20Client%20Portal-orange)](#how-it-works)
-
----
-
-## Our Core Legal Services
-
-### 🏦 **Bank Complaint Resolution**
-Expert representation in disputes with banks, building societies, and financial institutions. We handle mis-selling claims, service failures, and regulatory breaches with a proven track record of successful outcomes.
-
-### 🏠 **Loan & Mortgage Disputes**
-Comprehensive legal support for mortgage disputes, loan agreement challenges, and property finance issues. Our solicitors have extensive experience in consumer credit law and property litigation.
-
-### 💳 **Payment Disputes & Fraud**
-Specialised representation in payment disputes, unauthorised transactions, and financial fraud cases. We work with card providers and payment processors to recover funds and secure compensation.
-
-### ⚖️ **Regulatory Compliance Defence**
-Professional defence against regulatory action by the FCA, PRA, and other financial authorities. We provide strategic advice and representation for compliance investigations and enforcement proceedings.
-
-### 🔒 **Financial Sanctions & AML**
-Expert advice on anti-money laundering compliance, sanctions breaches, and financial crime investigations. Our team includes former regulators with deep expertise in financial crime law.
-
-### 🛡️ **Consumer Banking Rights**
-Protecting consumer rights in banking relationships, including data protection breaches, discrimination claims, and vulnerable customer treatment. We ensure banks meet their regulatory obligations to consumers.
+[![Student Led](https://img.shields.io/badge/Student%20Led-LLB%20Students-blue)](#about-us)
+[![Educational](https://img.shields.io/badge/Educational-Information%20Only-green)](#disclaimers)
+[![API Driven](https://img.shields.io/badge/API%20Driven-Real%20Time%20Content-orange)](#api-integrations)
 
 ---
 
-## How It Works: Your 3-Step Legal Journey
+## Our Core Platform Features
 
-### 1️⃣ **Submit Your Case**
-Complete our secure online assessment form or call our legal helpline. Our intelligent case analysis system reviews your situation and matches you with the right specialist solicitor within 24 hours.
+### 📚 **Comprehensive Information Hub**
+In-depth guidance on banking disputes, consumer rights, and regulatory compliance. We help you understand your situation with clear explanations and practical steps. All information sourced directly from official UK government and regulatory APIs.
 
-### 2️⃣ **Strategy & Action**
-Your dedicated solicitor develops a tailored legal strategy and begins work immediately. Track progress through your personal client portal with real-time updates, document access, and direct communication with your legal team.
+### 🛠️ **Smart Guided Tools**
+Our step-by-step wizards guide you through understanding your rights and exploring your options for banking disputes. We break down complex processes into clear, manageable steps so you know exactly what to do next.
 
-### 3️⃣ **Results & Resolution**
-We fight for the best possible outcome, whether through negotiation, regulatory complaint, or court proceedings. You'll receive regular updates and transparent reporting throughout the process.
+### 🤝 **Community Support**
+Connect with others who've faced similar banking issues in our peer support forum. Share experiences, get insights, and learn from the community. Our LLB student moderators help ensure discussions stay helpful and accurate.
+
+### 📊 **Progress Tracking**
+Your personal dashboard shows your progress through our guides, tracks important deadlines, and helps you stay organized. Visual indicators keep you on track as you work through your banking dispute resolution.
+
+### 🔄 **Always Up-to-Date Information**
+Direct integration with Gov.UK, FCA, Financial Ombudsman Service, and other official sources means you always get the most current information. Our content updates automatically so you're never working with outdated guidance.
+
+### 💡 **Personalized Recommendations**
+Our AI analyzes your specific situation to suggest the most relevant guides, tools, and next steps. Get personalized pathways through your banking dispute with recommendations tailored to your circumstances.
+
+---
+
+## How It Works: Your 3-Step Learning Journey
+
+### 1️⃣ **Understand Your Situation**
+Start with our guided questionnaire to explore your banking issue. We'll help you identify what's happened, understand your rights, and see what options might be available to you.
+
+### 2️⃣ **Get Prepared**
+Access tailored guides, helpful templates, and step-by-step instructions for your specific situation. Track your progress through our dashboard and connect with others who've been through similar experiences.
+
+### 3️⃣ **Take Confident Action**
+With a clear understanding of your situation and options, you can take confident next steps. Whether that's contacting the Financial Ombudsman, using our templates, or seeking professional help - you'll know exactly what to do.
 
 ---
 
 ## Why Choose JuriBank?
 
-### ⚡ **Digital-First Advantage**
-- **24/7 Client Portal**: Access your case files, documents, and progress updates anytime
-- **Real-Time Communication**: Direct messaging with your solicitor and instant case notifications
-- **Transparent Tracking**: See exactly what work is being done and when
-- **Smart Case Management**: AI-powered insights to strengthen your case strategy
+### 🎓 **Student-Led Innovation**
+- **LLB Student Team**: Current law students passionate about making legal information accessible
+- **Educational Focus**: Committed to learning and teaching while maintaining compliance
+- **Modern Approach**: Digital-first platform designed for today's legal information needs
+- **Community Driven**: Built by students, for people who need legal information
 
-### 💰 **Transparent Pricing**
-- **No Hidden Fees**: Clear, upfront pricing with detailed cost estimates
-- **Flexible Payment Options**: Fixed fees, hourly rates, or conditional fee arrangements
-- **Professional Rates**: Competitive pricing from £550-£750 per hour for specialist banking law expertise
-- **Cost Protection**: Professional indemnity insurance and regulatory fee protection
+### 🆓 **Flexible Access Options**
+- **Free Access**: Essential guides, community support, and core tools at no cost
+- **Premium Features**: Advanced tools, priority support, and comprehensive resources
+- **Transparent Pricing**: Clear subscription options with no hidden fees
+- **Fair for Everyone**: Basic help is always free - premium features for those who want more
 
-### 👨‍⚖️ **Expert Solicitors**
-- **SRA Regulated**: All solicitors are fully qualified and regulated by the Solicitors Regulation Authority
-- **Banking Law Specialists**: Exclusive focus on banking, finance, and regulatory law
-- **Proven Track Record**: Successful outcomes in complex banking disputes and regulatory matters
-- **Former Regulators**: Team includes former FCA and PRA officials with insider regulatory knowledge
+### 🔗 **Real-Time API Integration**
+- **Gov.UK Integration**: Direct access to official government guidance and forms
+- **FCA Data Feeds**: Real-time regulatory updates and consumer alerts
+- **Ombudsman API**: Current complaint statistics and decision summaries
+- **Always Current**: Information updates automatically from authoritative sources
 
-### 🛡️ **Professional Standards**
-- **£6M Professional Indemnity**: Comprehensive insurance coverage for client protection
-- **Client Confidentiality**: Strict adherence to solicitor-client privilege and data protection
-- **Regulatory Compliance**: Full compliance with SRA codes of conduct and practice
-- **Quality Assurance**: Rigorous case review processes and client satisfaction monitoring
+### 🤝 **Responsible & Ethical**
+- **Clear Boundaries**: We help you understand information and explore options responsibly
+- **Regulatory Awareness**: Built with understanding of professional legal service regulations
+- **Professional Connections**: Clear pathways to qualified legal professionals when you need them
+- **Ethical Standards**: Committed to helping people make informed decisions responsibly
 
 ---
 
@@ -111,23 +111,23 @@ Our completely redesigned technology platform is built specifically for deliveri
 
 ## Getting Started
 
-### 📞 **Initial Consultation**
-**Free 15-minute consultation to assess your case**
+### 📚 **Free Information Access**
+**Start exploring our free educational resources**
 
-**Phone**: +44 20 7946 0123  
-**Email**: legal@juribank.co.uk  
-**Online**: Book consultation at [juribank.co.uk/consultation](https://juribank.co.uk/consultation)
+**Website**: [juribank.co.uk](https://juribank.co.uk)  
+**Email**: hello@juribank.co.uk  
+**Community**: Join our forum for peer support and information sharing
 
-**Office Hours**: Monday-Friday 9:00-18:00, Emergency line 24/7
+**Available**: 24/7 online platform with real-time content updates
 
-### 🌐 **Client Portal Access**
-Once you engage our services, you'll receive secure login credentials to access your dedicated client portal at [portal.juribank.co.uk](https://portal.juribank.co.uk)
+### 🔑 **Platform Access**
+Create your free account to access basic guides and community features. Upgrade to our paid tier for comprehensive tools and priority support.
 
-### 📧 **Legal Support**
-- **General Enquiries**: info@juribank.co.uk
-- **New Cases**: cases@juribank.co.uk  
-- **Existing Clients**: support@juribank.co.uk
-- **Media & PR**: media@juribank.co.uk
+### 📧 **Student Team Contact**
+- **General Questions**: hello@juribank.co.uk
+- **Platform Support**: support@juribank.co.uk  
+- **Community Issues**: community@juribank.co.uk
+- **Feedback**: feedback@juribank.co.uk
 
 ---
 
@@ -159,53 +159,49 @@ JuriBank employs 11 specialized AI agents providing expert legal and technical s
 
 ---
 
-## Professional Standards & Regulation
+## Educational Platform Standards
 
-### ⚖️ **Solicitors Regulation Authority (SRA)**
-JuriBank is authorised and regulated by the Solicitors Regulation Authority. All our solicitors maintain current practicing certificates and comply with the SRA Standards and Regulations.
+### 🎓 **Student-Led Initiative**
+JuriBank is created and maintained by dedicated LLB students who are passionate about making legal information accessible to everyone. We bring fresh perspectives and innovative approaches to helping people understand their rights.
 
-**SRA Number**: [SRA Registration Number]  
-**Regulatory Information**: Available at [sra.org.uk](https://www.sra.org.uk/)
+**Academic Background**: Current LLB students from UK universities  
+**Educational Purpose**: Helping people understand legal information and their rights
 
-### 🛡️ **Professional Indemnity Insurance**
-We maintain comprehensive professional indemnity insurance of £6 million per claim through [Insurance Provider], providing robust protection for our clients.
+### 📋 **Information Standards**
+We maintain high standards for educational content while staying within regulatory boundaries for student-led initiatives.
 
-### 🔒 **Client Confidentiality & Data Protection**
-- **Solicitor-Client Privilege**: All communications protected by legal professional privilege
-- **GDPR Compliance**: Full compliance with UK and EU data protection regulations
-- **Data Security**: ISO 27001 certified security standards and regular penetration testing
-- **Client Money Protection**: Client funds held in designated accounts with major UK banks
+### 🔒 **Data Protection & Privacy**
+- **GDPR Compliance**: Full compliance with UK data protection regulations
+- **Data Security**: Industry-standard security for user accounts and information
+- **Privacy First**: No unnecessary data collection, transparent privacy policy
+- **User Control**: Easy account deletion and data export options
 
-### 📋 **Quality Standards**
-- **Lexcel Accreditation**: Practice management standard for legal practices
-- **ISO 9001**: Quality management system certification
-- **Cyber Essentials Plus**: Government-backed cybersecurity certification
-- **Client Satisfaction**: Regular independent monitoring and feedback collection
+### 📊 **Quality Assurance**
+- **Source Verification**: All information verified against official sources
+- **Regular Updates**: Content updated automatically via API integrations
+- **Peer Review**: Student team reviews all educational content
+- **Community Moderation**: Active moderation of forums and community features
 
 ---
 
-## Legal Disclaimers
+## Important Disclaimers
 
-**Professional Legal Services**: JuriBank provides professional legal services through qualified solicitors regulated by the Solicitors Regulation Authority. We provide actual legal representation and advice, not merely information or guidance.
+**Important Information**: JuriBank is an educational platform created by LLB students to help people understand legal information. For specific legal advice about your situation, always consult qualified solicitors or barristers.
 
-**No Win, No Fee**: Conditional Fee Arrangements available for eligible cases, subject to after-the-event insurance requirements and success fee agreements.
+**Information Sources**: We use official government APIs and authoritative sources, but information can change. Always verify current details with official sources before taking action.
 
-**Regulatory Authority**: This firm is authorised and regulated by the Solicitors Regulation Authority under registration number [SRA Number]. The SRA Standards and Regulations can be accessed at [sra.org.uk](https://www.sra.org.uk/).
+**Geographic Focus**: Our information focuses on England and Wales law. Legal systems in Scotland and Northern Ireland may differ.
 
-**Professional Indemnity**: We are covered by £6 million professional indemnity insurance provided by [Insurance Provider]. Details available upon request.
-
-**Complaints Procedure**: We maintain a formal complaints procedure. If you are dissatisfied with our service, please contact our Client Care Manager. If we cannot resolve your complaint, you may refer it to the Legal Ombudsman at [legalombudsman.org.uk](https://www.legalombudsman.org.uk/).
-
-**Jurisdiction**: Our services are provided under the laws of England and Wales. We are qualified to provide legal services in England and Wales only.
+**Professional Support**: When you need professional legal services, we provide clear pathways to qualified, regulated legal professionals.
 
 ---
 
 **Contact Information**  
-**JuriBank Legal Services Limited**  
-20 Fenchurch Street, London EC3M 3BY  
-Tel: +44 20 7946 0123 | Email: legal@juribank.co.uk  
-Web: [juribank.co.uk](https://juribank.co.uk) | Portal: [portal.juribank.co.uk](https://portal.juribank.co.uk)
+**JuriBank Educational Platform**  
+Student-Led Legal Information Initiative  
+Email: hello@juribank.co.uk  
+Web: [juribank.co.uk](https://juribank.co.uk) | Platform: [portal.juribank.co.uk](https://portal.juribank.co.uk)
 
 ---
 
-*© 2024 JuriBank Legal Services Limited. All rights reserved. JuriBank is a trading name of JuriBank Legal Services Limited, a company registered in England and Wales (Company No. [Company Number]). Authorised and regulated by the Solicitors Regulation Authority (SRA No. [SRA Number]).*
+*© 2024 JuriBank Educational Platform. Created by LLB students to make legal information accessible. This is an educational project and does not constitute a law firm or legal service provider.*

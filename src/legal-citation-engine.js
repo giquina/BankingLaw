@@ -1,5 +1,5 @@
-// Legal Citation Engine
-// JuriBank - UK Banking Law Intelligence Platform
+// Educational Citation Engine
+// JuriBank - UK Money and Finance Help Educational Platform
 
 class LegalCitationEngine {
     constructor() {
@@ -13,7 +13,7 @@ class LegalCitationEngine {
 
     // Initialize comprehensive UK legal citation database
     initializeDatabase() {
-        console.log('📚 Initializing JuriBank Legal Citation Database...');
+        console.log('📚 Initializing JuriBank Educational Citation Database...');
         
         // Key UK Banking Statutes
         this.addStatute({

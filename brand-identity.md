@@ -2,26 +2,26 @@
 
 ## Brand Overview
 
-**JuriBank** is a professional platform focused on modern banking law, pensions, compliance, and intelligent legal workflows.
+**JuriBank** is a professional platform focused on modern money and finance help, pensions, compliance, and intelligent legal workflows.
 
 ## Brand Messaging
 
 ### Elevator Pitch (1 sentence)
-JuriBank delivers comprehensive UK banking law intelligence through advanced legal technology, empowering legal professionals and financial institutions with real-time regulatory insights and compliance solutions.
+JuriBank delivers comprehensive UK money and finance help intelligence through advanced legal technology, empowering legal professionals and financial institutions with real-time regulatory insights and compliance solutions.
 
 ### Brand Story (1 paragraph)
-JuriBank was born from the recognition that the legal and financial industries need sophisticated, reliable tools to navigate the increasingly complex UK regulatory landscape. We combine deep legal expertise with cutting-edge technology to provide unparalleled access to banking law intelligence, regulatory monitoring, and compliance management. Our platform serves as the trusted advisor for law firms, banks, fintech companies, and compliance professionals who demand precision, reliability, and strategic insight in their regulatory work.
+JuriBank was born from the recognition that the legal and financial industries need sophisticated, reliable tools to navigate the increasingly complex UK regulatory landscape. We combine deep legal expertise with cutting-edge technology to provide unparalleled access to money and finance help intelligence, regulatory monitoring, and compliance management. Our platform serves as the trusted advisor for law firms, banks, fintech companies, and compliance professionals who demand precision, reliability, and strategic insight in their regulatory work.
 
 ### Core Value Statements
 
-1. **Precision & Reliability**: We deliver 99.5%+ accuracy in legal citations, regulatory updates, and compliance guidance, backed by expert validation from qualified UK solicitors.
+1. **Precision & Reliability**: We deliver 99.5%+ accuracy in educational citations, regulatory updates, and learning guidance, backed by supervision from qualified UK solicitors for LLB student education.
 
 2. **Regulatory Excellence**: We provide comprehensive coverage of UK banking regulation with real-time monitoring of PRA, FCA, HMRC, and Bank of England updates, ensuring our clients never miss critical changes.
 
-3. **Professional Empowerment**: We enhance legal professionals' capabilities through intelligent workflows, smart templates, and comprehensive case databases that streamline complex banking law work.
+3. **Professional Empowerment**: We enhance legal professionals' capabilities through intelligent workflows, smart templates, and comprehensive case databases that streamline complex money and finance help work.
 
 ### Social Media Bio (160 characters)
-UK Banking Law Intelligence Platform | Real-time regulatory updates | Legal templates | Compliance tools | Trusted by law firms & financial institutions
+UK Money and Finance Help Intelligence Platform | Real-time regulatory updates | Legal templates | Compliance tools | Trusted by law firms & financial institutions
 
 ## Brand Colors
 
@@ -67,7 +67,7 @@ UK Banking Law Intelligence Platform | Real-time regulatory updates | Legal temp
 ## Voice & Tone
 
 ### Voice Characteristics
-- **Authoritative**: Deep expertise in banking law
+- **Authoritative**: Deep expertise in money and finance help
 - **Professional**: Serious, reliable, trustworthy
 - **Clear**: Complex legal concepts explained simply
 - **Supportive**: Helpful guidance for professionals
@@ -81,12 +81,12 @@ UK Banking Law Intelligence Platform | Real-time regulatory updates | Legal temp
 
 ## Brand Positioning
 
-**For legal professionals and financial institutions** who need reliable UK banking law intelligence, **JuriBank** is the comprehensive regulatory platform **that provides real-time updates, expert analysis, and intelligent workflows** unlike traditional legal research tools **because we combine deep regulatory expertise with advanced technology** to deliver unmatched accuracy and insight.
+**For legal professionals and financial institutions** who need reliable UK money and finance help intelligence, **JuriBank** is the comprehensive regulatory platform **that provides real-time updates, expert analysis, and intelligent workflows** unlike traditional legal research tools **because we combine deep regulatory expertise with advanced technology** to deliver unmatched accuracy and insight.
 
 ## Competitive Advantages
 
 1. **Real-time Regulatory Monitoring**: Automated tracking across all UK banking regulators
-2. **Expert Validation**: All content reviewed by qualified UK banking law solicitors  
+2. **Educational Supervision**: All content reviewed by qualified UK solicitors for LLB student learning purposes  
 3. **Intelligent Workflows**: Smart templates and guided compliance processes
 4. **Comprehensive Coverage**: Full spectrum from PRA prudential rules to FCA conduct requirements
-5. **Professional Focus**: Purpose-built for legal and financial professionals
+5. **Educational Focus**: Purpose-built for LLB students learning about money and finance

@@ -163,12 +163,12 @@
     "regulatory_coverage": "PRA, FCA, HMRC, Bank of England",
     "jurisdiction_focus": "United Kingdom post-Brexit",
     "update_frequency": "Real-time regulatory monitoring",
-    "quality_assurance": "Expert solicitor validation"
+    "quality_assurance": "Educational supervision by qualified solicitors"
   },
   
   "business_model": {
-    "target_users": ["Law firms", "Banks", "FinTech companies", "Compliance officers"],
-    "value_proposition": "AI-powered UK banking law intelligence",
+    "target_users": ["LLB students", "Educational institutions", "Students learning finance", "Academic researchers"],
+    "value_proposition": "AI-powered UK money and finance help education",
     "competitive_advantage": "Real-time regulatory updates + Claude AI integration",
     "pricing_model": "Subscription tiers (Free, Pro £15/mo, Firm £50+/user, Enterprise)"
   },

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Demo | JuriBank - Mobile-First Legal Platform</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
+        .mobile-card { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .touch-friendly { min-height: 44px; min-width: 44px; }
+        .swipe-indicator { 
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: swipe 2s infinite;
+        }
+        @keyframes swipe {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Mobile-specific optimizations */
+        @media (max-width: 640px) {
+            .mobile-padding { padding-left: 1rem; padding-right: 1rem; }
+            .mobile-text { font-size: 0.875rem; line-height: 1.25rem; }
+            .mobile-header { font-size: 1.5rem; line-height: 2rem; }
+            .thumb-scroll { 
+                scrollbar-width: none; 
+                -ms-overflow-style: none;
+            }
+            .thumb-scroll::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Mobile Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="flex items-center justify-between p-4">
+            <div class="flex items-center">
+                <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-6 w-auto">
+                <span class="ml-2 font-semibold text-gray-900">JuriBank</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button class="touch-friendly flex items-center justify-center w-10 h-10 rounded-full bg-gray-100">
+                    <i class="fas fa-user text-gray-600"></i>
+                </button>
+                <button class="touch-friendly flex items-center justify-center w-10 h-10 rounded-full bg-student-blue text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Hero -->
+    <section class="gradient-bg text-white p-6 text-center">
+        <h1 class="text-2xl font-bold mb-3">Legal Help by Students</h1>
+        <p class="text-sm opacity-90 mb-6">We guide you through your options, educational information only</p>
+        <button class="w-full bg-white text-student-blue py-4 rounded-xl font-semibold touch-friendly">
+            <i class="fas fa-rocket mr-2"></i>
+            Start Free Assessment
+        </button>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="bg-white p-4">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="text-center">
+                <div class="bg-student-blue/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-graduation-cap text-student-blue"></i>
+                </div>
+                <h3 class="font-semibold text-sm">LLB Students</h3>
+                <p class="text-xs text-gray-600">Qualified law students</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-student-green/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-database text-student-green"></i>
+                </div>
+                <h3 class="font-semibold text-sm">Real Gov Data</h3>
+                <p class="text-xs text-gray-600">Official sources only</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tools -->
+    <section class="p-4">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Quick Tools</h2>
+        <div class="space-y-3">
+            <div class="bg-white p-4 rounded-xl mobile-card">
+                <div class="flex items-center">
+                    <div class="bg-student-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-question-circle text-student-blue"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">Am I Eligible?</h3>
+                        <p class="text-sm text-gray-600">2-minute assessment</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mobile-card">
+                <div class="flex items-center">
+                    <div class="bg-student-green/10 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-calculator text-student-green"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">Refund Calculator</h3>
+                        <p class="text-sm text-gray-600">Estimate your refund</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mobile-card">
+                <div class="flex items-center">
+                    <div class="bg-student-orange/10 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-comments text-student-orange"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">Ask Community</h3>
+                        <p class="text-sm text-gray-600">Get help from others</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="p-4">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Choose Your Plan</h2>
+        
+        <!-- Free Plan -->
+        <div class="bg-white rounded-xl p-4 mb-4 mobile-card">
+            <div class="text-center mb-4">
+                <h3 class="font-bold text-lg">Free Explorer</h3>
+                <div class="text-2xl font-bold text-gray-900">£0</div>
+                <p class="text-sm text-gray-600">Perfect for getting started</p>
+            </div>
+            <ul class="space-y-2 mb-4 text-sm">
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span>5 claim types covered</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span>Basic eligibility checker</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span>3 saved items</span>
+                </li>
+            </ul>
+            <button class="w-full bg-gray-100 text-gray-900 py-3 rounded-lg font-medium touch-friendly">
+                Get Started Free
+            </button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="bg-white rounded-xl p-4 mobile-card border-2 border-student-blue relative">
+            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-student-blue text-white px-3 py-1 rounded-full text-xs font-semibold">
+                MOST POPULAR
+            </div>
+            <div class="text-center mb-4">
+                <h3 class="font-bold text-lg">Full Access</h3>
+                <div class="text-2xl font-bold text-gray-900">£9.99<span class="text-sm font-normal">/month</span></div>
+                <p class="text-sm text-gray-600">Everything you need</p>
+            </div>
+            <ul class="space-y-2 mb-4 text-sm">
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span><strong>All claim types</strong> (25+ covered)</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span><strong>Advanced tools</strong></span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span><strong>Unlimited saves</strong></span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check text-student-green mr-2"></i>
+                    <span><strong>Priority support</strong></span>
+                </li>
+            </ul>
+            <button class="w-full bg-student-blue text-white py-3 rounded-lg font-medium touch-friendly">
+                Start 7-Day Free Trial
+            </button>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="p-4">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Your Progress</h2>
+        
+        <div class="bg-white rounded-xl p-4 mobile-card mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold">Current Claim</h3>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">In Progress</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">Bank Charges Refund • Barclays</p>
+            
+            <div class="mb-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>Progress</span>
+                    <span>3 of 5 steps</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-student-blue h-2 rounded-full" style="width: 60%"></div>
+                </div>
+            </div>
+            
+            <button class="w-full bg-student-blue text-white py-2 rounded-lg text-sm font-medium touch-friendly">
+                Continue Claim
+            </button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white p-3 rounded-xl mobile-card text-center">
+                <div class="text-2xl font-bold text-gray-900">£1,247</div>
+                <p class="text-xs text-gray-600">Potential Refund</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl mobile-card text-center">
+                <div class="text-2xl font-bold text-gray-900">3/3</div>
+                <p class="text-xs text-red-600">Saves (Limit reached)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Updates -->
+    <section class="p-4">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Latest Updates</h2>
+        
+        <!-- Swipeable Cards -->
+        <div class="overflow-x-auto thumb-scroll">
+            <div class="flex space-x-3 pb-4">
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl p-4 mobile-card">
+                    <div class="flex items-center mb-2">
+                        <div class="bg-red-100 w-8 h-8 rounded-lg flex items-center justify-center mr-2">
+                            <i class="fas fa-exclamation-triangle text-red-600 text-sm"></i>
+                        </div>
+                        <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">URGENT</span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-2">New FCA Overdraft Rules</h3>
+                    <p class="text-xs text-gray-600 mb-3">Changes affecting your current claims...</p>
+                    <button class="text-red-600 text-xs font-medium">Read More →</button>
+                </div>
+
+                <div class="flex-shrink-0 w-64 bg-white rounded-xl p-4 mobile-card">
+                    <div class="flex items-center mb-2">
+                        <div class="bg-green-100 w-8 h-8 rounded-lg flex items-center justify-center mr-2">
+                            <i class="fas fa-chart-line text-green-600 text-sm"></i>
+                        </div>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">GOOD NEWS</span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-2">Success Rates Up 15%</h3>
+                    <p class="text-xs text-gray-600 mb-3">Banking complaints more successful...</p>
+                    <button class="text-green-600 text-xs font-medium">View Stats →</button>
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <div class="swipe-indicator h-1 w-16 bg-gray-300 rounded mx-auto"></div>
+                <p class="text-xs text-gray-500 mt-1">Swipe for more</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
+        <div class="flex justify-around">
+            <button class="flex flex-col items-center py-2 text-student-blue">
+                <i class="fas fa-home text-lg mb-1"></i>
+                <span class="text-xs">Home</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-gray-600">
+                <i class="fas fa-search text-lg mb-1"></i>
+                <span class="text-xs">Search</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-gray-600">
+                <i class="fas fa-comments text-lg mb-1"></i>
+                <span class="text-xs">Community</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-gray-600">
+                <i class="fas fa-user text-lg mb-1"></i>
+                <span class="text-xs">Profile</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile spacing for bottom nav -->
+    <div class="h-16"></div>
+
+    <!-- Demo Controls -->
+    <div class="fixed top-20 right-4 bg-black/80 text-white p-3 rounded-lg z-50">
+        <h4 class="font-semibold text-sm mb-2">Mobile Demo</h4>
+        <div class="space-y-2 text-xs">
+            <div>✓ Touch-friendly buttons (44px+)</div>
+            <div>✓ Swipeable content</div>
+            <div>✓ Thumb-friendly navigation</div>
+            <div>✓ Optimized typography</div>
+            <div>✓ Progressive disclosure</div>
+        </div>
+        <button onclick="this.parentElement.style.display='none'" class="absolute -top-2 -right-2 bg-red-500 w-6 h-6 rounded-full text-xs">×</button>
+    </div>
+
+    <!-- JavaScript for mobile interactions -->
+    <script>
+        // Simulate mobile menu toggle
+        document.querySelector('.fa-bars').addEventListener('click', function() {
+            alert('Mobile menu would slide in from the right with full navigation options');
+        });
+
+        // Touch feedback for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Demonstrate responsive behavior
+        function showResponsiveInfo() {
+            const width = window.innerWidth;
+            const info = document.createElement('div');
+            info.className = 'fixed top-4 left-4 bg-blue-500 text-white p-2 rounded text-sm z-50';
+            info.innerHTML = `Screen: ${width}px ${width < 640 ? '(Mobile)' : width < 1024 ? '(Tablet)' : '(Desktop)'}`;
+            document.body.appendChild(info);
+            setTimeout(() => info.remove(), 3000);
+        }
+
+        window.addEventListener('resize', showResponsiveInfo);
+        showResponsiveInfo();
+    </script>
+</body>
+</html>

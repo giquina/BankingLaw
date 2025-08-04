@@ -1,5 +1,5 @@
 // Compliance Calendar System
-// JuriBank - UK Banking Law Intelligence Platform
+// JuriBank - UK Money and Finance Help Educational Platform
 
 class ComplianceCalendar {
     constructor() {
