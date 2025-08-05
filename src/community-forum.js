@@ -573,8 +573,8 @@ class CommunityForumAPI {
         const educationalScore = educationalWords.filter(word => contentLower.includes(word)).length;
         const adviceScore = adviceWords.filter(word => contentLower.includes(word)).length;
         
-        if (educationalScore > adviceScore) return 'educational';
-        if (adviceScore > educationalScore) return 'advice-seeking';
+        if (educationalScore > adviceScore) {return 'educational';}
+        if (adviceScore > educationalScore) {return 'advice-seeking';}
         return 'discussion';
     }
 

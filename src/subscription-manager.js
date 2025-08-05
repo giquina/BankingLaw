@@ -610,7 +610,7 @@ class SubscriptionManager {
      */
     initializeUsageTracking(userId) {
         const existingUsage = this.usageLimits.get(userId);
-        if (existingUsage) return existingUsage;
+        if (existingUsage) {return existingUsage;}
 
         const usage = {};
         this.usageLimits.set(userId, usage);

@@ -427,8 +427,8 @@ class ProfessionalMatchingQuiz {
                 const hourlyBudget = document.getElementById('hourly-budget');
                 const totalBudget = document.getElementById('total-budget');
                 
-                if (hourlyBudget) hourlyBudget.style.display = 'none';
-                if (totalBudget) totalBudget.style.display = 'none';
+                if (hourlyBudget) {hourlyBudget.style.display = 'none';}
+                if (totalBudget) {totalBudget.style.display = 'none';}
                 
                 if (e.target.value === 'hourly-rate' && hourlyBudget) {
                     hourlyBudget.style.display = 'block';
@@ -545,7 +545,7 @@ class ProfessionalMatchingQuiz {
         const formElements = this.container.querySelectorAll('input, select, textarea');
         formElements.forEach(element => {
             if (element.type === 'checkbox') {
-                if (!stepData[element.name]) stepData[element.name] = [];
+                if (!stepData[element.name]) {stepData[element.name] = [];}
                 if (element.checked) {
                     stepData[element.name].push(element.value);
                 }

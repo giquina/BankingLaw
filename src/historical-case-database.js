@@ -311,25 +311,25 @@ class HistoricalCaseDatabase {
         
         if (success) {
             // More likely to have positive factors in successful cases
-            if (totalCharges > 1000) positiveFactors.push('charges_exceed_500');
-            if (Math.random() < 0.4) positiveFactors.push('multiple_charge_types');
-            if (Math.random() < 0.3) positiveFactors.push('documented_hardship');
-            if (Math.random() < 0.35) positiveFactors.push('bank_error_evidence');
-            if (Math.random() < 0.25) positiveFactors.push('regulatory_breach');
+            if (totalCharges > 1000) {positiveFactors.push('charges_exceed_500');}
+            if (Math.random() < 0.4) {positiveFactors.push('multiple_charge_types');}
+            if (Math.random() < 0.3) {positiveFactors.push('documented_hardship');}
+            if (Math.random() < 0.35) {positiveFactors.push('bank_error_evidence');}
+            if (Math.random() < 0.25) {positiveFactors.push('regulatory_breach');}
             
             // Even successful cases may have some negative factors
-            if (Math.random() < 0.1) negativeFactors.push('customer_error');
-            if (Math.random() < 0.15) negativeFactors.push('no_documentation');
+            if (Math.random() < 0.1) {negativeFactors.push('customer_error');}
+            if (Math.random() < 0.15) {negativeFactors.push('no_documentation');}
         } else {
             // Unsuccessful cases more likely to have negative factors
-            if (totalCharges < 200) negativeFactors.push('charges_under_100');
-            if (Math.random() < 0.6) negativeFactors.push('single_incident');
-            if (Math.random() < 0.5) negativeFactors.push('no_documentation');
-            if (Math.random() < 0.4) negativeFactors.push('customer_error');
-            if (Math.random() < 0.2) negativeFactors.push('statute_limitation');
+            if (totalCharges < 200) {negativeFactors.push('charges_under_100');}
+            if (Math.random() < 0.6) {negativeFactors.push('single_incident');}
+            if (Math.random() < 0.5) {negativeFactors.push('no_documentation');}
+            if (Math.random() < 0.4) {negativeFactors.push('customer_error');}
+            if (Math.random() < 0.2) {negativeFactors.push('statute_limitation');}
             
             // Some unsuccessful cases still have positive factors
-            if (Math.random() < 0.2) positiveFactors.push('multiple_charge_types');
+            if (Math.random() < 0.2) {positiveFactors.push('multiple_charge_types');}
         }
         
         return { positive: positiveFactors, negative: negativeFactors };
@@ -340,20 +340,20 @@ class HistoricalCaseDatabase {
         const negativeFactors = [];
         
         if (success) {
-            if (Math.random() < 0.6) positiveFactors.push('single_premium_ppi');
-            if (Math.random() < 0.7) positiveFactors.push('no_ppi_explanation');
-            if (Math.random() < 0.4) positiveFactors.push('ineligible_circumstances');
-            if (Math.random() < 0.3) positiveFactors.push('duplicate_coverage');
-            if (Math.random() < 0.5) positiveFactors.push('pressure_selling');
+            if (Math.random() < 0.6) {positiveFactors.push('single_premium_ppi');}
+            if (Math.random() < 0.7) {positiveFactors.push('no_ppi_explanation');}
+            if (Math.random() < 0.4) {positiveFactors.push('ineligible_circumstances');}
+            if (Math.random() < 0.3) {positiveFactors.push('duplicate_coverage');}
+            if (Math.random() < 0.5) {positiveFactors.push('pressure_selling');}
             
-            if (Math.random() < 0.1) negativeFactors.push('clear_ppi_benefit');
+            if (Math.random() < 0.1) {negativeFactors.push('clear_ppi_benefit');}
         } else {
-            if (Math.random() < 0.4) negativeFactors.push('clear_ppi_benefit');
-            if (Math.random() < 0.3) negativeFactors.push('proper_explanation');
-            if (Math.random() < 0.3) negativeFactors.push('voluntary_purchase');
-            if (Math.random() < 0.2) negativeFactors.push('previous_successful_claim');
+            if (Math.random() < 0.4) {negativeFactors.push('clear_ppi_benefit');}
+            if (Math.random() < 0.3) {negativeFactors.push('proper_explanation');}
+            if (Math.random() < 0.3) {negativeFactors.push('voluntary_purchase');}
+            if (Math.random() < 0.2) {negativeFactors.push('previous_successful_claim');}
             
-            if (Math.random() < 0.3) positiveFactors.push('no_ppi_explanation');
+            if (Math.random() < 0.3) {positiveFactors.push('no_ppi_explanation');}
         }
         
         return { positive: positiveFactors, negative: negativeFactors };
@@ -364,20 +364,20 @@ class HistoricalCaseDatabase {
         const negativeFactors = [];
         
         if (success) {
-            if (Math.random() < 0.7) positiveFactors.push('unused_benefits');
-            if (Math.random() < 0.5) positiveFactors.push('no_benefit_explanation');
-            if (Math.random() < 0.4) positiveFactors.push('unsuitable_benefits');
-            if (Math.random() < 0.3) positiveFactors.push('excessive_fees');
-            if (Math.random() < 0.4) positiveFactors.push('misleading_sales');
+            if (Math.random() < 0.7) {positiveFactors.push('unused_benefits');}
+            if (Math.random() < 0.5) {positiveFactors.push('no_benefit_explanation');}
+            if (Math.random() < 0.4) {positiveFactors.push('unsuitable_benefits');}
+            if (Math.random() < 0.3) {positiveFactors.push('excessive_fees');}
+            if (Math.random() < 0.4) {positiveFactors.push('misleading_sales');}
             
-            if (Math.random() < 0.1) negativeFactors.push('benefits_actively_used');
+            if (Math.random() < 0.1) {negativeFactors.push('benefits_actively_used');}
         } else {
-            if (Math.random() < 0.6) negativeFactors.push('benefits_actively_used');
-            if (Math.random() < 0.4) negativeFactors.push('clear_fee_disclosure');
-            if (Math.random() < 0.3) negativeFactors.push('suitable_products');
-            if (Math.random() < 0.3) negativeFactors.push('voluntary_upgrade');
+            if (Math.random() < 0.6) {negativeFactors.push('benefits_actively_used');}
+            if (Math.random() < 0.4) {negativeFactors.push('clear_fee_disclosure');}
+            if (Math.random() < 0.3) {negativeFactors.push('suitable_products');}
+            if (Math.random() < 0.3) {negativeFactors.push('voluntary_upgrade');}
             
-            if (Math.random() < 0.2) positiveFactors.push('unused_benefits');
+            if (Math.random() < 0.2) {positiveFactors.push('unused_benefits');}
         }
         
         return { positive: positiveFactors, negative: negativeFactors };
@@ -388,20 +388,20 @@ class HistoricalCaseDatabase {
         const negativeFactors = [];
         
         if (success) {
-            if (Math.random() < 0.6) positiveFactors.push('unsuitable_risk_profile');
-            if (Math.random() < 0.5) positiveFactors.push('inadequate_advice');
-            if (Math.random() < 0.4) positiveFactors.push('excessive_charges');
-            if (Math.random() < 0.3) positiveFactors.push('pension_transfer_loss');
-            if (Math.random() < 0.4) positiveFactors.push('poor_documentation');
+            if (Math.random() < 0.6) {positiveFactors.push('unsuitable_risk_profile');}
+            if (Math.random() < 0.5) {positiveFactors.push('inadequate_advice');}
+            if (Math.random() < 0.4) {positiveFactors.push('excessive_charges');}
+            if (Math.random() < 0.3) {positiveFactors.push('pension_transfer_loss');}
+            if (Math.random() < 0.4) {positiveFactors.push('poor_documentation');}
             
-            if (Math.random() < 0.1) negativeFactors.push('suitable_advice');
+            if (Math.random() < 0.1) {negativeFactors.push('suitable_advice');}
         } else {
-            if (Math.random() < 0.5) negativeFactors.push('suitable_advice');
-            if (Math.random() < 0.4) negativeFactors.push('documented_warnings');
-            if (Math.random() < 0.3) negativeFactors.push('market_performance');
-            if (Math.random() < 0.3) negativeFactors.push('customer_choice');
+            if (Math.random() < 0.5) {negativeFactors.push('suitable_advice');}
+            if (Math.random() < 0.4) {negativeFactors.push('documented_warnings');}
+            if (Math.random() < 0.3) {negativeFactors.push('market_performance');}
+            if (Math.random() < 0.3) {negativeFactors.push('customer_choice');}
             
-            if (Math.random() < 0.2) positiveFactors.push('inadequate_advice');
+            if (Math.random() < 0.2) {positiveFactors.push('inadequate_advice');}
         }
         
         return { positive: positiveFactors, negative: negativeFactors };
@@ -412,20 +412,20 @@ class HistoricalCaseDatabase {
         const negativeFactors = [];
         
         if (success) {
-            if (Math.random() < 0.5) positiveFactors.push('affordability_not_assessed');
-            if (Math.random() < 0.4) positiveFactors.push('broker_commission_undisclosed');
-            if (Math.random() < 0.4) positiveFactors.push('unsuitable_product');
-            if (Math.random() < 0.3) positiveFactors.push('misleading_rates');
-            if (Math.random() < 0.4) positiveFactors.push('poor_advice');
+            if (Math.random() < 0.5) {positiveFactors.push('affordability_not_assessed');}
+            if (Math.random() < 0.4) {positiveFactors.push('broker_commission_undisclosed');}
+            if (Math.random() < 0.4) {positiveFactors.push('unsuitable_product');}
+            if (Math.random() < 0.3) {positiveFactors.push('misleading_rates');}
+            if (Math.random() < 0.4) {positiveFactors.push('poor_advice');}
             
-            if (Math.random() < 0.1) negativeFactors.push('proper_affordability_check');
+            if (Math.random() < 0.1) {negativeFactors.push('proper_affordability_check');}
         } else {
-            if (Math.random() < 0.5) negativeFactors.push('proper_affordability_check');
-            if (Math.random() < 0.4) negativeFactors.push('clear_disclosure');
-            if (Math.random() < 0.3) negativeFactors.push('suitable_product');
-            if (Math.random() < 0.2) negativeFactors.push('customer_circumstances_changed');
+            if (Math.random() < 0.5) {negativeFactors.push('proper_affordability_check');}
+            if (Math.random() < 0.4) {negativeFactors.push('clear_disclosure');}
+            if (Math.random() < 0.3) {negativeFactors.push('suitable_product');}
+            if (Math.random() < 0.2) {negativeFactors.push('customer_circumstances_changed');}
             
-            if (Math.random() < 0.2) positiveFactors.push('poor_advice');
+            if (Math.random() < 0.2) {positiveFactors.push('poor_advice');}
         }
         
         return { positive: positiveFactors, negative: negativeFactors };
@@ -438,25 +438,25 @@ class HistoricalCaseDatabase {
         if (success) {
             // Successful cases more likely to have better evidence
             const rand = Math.random();
-            if (rand < 0.3) return 'excellent';
-            if (rand < 0.6) return 'good';
-            if (rand < 0.85) return 'medium';
+            if (rand < 0.3) {return 'excellent';}
+            if (rand < 0.6) {return 'good';}
+            if (rand < 0.85) {return 'medium';}
             return 'poor';
-        } else {
+        } 
             // Unsuccessful cases more likely to have poor evidence
             const rand = Math.random();
-            if (rand < 0.1) return 'excellent';
-            if (rand < 0.25) return 'good';
-            if (rand < 0.55) return 'medium';
-            if (rand < 0.8) return 'poor';
+            if (rand < 0.1) {return 'excellent';}
+            if (rand < 0.25) {return 'good';}
+            if (rand < 0.55) {return 'medium';}
+            if (rand < 0.8) {return 'poor';}
             return 'very-poor';
-        }
+        
     }
 
     generateComplexity() {
         const rand = Math.random();
-        if (rand < 0.2) return 'low';
-        if (rand < 0.7) return 'medium';
+        if (rand < 0.2) {return 'low';}
+        if (rand < 0.7) {return 'medium';}
         return 'high';
     }
 
@@ -732,7 +732,7 @@ class HistoricalCaseDatabase {
 
     calculateAverageCompensation(cases) {
         const successfulCases = cases.filter(c => c.success && c.compensation > 0);
-        if (successfulCases.length === 0) return 0;
+        if (successfulCases.length === 0) {return 0;}
         
         const total = successfulCases.reduce((sum, c) => sum + c.compensation, 0);
         return Math.round(total / successfulCases.length);

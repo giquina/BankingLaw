@@ -377,9 +377,9 @@ class RegulatoryAlertsSystem {
             return 'aml-alert';
         } else if (keywords.some(k => ['consumer duty', 'consumer protection'].includes(k))) {
             return 'consumer-duty-alert';
-        } else {
+        } 
             return 'standard-update-alert';
-        }
+        
     }
 
     // Select distribution lists based on change content
@@ -435,7 +435,7 @@ class RegulatoryAlertsSystem {
     // Process individual alert
     async processAlert(alertId) {
         const alert = this.alertQueue.get(alertId);
-        if (!alert) return;
+        if (!alert) {return;}
 
         try {
             console.log(`📨 Processing alert: ${alertId}`);
@@ -472,7 +472,7 @@ class RegulatoryAlertsSystem {
     // Generate alert content from template
     async generateAlertContent(alert) {
         const template = this.alertTemplates.get(alert.template_id);
-        if (!template) throw new Error('Alert template not found');
+        if (!template) {throw new Error('Alert template not found');}
 
         const change = alert.regulatory_change;
         
@@ -543,7 +543,7 @@ class RegulatoryAlertsSystem {
     async sendToDistributionLists(alert, content) {
         for (const listId of alert.distribution_lists) {
             const list = this.distributionLists.get(listId);
-            if (!list) continue;
+            if (!list) {continue;}
 
             for (const member of list.members) {
                 if (this.shouldSendToMember(member, alert.priority)) {
@@ -555,7 +555,7 @@ class RegulatoryAlertsSystem {
 
     // Check if should send to member based on priority
     shouldSendToMember(member, alertPriority) {
-        if (member.priority === 'all') return true;
+        if (member.priority === 'all') {return true;}
         
         const memberPriorities = member.priority.split(',');
         return memberPriorities.includes(alertPriority);
@@ -618,10 +618,10 @@ class RegulatoryAlertsSystem {
     // Evaluate if alert needs escalation
     evaluateEscalation(alertId) {
         const alert = this.alertQueue.get(alertId);
-        if (!alert) return;
+        if (!alert) {return;}
 
         const template = this.alertTemplates.get(alert.template_id);
-        if (!template?.requires_acknowledgment) return;
+        if (!template?.requires_acknowledgment) {return;}
 
         const timeSinceSent = Date.now() - new Date(alert.last_sent).getTime();
         const minutesSinceSent = timeSinceSent / (1000 * 60);
@@ -629,7 +629,7 @@ class RegulatoryAlertsSystem {
         // Check if escalation is needed
         for (const ruleId of alert.escalation_rules) {
             const rule = this.escalationRules.get(ruleId);
-            if (!rule) continue;
+            if (!rule) {continue;}
 
             const shouldEscalate = this.shouldEscalate(alert, rule, minutesSinceSent);
             if (shouldEscalate) {
@@ -641,10 +641,10 @@ class RegulatoryAlertsSystem {
     // Check if alert should be escalated
     shouldEscalate(alert, rule, minutesSinceSent) {
         // Check if unacknowledged for required time
-        if (minutesSinceSent < rule.triggers.unacknowledged_time) return false;
+        if (minutesSinceSent < rule.triggers.unacknowledged_time) {return false;}
 
         // Check if already at max escalation level
-        if (alert.escalation_level >= rule.max_escalations) return false;
+        if (alert.escalation_level >= rule.max_escalations) {return false;}
 
         // Check keyword triggers
         if (rule.triggers.keywords) {
@@ -652,7 +652,7 @@ class RegulatoryAlertsSystem {
             const hasMatchingKeyword = rule.triggers.keywords.some(keyword =>
                 changeKeywords.includes(keyword)
             );
-            if (!hasMatchingKeyword) return false;
+            if (!hasMatchingKeyword) {return false;}
         }
 
         return true;
@@ -661,12 +661,12 @@ class RegulatoryAlertsSystem {
     // Execute escalation
     async executeEscalation(alertId, rule) {
         const alert = this.alertQueue.get(alertId);
-        if (!alert) return;
+        if (!alert) {return;}
 
         alert.escalation_level++;
         
         const escalationStep = rule.escalation_path[alert.escalation_level - 1];
-        if (!escalationStep) return;
+        if (!escalationStep) {return;}
 
         console.log(`🚨 Escalating alert ${alertId} to level ${alert.escalation_level}`);
 
@@ -684,7 +684,7 @@ class RegulatoryAlertsSystem {
     // Acknowledge alert
     acknowledgeAlert(alertId, acknowledgedBy, comments = '') {
         const alert = this.alertQueue.get(alertId);
-        if (!alert) return false;
+        if (!alert) {return false;}
 
         alert.acknowledgments.set(acknowledgedBy, {
             acknowledged_at: new Date().toISOString(),
@@ -704,7 +704,7 @@ class RegulatoryAlertsSystem {
     // Move alert to history
     moveToHistory(alertId) {
         const alert = this.alertQueue.get(alertId);
-        if (!alert) return;
+        if (!alert) {return;}
 
         alert.completed_at = new Date().toISOString();
         
@@ -790,7 +790,7 @@ class RegulatoryAlertsSystem {
 
     // Format date for display
     formatDate(dateString) {
-        if (!dateString) return 'Not specified';
+        if (!dateString) {return 'Not specified';}
         return new Date(dateString).toLocaleDateString('en-GB', {
             year: 'numeric',
             month: 'long',

@@ -328,7 +328,7 @@ class DynamicFormEngine {
      * Load saved progress from storage
      */
     async loadSavedProgress() {
-        if (!this.config.progressPersistence) return;
+        if (!this.config.progressPersistence) {return;}
         
         try {
             const storageKey = `juribank-dynamic-form-${this.config.containerId}`;
@@ -755,7 +755,7 @@ class DynamicFormEngine {
      * Generate auto-save indicator HTML
      */
     generateAutoSaveIndicator() {
-        if (!this.config.autoSave) return '';
+        if (!this.config.autoSave) {return '';}
         
         return `
             <div class="auto-save-indicator" id="auto-save-indicator">

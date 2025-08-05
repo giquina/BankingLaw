@@ -978,7 +978,7 @@ Enclosures: [List of supporting documents]
         
         return content.replace(loopRegex, (match, arrayName, template) => {
             const array = data[arrayName];
-            if (!Array.isArray(array)) return '';
+            if (!Array.isArray(array)) {return '';}
             
             return array.map(item => {
                 let itemContent = template;
@@ -1249,9 +1249,9 @@ This resolution would be proportionate to the impact I have experienced and woul
     calculateSearchRelevance(term, document) {
         let score = 0;
         
-        if (document.template_name.toLowerCase().includes(term)) score += 10;
-        if (document.document_type.toLowerCase().includes(term)) score += 8;
-        if (document.content.toLowerCase().includes(term)) score += 5;
+        if (document.template_name.toLowerCase().includes(term)) {score += 10;}
+        if (document.document_type.toLowerCase().includes(term)) {score += 8;}
+        if (document.content.toLowerCase().includes(term)) {score += 5;}
         
         return score;
     }

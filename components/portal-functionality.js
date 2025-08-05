@@ -1,6 +1,8 @@
 // JuriBank Client Portal Functionality
 class ClientPortal {
     constructor() {
+        // Constants
+        this.JURIBANK_BLUE = 'var(--juribank-blue)';
         this.currentTab = 'services';
         this.initialized = false;
         this.init();
@@ -22,7 +24,7 @@ class ClientPortal {
 
     setupTabNavigation() {
         const tabs = document.querySelectorAll('.portal-tab');
-        const panels = document.querySelectorAll('.portal-panel');
+        // const panels = document.querySelectorAll('.portal-panel'); // Will be used when React components are implemented
 
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
@@ -35,15 +37,17 @@ class ClientPortal {
         tabs.forEach(tab => {
             tab.addEventListener('mouseenter', () => {
                 if (!tab.classList.contains('active')) {
-                    tab.style.color = 'var(--juribank-blue)';
-                    tab.style.borderBottomColor = 'var(--gray-300)';
+                    const tabElement = tab;
+                    tabElement.style.color = this.JURIBANK_BLUE;
+                    tabElement.style.borderBottomColor = 'var(--gray-300)';
                 }
             });
 
             tab.addEventListener('mouseleave', () => {
                 if (!tab.classList.contains('active')) {
-                    tab.style.color = 'var(--gray-600)';
-                    tab.style.borderBottomColor = 'transparent';
+                    const tabElement = tab;
+                    tabElement.style.color = 'var(--gray-600)';
+                    tabElement.style.borderBottomColor = 'transparent';
                 }
             });
         });
@@ -52,14 +56,16 @@ class ClientPortal {
     showTab(tabName) {
         // Update tab buttons
         document.querySelectorAll('.portal-tab').forEach(tab => {
-            tab.classList.remove('active');
-            tab.style.color = 'var(--gray-600)';
-            tab.style.borderBottomColor = 'transparent';
+            const tabElement = tab;
+            tabElement.classList.remove('active');
+            tabElement.style.color = 'var(--gray-600)';
+            tabElement.style.borderBottomColor = 'transparent';
         });
 
         document.querySelectorAll('.portal-panel').forEach(panel => {
-            panel.style.display = 'none';
-            panel.classList.remove('active');
+            const panelElement = panel;
+            panelElement.style.display = 'none';
+            panelElement.classList.remove('active');
         });
 
         // Activate selected tab
@@ -68,8 +74,8 @@ class ClientPortal {
 
         if (activeTab && activePanel) {
             activeTab.classList.add('active');
-            activeTab.style.color = 'var(--juribank-blue)';
-            activeTab.style.borderBottomColor = 'var(--juribank-blue)';
+            activeTab.style.color = this.JURIBANK_BLUE;
+            activeTab.style.borderBottomColor = this.JURIBANK_BLUE;
             
             activePanel.style.display = 'block';
             activePanel.classList.add('active');
@@ -104,6 +110,9 @@ class ClientPortal {
                 break;
             case 'chat':
                 this.initializeChatTab();
+                break;
+            default:
+                // Handle unknown tab
                 break;
         }
     }
@@ -355,6 +364,7 @@ class ClientPortal {
 }
 
 // Global functions for external access
+// eslint-disable-next-line no-unused-vars
 function showPortalTab(tabName) {
     if (window.clientPortal) {
         window.clientPortal.showTab(tabName);
@@ -369,15 +379,19 @@ function showPortalTab(tabName) {
     }
 }
 
-function selectCaseType(type) {
+// eslint-disable-next-line no-unused-vars
+function selectCaseType(_type) {
     // Handle case type selection in demo
-    document.querySelectorAll('.case-type-btn').forEach(btn => {
-        btn.style.borderColor = 'var(--gray-200)';
-        btn.style.background = 'white';
+    const CASE_TYPE_SELECTOR = '.case-type-btn';
+    document.querySelectorAll(CASE_TYPE_SELECTOR).forEach(btn => {
+        const btnElement = btn;
+        btnElement.style.borderColor = 'var(--gray-200)';
+        btnElement.style.background = 'white';
     });
     
-    event.target.closest('.case-type-btn').style.borderColor = 'var(--juribank-blue)';
-    event.target.closest('.case-type-btn').style.background = 'var(--blue-50)';
+    const targetButton = event.target.closest(CASE_TYPE_SELECTOR);
+    targetButton.style.borderColor = 'var(--juribank-blue)';
+    targetButton.style.background = 'var(--blue-50)';
 }
 
 // Add CSS animations

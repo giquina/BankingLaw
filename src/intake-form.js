@@ -897,19 +897,19 @@ May 2024: Filed formal complaint..."></textarea>
         const email = document.getElementById('email')?.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email) {
-            errors['email'] = 'Email address is required';
+            errors.email = 'Email address is required';
             isValid = false;
         } else if (!emailRegex.test(email)) {
-            errors['email'] = 'Please enter a valid email address';
+            errors.email = 'Please enter a valid email address';
             isValid = false;
         }
         
         const phone = document.getElementById('phone')?.value.trim();
         if (!phone) {
-            errors['phone'] = 'Phone number is required';
+            errors.phone = 'Phone number is required';
             isValid = false;
         } else if (phone.length < 10) {
-            errors['phone'] = 'Please enter a valid phone number';
+            errors.phone = 'Please enter a valid phone number';
             isValid = false;
         }
         
@@ -945,7 +945,7 @@ May 2024: Filed formal complaint..."></textarea>
         
         const urgency = document.querySelector('input[name="urgency"]:checked');
         if (!urgency) {
-            errors['urgency'] = 'Please select urgency level';
+            errors.urgency = 'Please select urgency level';
             isValid = false;
         }
         
@@ -1118,7 +1118,7 @@ May 2024: Filed formal complaint..."></textarea>
     }
 
     formatFileSize(bytes) {
-        if (bytes === 0) return '0 Bytes';
+        if (bytes === 0) {return '0 Bytes';}
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));

@@ -176,7 +176,7 @@ class ProgressTracker {
 
     showStepModal(stepId) {
         const step = this.steps.find(s => s.id === stepId);
-        if (!step) return;
+        if (!step) {return;}
 
         const modal = document.createElement('div');
         modal.className = 'step-modal-overlay';

@@ -273,18 +273,18 @@ class ComplianceCalendar {
     // Calculate urgency level
     calculateUrgency(days_before, importance) {
         if (importance === 'critical') {
-            if (days_before <= 1) return 'critical';
-            if (days_before <= 7) return 'high';
-            if (days_before <= 14) return 'medium';
+            if (days_before <= 1) {return 'critical';}
+            if (days_before <= 7) {return 'high';}
+            if (days_before <= 14) {return 'medium';}
             return 'low';
         } else if (importance === 'high') {
-            if (days_before <= 3) return 'high';
-            if (days_before <= 14) return 'medium';
+            if (days_before <= 3) {return 'high';}
+            if (days_before <= 14) {return 'medium';}
             return 'low';
-        } else {
-            if (days_before <= 7) return 'medium';
+        } 
+            if (days_before <= 7) {return 'medium';}
             return 'low';
-        }
+        
     }
 
     // Generate reminder message
@@ -303,9 +303,9 @@ class ComplianceCalendar {
             return `${emoji} DEADLINE TODAY: ${deadline.title}`;
         } else if (days_before === 1) {
             return `${emoji} DEADLINE TOMORROW: ${deadline.title}`;
-        } else {
+        } 
             return `${emoji} ${days_before} days until: ${deadline.title}`;
-        }
+        
     }
 
     // Get upcoming deadlines

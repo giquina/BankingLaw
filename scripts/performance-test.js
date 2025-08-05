@@ -13,18 +13,18 @@ const path = require('path');
 const PERFORMANCE_TARGETS = {
     // Core Web Vitals
     LCP: 2500, // Largest Contentful Paint < 2.5s
-    FID: 100,  // First Input Delay < 100ms
-    CLS: 0.1,  // Cumulative Layout Shift < 0.1
+    FID: 100, // First Input Delay < 100ms
+    CLS: 0.1, // Cumulative Layout Shift < 0.1
     
     // Additional metrics
     FCP: 2000, // First Contentful Paint < 2s
     TTI: 3500, // Time to Interactive < 3.5s
-    TBT: 300,  // Total Blocking Time < 300ms
+    TBT: 300, // Total Blocking Time < 300ms
     
     // Resource budgets
     totalSize: 2000000, // 2MB total
-    jsSize: 500000,     // 500KB JS
-    cssSize: 200000,    // 200KB CSS
+    jsSize: 500000, // 500KB JS
+    cssSize: 200000, // 200KB CSS
     imageSize: 1000000, // 1MB images
     
     // Lighthouse scores
@@ -103,7 +103,7 @@ async function runPerformanceTest(url = 'http://localhost:8000') {
                     
                     // Get FCP
                     const fcpEntry = performance.getEntriesByName('first-contentful-paint')[0];
-                    if (fcpEntry) webVitals.FCP = fcpEntry.startTime;
+                    if (fcpEntry) {webVitals.FCP = fcpEntry.startTime;}
                     
                     resolve(webVitals);
                 });
@@ -128,10 +128,10 @@ async function runPerformanceTest(url = 'http://localhost:8000') {
             const size = response.size;
             resourceSizes.total += size;
             
-            if (response.url.includes('.js')) resourceSizes.js += size;
-            else if (response.url.includes('.css')) resourceSizes.css += size;
-            else if (response.url.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i)) resourceSizes.images += size;
-            else if (response.url.match(/\.(woff|woff2|ttf|eot)$/i)) resourceSizes.fonts += size;
+            if (response.url.includes('.js')) {resourceSizes.js += size;}
+            else if (response.url.includes('.css')) {resourceSizes.css += size;}
+            else if (response.url.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i)) {resourceSizes.images += size;}
+            else if (response.url.match(/\.(woff|woff2|ttf|eot)$/i)) {resourceSizes.fonts += size;}
         });
         
         // Test desktop performance

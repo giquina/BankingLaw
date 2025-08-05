@@ -90,7 +90,7 @@ class JuriBankCore {
     // Setup Content Security Policy
     setupCSP() {
         // Banking industry CSP standards
-        const csp = {
+        return {
             'default-src': "'self'",
             'script-src': "'self' 'unsafe-inline' fonts.googleapis.com",
             'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
@@ -98,8 +98,6 @@ class JuriBankCore {
             'img-src': "'self' data: https:",
             'connect-src': "'self' https://www.bankofengland.co.uk https://www.fca.org.uk"
         };
-        
-        return csp;
     }
 
     // Setup audit logging

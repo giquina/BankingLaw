@@ -499,7 +499,7 @@ const JuriBankFormSchema = {
     // Custom validation functions
     customValidators: {
         validatePersonName: (value) => {
-            if (!value) return 'Name is required';
+            if (!value) {return 'Name is required';}
             
             const words = value.trim().split(/\s+/);
             if (words.length < 2) {

@@ -282,7 +282,7 @@ class WorkflowStateManager {
         
         // Try each backup method
         for (const method of this.backupStrategies) {
-            if (method === this.persistenceLayer) continue;
+            if (method === this.persistenceLayer) {continue;}
             
             try {
                 let stateData = null;

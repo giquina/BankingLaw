@@ -191,10 +191,10 @@ class WorkflowEngine {
 
             if (nextStep) {
                 return await this.navigateToStep(nextStep.id, data);
-            } else {
+            } 
                 // Workflow complete
                 return await this.completeWorkflow();
-            }
+            
         } catch (error) {
             this.handleError('submitStep', error);
             throw error;
@@ -384,10 +384,10 @@ class WorkflowEngine {
      * Check if user can navigate to specific step
      */
     canNavigateToStep(stepId) {
-        if (!this.currentWorkflow) return false;
+        if (!this.currentWorkflow) {return false;}
         
         const step = this.currentWorkflow.getStep(stepId);
-        if (!step) return false;
+        if (!step) {return false;}
 
         // Check prerequisites
         if (step.prerequisites) {
@@ -403,7 +403,7 @@ class WorkflowEngine {
      * Check if navigation is forward
      */
     isForwardNavigation(stepId) {
-        if (!this.currentStep) return true;
+        if (!this.currentStep) {return true;}
         
         const currentIndex = this.currentWorkflow.getStepIndex(this.currentStep.id);
         const targetIndex = this.currentWorkflow.getStepIndex(stepId);
@@ -450,7 +450,7 @@ class WorkflowEngine {
      * Calculate estimated time remaining
      */
     calculateEstimatedTime() {
-        if (!this.currentWorkflow) return null;
+        if (!this.currentWorkflow) {return null;}
         
         const totalSteps = this.currentWorkflow.getTotalSteps();
         const completedSteps = this.workflowState.completedSteps.length;

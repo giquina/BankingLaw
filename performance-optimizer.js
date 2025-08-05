@@ -19,8 +19,8 @@ class JuriBankPerformanceOptimizer {
             performanceBudget: {
                 fcp: 1500, // First Contentful Paint
                 lcp: 2500, // Largest Contentful Paint
-                fid: 100,  // First Input Delay
-                cls: 0.1   // Cumulative Layout Shift
+                fid: 100, // First Input Delay
+                cls: 0.1 // Cumulative Layout Shift
             }
         };
         
@@ -121,7 +121,7 @@ class JuriBankPerformanceOptimizer {
      * Image Optimization and Lazy Loading System
      */
     initializeImageOptimization() {
-        if (typeof window === 'undefined') return;
+        if (typeof window === 'undefined') {return;}
 
         // Intersection Observer for lazy loading
         const imageObserver = new IntersectionObserver(
@@ -153,7 +153,7 @@ class JuriBankPerformanceOptimizer {
      */
     async loadImage(img) {
         const src = img.dataset.src;
-        if (!src) return;
+        if (!src) {return;}
 
         const startTime = performance.now();
         
@@ -311,7 +311,7 @@ class JuriBankPerformanceOptimizer {
      * Performance Monitoring
      */
     initializePerformanceMonitoring() {
-        if (typeof window === 'undefined') return;
+        if (typeof window === 'undefined') {return;}
 
         // Web Vitals monitoring
         this.observeWebVitals();
@@ -371,7 +371,7 @@ class JuriBankPerformanceOptimizer {
      * Monitor resource timing
      */
     monitorResourceTiming() {
-        if (typeof window === 'undefined') return;
+        if (typeof window === 'undefined') {return;}
 
         window.addEventListener('load', () => {
             const resources = performance.getEntriesByType('resource');
@@ -410,10 +410,10 @@ class JuriBankPerformanceOptimizer {
      * Get resource type from URL
      */
     getResourceType(url) {
-        if (url.includes('.css')) return 'stylesheet';
-        if (url.includes('.js')) return 'script';
-        if (url.match(/\.(jpg|jpeg|png|gif|svg|webp)$/)) return 'image';
-        if (url.match(/\.(woff|woff2|ttf|eot)$/)) return 'font';
+        if (url.includes('.css')) {return 'stylesheet';}
+        if (url.includes('.js')) {return 'script';}
+        if (url.match(/\.(jpg|jpeg|png|gif|svg|webp)$/)) {return 'image';}
+        if (url.match(/\.(woff|woff2|ttf|eot)$/)) {return 'font';}
         return 'other';
     }
 
@@ -421,7 +421,7 @@ class JuriBankPerformanceOptimizer {
      * Setup user timing marks
      */
     setupUserTimingMarks() {
-        if (typeof performance === 'undefined') return;
+        if (typeof performance === 'undefined') {return;}
 
         // Mark important application events
         const markEvent = (name) => {

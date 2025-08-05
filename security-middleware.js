@@ -63,7 +63,7 @@ class JuriBankSecurityMiddleware {
      * Advanced Input Sanitization
      */
     sanitizeInput(input, type = 'text') {
-        if (input === null || input === undefined) return input;
+        if (input === null || input === undefined) {return input;}
         
         let sanitized = String(input);
 
@@ -322,8 +322,8 @@ class JuriBankSecurityMiddleware {
             'csrf_token_expired'
         ];
 
-        if (highSeverity.includes(eventType)) return 'high';
-        if (mediumSeverity.includes(eventType)) return 'medium';
+        if (highSeverity.includes(eventType)) {return 'high';}
+        if (mediumSeverity.includes(eventType)) {return 'medium';}
         return 'low';
     }
 

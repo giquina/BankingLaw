@@ -5,6 +5,10 @@
 
 class JuriBankMicroInteractions {
     constructor() {
+        // Constants
+        this.FORM_FIELD_SELECTOR = '.form-field';
+        this.FORM_INPUT_CLASS = 'form-input';
+        this.TYPING_CLASS = 'typing';
         this.init();
         this.bindEvents();
         this.legalTips = [
@@ -52,11 +56,11 @@ class JuriBankMicroInteractions {
      * Form Validation Animations
      */
     setupFormValidation() {
-        const formFields = document.querySelectorAll('.form-field');
+        const formFields = document.querySelectorAll(this.FORM_FIELD_SELECTOR);
         
         formFields.forEach(field => {
             const input = field.querySelector('.form-input');
-            if (!input) return;
+            if (!input) {return;}
 
             input.addEventListener('blur', () => this.validateField(input));
             input.addEventListener('input', () => this.clearValidationState(input));
@@ -64,7 +68,7 @@ class JuriBankMicroInteractions {
     }
 
     validateField(input) {
-        const field = input.closest('.form-field');
+        const field = input.closest(this.FORM_FIELD_SELECTOR);
         const value = input.value.trim();
         const type = input.type;
         const required = input.hasAttribute('required');
@@ -87,7 +91,7 @@ class JuriBankMicroInteractions {
                     message = 'Please enter a valid email address';
                     break;
                 case 'tel':
-                    isValid = /^[\d\s\-\+\(\)]+$/.test(value) && value.length >= 10;
+                    isValid = /^[\d\s\-+()]+$/.test(value) && value.length >= 10;
                     message = 'Please enter a valid phone number';
                     break;
                 default:
@@ -122,7 +126,7 @@ class JuriBankMicroInteractions {
     }
 
     clearValidationState(input) {
-        const field = input.closest('.form-field');
+        const field = input.closest(this.FORM_FIELD_SELECTOR);
         field.classList.remove('valid', 'invalid');
         input.classList.remove('valid', 'invalid');
         
@@ -144,18 +148,20 @@ class JuriBankMicroInteractions {
     }
 
     animateProgressBar(bar, targetWidth) {
-        if (!targetWidth) {
-            targetWidth = bar.getAttribute('data-progress') || bar.style.width;
+        let progressWidth = targetWidth;
+        if (!progressWidth) {
+            progressWidth = bar.getAttribute('data-progress') || bar.style.width;
         }
 
-        const numericWidth = parseInt(targetWidth);
+        const numericWidth = parseInt(progressWidth, 10);
         let currentWidth = 0;
         const increment = numericWidth / 50; // 50 frames for smooth animation
         
         const animate = () => {
             if (currentWidth < numericWidth) {
                 currentWidth += increment;
-                bar.style.width = Math.min(currentWidth, numericWidth) + '%';
+                const progressBar = bar;
+                progressBar.style.width = Math.min(currentWidth, numericWidth) + '%';
                 
                 // Check for milestones
                 this.checkProgressMilestones(bar, Math.min(currentWidth, numericWidth));
@@ -184,7 +190,7 @@ class JuriBankMicroInteractions {
         });
     }
 
-    showMilestone(container, milestone, progress) {
+    showMilestone(container, milestone, _progress) {
         const milestoneEl = document.createElement('div');
         milestoneEl.className = 'progress-milestone';
         milestoneEl.style.left = milestone + '%';
@@ -219,8 +225,9 @@ class JuriBankMicroInteractions {
         const cards = document.querySelectorAll('.card-interactive');
         
         cards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 100}ms`;
-            card.classList.add('card-enter');
+            const cardElement = card;
+            cardElement.style.animationDelay = `${index * 100}ms`;
+            cardElement.classList.add('card-enter');
         });
     }
 
@@ -284,14 +291,15 @@ class JuriBankMicroInteractions {
         `;
         document.head.appendChild(style);
         
-        button.style.position = 'relative';
-        button.style.overflow = 'hidden';
-        button.appendChild(ripple);
+        const buttonElement = button;
+        buttonElement.style.position = 'relative';
+        buttonElement.style.overflow = 'hidden';
+        buttonElement.appendChild(ripple);
         
         setTimeout(() => {
             ripple.remove();
-            if (button.querySelectorAll('[style*="ripple"]').length === 0) {
-                button.style.overflow = '';
+            if (buttonElement.querySelectorAll('[style*="ripple"]').length === 0) {
+                buttonElement.style.overflow = '';
             }
         }, 600);
     }
@@ -488,7 +496,7 @@ class JuriBankMicroInteractions {
         }, observerOptions);
 
         // Observe elements that should animate on scroll
-        const elementsToObserve = document.querySelectorAll('.card, .form-field, .progress-animated');
+        const elementsToObserve = document.querySelectorAll('.card, ' + this.FORM_FIELD_SELECTOR + ', .progress-animated');
         elementsToObserve.forEach(el => observer.observe(el));
     }
 
@@ -498,9 +506,10 @@ class JuriBankMicroInteractions {
     handleClicks(event) {
         // Handle special click interactions
         if (event.target.classList.contains('help-icon')) {
-            event.target.style.transform = 'scale(1.2)';
+            const targetElement = event.target;
+            targetElement.style.transform = 'scale(1.2)';
             setTimeout(() => {
-                event.target.style.transform = 'scale(1)';
+                targetElement.style.transform = 'scale(1)';
             }, 150);
         }
     }
@@ -508,12 +517,12 @@ class JuriBankMicroInteractions {
     handleInputs(event) {
         // Handle real-time input feedback
         const input = event.target;
-        if (input.classList.contains('form-input')) {
+        if (input.classList.contains(this.FORM_INPUT_CLASS)) {
             // Add typing animation class
-            input.parentNode.classList.add('typing');
+            input.parentNode.classList.add(this.TYPING_CLASS);
             clearTimeout(input.typingTimeout);
             input.typingTimeout = setTimeout(() => {
-                input.parentNode.classList.remove('typing');
+                input.parentNode.classList.remove(this.TYPING_CLASS);
             }, 500);
         }
     }
@@ -550,20 +559,20 @@ class JuriBankMicroInteractions {
      * Utility Functions
      */
     throttle(func, limit) {
-        let inThrottle;
+        let inThrottle = false;
         return function() {
             const args = arguments;
             const context = this;
             if (!inThrottle) {
                 func.apply(context, args);
                 inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
+                setTimeout(() => { inThrottle = false; }, limit);
             }
         };
     }
 
     debounce(func, wait) {
-        let timeout;
+        let timeout = null;
         return function executedFunction(...args) {
             const later = () => {
                 clearTimeout(timeout);
@@ -589,6 +598,7 @@ class JuriBankMicroInteractions {
         if (container) {
             return this.showLoadingWithTips(container);
         }
+        return null;
     }
 
     celebrate(title, message) {
@@ -602,6 +612,7 @@ class JuriBankMicroInteractions {
             container.appendChild(errorEl);
             return errorEl;
         }
+        return null;
     }
 }
 

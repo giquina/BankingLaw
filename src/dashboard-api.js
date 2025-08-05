@@ -309,7 +309,7 @@ class DashboardAPI {
         const newAchievements = [];
 
         for (const [id, achievement] of this.achievements) {
-            if (achievement.unlocked) continue;
+            if (achievement.unlocked) {continue;}
 
             let canUnlock = true;
             for (const [requirement, target] of Object.entries(achievement.requirements)) {
@@ -346,7 +346,7 @@ class DashboardAPI {
         const updatedMilestones = [];
 
         for (const [id, milestone] of this.educationalMilestones) {
-            if (milestone.completed) continue;
+            if (milestone.completed) {continue;}
 
             // Update milestone progress based on user actions
             const progressUpdate = await this.updateMilestoneProgress(milestone, this.trackedActions);
@@ -387,7 +387,7 @@ class DashboardAPI {
 
         // Check each step based on milestone type
         milestone.steps.forEach((step, index) => {
-            if (milestone.completedSteps.includes(index)) return;
+            if (milestone.completedSteps.includes(index)) {return;}
 
             let stepCompleted = false;
 

@@ -257,7 +257,7 @@ class JuriBankTools {
         // Find and bind to existing tool buttons in the homepage
         document.addEventListener('click', (e) => {
             const button = e.target.closest('button');
-            if (!button) return;
+            if (!button) {return;}
             
             const buttonText = button.textContent.trim();
             
@@ -565,10 +565,10 @@ class JuriBankTools {
         let resultSubtitle = "Based on your answers, you appear to have a valid claim";
         
         // Calculate eligibility score
-        if (timeline === 'recent' || timeline === 'ongoing') eligibilityScore += 3;
-        if (timeline === 'older') eligibilityScore += 1;
-        if (contacted === 'no') eligibilityScore += 2;
-        if (contacted === 'yes') eligibilityScore += 1;
+        if (timeline === 'recent' || timeline === 'ongoing') {eligibilityScore += 3;}
+        if (timeline === 'older') {eligibilityScore += 1;}
+        if (contacted === 'no') {eligibilityScore += 2;}
+        if (contacted === 'yes') {eligibilityScore += 1;}
         
         // Determine result based on score
         if (eligibilityScore >= 4) {
@@ -653,7 +653,7 @@ class JuriBankTools {
         };
         
         const detail = details[claimType];
-        if (!detail) return '<p>Please complete the assessment to see your results.</p>';
+        if (!detail) {return '<p>Please complete the assessment to see your results.</p>';}
         
         return `
             <div class="bg-white border border-gray-200 rounded-lg p-4">
@@ -870,8 +870,8 @@ class JuriBankTools {
         const wasMissold = document.getElementById('factor-missold')?.checked || false;
         
         let multiplier = 1;
-        if (isVulnerable) multiplier += 0.2;
-        if (wasMissold) multiplier += 0.3;
+        if (isVulnerable) {multiplier += 0.2;}
+        if (wasMissold) {multiplier += 0.3;}
         
         switch (claimType) {
             case 'bankCharges':
@@ -934,7 +934,7 @@ class JuriBankTools {
                 if (investmentAmount && currentValue) {
                     const actualLoss = Math.max(0, investmentAmount - currentValue);
                     minRefund = Math.round(actualLoss * 0.6 * multiplier);
-                    maxRefund = Math.round(actualLoss * 1.0 * multiplier);
+                    maxRefund = Math.round(Number(actualLoss) * multiplier);
                     confidence = 'Medium';
                     
                     breakdown = [
@@ -991,7 +991,7 @@ class JuriBankTools {
 
     generateGuide() {
         const situation = document.getElementById('guide-situation').value;
-        if (!situation) return;
+        if (!situation) {return;}
         
         const actionPlanContent = document.getElementById('action-plan-content');
         actionPlanContent.classList.remove('juribank-hidden');

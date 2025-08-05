@@ -734,7 +734,7 @@ What would you like help with today?`,
         closeBtn.addEventListener('click', () => this.closeChat());
         sendBtn.addEventListener('click', () => this.sendMessage());
         input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
+            if (e.key === 'Enter') {this.sendMessage();}
         });
 
         // Quick button handlers

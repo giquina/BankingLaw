@@ -508,7 +508,7 @@ class LegalTemplatesEngine {
     // Fill template with AI assistance
     async fillTemplate(templateId, fieldData, useAI = true) {
         const template = this.getTemplate(templateId);
-        if (!template) return null;
+        if (!template) {return null;}
 
         let filledContent = template.template_content;
         const aiEnhancedData = { ...fieldData };
@@ -618,7 +618,7 @@ Remediation Actions:
     // Validate template fields
     validateFields(templateId, fieldData) {
         const template = this.getTemplate(templateId);
-        if (!template) return { valid: false, errors: ['Template not found'] };
+        if (!template) {return { valid: false, errors: ['Template not found'] };}
 
         const errors = [];
         
@@ -666,7 +666,7 @@ Remediation Actions:
     // Export template
     exportTemplate(templateId, format = 'json') {
         const template = this.getTemplate(templateId);
-        if (!template) return null;
+        if (!template) {return null;}
 
         switch (format) {
             case 'json':

@@ -44,7 +44,7 @@ async function optimizeBuild() {
         let passedOptimizations = 0;
         Object.entries(optimizations).forEach(([name, passed]) => {
             console.log(`   ${passed ? '✅' : '❌'} ${name}`);
-            if (passed) passedOptimizations++;
+            if (passed) {passedOptimizations++;}
         });
         
         const optimizationScore = Math.round((passedOptimizations / Object.keys(optimizations).length) * 100);

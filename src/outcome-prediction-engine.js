@@ -445,9 +445,9 @@ class OutcomePredictionEngine {
         let expectedRange = 'medium';
         const caseStrength = this.assessCaseStrength(caseDetails);
         
-        if (caseStrength > 0.8) expectedRange = 'high';
-        else if (caseStrength > 0.6) expectedRange = 'medium';
-        else expectedRange = 'low';
+        if (caseStrength > 0.8) {expectedRange = 'high';}
+        else if (caseStrength > 0.6) {expectedRange = 'medium';}
+        else {expectedRange = 'low';}
         
         const selectedRange = ranges[expectedRange];
         const expectedAmount = Math.round(
@@ -528,12 +528,12 @@ class OutcomePredictionEngine {
         let baseWeeks = historicalData.averageTimeframe;
         
         // Adjust for case complexity
-        if (caseDetails.complexity === 'high') baseWeeks *= 1.4;
-        else if (caseDetails.complexity === 'low') baseWeeks *= 0.8;
+        if (caseDetails.complexity === 'high') {baseWeeks *= 1.4;}
+        else if (caseDetails.complexity === 'low') {baseWeeks *= 0.8;}
         
         // Adjust for evidence quality
-        if (caseDetails.evidenceQuality === 'excellent') baseWeeks *= 0.9;
-        else if (caseDetails.evidenceQuality === 'poor') baseWeeks *= 1.3;
+        if (caseDetails.evidenceQuality === 'excellent') {baseWeeks *= 0.9;}
+        else if (caseDetails.evidenceQuality === 'poor') {baseWeeks *= 1.3;}
         
         const milestones = [
             { stage: 'Initial Response', weeks: Math.round(baseWeeks * 0.15), description: 'Bank acknowledges claim' },
@@ -603,7 +603,7 @@ class OutcomePredictionEngine {
      */
     findSimilarCases(caseDetails) {
         const historicalData = this.historicalDatabase.get(caseDetails.caseType);
-        if (!historicalData) return [];
+        if (!historicalData) {return [];}
         
         return {
             totalSimilarCases: historicalData.totalCases,
@@ -618,7 +618,7 @@ class OutcomePredictionEngine {
      * Get bank-specific performance factors
      */
     getBankSpecificFactors(bankName) {
-        if (!bankName) return null;
+        if (!bankName) {return null;}
         
         const bankLower = bankName.toLowerCase();
         
@@ -644,15 +644,15 @@ class OutcomePredictionEngine {
      * Helper functions for calculations
      */
     getConfidenceLevel(probability) {
-        if (probability >= this.confidenceThresholds.high) return 'high';
-        if (probability >= this.confidenceThresholds.medium) return 'medium';
+        if (probability >= this.confidenceThresholds.high) {return 'high';}
+        if (probability >= this.confidenceThresholds.medium) {return 'medium';}
         return 'low';
     }
 
     getSuccessCategory(probability) {
-        if (probability >= 0.8) return 'very-likely';
-        if (probability >= 0.6) return 'likely';
-        if (probability >= 0.4) return 'uncertain';
+        if (probability >= 0.8) {return 'very-likely';}
+        if (probability >= 0.6) {return 'likely';}
+        if (probability >= 0.4) {return 'uncertain';}
         return 'unlikely';
     }
 
@@ -668,9 +668,9 @@ class OutcomePredictionEngine {
     }
 
     getRiskLevel(score) {
-        if (score >= 0.7) return 'low';
-        if (score >= 0.5) return 'medium';
-        if (score >= 0.3) return 'high';
+        if (score >= 0.7) {return 'low';}
+        if (score >= 0.5) {return 'medium';}
+        if (score >= 0.3) {return 'high';}
         return 'very-high';
     }
 
@@ -777,8 +777,8 @@ class OutcomePredictionEngine {
 
     getCompensationConfidence(caseDetails) {
         const strength = this.assessCaseStrength(caseDetails);
-        if (strength > 0.7) return 'high';
-        if (strength > 0.5) return 'medium';
+        if (strength > 0.7) {return 'high';}
+        if (strength > 0.5) {return 'medium';}
         return 'low';
     }
 
@@ -794,16 +794,16 @@ class OutcomePredictionEngine {
 
     getTimeFactor(monthsSinceIncident) {
         // Cases get slightly more difficult with time
-        if (monthsSinceIncident <= 6) return 1.0;
-        if (monthsSinceIncident <= 12) return 0.98;
-        if (monthsSinceIncident <= 24) return 0.95;
-        if (monthsSinceIncident <= 72) return 0.88; // 6 years - statutory limit
+        if (monthsSinceIncident <= 6) {return 1.0;}
+        if (monthsSinceIncident <= 12) {return 0.98;}
+        if (monthsSinceIncident <= 24) {return 0.95;}
+        if (monthsSinceIncident <= 72) {return 0.88;} // 6 years - statutory limit
         return 0.3; // Very old cases
     }
 
     getIndustryBenchmark(caseType) {
         const historicalData = this.historicalDatabase.get(caseType);
-        if (!historicalData) return null;
+        if (!historicalData) {return null;}
         
         return {
             industrySuccessRate: Math.round(historicalData.successRate * 100),

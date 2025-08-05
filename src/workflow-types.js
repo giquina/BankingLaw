@@ -175,12 +175,12 @@ class BankChargesWorkflow extends BaseWorkflow {
                 ],
                 validate: async (data) => {
                     const errors = [];
-                    if (!data.bankName) errors.push('Please select your bank');
-                    if (!data.accountType) errors.push('Please select account type');
+                    if (!data.bankName) {errors.push('Please select your bank');}
+                    if (!data.accountType) {errors.push('Please select account type');}
                     if (!data.chargeTypes || data.chargeTypes.length === 0) {
                         errors.push('Please select at least one charge type');
                     }
-                    if (!data.timeframe) errors.push('Please select timeframe');
+                    if (!data.timeframe) {errors.push('Please select timeframe');}
                     return { isValid: errors.length === 0, errors };
                 },
                 process: async (data) => {
@@ -606,8 +606,8 @@ class PPIClaimsWorkflow extends BaseWorkflow {
                     if (!data.productTypes || data.productTypes.length === 0) {
                         errors.push('Please select at least one financial product');
                     }
-                    if (!data.timeframe) errors.push('Please select timeframe');
-                    if (!data.ppiKnowledge) errors.push('Please indicate your PPI awareness');
+                    if (!data.timeframe) {errors.push('Please select timeframe');}
+                    if (!data.ppiKnowledge) {errors.push('Please indicate your PPI awareness');}
                     return { isValid: errors.length === 0, errors };
                 },
                 process: async (data) => {
@@ -1119,9 +1119,9 @@ class InvestmentIssuesWorkflow extends BaseWorkflow {
                     if (!data.investmentTypes || data.investmentTypes.length === 0) {
                         errors.push('Please select at least one investment type');
                     }
-                    if (!data.problemType) errors.push('Please select the main problem');
-                    if (!data.investmentValue) errors.push('Please select investment value range');
-                    if (!data.timeframe) errors.push('Please select timeframe');
+                    if (!data.problemType) {errors.push('Please select the main problem');}
+                    if (!data.investmentValue) {errors.push('Please select investment value range');}
+                    if (!data.timeframe) {errors.push('Please select timeframe');}
                     return { isValid: errors.length === 0, errors };
                 },
                 process: async (data) => {
@@ -1338,13 +1338,13 @@ class InvestmentIssuesWorkflow extends BaseWorkflow {
             riskScore += 2;
         }
         
-        if (riskScore >= 5) return 'high';
-        if (riskScore >= 3) return 'medium';
+        if (riskScore >= 5) {return 'high';}
+        if (riskScore >= 3) {return 'medium';}
         return 'low';
     }
 
     assessEvidenceStrength(evidenceList) {
-        if (evidenceList.includes('None of the above')) return 'weak';
+        if (evidenceList.includes('None of the above')) {return 'weak';}
         
         const strongEvidence = [
             'Original investment advice/recommendations',
@@ -1561,11 +1561,11 @@ class MortgageProblemsWorkflow extends BaseWorkflow {
                 },
                 validate: async (data) => {
                     const errors = [];
-                    if (!data.problemType) errors.push('Please select the main problem');
-                    if (!data.mortgageValue) errors.push('Please select mortgage value');
-                    if (!data.lenderName) errors.push('Please select your lender');
-                    if (!data.timeframe) errors.push('Please select when you took the mortgage');
-                    if (!data.urgencyLevel) errors.push('Please select urgency level');
+                    if (!data.problemType) {errors.push('Please select the main problem');}
+                    if (!data.mortgageValue) {errors.push('Please select mortgage value');}
+                    if (!data.lenderName) {errors.push('Please select your lender');}
+                    if (!data.timeframe) {errors.push('Please select when you took the mortgage');}
+                    if (!data.urgencyLevel) {errors.push('Please select urgency level');}
                     return { isValid: errors.length === 0, errors };
                 },
                 process: async (data) => {
@@ -1776,22 +1776,22 @@ class MortgageProblemsWorkflow extends BaseWorkflow {
     assessMortgageRisk(data) {
         let riskScore = 0;
         
-        if (data.urgencyLevel === 'immediate') riskScore += 5;
-        else if (data.urgencyLevel === 'urgent') riskScore += 3;
-        else if (data.urgencyLevel === 'concerning') riskScore += 1;
+        if (data.urgencyLevel === 'immediate') {riskScore += 5;}
+        else if (data.urgencyLevel === 'urgent') {riskScore += 3;}
+        else if (data.urgencyLevel === 'concerning') {riskScore += 1;}
         
-        if (data.problemType === 'Repossession proceedings started') riskScore += 4;
-        else if (data.problemType === 'Payment difficulties/arrears') riskScore += 2;
+        if (data.problemType === 'Repossession proceedings started') {riskScore += 4;}
+        else if (data.problemType === 'Payment difficulties/arrears') {riskScore += 2;}
         
-        if (riskScore >= 6) return 'critical';
-        if (riskScore >= 3) return 'high';
-        if (riskScore >= 1) return 'medium';
+        if (riskScore >= 6) {return 'critical';}
+        if (riskScore >= 3) {return 'high';}
+        if (riskScore >= 1) {return 'medium';}
         return 'low';
     }
 
     assessDocumentationStrength(data) {
         const hasNone = data.availableDocuments.includes('None of the above');
-        if (hasNone) return 'weak';
+        if (hasNone) {return 'weak';}
         
         const strongDocs = [
             'Original mortgage offer/agreement',
@@ -1802,8 +1802,8 @@ class MortgageProblemsWorkflow extends BaseWorkflow {
         const hasStrongDocs = strongDocs.some(doc => data.availableDocuments.includes(doc));
         const totalDocs = data.availableDocuments.length;
         
-        if (hasStrongDocs && totalDocs >= 4) return 'strong';
-        if (hasStrongDocs || totalDocs >= 3) return 'moderate';
+        if (hasStrongDocs && totalDocs >= 4) {return 'strong';}
+        if (hasStrongDocs || totalDocs >= 3) {return 'moderate';}
         return 'weak';
     }
 

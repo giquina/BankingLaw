@@ -499,9 +499,9 @@ class JurisdictionMapper {
     calculateRelevance(term, mapping) {
         let score = 0;
         
-        if (mapping.name.toLowerCase().includes(term)) score += 10;
-        if (mapping.key_differences.some(diff => diff.toLowerCase().includes(term))) score += 5;
-        if (mapping.uk_implementation.modifications.some(mod => mod.toLowerCase().includes(term))) score += 3;
+        if (mapping.name.toLowerCase().includes(term)) {score += 10;}
+        if (mapping.key_differences.some(diff => diff.toLowerCase().includes(term))) {score += 5;}
+        if (mapping.uk_implementation.modifications.some(mod => mod.toLowerCase().includes(term))) {score += 3;}
         
         return score;
     }

@@ -306,7 +306,7 @@ class KnowledgeHubAPI {
      * Process API request queue with rate limiting
      */
     async processQueue() {
-        if (this.isProcessingQueue || this.requestQueue.length === 0) return;
+        if (this.isProcessingQueue || this.requestQueue.length === 0) {return;}
         
         this.isProcessingQueue = true;
         
@@ -446,7 +446,7 @@ class KnowledgeHubAPI {
      */
     updateFeaturedUpdates(featuredContent) {
         const container = document.querySelector('.featured-updates-container');
-        if (!container) return;
+        if (!container) {return;}
 
         const html = featuredContent.map(item => `
             <div class="bg-gradient-to-r from-${this.getPriorityColor(item.priority)}-50 to-${this.getPriorityColor(item.priority, true)}-50 border-l-4 border-${this.getPriorityColor(item.priority)}-500 rounded-xl p-6">
@@ -477,7 +477,7 @@ class KnowledgeHubAPI {
      */
     updateContentList(content) {
         const container = document.querySelector('.content-list-container');
-        if (!container) return;
+        if (!container) {return;}
 
         const html = content.slice(0, 10).map(item => `
             <div class="bg-white rounded-2xl shadow-lg p-6 card-hover" data-item-id="${item.id}">
@@ -528,7 +528,7 @@ class KnowledgeHubAPI {
      */
     updateSourceStatus() {
         const statusContainer = document.querySelector('.source-status-container');
-        if (!statusContainer) return;
+        if (!statusContainer) {return;}
 
         const sources = [
             { name: 'Gov.UK', status: 'live', lastUpdate: new Date(Date.now() - 2 * 60 * 1000) },
@@ -662,8 +662,8 @@ class KnowledgeHubAPI {
         
         const text = (item.title + ' ' + item.description).toLowerCase();
         
-        if (urgentWords.some(word => text.includes(word))) return 'high';
-        if (highWords.some(word => text.includes(word))) return 'medium';
+        if (urgentWords.some(word => text.includes(word))) {return 'high';}
+        if (highWords.some(word => text.includes(word))) {return 'medium';}
         return 'low';
     }
 
@@ -671,7 +671,7 @@ class KnowledgeHubAPI {
         const seen = new Set();
         return results.filter(item => {
             const key = item.title.toLowerCase().replace(/[^\w]/g, '');
-            if (seen.has(key)) return false;
+            if (seen.has(key)) {return false;}
             seen.add(key);
             return true;
         });
@@ -686,9 +686,9 @@ class KnowledgeHubAPI {
         const day = 24 * hour;
         const week = 7 * day;
         
-        if (diff < hour) return `${Math.floor(diff / minute)} min ago`;
-        if (diff < day) return `${Math.floor(diff / hour)} hours ago`;
-        if (diff < week) return `${Math.floor(diff / day)} days ago`;
+        if (diff < hour) {return `${Math.floor(diff / minute)} min ago`;}
+        if (diff < day) {return `${Math.floor(diff / hour)} hours ago`;}
+        if (diff < week) {return `${Math.floor(diff / day)} days ago`;}
         return `${Math.floor(diff / week)} weeks ago`;
     }
 

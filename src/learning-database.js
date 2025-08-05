@@ -403,13 +403,13 @@ class LearningDatabase {
     // Submit quiz
     submitQuiz(userId, quizId, answers) {
         const quiz = this.quizzesDatabase.get(quizId);
-        if (!quiz) return null;
+        if (!quiz) {return null;}
 
         let score = 0;
         const results = quiz.questions.map((question, index) => {
             const userAnswer = answers[index];
             const correct = userAnswer === question.correct;
-            if (correct) score++;
+            if (correct) {score++;}
 
             return {
                 question_id: question.id,
@@ -544,7 +544,7 @@ class LearningDatabase {
                 const hasStarted = course.modules.some(module => 
                     progress.completed_modules.includes(module.id)
                 );
-                if (hasStarted) started++;
+                if (hasStarted) {started++;}
                 
                 if (progress.completed_courses.includes(course.id)) {
                     completed++;

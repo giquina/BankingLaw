@@ -60,11 +60,11 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Attach progressive disclosure listeners
      */
     attachProgressiveDisclosureListeners() {
-        if (!this.progressiveDisclosureTriggers) return;
+        if (!this.progressiveDisclosureTriggers) {return;}
         
         this.progressiveDisclosureTriggers.forEach((triggers, fieldId) => {
             const field = document.getElementById(fieldId);
-            if (!field) return;
+            if (!field) {return;}
             
             const eventType = this.getFieldEventType(field);
             field.addEventListener(eventType, (e) => {
@@ -81,7 +81,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
             const shouldShow = this.evaluateCondition(value, trigger.operator, trigger.value);
             const targetField = document.querySelector(`[data-field-id="${trigger.targetField}"]`);
             
-            if (!targetField) return;
+            if (!targetField) {return;}
             
             if (shouldShow && trigger.action === 'show') {
                 this.showField(trigger.targetField, targetField);
@@ -141,7 +141,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Show a field with animation
      */
     async showField(fieldId, fieldElement) {
-        if (this.visibleFields.has(fieldId)) return;
+        if (this.visibleFields.has(fieldId)) {return;}
         
         this.visibleFields.add(fieldId);
         this.hiddenFields.delete(fieldId);
@@ -169,7 +169,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Hide a field with animation
      */
     async hideField(fieldId, fieldElement) {
-        if (this.hiddenFields.has(fieldId)) return;
+        if (this.hiddenFields.has(fieldId)) {return;}
         
         this.hiddenFields.add(fieldId);
         this.visibleFields.delete(fieldId);
@@ -204,7 +204,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Apply smart defaults to current step
      */
     async applySmartDefaults() {
-        if (!this.smartDefaultsMap) return;
+        if (!this.smartDefaultsMap) {return;}
         
         const currentStepFields = this.getCurrentStepFields();
         
@@ -224,7 +224,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Get smart default value for a field
      */
     async getSmartDefault(fieldId) {
-        if (!this.smartDefaultsMap?.has(fieldId)) return null;
+        if (!this.smartDefaultsMap?.has(fieldId)) {return null;}
         
         const config = this.smartDefaultsMap.get(fieldId);
         
@@ -250,7 +250,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Compute smart default based on other field values
      */
     computeSmartDefault(fieldId, config) {
-        if (!config.computeFunction) return null;
+        if (!config.computeFunction) {return null;}
         
         try {
             // Create context with current form data
@@ -277,14 +277,14 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      * Fetch smart default from API
      */
     async fetchSmartDefault(fieldId, config) {
-        if (!config.apiEndpoint) return null;
+        if (!config.apiEndpoint) {return null;}
         
         try {
             // Check cache first
             const cacheKey = `smart-default-${fieldId}-${JSON.stringify(config.dependencies?.map(dep => this.formData[dep]))}`;
             const cached = this.getFromCache(cacheKey, config.cacheTime);
             
-            if (cached !== null) return cached;
+            if (cached !== null) {return cached;}
             
             // Prepare API request
             const requestData = {
@@ -304,7 +304,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
                 body: JSON.stringify(requestData)
             });
             
-            if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+            if (!response.ok) {throw new Error(`API request failed: ${response.status}`);}
             
             const result = await response.json();
             const defaultValue = result.defaultValue;
@@ -328,7 +328,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
             const historyKey = `juribank-field-history-${fieldId}`;
             const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
             
-            if (history.length === 0) return null;
+            if (history.length === 0) {return null;}
             
             // Get most recent or most common value based on config
             if (config.strategy === 'most_recent') {
@@ -355,7 +355,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
             const fieldId = field.id || field.name;
             const validationConfig = this.fieldValidationRules?.get(fieldId);
             
-            if (!validationConfig?.realTimeValidation) return;
+            if (!validationConfig?.realTimeValidation) {return;}
             
             const eventType = this.getFieldEventType(field);
             const delay = validationConfig.validationDelay || this.config.validationDelay;
@@ -396,7 +396,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
         const value = this.getFieldValue(field);
         const rules = this.fieldValidationRules?.get(fieldId);
         
-        if (!rules) return true;
+        if (!rules) {return true;}
         
         const errors = [];
         
@@ -564,7 +564,7 @@ class DynamicFormEngineCore extends DynamicFormEngine {
      */
     saveCurrentStepData() {
         const form = document.getElementById(`dynamic-form-step-${this.currentStep}`);
-        if (!form) return;
+        if (!form) {return;}
         
         const formData = new FormData(form);
         

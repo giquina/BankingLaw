@@ -219,12 +219,12 @@ class AutoRegulatoryMonitoring {
     // Schedule monitoring for a specific source
     scheduleSourceMonitoring(source) {
         const intervals = {
-            'hourly': 60 * 60 * 1000,      // 1 hour
-            'daily': 24 * 60 * 60 * 1000,  // 24 hours
+            'hourly': 60 * 60 * 1000, // 1 hour
+            'daily': 24 * 60 * 60 * 1000, // 24 hours
             'weekly': 7 * 24 * 60 * 60 * 1000 // 7 days
         };
         
-        const interval = intervals[source.monitoring_frequency] || intervals['daily'];
+        const interval = intervals[source.monitoring_frequency] || intervals.daily;
         
         setInterval(() => {
             this.checkSource(source.id);
@@ -239,7 +239,7 @@ class AutoRegulatoryMonitoring {
     // Check specific monitoring source
     async checkSource(sourceId) {
         const source = this.monitoringSources.get(sourceId);
-        if (!source || source.status !== 'active') return;
+        if (!source || source.status !== 'active') {return;}
 
         try {
             console.log(`🔍 Checking ${source.name}...`);
@@ -434,15 +434,13 @@ class AutoRegulatoryMonitoring {
     // Analyze regulatory change impact
     async analyzeImpact(changeRecord) {
         // In real implementation, this would use AI/ML for impact analysis
-        const analysis = {
+        return {
             business_impact: this.assessBusinessImpact(changeRecord),
             compliance_impact: this.assessComplianceImpact(changeRecord),
             timeline: this.assessTimeline(changeRecord),
             cost_estimate: this.estimateCosts(changeRecord),
             recommended_actions: this.recommendActions(changeRecord)
         };
-        
-        return analysis;
     }
 
     // Assess business impact
@@ -521,9 +519,9 @@ class AutoRegulatoryMonitoring {
             return 'high';
         } else if (changeRecord.impact === 'high') {
             return 'medium';
-        } else {
+        } 
             return 'low';
-        }
+        
     }
 
     // Subscribe to alerts
@@ -552,7 +550,7 @@ class AutoRegulatoryMonitoring {
         const alertPriority = priorityLevels[alert.priority] || 1;
         const subscriberThreshold = priorityLevels[preferences.min_priority] || 1;
         
-        if (alertPriority < subscriberThreshold) return false;
+        if (alertPriority < subscriberThreshold) {return false;}
         
         // Check regulator filter
         if (preferences.regulators && !preferences.regulators.includes(alert.regulator)) {
@@ -565,7 +563,7 @@ class AutoRegulatoryMonitoring {
             const hasMatchingTopic = preferences.topics.some(topic => 
                 alertKeywords.includes(topic.toLowerCase())
             );
-            if (!hasMatchingTopic) return false;
+            if (!hasMatchingTopic) {return false;}
         }
         
         return true;
@@ -608,7 +606,7 @@ class AutoRegulatoryMonitoring {
 
     // Get monitoring status
     getMonitoringStatus() {
-        const status = {
+        return {
             sources: Array.from(this.monitoringSources.values()).map(source => ({
                 id: source.id,
                 name: source.name,
@@ -623,8 +621,6 @@ class AutoRegulatoryMonitoring {
                 .reduce((total, history) => total + history.length, 0),
             active_rules: this.automationRules.size
         };
-        
-        return status;
     }
 
     // Get recent changes
@@ -652,7 +648,7 @@ class AutoRegulatoryMonitoring {
             'month': 30 * 24 * 60 * 60 * 1000
         };
         
-        const cutoff = new Date(Date.now() - (periodMs[period] || periodMs['week']));
+        const cutoff = new Date(Date.now() - (periodMs[period] || periodMs.week));
         const analytics = {
             period: period,
             changes_detected: 0,

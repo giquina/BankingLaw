@@ -113,7 +113,7 @@ class JuriBankSecurityConfig {
      * Input Sanitization for XSS Prevention
      */
     sanitizeInput(input) {
-        if (typeof input !== 'string') return input;
+        if (typeof input !== 'string') {return input;}
         
         return input
             .replace(/&/g, '&amp;')
