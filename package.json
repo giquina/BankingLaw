@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx serve . -l 8000",
     "start": "npx serve . -l 8000",
-    "build": "npm run build:css-prod && npm run build:js && npm run optimize:images && npm run security:scan && echo '✅ JuriBank production build complete!'",
+    "build": "node scripts/optimize-build.js && npm run build:js && npm run optimize:images && npm run security:scan && echo '✅ JuriBank production build complete!'",
     "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --watch",
     "build:css-prod": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify",
     "build:js": "node scripts/minify-js.js",

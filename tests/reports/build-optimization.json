@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-08-05T05:34:59.178Z",
+  "bundleSizes": {
+    "css": "58.0KB"
+  },
+  "optimizations": {
+    "Local CSS (no CDN)": true,
+    "Font preloading": true,
+    "Lazy loading": true,
+    "Minified CSS": true,
+    "Optimized images": true,
+    "Debounced events": true
+  },
+  "score": 100,
+  "recommendations": []
+}

@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Assessment Wizard | JuriBank - Am I Eligible?</title>
+    <!-- Primary Meta Tags -->
+    <title>Submit Your Claim | JuriBank Educational Legal Platform</title>
+    <meta name="title" content="Submit Your Claim | JuriBank Educational Legal Platform">
+    <meta name="description" content="Submit your banking or financial claim through our guided assessment wizard. Educational guidance from law students with verified professional referrals when you need representation.">
+    <meta name="keywords" content="claim submission, banking dispute, financial claim, legal help, law students, educational legal guidance">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="JuriBank Student Legal Platform">
     
-    <!-- Tailwind CSS -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://juribank.co.uk/claim-wizard.html">
+    <meta property="og:title" content="Submit Your Claim | JuriBank Educational Legal Platform">
+    <meta property="og:description" content="Submit your banking or financial claim through our guided assessment wizard. Educational guidance from law students.">
+    <meta property="og:image" content="https://juribank.co.uk/assets/images/juribank-students-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Submit Your Claim | JuriBank Educational Legal Platform">
+    <meta property="twitter:description" content="Submit your banking or financial claim through our guided assessment wizard. Educational guidance from law students.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Tailwind CSS with proper configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'student-blue': '#2563eb',
-                        'student-green': '#059669',
-                        'student-orange': '#ea580c',
-                        'trust-gray': '#64748b',
-                        'background-cream': '#fefdf8'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
+        // Configure Tailwind after it loads
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.tailwind && window.tailwind.config) {
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'student-blue': '#2563eb',
+                                'student-green': '#059669',
+                                'student-orange': '#ea580c',
+                                'trust-gray': '#64748b',
+                                'background-cream': '#fefdf8'
+                            },
+                            fontFamily: {
+                                'inter': ['Inter', 'sans-serif']
+                            }
+                        }
                     }
-                }
+                };
             }
-        }
+        });
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
@@ -32,329 +61,818 @@
     
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
         .progress-bar { background: linear-gradient(90deg, #2563eb 0%, #059669 100%); }
-        .option-card { transition: all 0.3s ease; border: 2px solid transparent; }
-        .option-card:hover { border-color: #2563eb; background-color: #eff6ff; }
-        .option-card.selected { border-color: #2563eb; background-color: #dbeafe; }
-        .step-circle { transition: all 0.3s ease; }
-        .step-circle.active { background: #2563eb; color: white; }
-        .step-circle.completed { background: #059669; color: white; }
+        
+        /* Claim Wizard Specific Styles */
+        .claim-step {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .claim-step.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .claim-form-input, .claim-form-select, .claim-form-textarea {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
+            background: white;
+        }
+        
+        .claim-form-input:focus, .claim-form-select:focus, .claim-form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .claim-form-input.error, .claim-form-select.error, .claim-form-textarea.error {
+            border-color: #dc2626;
+            background-color: #fef2f2;
+        }
+        
+        .claim-type-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .claim-type-option:hover {
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+        
+        .claim-type-option.selected {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #eff6ff, #fff);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+        
+        .btn-claim-primary {
+            background: linear-gradient(135deg, #2563eb, #059669);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            font-size: 1.125rem;
+        }
+        
+        .btn-claim-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-claim-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-claim-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.125rem;
+        }
+        
+        .btn-claim-secondary:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .progress-step {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-step.completed {
+            background: #059669;
+            color: white;
+        }
+        
+        .progress-step.active {
+            background: #2563eb;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress-line {
+            height: 2px;
+            background: #e5e7eb;
+            flex: 1;
+            margin: 0 1rem;
+            position: relative;
+            top: -1px;
+        }
+        
+        .progress-line.completed {
+            background: #059669;
+        }
+        
+        .file-upload-area {
+            border: 2px dashed #e5e7eb;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+        
+        .file-upload-area:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+        
+        .file-upload-area.dragover {
+            border-color: #2563eb;
+            background: #eff6ff;
+            transform: scale(1.02);
+        }
+        
+        .uploaded-file {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: between;
+        }
+        
+        .security-notice {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            border: 1px solid #bbf7d0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .claim-form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-indicator {
+                padding: 0 1rem;
+            }
+            
+            .progress-step {
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.875rem;
+            }
+            
+            .claim-type-option {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-background-cream">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
+                    <a href="/">
                         <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
-                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
-                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
                     </a>
+                    <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-600 hover:text-gray-900">
-                        <i class="fas fa-question-circle mr-1"></i>
-                        Help
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#tools" class="text-gray-700 hover:text-student-blue font-medium">Free Tools</a>
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">Knowledge Hub</a>
+                    <a href="/#community" class="text-gray-700 hover:text-student-blue font-medium">Community</a>
+                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium">How It Works</a>
+                    <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Sign Up Free
                     </button>
-                    <a href="dashboard.html" class="text-student-blue hover:text-blue-700 font-medium">
-                        <i class="fas fa-tachometer-alt mr-1"></i>
-                        Dashboard
-                    </a>
                 </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="/#tools" class="block py-2 text-gray-700">Free Tools</a>
+                <a href="knowledge-hub.html" class="block py-2 text-gray-700">Knowledge Hub</a>
+                <a href="/#community" class="block py-2 text-gray-700">Community</a>
+                <a href="how-it-works.html" class="block py-2 text-gray-700">How It Works</a>
+                <button class="w-full bg-student-blue text-white py-2 rounded-lg font-medium mt-2">
+                    Sign Up Free
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 py-8">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Am I Eligible for a Refund?</h1>
-            <p class="text-gray-600">Answer a few questions to understand your options</p>
-            <div class="mt-4 inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">
-                <i class="fas fa-info-circle mr-2"></i>
-                Educational platform helping you understand your options
-            </div>
-        </div>
-
-        <!-- Progress Steps -->
-        <div class="mb-8">
-            <div class="flex items-center justify-center space-x-4 mb-4">
-                <div class="flex items-center">
-                    <div class="step-circle completed w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold">
-                        1
-                    </div>
-                    <span class="ml-2 text-sm font-medium text-gray-900">Claim Type</span>
-                </div>
-                <div class="w-12 h-1 bg-student-green rounded"></div>
-                
-                <div class="flex items-center">
-                    <div class="step-circle active w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold">
-                        2
-                    </div>
-                    <span class="ml-2 text-sm font-medium text-gray-900">Details</span>
-                </div>
-                <div class="w-12 h-1 bg-gray-300 rounded"></div>
-                
-                <div class="flex items-center">
-                    <div class="step-circle w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-sm font-semibold text-gray-600">
-                        3
-                    </div>
-                    <span class="ml-2 text-sm font-medium text-gray-600">Timeline</span>
-                </div>
-                <div class="w-12 h-1 bg-gray-300 rounded"></div>
-                
-                <div class="flex items-center">
-                    <div class="step-circle w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-sm font-semibold text-gray-600">
-                        4
-                    </div>
-                    <span class="ml-2 text-sm font-medium text-gray-600">Results</span>
-                </div>
-            </div>
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Submit Your Claim</h1>
+            <p class="text-xl text-gray-600 mb-6">Our guided assessment wizard helps you understand your situation and next steps</p>
             
-            <!-- Progress Bar -->
-            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
-                <div class="progress-bar h-3 rounded-full" style="width: 50%"></div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-600">
-                <span>Step 2 of 4</span>
-                <span>50% Complete</span>
+            <!-- Educational Notice -->
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 max-w-2xl mx-auto">
+                <div class="flex items-center justify-center mb-2">
+                    <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                    <h3 class="font-semibold text-blue-900">Educational Assessment</h3>
+                </div>
+                <p class="text-blue-800 text-sm">
+                    This is an educational tool operated by law students. We help you understand your options and connect you with verified professionals when needed.
+                </p>
             </div>
         </div>
 
-        <!-- Main Content Card -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
-            <!-- Current Step Content -->
-            <div id="step-content">
-                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Tell us more about your bank charges</h2>
-                <p class="text-gray-600 mb-8">This helps us calculate your potential refund more accurately. All information is confidential and used for educational purposes only.</p>
+        <!-- Progress Indicator -->
+        <div class="progress-indicator flex items-center justify-center mb-8 overflow-x-auto">
+            <div class="flex items-center">
+                <div class="progress-step active" data-step="1">1</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">4</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="5">5</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="6">6</div>
+            </div>
+        </div>
+
+        <!-- Claim Wizard Form -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <form id="claim-wizard-form">
                 
-                <div class="space-y-6">
-                    <!-- Question 1 -->
-                    <div>
-                        <label class="block text-lg font-semibold text-gray-900 mb-4">Which bank charged you these fees?</label>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="barclays" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-blue-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">B</div>
-                                        <span class="font-medium">Barclays</span>
+                <!-- Step 1: Contact Information -->
+                <div class="claim-step active" data-step="1">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>
+                        <p class="text-gray-600">We need your contact details to provide personalized guidance and updates.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 claim-form-grid">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                First Name *
+                            </label>
+                            <input type="text" name="firstName" required class="claim-form-input w-full" placeholder="Your first name">
+                            <div class="error-message" id="firstName-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Last Name *
+                            </label>
+                            <input type="text" name="lastName" required class="claim-form-input w-full" placeholder="Your last name">
+                            <div class="error-message" id="lastName-error"></div>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Email Address *
+                            </label>
+                            <input type="email" name="email" required class="claim-form-input w-full" placeholder="your.email@example.com">
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Phone Number *
+                            </label>
+                            <input type="tel" name="phone" required class="claim-form-input w-full" placeholder="07XXX XXXXXX">
+                            <div class="error-message" id="phone-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Postcode *
+                            </label>
+                            <input type="text" name="postcode" required class="claim-form-input w-full" placeholder="SW1A 1AA">
+                            <div class="error-message" id="postcode-error"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <div class="flex items-start">
+                            <i class="fas fa-shield-alt text-green-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-900 mb-1">Your Data is Secure</h4>
+                                <p class="text-green-800 text-sm">All information is encrypted and stored securely. We never share your personal details without your explicit consent.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Claim Type -->
+                <div class="claim-step" data-step="2">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">What type of claim do you have?</h2>
+                        <p class="text-gray-600">Select the category that best describes your situation. This helps us provide the most relevant guidance.</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="claim-type-option" data-value="bank-charges">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="bank-charges" class="mt-1 mr-4" id="bank-charges">
+                                <div class="flex-1">
+                                    <label for="bank-charges" class="font-semibold text-gray-900 cursor-pointer">Unfair Bank Charges</label>
+                                    <p class="text-gray-600 text-sm mt-1">Overdraft fees, late payment charges, admin fees, or other banking charges you believe are unfair</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Common refund range: £500 - £3,000
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="hsbc" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-red-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">H</div>
-                                        <span class="font-medium">HSBC</span>
+                        </div>
+                        
+                        <div class="claim-type-option" data-value="ppi">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="ppi" class="mt-1 mr-4" id="ppi">
+                                <div class="flex-1">
+                                    <label for="ppi" class="font-semibold text-gray-900 cursor-pointer">Payment Protection Insurance (PPI)</label>
+                                    <p class="text-gray-600 text-sm mt-1">Insurance sold with loans, credit cards, mortgages, or other financial products</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Average refund: £2,750 (plus interest)
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="lloyds" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-green-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">L</div>
-                                        <span class="font-medium">Lloyds</span>
+                        </div>
+                        
+                        <div class="claim-type-option" data-value="packaged-accounts">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="packaged-accounts" class="mt-1 mr-4" id="packaged-accounts">
+                                <div class="flex-1">
+                                    <label for="packaged-accounts" class="font-semibold text-gray-900 cursor-pointer">Packaged Account Fees</label>
+                                    <p class="text-gray-600 text-sm mt-1">Monthly fees for account benefits you didn't want, need, or weren't told about properly</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Typical fees: £12-25 per month
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="natwest" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-purple-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">N</div>
-                                        <span class="font-medium">NatWest</span>
+                        </div>
+                        
+                        <div class="claim-type-option" data-value="investment-advice">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="investment-advice" class="mt-1 mr-4" id="investment-advice">
+                                <div class="flex-1">
+                                    <label for="investment-advice" class="font-semibold text-gray-900 cursor-pointer">Poor Investment/Pension Advice</label>
+                                    <p class="text-gray-600 text-sm mt-1">Financial advice that led to losses, unsuitable investments, or pension transfers</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Potential compensation: varies significantly
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="santander" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-red-500 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">S</div>
-                                        <span class="font-medium">Santander</span>
+                        </div>
+                        
+                        <div class="claim-type-option" data-value="mortgage-issues">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="mortgage-issues" class="mt-1 mr-4" id="mortgage-issues">
+                                <div class="flex-1">
+                                    <label for="mortgage-issues" class="font-semibold text-gray-900 cursor-pointer">Mortgage Issues</label>
+                                    <p class="text-gray-600 text-sm mt-1">Unfair mortgage charges, poor advice, or handling of mortgage arrears</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Includes arrears handling and charges
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <div class="flex items-center">
-                                    <input type="radio" name="bank" value="other" class="mr-3">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 bg-gray-600 rounded mr-3 flex items-center justify-center text-white text-xs font-bold">?</div>
-                                        <span class="font-medium">Other Bank</span>
+                        </div>
+                        
+                        <div class="claim-type-option" data-value="other">
+                            <div class="flex items-start">
+                                <input type="radio" name="claimType" value="other" class="mt-1 mr-4" id="other">
+                                <div class="flex-1">
+                                    <label for="other" class="font-semibold text-gray-900 cursor-pointer">Other Financial Issue</label>
+                                    <p class="text-gray-600 text-sm mt-1">Insurance mis-selling, payment problems, credit card issues, or other financial disputes</p>
+                                    <div class="mt-2 text-xs text-blue-600">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        We'll help identify your specific claim type
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="error-message mt-4" id="claimType-error"></div>
+                </div>
 
-                    <!-- Question 2 -->
-                    <div>
-                        <label class="block text-lg font-semibold text-gray-900 mb-4">What types of charges did you pay?</label>
-                        <p class="text-sm text-gray-600 mb-4">Select all that apply - you can claim for multiple charge types</p>
-                        <div class="space-y-3">
-                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
-                                <input type="checkbox" name="charges" value="overdraft" class="mt-1 mr-4">
-                                <div>
-                                    <strong class="text-gray-900">Overdraft charges</strong>
-                                    <p class="text-gray-600 text-sm">Daily or monthly fees for going overdrawn</p>
-                                    <p class="text-green-600 text-sm">Average refund: £200-£800</p>
-                                </div>
+                <!-- Step 3: Bank/Institution Details -->
+                <div class="claim-step" data-step="3">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Bank & Account Details</h2>
+                        <p class="text-gray-600">Tell us about the financial institution and accounts involved in your claim.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 claim-form-grid">
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Primary Bank/Financial Institution *
                             </label>
-                            
-                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
-                                <input type="checkbox" name="charges" value="returned-payment" class="mt-1 mr-4">
-                                <div>
-                                    <strong class="text-gray-900">Returned payment fees</strong>
-                                    <p class="text-gray-600 text-sm">Charges when direct debits or payments bounce</p>
-                                    <p class="text-green-600 text-sm">Average refund: £150-£600</p>
-                                </div>
+                            <select name="primaryBank" required class="claim-form-select w-full">
+                                <option value="">Select your bank...</option>
+                                <option value="lloyds">Lloyds Banking Group</option>
+                                <option value="barclays">Barclays</option>
+                                <option value="hsbc">HSBC</option>
+                                <option value="natwest">NatWest Group (RBS)</option>
+                                <option value="santander">Santander UK</option>
+                                <option value="nationwide">Nationwide Building Society</option>
+                                <option value="tsc">TSB</option>
+                                <option value="halifax">Halifax</option>
+                                <option value="first-direct">First Direct</option>
+                                <option value="metro">Metro Bank</option>
+                                <option value="challenger">Challenger Bank (Monzo, Starling, etc.)</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="primaryBank-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Account Type *
                             </label>
-                            
-                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
-                                <input type="checkbox" name="charges" value="late-payment" class="mt-1 mr-4">
-                                <div>
-                                    <strong class="text-gray-900">Late payment charges</strong>
-                                    <p class="text-gray-600 text-sm">Fees for missing credit card or loan payments</p>
-                                    <p class="text-green-600 text-sm">Average refund: £100-£500</p>
-                                </div>
+                            <select name="accountType" required class="claim-form-select w-full">
+                                <option value="">Select account type...</option>
+                                <option value="current">Current Account</option>
+                                <option value="savings">Savings Account</option>
+                                <option value="credit-card">Credit Card</option>
+                                <option value="loan">Personal Loan</option>
+                                <option value="mortgage">Mortgage</option>
+                                <option value="business">Business Account</option>
+                                <option value="packaged">Packaged Account</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="accountType-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                When was the account opened?
                             </label>
-                            
-                            <label class="option-card flex items-start p-4 rounded-xl cursor-pointer">
-                                <input type="checkbox" name="charges" value="admin-fees" class="mt-1 mr-4">
-                                <div>
-                                    <strong class="text-gray-900">Administration fees</strong>
-                                    <p class="text-gray-600 text-sm">Letter fees, phone call charges, account maintenance</p>
-                                    <p class="text-green-600 text-sm">Average refund: £50-£300</p>
-                                </div>
+                            <input type="month" name="accountOpened" class="claim-form-input w-full">
+                            <p class="text-xs text-gray-500 mt-1">Approximate date is fine</p>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Do you have any other accounts with this bank?
                             </label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="otherAccounts" value="no" class="mr-2">
+                                    <span>No, just this one account</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="otherAccounts" value="yes" class="mr-2">
+                                    <span>Yes, I have other accounts with them</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Additional Details
+                            </label>
+                            <textarea name="bankDetails" rows="3" class="claim-form-textarea w-full" placeholder="Any additional information about your accounts, products, or relationship with this bank..."></textarea>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Question 3 -->
-                    <div>
-                        <label class="block text-lg font-semibold text-gray-900 mb-4">Roughly how many charges have you paid?</label>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <input type="radio" name="frequency" value="1-5" class="mr-3">
+                <!-- Step 4: Timeline & Issues -->
+                <div class="claim-step" data-step="4">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Timeline & Issues</h2>
+                        <p class="text-gray-600">Help us understand when the issues occurred and what happened.</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                When did the issue first occur? *
+                            </label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="month" name="issueStartDate" required class="claim-form-input w-full">
+                                <select name="issueTimeframe" class="claim-form-select w-full">
+                                    <option value="">How long did it continue?</option>
+                                    <option value="one-off">One-off incident</option>
+                                    <option value="few-months">A few months</option>
+                                    <option value="1-year">About 1 year</option>
+                                    <option value="2-3-years">2-3 years</option>
+                                    <option value="3-plus-years">More than 3 years</option>
+                                    <option value="ongoing">Still ongoing</option>
+                                </select>
+                            </div>
+                            <div class="error-message" id="issueStartDate-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Describe what happened *
+                            </label>
+                            <textarea name="issueDescription" required rows="4" class="claim-form-textarea w-full" placeholder="Please provide details about the issue, charges, or poor service you experienced. Include approximate amounts if relevant..."></textarea>
+                            <div class="error-message" id="issueDescription-error"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Estimated total amount involved
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">£</span>
+                                <input type="number" name="estimatedAmount" class="claim-form-input w-full pl-8" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">Rough estimate of charges, fees, or losses (optional)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Have you already contacted the bank about this?
+                            </label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="contactedBank" value="no" class="mr-2">
+                                    <span>No, not yet</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contactedBank" value="informal" class="mr-2">
+                                    <span>Yes, informally (phone/branch)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contactedBank" value="formal" class="mr-2">
+                                    <span>Yes, formal written complaint</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contactedBank" value="ombudsman" class="mr-2">
+                                    <span>Yes, and referred to Financial Ombudsman</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div id="bank-response-section" class="hidden">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                What was the bank's response?
+                            </label>
+                            <textarea name="bankResponse" rows="3" class="claim-form-textarea w-full" placeholder="Describe how the bank responded to your complaint..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Document Upload -->
+                <div class="claim-step" data-step="5">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Supporting Documents</h2>
+                        <p class="text-gray-600">Upload any relevant documents to support your claim. These help us provide better guidance.</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- File Upload Area -->
+                        <div class="file-upload-area" id="file-upload-area">
+                            <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" class="hidden">
+                            <div class="text-center">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                <h3 class="text-lg font-semibold text-gray-700 mb-2">Drop files here or click to upload</h3>
+                                <p class="text-gray-500 mb-4">PDF, Word documents, or images (JPG, PNG)</p>
+                                <button type="button" class="btn-claim-secondary" onclick="document.getElementById('file-input').click()">
+                                    Choose Files
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Uploaded Files List -->
+                        <div id="uploaded-files" class="space-y-2"></div>
+                        
+                        <!-- Helpful Document Types -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                            <h4 class="font-semibold text-blue-900 mb-3">Helpful documents include:</h4>
+                            <div class="grid md:grid-cols-2 gap-3 text-sm text-blue-800">
                                 <div>
-                                    <strong>1-5 charges</strong>
-                                    <p class="text-gray-600 text-sm">Occasional charges</p>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Bank statements showing charges
+                                </div>
+                                <div>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Account terms and conditions
+                                </div>
+                                <div>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Correspondence with the bank
+                                </div>
+                                <div>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Sales documentation
+                                </div>
+                                <div>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Credit agreements or loan paperwork
+                                </div>
+                                <div>
+                                    <i class="fas fa-check text-blue-600 mr-2"></i>
+                                    Any complaint responses
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <input type="radio" name="frequency" value="6-20" class="mr-3">
-                                <div>
-                                    <strong>6-20 charges</strong>
-                                    <p class="text-gray-600 text-sm">Regular charges</p>
+                            <p class="text-xs text-blue-700 mt-3 italic">
+                                Don't worry if you don't have everything - we can help you get documents from your bank later.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Review & Submit -->
+                <div class="claim-step" data-step="6">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Review & Submit</h2>
+                        <p class="text-gray-600">Please review your information before submitting your claim assessment.</p>
+                    </div>
+                    
+                    <!-- Summary Sections -->
+                    <div class="space-y-6">
+                        <!-- Contact Summary -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-user text-student-blue mr-2"></i>
+                                Contact Information
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div><strong>Name:</strong> <span id="summary-name"></span></div>
+                                <div><strong>Email:</strong> <span id="summary-email"></span></div>
+                                <div><strong>Phone:</strong> <span id="summary-phone"></span></div>
+                                <div><strong>Postcode:</strong> <span id="summary-postcode"></span></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Claim Summary -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-file-alt text-student-blue mr-2"></i>
+                                Claim Details
+                            </h3>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>Claim Type:</strong> <span id="summary-claim-type"></span></div>
+                                <div><strong>Bank:</strong> <span id="summary-bank"></span></div>
+                                <div><strong>Account Type:</strong> <span id="summary-account-type"></span></div>
+                                <div><strong>Issue Started:</strong> <span id="summary-issue-date"></span></div>
+                                <div><strong>Estimated Amount:</strong> £<span id="summary-amount"></span></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Documents Summary -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-paperclip text-student-blue mr-2"></i>
+                                Documents
+                            </h3>
+                            <div id="summary-documents" class="text-sm text-gray-600">
+                                No documents uploaded
+                            </div>
+                        </div>
+                        
+                        <!-- Legal Consents -->
+                        <div class="space-y-4">
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                                <h4 class="font-semibold text-yellow-900 mb-3">Important Information</h4>
+                                <div class="space-y-3 text-sm text-yellow-800">
+                                    <label class="flex items-start">
+                                        <input type="checkbox" name="consent1" required class="mt-1 mr-3">
+                                        <span>I confirm that the information provided is accurate to the best of my knowledge.</span>
+                                    </label>
+                                    <label class="flex items-start">
+                                        <input type="checkbox" name="consent2" required class="mt-1 mr-3">
+                                        <span>I understand this is an educational service operated by law students and does not constitute formal legal advice.</span>
+                                    </label>
+                                    <label class="flex items-start">
+                                        <input type="checkbox" name="consent3" required class="mt-1 mr-3">
+                                        <span>I consent to JuriBank storing my information securely and contacting me about my assessment and educational resources.</span>
+                                    </label>
+                                    <label class="flex items-start">
+                                        <input type="checkbox" name="consent4" class="mt-1 mr-3">
+                                        <span>I would like to receive updates about relevant legal changes and educational content (optional).</span>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <input type="radio" name="frequency" value="21-50" class="mr-3">
-                                <div>
-                                    <strong>21-50 charges</strong>
-                                    <p class="text-gray-600 text-sm">Frequent charges</p>
+                            
+                            <div class="error-message" id="consent-error"></div>
+                        </div>
+                        
+                        <!-- What Happens Next -->
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+                            <h4 class="font-semibold text-green-900 mb-3">What happens next?</h4>
+                            <div class="space-y-2 text-sm text-green-800">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-600 mt-0.5 mr-2"></i>
+                                    <span>We'll review your assessment within 24 hours</span>
                                 </div>
-                            </div>
-                            <div class="option-card p-4 rounded-xl cursor-pointer">
-                                <input type="radio" name="frequency" value="50+" class="mr-3">
-                                <div>
-                                    <strong>50+ charges</strong>
-                                    <p class="text-gray-600 text-sm">Very frequent charges</p>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-600 mt-0.5 mr-2"></i>
+                                    <span>You'll receive an email with our educational analysis and next steps</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-600 mt-0.5 mr-2"></i>
+                                    <span>If we identify a strong case, we'll suggest verified solicitors who specialize in your claim type</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-600 mt-0.5 mr-2"></i>
+                                    <span>All communication will include educational information to help you understand the process</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Navigation Buttons -->
-            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
-                <button class="flex items-center px-6 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    Previous
-                </button>
-                
-                <div class="text-center">
-                    <button class="text-student-blue hover:text-blue-700 text-sm">
-                        <i class="fas fa-save mr-1"></i>
-                        Save Progress
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+                    <button type="button" id="prev-btn" class="btn-claim-secondary hidden" onclick="previousStep()">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Previous
+                    </button>
+                    
+                    <div class="flex-1"></div>
+                    
+                    <button type="button" id="next-btn" class="btn-claim-primary" onclick="nextStep()">
+                        Next
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    
+                    <button type="submit" id="submit-btn" class="btn-claim-primary hidden">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Submit Assessment
                     </button>
                 </div>
-                
-                <button class="flex items-center px-6 py-3 bg-student-blue text-white rounded-lg font-medium hover:bg-blue-700">
-                    Continue
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-            </div>
+            </form>
         </div>
 
-        <!-- Upgrade Prompt -->
-        <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
-            <div class="flex items-start">
-                <div class="bg-student-blue w-12 h-12 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <i class="fas fa-star text-white"></i>
-                </div>
-                <div class="flex-1">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Get Your Complete Assessment</h3>
-                    <p class="text-gray-600 mb-4">Upgrade to see your detailed eligibility analysis, evidence requirements, and step-by-step action plan.</p>
-                    
-                    <div class="grid md:grid-cols-3 gap-4 mb-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Detailed refund calculation</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Success probability rating</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Custom action plan</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Template letters included</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Priority student support</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-student-green mr-2"></i>
-                            <span class="text-sm">Progress tracking dashboard</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center space-x-4">
-                        <button class="bg-student-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
-                            Upgrade Now - £9.99/month
-                        </button>
-                        <span class="text-sm text-gray-600">7-day free trial • Cancel anytime</span>
-                    </div>
-                </div>
+        <!-- Success Message (Hidden) -->
+        <div id="success-message" class="hidden bg-white rounded-2xl shadow-xl p-8 text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-green-600 text-3xl"></i>
             </div>
-        </div>
-
-        <!-- Help Section -->
-        <div class="mt-8 text-center">
-            <p class="text-gray-600 mb-4">Need help with this assessment?</p>
-            <div class="flex justify-center space-x-6">
-                <button class="text-student-blue hover:text-blue-700 font-medium">
-                    <i class="fas fa-comments mr-2"></i>
-                    Ask Community
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Assessment Submitted Successfully!</h2>
+            <p class="text-xl text-gray-600 mb-6">Thank you for submitting your claim assessment. We'll review your information and get back to you within 24 hours.</p>
+            
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                <h3 class="font-semibold text-blue-900 mb-2">Your Reference Number</h3>
+                <div class="text-2xl font-mono font-bold text-blue-700" id="reference-number">JB-2024-001234</div>
+                <p class="text-sm text-blue-700 mt-2">Please keep this reference for your records</p>
+            </div>
+            
+            <div class="space-y-4">
+                <button onclick="window.location.href='/'" class="btn-claim-primary w-full md:w-auto">
+                    <i class="fas fa-home mr-2"></i>
+                    Return to Home
                 </button>
-                <button class="text-student-blue hover:text-blue-700 font-medium">
+                <button onclick="window.location.href='knowledge-hub.html'" class="btn-claim-secondary w-full md:w-auto">
                     <i class="fas fa-book mr-2"></i>
-                    View Guide
-                </button>
-                <button class="text-student-blue hover:text-blue-700 font-medium">
-                    <i class="fas fa-headset mr-2"></i>
-                    Contact Students
+                    Browse Knowledge Hub
                 </button>
             </div>
         </div>
