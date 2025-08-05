@@ -411,5 +411,627 @@
             </div>
         </div>
     </footer>
+
+    <!-- Dashboard JavaScript -->
+    <script src="/src/dashboard-api.js"></script>
+    <script>
+        // Dashboard Application
+        class DashboardApp {
+            constructor() {
+                this.userData = null;
+                this.currentStats = {};
+                this.activeClaimms = [];
+                this.recentActivity = [];
+                
+                this.initializeDashboard();
+                this.setupEventListeners();
+                this.loadUserData();
+            }
+
+            async initializeDashboard() {
+                try {
+                    // Load user data and statistics
+                    this.userData = await this.getUserData();
+                    this.updateDashboard();
+                    
+                    // Start real-time updates
+                    this.startRealTimeUpdates();
+                    
+                } catch (error) {
+                    console.error('Failed to initialize dashboard:', error);
+                    this.showErrorState();
+                }
+            }
+
+            setupEventListeners() {
+                // Quick action buttons
+                document.querySelectorAll('.quick-action-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = e.currentTarget.dataset.action;
+                        this.handleQuickAction(action);
+                    });
+                });
+
+                // Upgrade buttons
+                document.querySelectorAll('[class*="upgrade"], [class*="trial"]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.showUpgradeModal();
+                    });
+                });
+
+                // Continue claim buttons
+                document.querySelectorAll('[data-claim-id]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const claimId = e.currentTarget.dataset.claimId;
+                        this.continueClaim(claimId);
+                    });
+                });
+            }
+
+            async getUserData() {
+                // Mock user data - in production would come from API
+                return {
+                    id: 'user-123',
+                    accountType: 'free',
+                    memberSince: new Date('2024-11-01'),
+                    stats: {
+                        potentialRefund: 1247,
+                        stepsComplete: 3,
+                        totalSteps: 5,
+                        savedItems: 3,
+                        maxSaved: 3,
+                        achievements: 2,
+                        assessmentsUsed: 2,
+                        maxAssessments: 5
+                    },
+                    activeClaims: [
+                        {
+                            id: 'claim-1',
+                            type: 'bank-charges',
+                            title: 'Bank Charges Refund',
+                            institution: 'Barclays Bank',
+                            status: 'in-progress',
+                            progress: 60,
+                            currentStep: 3,
+                            totalSteps: 5,
+                            nextAction: 'Submit complaint to bank',
+                            estimatedRefund: 1247,
+                            startedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)
+                        },
+                        {
+                            id: 'claim-2',
+                            type: 'ppi',
+                            title: 'PPI Assessment',
+                            institution: 'Multiple lenders',
+                            status: 'paused',
+                            progress: 25,
+                            currentStep: 1,
+                            totalSteps: 4,
+                            nextAction: 'Complete eligibility check',
+                            requiresUpgrade: true
+                        }
+                    ],
+                    recentActivity: [
+                        {
+                            type: 'assessment-complete',
+                            title: 'Eligibility assessment completed',
+                            description: 'You may be eligible for a refund of up to £1,200 for unfair bank charges',
+                            timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+                            icon: 'check',
+                            color: 'green'
+                        },
+                        {
+                            type: 'saved-item',
+                            title: 'Saved: New FCA Rules on Bank Charges',
+                            description: 'Important update that affects your current claim',
+                            timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
+                            icon: 'bookmark',
+                            color: 'blue'
+                        },
+                        {
+                            type: 'calculation',
+                            title: 'Refund calculation updated',
+                            description: 'Based on your charge history: £1,247 potential refund',
+                            timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+                            icon: 'calculator',
+                            color: 'orange'
+                        },
+                        {
+                            type: 'community',
+                            title: 'Joined community discussion',
+                            description: '"Bank charged me £200 for going £5 overdrawn - is this fair?"',
+                            timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                            icon: 'comments',
+                            color: 'purple'
+                        }
+                    ],
+                    achievements: [
+                        {
+                            id: 'getting-started',
+                            title: 'Getting Started',
+                            description: 'Completed first assessment',
+                            icon: 'rocket',
+                            unlocked: true,
+                            unlockedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)
+                        },
+                        {
+                            id: 'knowledge-seeker',
+                            title: 'Knowledge Seeker',
+                            description: 'Saved your first resource',
+                            icon: 'bookmark',
+                            unlocked: true,
+                            unlockedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000)
+                        },
+                        {
+                            id: 'community-helper',
+                            title: 'Community Helper',
+                            description: 'Help 5 community members',
+                            icon: 'users',
+                            unlocked: false,
+                            progress: 1,
+                            target: 5
+                        },
+                        {
+                            id: 'claim-master',
+                            title: 'Claim Master',
+                            description: 'Complete your first successful claim',
+                            icon: 'trophy',
+                            unlocked: false,
+                            progress: 60,
+                            target: 100
+                        }
+                    ]
+                };
+            }
+
+            updateDashboard() {
+                if (!this.userData) return;
+
+                // Update stats cards
+                this.updateStatsCards();
+                
+                // Update claims section
+                this.updateActiveClaims();
+                
+                // Update recent activity
+                this.updateRecentActivity();
+                
+                // Update account status
+                this.updateAccountStatus();
+                
+                // Update achievements
+                this.updateAchievements();
+            }
+
+            updateStatsCards() {
+                const stats = this.userData.stats;
+                
+                // Update potential refund
+                this.updateStatCard(0, `£${stats.potentialRefund.toLocaleString()}`, 'Based on your assessments');
+                
+                // Update steps complete
+                this.updateStatCard(1, `${stats.stepsComplete}/${stats.totalSteps}`, 'Bank charge claim progress');
+                
+                // Update saved items
+                const savedColor = stats.savedItems >= stats.maxSaved ? 'text-red-600' : 'text-gray-600';
+                const savedText = stats.savedItems >= stats.maxSaved ? 'Limit reached' : `${stats.maxSaved - stats.savedItems} remaining`;
+                this.updateStatCard(2, `${stats.savedItems}/${stats.maxSaved}`, savedText, savedColor);
+                
+                // Update achievements
+                this.updateStatCard(3, stats.achievements.toString(), 'Milestones unlocked');
+            }
+
+            updateStatCard(index, value, description, descriptionColor = 'text-gray-600') {
+                const cards = document.querySelectorAll('.bg-white.p-6.rounded-2xl.shadow-lg.card-hover');
+                if (cards[index]) {
+                    const valueElement = cards[index].querySelector('.text-2xl.font-bold');
+                    const descElement = cards[index].querySelector('.text-sm');
+                    
+                    if (valueElement) valueElement.textContent = value;
+                    if (descElement) {
+                        descElement.textContent = description;
+                        descElement.className = `text-sm ${descriptionColor}`;
+                    }
+                }
+            }
+
+            updateActiveClaims() {
+                const claimsContainer = document.querySelector('.space-y-6');
+                if (!claimsContainer) return;
+
+                claimsContainer.innerHTML = this.userData.activeClaims.map(claim => `
+                    <div class="border border-gray-200 rounded-xl p-6 ${claim.requiresUpgrade ? 'opacity-60' : ''}">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">${claim.title}</h3>
+                                <p class="text-sm text-gray-600">${claim.institution} • Started ${this.formatTimeAgo(claim.startedDate)}</p>
+                            </div>
+                            <span class="bg-${this.getStatusColor(claim.status)}-100 text-${this.getStatusColor(claim.status)}-800 px-3 py-1 rounded-full text-sm font-medium">
+                                ${this.formatStatus(claim.status)}
+                            </span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-600">Progress</span>
+                                <span class="text-sm font-medium text-gray-900">Step ${claim.currentStep} of ${claim.totalSteps}</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-${claim.requiresUpgrade ? 'gray-400' : 'student-blue'} h-2 rounded-full" style="width: ${claim.progress}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-900 font-medium">Next: ${claim.nextAction}</p>
+                                <p class="text-xs text-gray-600">
+                                    ${claim.estimatedRefund ? `Estimated refund: £${claim.estimatedRefund.toLocaleString()}` : 
+                                      claim.requiresUpgrade ? 'Upgrade for full assessment' : ''}
+                                </p>
+                            </div>
+                            <button data-claim-id="${claim.id}" class="bg-${claim.requiresUpgrade ? 'gray-300 text-gray-600' : 'student-blue text-white'} px-4 py-2 rounded-lg text-sm font-medium hover:opacity-80">
+                                ${claim.status === 'paused' ? 'Resume' : 'Continue'}
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add new assessment button
+                claimsContainer.innerHTML += `
+                    <div class="mt-6 text-center">
+                        <button class="text-student-blue font-medium hover:underline quick-action-btn" data-action="new-assessment">
+                            <i class="fas fa-plus mr-2"></i>
+                            Start New Assessment
+                        </button>
+                    </div>
+                `;
+            }
+
+            updateRecentActivity() {
+                const activityContainer = document.querySelector('.space-y-4');
+                if (!activityContainer) return;
+
+                activityContainer.innerHTML = this.userData.recentActivity.map(activity => `
+                    <div class="flex items-start">
+                        <div class="bg-student-${activity.color} w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-${activity.icon} text-white text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-900">${activity.title}</h4>
+                            <p class="text-gray-600 text-sm">${activity.description}</p>
+                            <p class="text-gray-500 text-xs mt-1">${this.formatTimeAgo(activity.timestamp)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateAccountStatus() {
+                const accountType = this.userData.accountType;
+                const stats = this.userData.stats;
+                
+                // Update account type display
+                const accountTypeElement = document.querySelector('h4.font-semibold.text-gray-900');
+                if (accountTypeElement) {
+                    accountTypeElement.textContent = accountType === 'free' ? 'Free Explorer' : 'Full Access';
+                }
+
+                // Update member since
+                const memberSinceElement = document.querySelector('.text-sm.text-gray-600');
+                if (memberSinceElement) {
+                    memberSinceElement.textContent = `Member since ${this.userData.memberSince.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}`;
+                }
+
+                // Update progress bars
+                const progressBars = document.querySelectorAll('.w-full.bg-gray-200.rounded-full.h-2');
+                if (progressBars.length >= 2) {
+                    // Assessments progress
+                    const assessmentProgress = (stats.assessmentsUsed / stats.maxAssessments) * 100;
+                    progressBars[0].querySelector('div').style.width = `${assessmentProgress}%`;
+                    
+                    // Saved items progress
+                    const savedProgress = (stats.savedItems / stats.maxSaved) * 100;
+                    const savedBar = progressBars[1].querySelector('div');
+                    savedBar.style.width = `${savedProgress}%`;
+                    savedBar.className = savedProgress >= 100 ? 'bg-red-500 h-2 rounded-full' : 'bg-student-blue h-2 rounded-full';
+                }
+            }
+
+            updateAchievements() {
+                const achievementsContainer = document.querySelector('.space-y-4');
+                const achievements = this.userData.achievements;
+                
+                if (achievementsContainer && achievements) {
+                    achievementsContainer.innerHTML = achievements.map(achievement => `
+                        <div class="flex items-center ${achievement.unlocked ? '' : 'opacity-50'}">
+                            <div class="${achievement.unlocked ? 'achievement-badge' : 'bg-gray-200'} w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-${achievement.icon} ${achievement.unlocked ? 'text-sm' : 'text-gray-400 text-sm'}"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">${achievement.title}</h4>
+                                <p class="text-xs text-gray-600">${achievement.description}</p>
+                                ${!achievement.unlocked && achievement.progress ? 
+                                    `<div class="w-16 bg-gray-200 rounded-full h-1 mt-1">
+                                        <div class="bg-student-blue h-1 rounded-full" style="width: ${(achievement.progress / achievement.target) * 100}%"></div>
+                                    </div>` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            startRealTimeUpdates() {
+                // Simulate real-time updates every 30 seconds
+                setInterval(() => {
+                    this.checkForUpdates();
+                }, 30000);
+                
+                // Check for achievements
+                setInterval(() => {
+                    this.checkForNewAchievements();
+                }, 60000);
+            }
+
+            async checkForUpdates() {
+                // In a real app, this would check for new activity, claim updates, etc.
+                console.log('Checking for dashboard updates...');
+            }
+
+            checkForNewAchievements() {
+                // Check if user has unlocked new achievements
+                const achievements = this.userData.achievements;
+                achievements.forEach(achievement => {
+                    if (!achievement.unlocked && achievement.progress >= achievement.target) {
+                        this.unlockAchievement(achievement);
+                    }
+                });
+            }
+
+            unlockAchievement(achievement) {
+                achievement.unlocked = true;
+                achievement.unlockedDate = new Date();
+                
+                // Show notification
+                this.showAchievementNotification(achievement);
+                
+                // Update UI
+                this.updateAchievements();
+            }
+
+            showAchievementNotification(achievement) {
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-20 right-4 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white p-4 rounded-lg shadow-xl max-w-sm transform transition-all duration-500 translate-x-full';
+                
+                notification.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-trophy text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Achievement Unlocked!</h4>
+                            <p class="text-sm opacity-90">${achievement.title}</p>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(notification);
+
+                // Animate in
+                setTimeout(() => {
+                    notification.classList.remove('translate-x-full');
+                }, 100);
+
+                // Remove after 5 seconds
+                setTimeout(() => {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => notification.remove(), 500);
+                }, 5000);
+            }
+
+            handleQuickAction(action) {
+                switch (action) {
+                    case 'new-assessment':
+                        window.location.href = 'claim-wizard.html';
+                        break;
+                    case 'calculator':
+                        this.showCalculatorModal();
+                        break;
+                    case 'community':
+                        window.location.href = 'community-forum.html';
+                        break;
+                    case 'resources':
+                        window.location.href = 'knowledge-hub.html';
+                        break;
+                    default:
+                        console.log('Unknown action:', action);
+                }
+            }
+
+            continueClaim(claimId) {
+                const claim = this.userData.activeClaims.find(c => c.id === claimId);
+                if (!claim) return;
+
+                if (claim.requiresUpgrade) {
+                    this.showUpgradeModal();
+                } else {
+                    // Continue with the claim process
+                    window.location.href = `claim-wizard.html?continue=${claimId}`;
+                }
+            }
+
+            showUpgradeModal() {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-2xl p-8 max-w-lg mx-4">
+                        <div class="text-center">
+                            <div class="bg-gradient-to-r from-student-blue to-student-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-crown text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Unlock Full Access</h3>
+                            <p class="text-gray-600 mb-6">Get unlimited assessments, priority support, and advanced tools to maximize your claims.</p>
+                            
+                            <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-student-blue">25+</div>
+                                        <div class="text-gray-600">Claim Types</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-student-green">∞</div>
+                                        <div class="text-gray-600">Unlimited Saves</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-student-orange">24/7</div>
+                                        <div class="text-gray-600">Student Support</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">⚡</div>
+                                        <div class="text-gray-600">Real-time Alerts</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-3">
+                                <button onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                                    Maybe Later
+                                </button>
+                                <button class="flex-1 px-4 py-3 bg-student-blue text-white rounded-lg hover:bg-blue-700 font-medium">
+                                    Start Free Trial
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-3">£9.99/month after 7-day free trial</p>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(modal);
+                
+                // Remove on outside click
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) modal.remove();
+                });
+            }
+
+            showCalculatorModal() {
+                // Implementation for refund calculator modal
+                this.showNotification('Refund calculator coming soon!', 'info');
+            }
+
+            showErrorState() {
+                document.body.innerHTML = `
+                    <div class="min-h-screen flex items-center justify-center bg-background-cream">
+                        <div class="text-center">
+                            <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Dashboard Unavailable</h2>
+                            <p class="text-gray-600 mb-6">We're having trouble loading your dashboard. Please try again.</p>
+                            <button onclick="location.reload()" class="bg-student-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                                Retry
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-20 right-4 z-50 px-4 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full`;
+                
+                switch (type) {
+                    case 'success':
+                        notification.classList.add('bg-green-500');
+                        break;
+                    case 'error':
+                        notification.classList.add('bg-red-500');
+                        break;
+                    default:
+                        notification.classList.add('bg-blue-500');
+                }
+
+                notification.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} mr-2"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+
+                document.body.appendChild(notification);
+
+                // Animate in
+                setTimeout(() => {
+                    notification.classList.remove('translate-x-full');
+                }, 100);
+
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Utility methods
+            formatTimeAgo(date) {
+                const now = Date.now();
+                const diff = now - date.getTime();
+                
+                const minute = 60 * 1000;
+                const hour = 60 * minute;
+                const day = 24 * hour;
+                const week = 7 * day;
+                
+                if (diff < hour) return `${Math.floor(diff / minute)} min ago`;
+                if (diff < day) return `${Math.floor(diff / hour)} hours ago`;
+                if (diff < week) return `${Math.floor(diff / day)} days ago`;
+                return `${Math.floor(diff / week)} weeks ago`;
+            }
+
+            getStatusColor(status) {
+                const colors = {
+                    'in-progress': 'yellow',
+                    'completed': 'green',
+                    'paused': 'gray',
+                    'pending': 'blue'
+                };
+                return colors[status] || 'gray';
+            }
+
+            formatStatus(status) {
+                const statusMap = {
+                    'in-progress': 'In Progress',
+                    'completed': 'Completed',
+                    'paused': 'Paused',
+                    'pending': 'Pending'
+                };
+                return statusMap[status] || status;
+            }
+
+            async loadUserData() {
+                // Load saved user data from localStorage
+                const savedData = localStorage.getItem('juribank-user-data');
+                if (savedData) {
+                    try {
+                        const parsed = JSON.parse(savedData);
+                        // Merge with default data
+                        this.userData = { ...this.userData, ...parsed };
+                    } catch (error) {
+                        console.warn('Failed to parse saved user data');
+                    }
+                }
+            }
+
+            saveUserData() {
+                // Save user data to localStorage
+                if (this.userData) {
+                    localStorage.setItem('juribank-user-data', JSON.stringify(this.userData));
+                }
+            }
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            new DashboardApp();
+        });
+    </script>
 </body>
 </html>
