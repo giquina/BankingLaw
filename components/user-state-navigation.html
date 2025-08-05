@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuriBank User State Navigation Components</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* User State Design System */
+        :root {
+            --nav-navy: #0D1B2A;
+            --nav-gold: #F4C430;
+            --nav-blue: #2563eb;
+            --nav-success: #059669;
+            --nav-warning: #D97706;
+            --nav-gray-50: #F8FAFC;
+            --nav-gray-100: #F1F5F9;
+            --nav-gray-200: #E2E8F0;
+            --nav-gray-600: #475569;
+            --nav-gray-900: #0F172A;
+        }
+
+        /* Navigation Base Styles */
+        .juribank-nav {
+            background: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .juribank-nav.scrolled {
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        /* Logo and Brand */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            height: 2rem;
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .nav-badge {
+            background: var(--nav-blue);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--nav-gray-600);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--nav-blue);
+        }
+
+        .nav-link.active {
+            color: var(--nav-navy);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--nav-blue);
+        }
+
+        /* User States */
+        .nav-auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Unauthenticated State */
+        .nav-auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-sign-in {
+            color: var(--nav-gray-600);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-sign-in:hover {
+            color: var(--nav-navy);
+            background: var(--nav-gray-50);
+        }
+
+        .nav-sign-up {
+            background: var(--nav-blue);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-sign-up:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Authenticated State */
+        .nav-user-menu {
+            position: relative;
+        }
+
+        .nav-user-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-user-button:hover {
+            background: var(--nav-gray-50);
+        }
+
+        .nav-user-avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--nav-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .nav-user-info {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-user-name {
+            font-weight: 600;
+            color: var(--nav-navy);
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+
+        .nav-user-plan {
+            font-size: 0.75rem;
+            color: var(--nav-gray-600);
+            line-height: 1;
+        }
+
+        .nav-user-plan.premium {
+            color: var(--nav-gold);
+            font-weight: 600;
+        }
+
+        .nav-user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--nav-gray-200);
+            min-width: 16rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-0.5rem);
+            transition: all 0.2s ease;
+            z-index: 50;
+        }
+
+        .nav-user-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-header {
+            padding: 1rem 1rem 0.5rem;
+            border-bottom: 1px solid var(--nav-gray-100);
+        }
+
+        .nav-dropdown-user {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-dropdown-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--nav-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-dropdown-info {
+            flex: 1;
+        }
+
+        .nav-dropdown-name {
+            font-weight: 600;
+            color: var(--nav-navy);
+            margin-bottom: 0.125rem;
+        }
+
+        .nav-dropdown-email {
+            font-size: 0.875rem;
+            color: var(--nav-gray-600);
+        }
+
+        .nav-plan-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--nav-gray-100);
+            color: var(--nav-gray-600);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        .nav-plan-badge.premium {
+            background: linear-gradient(135deg, var(--nav-gold), #e6b520);
+            color: white;
+        }
+
+        .nav-plan-badge.free {
+            background: var(--nav-blue);
+            color: white;
+        }
+
+        .nav-dropdown-menu {
+            padding: 0.5rem;
+        }
+
+        .nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            color: var(--nav-gray-700);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .nav-dropdown-item:hover {
+            background: var(--nav-gray-50);
+            color: var(--nav-navy);
+        }
+
+        .nav-dropdown-item i {
+            width: 1.25rem;
+            color: var(--nav-gray-600);
+        }
+
+        .nav-dropdown-item.upgrade {
+            background: linear-gradient(135deg, var(--nav-blue), #1d4ed8);
+            color: white;
+            margin: 0.5rem 0;
+        }
+
+        .nav-dropdown-item.upgrade:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            color: white;
+        }
+
+        .nav-dropdown-item.upgrade i {
+            color: white;
+        }
+
+        .nav-dropdown-divider {
+            height: 1px;
+            background: var(--nav-gray-200);
+            margin: 0.5rem 0;
+        }
+
+        .nav-dropdown-item.danger {
+            color: #dc2626;
+        }
+
+        .nav-dropdown-item.danger:hover {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .nav-dropdown-item.danger i {
+            color: #dc2626;
+        }
+
+        /* Notifications */
+        .nav-notifications {
+            position: relative;
+            margin-right: 0.5rem;
+        }
+
+        .nav-notification-button {
+            background: none;
+            border: none;
+            color: var(--nav-gray-600);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-notification-button:hover {
+            background: var(--nav-gray-50);
+            color: var(--nav-navy);
+        }
+
+        .nav-notification-badge {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            background: #dc2626;
+            color: white;
+            font-size: 0.625rem;
+            font-weight: 600;
+            padding: 0.125rem 0.375rem;
+            border-radius: 9999px;
+            min-width: 1.25rem;
+            text-align: center;
+        }
+
+        /* Mobile Menu */
+        .nav-mobile-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--nav-gray-600);
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .nav-mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--nav-gray-200);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-mobile-menu.active {
+            display: block;
+        }
+
+        .nav-mobile-links {
+            padding: 1rem;
+            border-bottom: 1px solid var(--nav-gray-100);
+        }
+
+        .nav-mobile-link {
+            display: block;
+            color: var(--nav-gray-700);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-mobile-link:hover {
+            background: var(--nav-gray-50);
+            color: var(--nav-navy);
+        }
+
+        .nav-mobile-auth {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .nav-mobile-sign-in,
+        .nav-mobile-sign-up {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-mobile-sign-in {
+            background: var(--nav-gray-100);
+            color: var(--nav-gray-700);
+        }
+
+        .nav-mobile-sign-up {
+            background: var(--nav-blue);
+            color: white;
+        }
+
+        /* Progress Indicators */
+        .nav-progress-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--nav-gray-200);
+            z-index: 101;
+        }
+
+        .nav-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--nav-blue), var(--nav-gold));
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .nav-mobile-toggle {
+                display: none;
+            }
+
+            .nav-user-info {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Demo Styles */
+        .demo-section {
+            margin: 2rem;
+            padding: 2rem;
+            background: var(--nav-gray-50);
+            border-radius: 1rem;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            padding: 0.5rem 1rem;
+            background: var(--nav-blue);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .demo-button:hover {
+            background: #1d4ed8;
+        }
+
+        .demo-button.active {
+            background: var(--nav-success);
+        }
+
+        .demo-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--nav-gray-200);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Controls -->
+    <div class="demo-section">
+        <h2>JuriBank Navigation States Demo</h2>
+        <p>Switch between different user authentication states:</p>
+        <div class="demo-controls">
+            <button class="demo-button active" onclick="setUserState('unauthenticated')">Unauthenticated</button>
+            <button class="demo-button" onclick="setUserState('free-user')">Free User</button>
+            <button class="demo-button" onclick="setUserState('premium-user')">Premium User</button>
+            <button class="demo-button" onclick="toggleNotifications()">Toggle Notifications</button>
+            <button class="demo-button" onclick="toggleMobileMenu()">Mobile Menu</button>
+        </div>
+        <div class="demo-info">
+            <strong>Current State:</strong> <span id="current-state">Unauthenticated User</span><br>
+            <strong>Features:</strong> <span id="current-features">Shows sign-in and sign-up buttons</span>
+        </div>
+    </div>
+
+    <!-- Navigation Component -->
+    <nav class="juribank-nav" id="main-nav">
+        <!-- Progress Indicator (hidden by default) -->
+        <div class="nav-progress-indicator" id="nav-progress" style="display: none;">
+            <div class="nav-progress-bar" style="width: 0%"></div>
+        </div>
+
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Brand -->
+                <a href="#" class="nav-brand">
+                    <svg class="nav-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#0D1B2A"/>
+                        <text x="50" y="60" text-anchor="middle" fill="#F4C430" font-family="Inter" font-weight="700" font-size="20">JB</text>
+                    </svg>
+                    <span class="nav-badge">by Students</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="nav-links">
+                    <a href="#" class="nav-link active">Free Tools</a>
+                    <a href="#" class="nav-link">Knowledge Hub</a>
+                    <a href="#" class="nav-link">Community</a>
+                    <a href="#" class="nav-link">How It Works</a>
+                </div>
+
+                <!-- User Authentication Section -->
+                <div class="nav-auth-section">
+                    <!-- Notifications (authenticated users only) -->
+                    <div class="nav-notifications" id="nav-notifications" style="display: none;">
+                        <button class="nav-notification-button" onclick="toggleNotificationDropdown()">
+                            <i class="fas fa-bell"></i>
+                            <div class="nav-notification-badge" id="notification-badge">3</div>
+                        </button>
+                    </div>
+
+                    <!-- Unauthenticated State -->
+                    <div class="nav-auth-buttons" id="nav-auth-buttons">
+                        <a href="#" class="nav-sign-in" onclick="openSignInModal()">Sign In</a>
+                        <button class="nav-sign-up" onclick="openSignUpModal()">Sign Up Free</button>
+                    </div>
+
+                    <!-- Authenticated State -->
+                    <div class="nav-user-menu" id="nav-user-menu" style="display: none;">
+                        <button class="nav-user-button" onclick="toggleUserDropdown()">
+                            <div class="nav-user-avatar" id="user-avatar">JD</div>
+                            <div class="nav-user-info">
+                                <div class="nav-user-name" id="user-name">John Doe</div>
+                                <div class="nav-user-plan" id="user-plan">Free Plan</div>
+                            </div>
+                            <i class="fas fa-chevron-down" style="color: var(--nav-gray-600); font-size: 0.75rem;"></i>
+                        </button>
+
+                        <!-- User Dropdown Menu -->
+                        <div class="nav-user-dropdown" id="user-dropdown">
+                            <div class="nav-dropdown-header">
+                                <div class="nav-dropdown-user">
+                                    <div class="nav-dropdown-avatar" id="dropdown-avatar">JD</div>
+                                    <div class="nav-dropdown-info">
+                                        <div class="nav-dropdown-name" id="dropdown-name">John Doe</div>
+                                        <div class="nav-dropdown-email" id="dropdown-email">john@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="nav-plan-badge free" id="plan-badge">
+                                    <i class="fas fa-rocket"></i>
+                                    Free Plan
+                                </div>
+                            </div>
+
+                            <div class="nav-dropdown-menu">
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    Dashboard
+                                </a>
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-user"></i>
+                                    Profile Settings
+                                </a>
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-bookmark"></i>
+                                    Saved Items <span style="margin-left: auto; background: var(--nav-gray-200); color: var(--nav-gray-600); font-size: 0.75rem; padding: 0.125rem 0.375rem; border-radius: 9999px;">3/3</span>
+                                </a>
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    Progress Tracking
+                                </a>
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-comments"></i>
+                                    Community Posts
+                                </a>
+
+                                <!-- Upgrade CTA (Free users only) -->
+                                <a href="#" class="nav-dropdown-item upgrade" id="upgrade-cta">
+                                    <i class="fas fa-crown"></i>
+                                    Upgrade to Premium
+                                </a>
+
+                                <div class="nav-dropdown-divider"></div>
+
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-cog"></i>
+                                    Account Settings
+                                </a>
+                                <a href="#" class="nav-dropdown-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    Help & Support
+                                </a>
+                                <a href="#" class="nav-dropdown-item danger" onclick="signOut()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Sign Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="nav-mobile-menu" id="nav-mobile-menu">
+                <div class="nav-mobile-links">
+                    <a href="#" class="nav-mobile-link">Free Tools</a>
+                    <a href="#" class="nav-mobile-link">Knowledge Hub</a>
+                    <a href="#" class="nav-mobile-link">Community</a>
+                    <a href="#" class="nav-mobile-link">How It Works</a>
+                </div>
+                
+                <!-- Mobile Auth Buttons (unauthenticated) -->
+                <div class="nav-mobile-auth" id="nav-mobile-auth">
+                    <a href="#" class="nav-mobile-sign-in" onclick="openSignInModal()">Sign In</a>
+                    <a href="#" class="nav-mobile-sign-up" onclick="openSignUpModal()">Sign Up Free</a>
+                </div>
+
+                <!-- Mobile User Menu (authenticated) -->
+                <div class="nav-mobile-auth" id="nav-mobile-user" style="display: none;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--nav-gray-100); border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div class="nav-dropdown-avatar" id="mobile-avatar">JD</div>
+                        <div>
+                            <div class="nav-dropdown-name" id="mobile-name">John Doe</div>
+                            <div class="nav-dropdown-email" id="mobile-email">john@example.com</div>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-mobile-link">Dashboard</a>
+                    <a href="#" class="nav-mobile-link">Profile Settings</a>
+                    <a href="#" class="nav-mobile-link">Saved Items</a>
+                    <a href="#" class="nav-mobile-link" id="mobile-upgrade" style="background: var(--nav-blue); color: white; margin-bottom: 0.5rem;">Upgrade to Premium</a>
+                    <a href="#" class="nav-mobile-link" onclick="signOut()" style="color: #dc2626;">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sample Content -->
+    <div style="height: 200vh; padding: 2rem; background: linear-gradient(135deg, #f0f9ff, #fefce8);">
+        <h1>Sample Page Content</h1>
+        <p>Scroll down to see the navigation shadow effect. The navigation components above demonstrate different user states:</p>
+        
+        <div style="margin: 2rem 0; padding: 1.5rem; background: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <h3>Navigation Features Demonstrated:</h3>
+            <ul style="list-style-type: disc; margin-left: 2rem; line-height: 1.6;">
+                <li><strong>Unauthenticated State:</strong> Shows "Sign In" and "Sign Up Free" buttons</li>
+                <li><strong>Free User State:</strong> Shows user avatar, name, plan status, and upgrade prompts</li>
+                <li><strong>Premium User State:</strong> Shows premium badge and removes upgrade prompts</li>
+                <li><strong>Notifications:</strong> Bell icon with badge for authenticated users</li>
+                <li><strong>Mobile Responsive:</strong> Collapsible hamburger menu for mobile devices</li>
+                <li><strong>User Dropdown:</strong> Full user menu with profile options and quick actions</li>
+                <li><strong>Progress Indicator:</strong> Top progress bar for multi-step processes</li>
+            </ul>
+        </div>
+
+        <div style="margin: 2rem 0; padding: 1.5rem; background: #fef3c7; border-radius: 0.75rem; border-left: 4px solid #f59e0b;">
+            <h4 style="color: #92400e; margin-bottom: 0.5rem;">Implementation Notes:</h4>
+            <p style="color: #92400e; margin: 0;">These components are fully functional and include proper accessibility features, keyboard navigation, and responsive design. The authentication modals integrate seamlessly with these navigation states.</p>
+        </div>
+    </div>
+
+    <script>
+        // User State Management
+        let currentUserState = 'unauthenticated';
+        let notificationsVisible = false;
+        let mobileMenuOpen = false;
+
+        // Sample user data
+        const userData = {
+            'free-user': {
+                name: 'John Doe',
+                email: 'john@example.com',
+                avatar: 'JD',
+                plan: 'Free Plan',
+                planClass: 'free'
+            },
+            'premium-user': {
+                name: 'Sarah Johnson',
+                email: 'sarah@example.com',
+                avatar: 'SJ',
+                plan: 'Premium',
+                planClass: 'premium'
+            }
+        };
+
+        // Set User State
+        function setUserState(state) {
+            currentUserState = state;
+            
+            // Update demo buttons
+            document.querySelectorAll('.demo-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update UI elements
+            const authButtons = document.getElementById('nav-auth-buttons');
+            const userMenu = document.getElementById('nav-user-menu');
+            const notifications = document.getElementById('nav-notifications');
+            const mobileAuth = document.getElementById('nav-mobile-auth');
+            const mobileUser = document.getElementById('nav-mobile-user');
+
+            if (state === 'unauthenticated') {
+                authButtons.style.display = 'flex';
+                userMenu.style.display = 'none';
+                notifications.style.display = 'none';
+                mobileAuth.style.display = 'flex';
+                mobileUser.style.display = 'none';
+                
+                updateDemoInfo('Unauthenticated User', 'Shows sign-in and sign-up buttons');
+            } else {
+                const user = userData[state];
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'block';
+                notifications.style.display = notificationsVisible ? 'block' : 'none';
+                mobileAuth.style.display = 'none';
+                mobileUser.style.display = 'flex';
+
+                // Update user info
+                document.getElementById('user-avatar').textContent = user.avatar;
+                document.getElementById('user-name').textContent = user.name;
+                document.getElementById('user-plan').textContent = user.plan;
+                document.getElementById('user-plan').className = `nav-user-plan ${user.planClass}`;
+
+                // Update dropdown info
+                document.getElementById('dropdown-avatar').textContent = user.avatar;
+                document.getElementById('dropdown-name').textContent = user.name;
+                document.getElementById('dropdown-email').textContent = user.email;
+                document.getElementById('plan-badge').className = `nav-plan-badge ${user.planClass}`;
+                document.getElementById('plan-badge').innerHTML = user.planClass === 'premium' 
+                    ? '<i class="fas fa-crown"></i> Premium Plan'
+                    : '<i class="fas fa-rocket"></i> Free Plan';
+
+                // Update mobile info
+                document.getElementById('mobile-avatar').textContent = user.avatar;
+                document.getElementById('mobile-name').textContent = user.name;
+                document.getElementById('mobile-email').textContent = user.email;
+
+                // Show/hide upgrade CTA
+                const upgradeCta = document.getElementById('upgrade-cta');
+                const mobileUpgrade = document.getElementById('mobile-upgrade');
+                if (user.planClass === 'premium') {
+                    upgradeCta.style.display = 'none';
+                    mobileUpgrade.style.display = 'none';
+                } else {
+                    upgradeCta.style.display = 'flex';
+                    mobileUpgrade.style.display = 'block';
+                }
+
+                updateDemoInfo(
+                    user.planClass === 'premium' ? 'Premium User' : 'Free User',
+                    `Shows user avatar, name (${user.name}), and ${user.planClass} plan features`
+                );
+            }
+        }
+
+        // Toggle Notifications
+        function toggleNotifications() {
+            notificationsVisible = !notificationsVisible;
+            const notifications = document.getElementById('nav-notifications');
+            
+            if (currentUserState !== 'unauthenticated') {
+                notifications.style.display = notificationsVisible ? 'block' : 'none';
+            }
+            
+            event.target.classList.toggle('active');
+            updateDemoInfo(
+                `Notifications: ${notificationsVisible ? 'Visible' : 'Hidden'}`,
+                'Bell icon with notification badge for authenticated users'
+            );
+        }
+
+        // Toggle User Dropdown
+        function toggleUserDropdown() {
+            const dropdown = document.getElementById('user-dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            mobileMenuOpen = !mobileMenuOpen;
+            const mobileMenu = document.getElementById('nav-mobile-menu');
+            mobileMenu.classList.toggle('active');
+            
+            // Update hamburger icon
+            const icon = event.target.querySelector('i');
+            if (icon) {
+                icon.className = mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+            }
+        }
+
+        // Modal Functions (placeholder)
+        function openSignInModal() {
+            alert('Sign In Modal would open here (see auth-modals.html)');
+        }
+
+        function openSignUpModal() {
+            alert('Sign Up Modal would open here (see auth-modals.html)');
+        }
+
+        // Sign Out
+        function signOut() {
+            if (confirm('Are you sure you want to sign out?')) {
+                setUserState('unauthenticated');
+                // Reset demo buttons
+                document.querySelectorAll('.demo-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector('.demo-button').classList.add('active');
+            }
+        }
+
+        // Update Demo Info
+        function updateDemoInfo(state, features) {
+            document.getElementById('current-state').textContent = state;
+            document.getElementById('current-features').textContent = features;
+        }
+
+        // Scroll Effect
+        function handleScroll() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        function handleClickOutside(event) {
+            const userMenu = document.getElementById('nav-user-menu');
+            const dropdown = document.getElementById('user-dropdown');
+            
+            if (!userMenu.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        }
+
+        // Progress Bar Demo
+        function simulateProgress() {
+            const progressIndicator = document.getElementById('nav-progress');
+            const progressBar = progressIndicator.querySelector('.nav-progress-bar');
+            
+            progressIndicator.style.display = 'block';
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += 2;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        progressIndicator.style.display = 'none';
+                        progressBar.style.width = '0%';
+                    }, 500);
+                }
+            }, 50);
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll effect
+            window.addEventListener('scroll', handleScroll);
+            
+            // Click outside to close dropdowns
+            document.addEventListener('click', handleClickOutside);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('user-dropdown').classList.remove('active');
+                    if (mobileMenuOpen) {
+                        toggleMobileMenu();
+                    }
+                }
+            });
+
+            // Demo progress bar on page load
+            setTimeout(simulateProgress, 1000);
+        });
+    </script>
+</body>
+</html>

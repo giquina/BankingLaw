@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuriBank Premium Callouts & Freemium Boundaries</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Premium Callout Design System */
+        :root {
+            --premium-navy: #0D1B2A;
+            --premium-gold: #F4C430;
+            --premium-blue: #2563eb;
+            --premium-success: #059669;
+            --premium-warning: #D97706;
+            --premium-error: #DC2626;
+            --premium-gray-50: #F8FAFC;
+            --premium-gray-100: #F1F5F9;
+            --premium-gray-200: #E2E8F0;
+            --premium-gray-600: #475569;
+            --premium-gray-900: #0F172A;
+        }
+
+        /* Freemium Boundary Indicators */
+        .freemium-boundary {
+            background: linear-gradient(135deg, #fef7cd, #fef3c7);
+            border: 2px solid var(--premium-warning);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .freemium-boundary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--premium-warning), var(--premium-gold));
+        }
+
+        .freemium-boundary-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .freemium-boundary-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--premium-warning);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .freemium-boundary-content {
+            flex: 1;
+        }
+
+        .freemium-boundary-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 0.25rem;
+        }
+
+        .freemium-boundary-subtitle {
+            color: #a16207;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .freemium-boundary-body {
+            color: #92400e;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .freemium-boundary-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .freemium-upgrade-btn {
+            background: var(--premium-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .freemium-upgrade-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .freemium-learn-more {
+            color: #92400e;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border: 2px solid #92400e;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .freemium-learn-more:hover {
+            background: #92400e;
+            color: white;
+        }
+
+        /* Premium Feature Cards */
+        .premium-feature-card {
+            background: white;
+            border: 2px solid var(--premium-gray-200);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .premium-feature-card.locked {
+            background: #f9fafb;
+            border-color: var(--premium-gray-300);
+            opacity: 0.8;
+        }
+
+        .premium-feature-card.locked::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 1rem;
+        }
+
+        .premium-lock-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--premium-blue);
+        }
+
+        .premium-lock-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--premium-blue), #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .premium-lock-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--premium-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .premium-lock-subtitle {
+            color: var(--premium-gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .premium-unlock-btn {
+            background: linear-gradient(135deg, var(--premium-blue), #3b82f6);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .premium-unlock-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Usage Limit Indicators */
+        .usage-limit-card {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 2px solid #fca5a5;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .usage-limit-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .usage-limit-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #991b1b;
+        }
+
+        .usage-limit-badge {
+            background: #dc2626;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .usage-progress {
+            margin-bottom: 1rem;
+        }
+
+        .usage-progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #991b1b;
+            margin-bottom: 0.5rem;
+        }
+
+        .usage-progress-bar {
+            background: rgba(220, 38, 38, 0.2);
+            height: 0.75rem;
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+
+        .usage-progress-fill {
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+            height: 100%;
+            border-radius: 0.375rem;
+            transition: width 0.5s ease;
+        }
+
+        .usage-limit-message {
+            color: #991b1b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Upgrade Prompts */
+        .upgrade-prompt {
+            background: linear-gradient(135deg, var(--premium-blue), #3b82f6);
+            color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upgrade-prompt::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .upgrade-prompt-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .upgrade-prompt-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .upgrade-prompt-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .upgrade-prompt-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .upgrade-prompt-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .upgrade-features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .upgrade-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .upgrade-feature i {
+            color: var(--premium-gold);
+            font-size: 1.25rem;
+        }
+
+        .upgrade-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .upgrade-primary-btn {
+            background: white;
+            color: var(--premium-blue);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upgrade-primary-btn:hover {
+            background: var(--premium-gray-100);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .upgrade-secondary-btn {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .upgrade-secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Feature Comparison Table */
+        .feature-comparison {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .comparison-header {
+            background: var(--premium-gray-50);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--premium-gray-200);
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--premium-navy);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-subtitle {
+            text-align: center;
+            color: var(--premium-gray-600);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--premium-gray-200);
+        }
+
+        .comparison-table th {
+            background: var(--premium-gray-50);
+            font-weight: 600;
+            color: var(--premium-navy);
+        }
+
+        .comparison-table .plan-column {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .comparison-table .free-column {
+            color: var(--premium-gray-600);
+        }
+
+        .comparison-table .premium-column {
+            color: var(--premium-blue);
+        }
+
+        .feature-check {
+            color: var(--premium-success);
+            font-size: 1.25rem;
+        }
+
+        .feature-cross {
+            color: var(--premium-error);
+            font-size: 1.25rem;
+        }
+
+        .feature-limited {
+            color: var(--premium-warning);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .upgrade-features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .upgrade-actions {
+                justify-content: flex-start;
+            }
+
+            .freemium-boundary-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+            }
+
+            .upgrade-prompt {
+                padding: 1.5rem;
+            }
+
+            .upgrade-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .upgrade-primary-btn,
+            .upgrade-secondary-btn {
+                text-align: center;
+            }
+        }
+
+        /* Demo Styles */
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--premium-gray-50);
+            border-radius: 1rem;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            padding: 0.5rem 1rem;
+            background: var(--premium-blue);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .demo-button:hover {
+            background: #1d4ed8;
+        }
+
+        .demo-button.active {
+            background: var(--premium-success);
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Controls -->
+    <div class="demo-section">
+        <h2>JuriBank Premium Callouts & Freemium Boundaries</h2>
+        <p>Explore different premium boundary scenarios and upgrade prompts:</p>
+        <div class="demo-controls">
+            <button class="demo-button active" onclick="showScenario('limit-reached')">Limit Reached</button>
+            <button class="demo-button" onclick="showScenario('premium-locked')">Premium Feature</button>
+            <button class="demo-button" onclick="showScenario('upgrade-prompt')">Upgrade Prompt</button>
+            <button class="demo-button" onclick="showScenario('comparison')">Feature Comparison</button>
+        </div>
+    </div>
+
+    <!-- Scenario 1: Usage Limit Reached -->
+    <div class="scenario" id="limit-reached">
+        <div class="usage-limit-card">
+            <div class="usage-limit-header">
+                <div class="usage-limit-title">Saved Items Limit Reached</div>
+                <div class="usage-limit-badge">3/3 USED</div>
+            </div>
+            <div class="usage-progress">
+                <div class="usage-progress-label">
+                    <span>Saved Items</span>
+                    <span>3 of 3</span>
+                </div>
+                <div class="usage-progress-bar">
+                    <div class="usage-progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="usage-limit-message">
+                You've reached your free plan limit for saved items. Upgrade to Premium for unlimited saves and bookmarks.
+            </div>
+            <div class="freemium-boundary-actions">
+                <a href="#" class="freemium-upgrade-btn">
+                    <i class="fas fa-crown"></i>
+                    Upgrade to Premium
+                </a>
+                <a href="#" class="freemium-learn-more">Manage Saved Items</a>
+            </div>
+        </div>
+
+        <div class="freemium-boundary">
+            <div class="freemium-boundary-header">
+                <div class="freemium-boundary-icon">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <div class="freemium-boundary-content">
+                    <div class="freemium-boundary-title">Want to Save This Resource?</div>
+                    <div class="freemium-boundary-subtitle">You've used all 3 free saves</div>
+                </div>
+            </div>
+            <div class="freemium-boundary-body">
+                This legal guide contains important information for your claim type. Premium users get unlimited saves, custom organization, and priority access to new resources.
+            </div>
+            <div class="freemium-boundary-actions">
+                <a href="#" class="freemium-upgrade-btn">
+                    <i class="fas fa-rocket"></i>
+                    Upgrade Now - £9.99/month
+                </a>
+                <a href="#" class="freemium-learn-more">View Free Features</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 2: Premium Feature Locked -->
+    <div class="scenario" id="premium-locked" style="display: none;">
+        <div class="premium-feature-card locked">
+            <div class="premium-lock-overlay">
+                <div class="premium-lock-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="premium-lock-title">Premium Feature</div>
+                <div class="premium-lock-subtitle">Advanced assessment tools require a premium subscription</div>
+                <button class="premium-unlock-btn" onclick="showUpgradeModal()">
+                    <i class="fas fa-unlock"></i>
+                    Unlock Premium
+                </button>
+            </div>
+            
+            <!-- Blurred content behind overlay -->
+            <div style="filter: blur(3px); opacity: 0.6;">
+                <h3>Advanced Claim Assessment</h3>
+                <p>Get detailed analysis of your case strength, evidence requirements, and step-by-step action plans. Our advanced tools analyze thousands of similar cases to predict your success rate and optimal strategy.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                    <div style="padding: 1rem; background: var(--premium-gray-50); border-radius: 0.5rem;">
+                        <strong>Success Prediction:</strong> 87%
+                    </div>
+                    <div style="padding: 1rem; background: var(--premium-gray-50); border-radius: 0.5rem;">
+                        <strong>Estimated Value:</strong> £2,400
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="freemium-boundary">
+            <div class="freemium-boundary-header">
+                <div class="freemium-boundary-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="freemium-boundary-content">
+                    <div class="freemium-boundary-title">Unlock Advanced Analytics</div>
+                    <div class="freemium-boundary-subtitle">Premium-only feature</div>
+                </div>
+            </div>
+            <div class="freemium-boundary-body">
+                Get AI-powered case analysis, success rate predictions, and personalized strategies based on 2,847+ similar cases. Premium users also get priority support from our law student community.
+            </div>
+            <div class="freemium-boundary-actions">
+                <a href="#" class="freemium-upgrade-btn">
+                    <i class="fas fa-brain"></i>
+                    Try Premium Free for 7 Days
+                </a>
+                <a href="#" class="freemium-learn-more">See All Premium Features</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 3: Upgrade Prompt -->
+    <div class="scenario" id="upgrade-prompt" style="display: none;">
+        <div class="upgrade-prompt">
+            <div class="upgrade-prompt-content">
+                <div class="upgrade-prompt-header">
+                    <div class="upgrade-prompt-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <div class="upgrade-prompt-title">Ready to Supercharge Your Legal Journey?</div>
+                        <div class="upgrade-prompt-subtitle">Join 1,200+ students getting better results with Premium</div>
+                    </div>
+                </div>
+                
+                <div class="upgrade-features-grid">
+                    <div class="upgrade-feature">
+                        <i class="fas fa-infinity"></i>
+                        <span>Unlimited saves & bookmarks</span>
+                    </div>
+                    <div class="upgrade-feature">
+                        <i class="fas fa-brain"></i>
+                        <span>AI case analysis & predictions</span>
+                    </div>
+                    <div class="upgrade-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Custom document templates</span>
+                    </div>
+                    <div class="upgrade-feature">
+                        <i class="fas fa-users"></i>
+                        <span>Private community access</span>
+                    </div>
+                    <div class="upgrade-feature">
+                        <i class="fas fa-headset"></i>
+                        <span>Priority student support</span>
+                    </div>
+                    <div class="upgrade-feature">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Verified solicitor referrals</span>
+                    </div>
+                </div>
+                
+                <div class="upgrade-actions">
+                    <a href="#" class="upgrade-primary-btn">
+                        <i class="fas fa-crown"></i>
+                        Start 7-Day Free Trial
+                    </a>
+                    <a href="#" class="upgrade-secondary-btn">Compare Plans</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternative compact upgrade prompt -->
+        <div class="freemium-boundary" style="margin-top: 3rem;">
+            <div class="freemium-boundary-header">
+                <div class="freemium-boundary-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="freemium-boundary-content">
+                    <div class="freemium-boundary-title">You're Making Great Progress!</div>
+                    <div class="freemium-boundary-subtitle">2 of 5 assessment steps completed</div>
+                </div>
+            </div>
+            <div class="freemium-boundary-body">
+                Upgrade to Premium to access advanced assessment tools, get personalized action plans, and unlock our full template library. Most premium users see 40% better outcomes.
+            </div>
+            <div class="freemium-boundary-actions">
+                <a href="#" class="freemium-upgrade-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    Continue with Premium
+                </a>
+                <a href="#" class="freemium-learn-more">Keep Using Free Tools</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 4: Feature Comparison -->
+    <div class="scenario" id="comparison" style="display: none;">
+        <div class="feature-comparison">
+            <div class="comparison-header">
+                <div class="comparison-title">Choose Your Plan</div>
+                <div class="comparison-subtitle">Start free, upgrade when you need more guidance</div>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th class="plan-column free-column">Free Explorer</th>
+                        <th class="plan-column premium-column">Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Eligibility Assessment</strong></td>
+                        <td class="plan-column"><span class="feature-limited">Basic (5 types)</span></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Refund Calculator</strong></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Saved Items</strong></td>
+                        <td class="plan-column"><span class="feature-limited">3 items max</span></td>
+                        <td class="plan-column"><span class="feature-check">Unlimited</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Knowledge Hub Access</strong></td>
+                        <td class="plan-column"><span class="feature-limited">Public articles</span></td>
+                        <td class="plan-column"><span class="feature-check">Full database</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Community Forum</strong></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                        <td class="plan-column"><span class="feature-check">+ Private access</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Document Templates</strong></td>
+                        <td class="plan-column"><i class="fas fa-times feature-cross"></i></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Case Analysis</strong></td>
+                        <td class="plan-column"><i class="fas fa-times feature-cross"></i></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Priority Support</strong></td>
+                        <td class="plan-column"><i class="fas fa-times feature-cross"></i></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Solicitor Referrals</strong></td>
+                        <td class="plan-column"><i class="fas fa-times feature-cross"></i></td>
+                        <td class="plan-column"><i class="fas fa-check feature-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price</strong></td>
+                        <td class="plan-column"><strong>Free</strong></td>
+                        <td class="plan-column"><strong>£9.99/month</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Action buttons below table -->
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <a href="#" class="upgrade-primary-btn">
+                <i class="fas fa-rocket"></i>
+                Start Premium Trial
+            </a>
+            <a href="#" class="upgrade-secondary-btn" style="background: white; color: var(--premium-blue); border: 2px solid var(--premium-blue);">
+                Continue with Free
+            </a>
+        </div>
+    </div>
+
+    <!-- Sample Premium Feature (for demo) -->
+    <div style="margin: 3rem 0; padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <h3>Advanced Claim Assessment Tool</h3>
+        <p>This interactive tool analyzes your claim against thousands of similar cases to predict success rates and recommend optimal strategies.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+            <div style="text-align: center; padding: 1.5rem; background: #f0f9ff; border-radius: 0.75rem;">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--premium-blue); margin-bottom: 0.5rem;">87%</div>
+                <div style="font-size: 0.875rem; color: var(--premium-gray-600);">Success Probability</div>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: #f0fdf4; border-radius: 0.75rem;">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--premium-success); margin-bottom: 0.5rem;">£2,400</div>
+                <div style="font-size: 0.875rem; color: var(--premium-gray-600);">Estimated Value</div>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: #fef7cd; border-radius: 0.75rem;">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--premium-warning); margin-bottom: 0.5rem;">45</div>
+                <div style="font-size: 0.875rem; color: var(--premium-gray-600);">Days Average</div>
+            </div>
+        </div>
+        
+        <button style="width: 100%; padding: 1rem; background: var(--premium-gray-200); color: var(--premium-gray-500); border: none; border-radius: 0.75rem; font-weight: 600; cursor: not-allowed;">
+            <i class="fas fa-lock"></i>
+            Premium Feature - Upgrade Required
+        </button>
+    </div>
+
+    <script>
+        // Demo functionality
+        function showScenario(scenarioId) {
+            // Hide all scenarios
+            document.querySelectorAll('.scenario').forEach(scenario => {
+                scenario.style.display = 'none';
+            });
+            
+            // Show selected scenario
+            document.getElementById(scenarioId).style.display = 'block';
+            
+            // Update active button
+            document.querySelectorAll('.demo-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function showUpgradeModal() {
+            alert('Upgrade modal would open here with pricing options and trial signup.');
+        }
+
+        // Animate usage progress bars when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.usage-progress-fill');
+            
+            const animateProgress = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    }
+                });
+            };
+
+            const progressObserver = new IntersectionObserver(animateProgress, {
+                threshold: 0.5
+            });
+
+            progressBars.forEach(bar => {
+                progressObserver.observe(bar);
+            });
+
+            // Simulate dynamic progress update
+            setTimeout(() => {
+                const progressBar = document.querySelector('.usage-progress-fill');
+                if (progressBar) {
+                    progressBar.style.background = 'linear-gradient(90deg, #dc2626, #ef4444)';
+                }
+            }, 2000);
+        });
+
+        // Simulate hover effects for locked features
+        document.querySelectorAll('.premium-feature-card.locked').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 8px 24px rgba(37, 99, 235, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

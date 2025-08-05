@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuriBank Authentication Components</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* JuriBank Authentication Design System */
+        :root {
+            --auth-navy: #0D1B2A;
+            --auth-gold: #F4C430;
+            --auth-blue: #2563eb;
+            --auth-success: #059669;
+            --auth-warning: #D97706;
+            --auth-error: #DC2626;
+            --auth-gray-50: #F8FAFC;
+            --auth-gray-100: #F1F5F9;
+            --auth-gray-200: #E2E8F0;
+            --auth-gray-300: #CBD5E1;
+            --auth-gray-600: #475569;
+            --auth-gray-900: #0F172A;
+        }
+
+        /* Modal Base Styles */
+        .auth-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .auth-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .auth-modal {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 28rem;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95) translateY(1rem);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .auth-modal-overlay.active .auth-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Modal Header */
+        .auth-modal-header {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--auth-gray-100);
+            position: relative;
+        }
+
+        .auth-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--auth-gray-600);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .auth-modal-close:hover {
+            background: var(--auth-gray-100);
+            color: var(--auth-navy);
+        }
+
+        .auth-modal-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .auth-modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--auth-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-modal-subtitle {
+            color: var(--auth-gray-600);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Modal Body */
+        .auth-modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        /* Form Styles */
+        .auth-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--auth-gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--auth-gray-200);
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .auth-form-input:focus {
+            outline: none;
+            border-color: var(--auth-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .auth-form-input.error {
+            border-color: var(--auth-error);
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .auth-form-input.success {
+            border-color: var(--auth-success);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        /* Password Input with Toggle */
+        .auth-password-wrapper {
+            position: relative;
+        }
+
+        .auth-password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--auth-gray-600);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .auth-password-toggle:hover {
+            color: var(--auth-navy);
+        }
+
+        /* Form Validation */
+        .auth-form-error {
+            display: flex;
+            align-items: center;
+            color: var(--auth-error);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .auth-form-error i {
+            margin-right: 0.25rem;
+        }
+
+        .auth-form-success {
+            display: flex;
+            align-items: center;
+            color: var(--auth-success);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .auth-form-success i {
+            margin-right: 0.25rem;
+        }
+
+        /* Password Strength Indicator */
+        .auth-password-strength {
+            margin-top: 0.5rem;
+        }
+
+        .auth-strength-bar {
+            height: 0.25rem;
+            background: var(--auth-gray-200);
+            border-radius: 0.125rem;
+            overflow: hidden;
+        }
+
+        .auth-strength-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 0.125rem;
+        }
+
+        .auth-strength-fill.weak {
+            width: 25%;
+            background: var(--auth-error);
+        }
+
+        .auth-strength-fill.fair {
+            width: 50%;
+            background: var(--auth-warning);
+        }
+
+        .auth-strength-fill.good {
+            width: 75%;
+            background: var(--auth-blue);
+        }
+
+        .auth-strength-fill.strong {
+            width: 100%;
+            background: var(--auth-success);
+        }
+
+        .auth-strength-text {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .auth-btn {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-btn-primary {
+            background: var(--auth-blue);
+            color: white;
+        }
+
+        .auth-btn-primary:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .auth-btn-secondary {
+            background: white;
+            color: var(--auth-navy);
+            border: 2px solid var(--auth-gray-200);
+        }
+
+        .auth-btn-secondary:hover:not(:disabled) {
+            border-color: var(--auth-navy);
+            background: var(--auth-gray-50);
+        }
+
+        .auth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .auth-btn-loading {
+            color: transparent;
+        }
+
+        .auth-btn-loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: auth-spin 0.8s linear infinite;
+        }
+
+        @keyframes auth-spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Social Login */
+        .auth-social-login {
+            margin: 1.5rem 0;
+        }
+
+        .auth-divider {
+            position: relative;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--auth-gray-200);
+        }
+
+        .auth-divider span {
+            background: white;
+            padding: 0 1rem;
+            color: var(--auth-gray-600);
+            font-size: 0.875rem;
+        }
+
+        .auth-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--auth-gray-200);
+            border-radius: 0.75rem;
+            background: white;
+            color: var(--auth-gray-900);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .auth-social-btn:hover {
+            border-color: var(--auth-gray-300);
+            background: var(--auth-gray-50);
+        }
+
+        .auth-social-btn i {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .auth-social-btn.google i {
+            color: #ea4335;
+        }
+
+        .auth-social-btn.microsoft i {
+            color: #00a1f1;
+        }
+
+        /* Terms and Links */
+        .auth-terms {
+            font-size: 0.75rem;
+            color: var(--auth-gray-600);
+            text-align: center;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+
+        .auth-terms a {
+            color: var(--auth-blue);
+            text-decoration: none;
+        }
+
+        .auth-terms a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--auth-gray-100);
+        }
+
+        .auth-switch-text {
+            color: var(--auth-gray-600);
+            font-size: 0.875rem;
+        }
+
+        .auth-switch-link {
+            color: var(--auth-blue);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .auth-switch-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Success States */
+        .auth-success-state {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .auth-success-icon {
+            width: 4rem;
+            height: 4rem;
+            background: var(--auth-success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .auth-success-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--auth-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-success-message {
+            color: var(--auth-gray-600);
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .auth-modal {
+                margin: 0;
+                border-radius: 1rem;
+                max-height: 100vh;
+            }
+            
+            .auth-modal-header,
+            .auth-modal-body {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        /* Demo Styles */
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--auth-gray-50);
+            border-radius: 1rem;
+        }
+
+        .demo-button {
+            margin: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--auth-blue);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .demo-button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Controls -->
+    <div class="demo-section">
+        <h2>JuriBank Authentication Components Demo</h2>
+        <p>Click the buttons below to preview the authentication modals:</p>
+        <button class="demo-button" onclick="openModal('signup')">Sign Up Modal</button>
+        <button class="demo-button" onclick="openModal('signin')">Sign In Modal</button>
+        <button class="demo-button" onclick="openModal('forgot')">Forgot Password</button>
+        <button class="demo-button" onclick="openModal('success')">Success State</button>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="auth-modal-overlay" id="signup-modal">
+        <div class="auth-modal">
+            <div class="auth-modal-header">
+                <button class="auth-modal-close" onclick="closeModal('signup')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="auth-modal-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#0D1B2A"/>
+                        <text x="50" y="60" text-anchor="middle" fill="#F4C430" font-family="Inter" font-weight="700" font-size="20">JB</text>
+                    </svg>
+                </div>
+                <h2 class="auth-modal-title">Join JuriBank</h2>
+                <p class="auth-modal-subtitle">Start your free legal guidance journey with law students</p>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="signup-form">
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signup-name">Full Name *</label>
+                        <input type="text" id="signup-name" class="auth-form-input" placeholder="Enter your full name" required>
+                        <div class="auth-form-error" id="signup-name-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter your full name
+                        </div>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signup-email">Email Address *</label>
+                        <input type="email" id="signup-email" class="auth-form-input" placeholder="your.email@example.com" required>
+                        <div class="auth-form-error" id="signup-email-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter a valid email address
+                        </div>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signup-password">Password *</label>
+                        <div class="auth-password-wrapper">
+                            <input type="password" id="signup-password" class="auth-form-input" placeholder="Create a strong password" required>
+                            <button type="button" class="auth-password-toggle" onclick="togglePassword('signup-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="auth-password-strength">
+                            <div class="auth-strength-bar">
+                                <div class="auth-strength-fill weak" id="signup-strength-fill"></div>
+                            </div>
+                            <div class="auth-strength-text" id="signup-strength-text">Password strength: Weak</div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signup-confirm">Confirm Password *</label>
+                        <div class="auth-password-wrapper">
+                            <input type="password" id="signup-confirm" class="auth-form-input" placeholder="Confirm your password" required>
+                            <button type="button" class="auth-password-toggle" onclick="togglePassword('signup-confirm')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="auth-form-error" id="signup-confirm-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Passwords do not match
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-btn auth-btn-primary" id="signup-submit">
+                        Create Free Account
+                    </button>
+
+                    <div class="auth-terms">
+                        By creating an account, you agree to our 
+                        <a href="#" target="_blank">Terms of Service</a> and 
+                        <a href="#" target="_blank">Privacy Policy</a>. 
+                        Educational platform operated by law students for learning purposes.
+                    </div>
+                </form>
+
+                <div class="auth-divider">
+                    <span>or continue with</span>
+                </div>
+
+                <div class="auth-social-login">
+                    <button class="auth-social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="auth-social-btn microsoft">
+                        <i class="fab fa-microsoft"></i>
+                        Continue with Microsoft
+                    </button>
+                </div>
+
+                <div class="auth-switch">
+                    <span class="auth-switch-text">
+                        Already have an account? 
+                        <a class="auth-switch-link" onclick="switchModal('signup', 'signin')">Sign in here</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="auth-modal-overlay" id="signin-modal">
+        <div class="auth-modal">
+            <div class="auth-modal-header">
+                <button class="auth-modal-close" onclick="closeModal('signin')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="auth-modal-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#0D1B2A"/>
+                        <text x="50" y="60" text-anchor="middle" fill="#F4C430" font-family="Inter" font-weight="700" font-size="20">JB</text>
+                    </svg>
+                </div>
+                <h2 class="auth-modal-title">Welcome Back</h2>
+                <p class="auth-modal-subtitle">Sign in to access your personalized legal guidance dashboard</p>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="signin-form">
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signin-email">Email Address</label>
+                        <input type="email" id="signin-email" class="auth-form-input" placeholder="your.email@example.com" required>
+                        <div class="auth-form-error" id="signin-email-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter a valid email address
+                        </div>
+                    </div>
+
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="signin-password">Password</label>
+                        <div class="auth-password-wrapper">
+                            <input type="password" id="signin-password" class="auth-form-input" placeholder="Enter your password" required>
+                            <button type="button" class="auth-password-toggle" onclick="togglePassword('signin-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="auth-form-error" id="signin-password-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Incorrect email or password
+                        </div>
+                    </div>
+
+                    <div class="auth-form-group" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <label style="display: flex; align-items: center; font-size: 0.875rem; color: var(--auth-gray-600);">
+                            <input type="checkbox" style="margin-right: 0.5rem;">
+                            Remember me
+                        </label>
+                        <a class="auth-switch-link" onclick="switchModal('signin', 'forgot')" style="font-size: 0.875rem;">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="auth-btn auth-btn-primary" id="signin-submit">
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="auth-divider">
+                    <span>or continue with</span>
+                </div>
+
+                <div class="auth-social-login">
+                    <button class="auth-social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="auth-social-btn microsoft">
+                        <i class="fab fa-microsoft"></i>
+                        Continue with Microsoft
+                    </button>
+                </div>
+
+                <div class="auth-switch">
+                    <span class="auth-switch-text">
+                        Don't have an account? 
+                        <a class="auth-switch-link" onclick="switchModal('signin', 'signup')">Sign up free</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="auth-modal-overlay" id="forgot-modal">
+        <div class="auth-modal">
+            <div class="auth-modal-header">
+                <button class="auth-modal-close" onclick="closeModal('forgot')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="auth-modal-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#0D1B2A"/>
+                        <text x="50" y="60" text-anchor="middle" fill="#F4C430" font-family="Inter" font-weight="700" font-size="20">JB</text>
+                    </svg>
+                </div>
+                <h2 class="auth-modal-title">Reset Password</h2>
+                <p class="auth-modal-subtitle">Enter your email address and we'll send you a link to reset your password</p>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="forgot-form">
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="forgot-email">Email Address</label>
+                        <input type="email" id="forgot-email" class="auth-form-input" placeholder="your.email@example.com" required>
+                        <div class="auth-form-error" id="forgot-email-error" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter a valid email address
+                        </div>
+                        <div class="auth-form-success" id="forgot-email-success" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            Password reset email sent! Check your inbox.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-btn auth-btn-primary" id="forgot-submit">
+                        Send Reset Link
+                    </button>
+                </form>
+
+                <div class="auth-switch">
+                    <span class="auth-switch-text">
+                        Remember your password? 
+                        <a class="auth-switch-link" onclick="switchModal('forgot', 'signin')">Sign in here</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="auth-modal-overlay" id="success-modal">
+        <div class="auth-modal">
+            <div class="auth-success-state">
+                <div class="auth-success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2 class="auth-success-title">Welcome to JuriBank!</h2>
+                <p class="auth-success-message">
+                    Your account has been created successfully. You now have access to all our free tools and can start your legal guidance journey.
+                </p>
+                <button class="auth-btn auth-btn-primary" onclick="closeModal('success')">
+                    Explore Your Dashboard
+                </button>
+                <div style="margin-top: 1rem;">
+                    <button class="auth-btn auth-btn-secondary" onclick="closeModal('success')">
+                        Continue Browsing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Management
+        function openModal(modalType) {
+            const modal = document.getElementById(`${modalType}-modal`);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalType) {
+            const modal = document.getElementById(`${modalType}-modal`);
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function switchModal(fromModal, toModal) {
+            closeModal(fromModal);
+            setTimeout(() => openModal(toModal), 150);
+        }
+
+        // Password Toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.classList.remove('fa-eye');
+                toggle.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                toggle.classList.remove('fa-eye-slash');
+                toggle.classList.add('fa-eye');
+            }
+        }
+
+        // Password Strength Checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = 'Weak';
+            
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    feedback = 'Very Weak';
+                    break;
+                case 2:
+                    feedback = 'Weak';
+                    break;
+                case 3:
+                    feedback = 'Fair';
+                    break;
+                case 4:
+                    feedback = 'Good';
+                    break;
+                case 5:
+                    feedback = 'Strong';
+                    break;
+            }
+            
+            return { strength: Math.max(1, strength), feedback };
+        }
+
+        // Form Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(`${fieldId}-error`);
+            
+            field.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'flex';
+        }
+
+        function hideFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(`${fieldId}-error`);
+            
+            field.classList.remove('error');
+            errorElement.style.display = 'none';
+        }
+
+        function showFieldSuccess(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.classList.add('success');
+        }
+
+        function hideFieldSuccess(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.classList.remove('success');
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password strength checking
+            const signupPassword = document.getElementById('signup-password');
+            const strengthFill = document.getElementById('signup-strength-fill');
+            const strengthText = document.getElementById('signup-strength-text');
+            
+            if (signupPassword) {
+                signupPassword.addEventListener('input', function() {
+                    const result = checkPasswordStrength(this.value);
+                    const strengthClass = ['weak', 'weak', 'fair', 'good', 'strong'][result.strength - 1];
+                    
+                    strengthFill.className = `auth-strength-fill ${strengthClass}`;
+                    strengthText.textContent = `Password strength: ${result.feedback}`;
+                });
+            }
+
+            // Form submissions
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signup-name').value;
+                    const email = document.getElementById('signup-email').value;
+                    const password = document.getElementById('signup-password').value;
+                    const confirmPassword = document.getElementById('signup-confirm').value;
+                    
+                    let isValid = true;
+
+                    // Validate name
+                    if (!name.trim()) {
+                        showFieldError('signup-name', 'Please enter your full name');
+                        isValid = false;
+                    } else {
+                        hideFieldError('signup-name');
+                    }
+
+                    // Validate email
+                    if (!validateEmail(email)) {
+                        showFieldError('signup-email', 'Please enter a valid email address');
+                        isValid = false;
+                    } else {
+                        hideFieldError('signup-email');
+                        showFieldSuccess('signup-email');
+                    }
+
+                    // Validate password match
+                    if (password !== confirmPassword) {
+                        showFieldError('signup-confirm', 'Passwords do not match');
+                        isValid = false;
+                    } else if (confirmPassword) {
+                        hideFieldError('signup-confirm');
+                        showFieldSuccess('signup-confirm');
+                    }
+
+                    if (isValid) {
+                        // Simulate API call
+                        const submitBtn = document.getElementById('signup-submit');
+                        submitBtn.classList.add('auth-btn-loading');
+                        submitBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            switchModal('signup', 'success');
+                            submitBtn.classList.remove('auth-btn-loading');
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    }
+                });
+            }
+
+            // Sign in form
+            const signinForm = document.getElementById('signin-form');
+            if (signinForm) {
+                signinForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('signin-email').value;
+                    const password = document.getElementById('signin-password').value;
+                    
+                    let isValid = true;
+
+                    if (!validateEmail(email)) {
+                        showFieldError('signin-email', 'Please enter a valid email address');
+                        isValid = false;
+                    } else {
+                        hideFieldError('signin-email');
+                    }
+
+                    if (!password) {
+                        showFieldError('signin-password', 'Please enter your password');
+                        isValid = false;
+                    } else {
+                        hideFieldError('signin-password');
+                    }
+
+                    if (isValid) {
+                        const submitBtn = document.getElementById('signin-submit');
+                        submitBtn.classList.add('auth-btn-loading');
+                        submitBtn.disabled = true;
+                        
+                        // Simulate API call
+                        setTimeout(() => {
+                            // Demo: show error for demo@example.com
+                            if (email === 'demo@example.com') {
+                                showFieldError('signin-password', 'Incorrect email or password');
+                                submitBtn.classList.remove('auth-btn-loading');
+                                submitBtn.disabled = false;
+                            } else {
+                                closeModal('signin');
+                                submitBtn.classList.remove('auth-btn-loading');
+                                submitBtn.disabled = false;
+                                alert('Sign in successful! (Demo)');
+                            }
+                        }, 1500);
+                    }
+                });
+            }
+
+            // Forgot password form
+            const forgotForm = document.getElementById('forgot-form');
+            if (forgotForm) {
+                forgotForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('forgot-email').value;
+                    const successElement = document.getElementById('forgot-email-success');
+                    const errorElement = document.getElementById('forgot-email-error');
+                    
+                    if (!validateEmail(email)) {
+                        showFieldError('forgot-email', 'Please enter a valid email address');
+                        successElement.style.display = 'none';
+                    } else {
+                        hideFieldError('forgot-email');
+                        showFieldSuccess('forgot-email');
+                        successElement.style.display = 'flex';
+                        
+                        const submitBtn = document.getElementById('forgot-submit');
+                        submitBtn.classList.add('auth-btn-loading');
+                        submitBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitBtn.classList.remove('auth-btn-loading');
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    }
+                });
+            }
+
+            // Close modals on overlay click
+            document.querySelectorAll('.auth-modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Close modals on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.auth-modal-overlay.active').forEach(modal => {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

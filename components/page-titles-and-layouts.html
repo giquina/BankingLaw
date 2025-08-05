@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuriBank Page Titles & Layout Systems</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Page Title & Layout Design System */
+        :root {
+            --layout-navy: #0D1B2A;
+            --layout-gold: #F4C430;
+            --layout-blue: #2563eb;
+            --layout-success: #059669;
+            --layout-warning: #D97706;
+            --layout-gray-50: #F8FAFC;
+            --layout-gray-100: #F1F5F9;
+            --layout-gray-200: #E2E8F0;
+            --layout-gray-600: #475569;
+            --layout-gray-900: #0F172A;
+        }
+
+        /* Page Title Components */
+        .page-title-section {
+            background: linear-gradient(135deg, var(--layout-navy) 0%, #1e3a5f 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-title-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="5" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="15" r="0.8" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="20" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .page-title-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title-content {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .page-title-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .page-title-main {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .page-title-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .page-title-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page-title-btn {
+            padding: 0.875rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-title-btn-primary {
+            background: white;
+            color: var(--layout-navy);
+        }
+
+        .page-title-btn-primary:hover {
+            background: var(--layout-gray-100);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .page-title-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 2-Column Layout Systems */
+        .two-column-layout {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .two-column-main {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .two-column-sidebar {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 6rem;
+        }
+
+        /* Content Cards */
+        .content-card {
+            padding: 2rem;
+            border-bottom: 1px solid var(--layout-gray-100);
+        }
+
+        .content-card:last-child {
+            border-bottom: none;
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .content-card-icon.blue {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--layout-blue);
+        }
+
+        .content-card-icon.green {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--layout-success);
+        }
+
+        .content-card-icon.orange {
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--layout-warning);
+        }
+
+        .content-card-meta {
+            flex: 1;
+        }
+
+        .content-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--layout-navy);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .content-card-subtitle {
+            color: var(--layout-gray-600);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .content-card-body {
+            color: var(--layout-gray-900);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .content-card-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .content-card-btn-primary {
+            background: var(--layout-blue);
+            color: white;
+        }
+
+        .content-card-btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .content-card-btn-secondary {
+            background: var(--layout-gray-100);
+            color: var(--layout-gray-700);
+        }
+
+        .content-card-btn-secondary:hover {
+            background: var(--layout-gray-200);
+        }
+
+        /* Sidebar Components */
+        .sidebar-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--layout-gray-100);
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--layout-navy);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-list-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--layout-gray-600);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sidebar-link:hover {
+            background: var(--layout-gray-50);
+            color: var(--layout-navy);
+        }
+
+        .sidebar-link.active {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--layout-blue);
+        }
+
+        .sidebar-link i {
+            width: 1.25rem;
+            color: inherit;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .quick-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--layout-gray-50);
+            border-radius: 0.75rem;
+        }
+
+        .quick-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--layout-navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-stat-label {
+            font-size: 0.75rem;
+            color: var(--layout-gray-600);
+            font-weight: 500;
+        }
+
+        /* Progress Widget */
+        .progress-widget {
+            background: linear-gradient(135deg, var(--layout-blue), #3b82f6);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-widget-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-widget-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            background: white;
+            height: 100%;
+            border-radius: 0.25rem;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .page-title-main {
+                font-size: 3rem;
+            }
+
+            .page-title-actions {
+                flex-direction: row;
+            }
+
+            .content-card {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .two-column-layout {
+                grid-template-columns: 1fr 20rem;
+                gap: 4rem;
+                padding: 0 2rem;
+            }
+
+            .page-title-main {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Demo Styles */
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--layout-gray-50);
+            border-radius: 1rem;
+        }
+
+        .demo-comparison {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .demo-comparison {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .demo-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--layout-gray-200);
+        }
+
+        .demo-card.before {
+            border-left: 4px solid #dc2626;
+        }
+
+        .demo-card.after {
+            border-left: 4px solid var(--layout-success);
+        }
+
+        .demo-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-title.before {
+            color: #dc2626;
+        }
+
+        .demo-title.after {
+            color: var(--layout-success);
+        }
+
+        .demo-page-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+            background: var(--layout-gray-50);
+            border-radius: 0.5rem;
+            border: 1px dashed var(--layout-gray-300);
+        }
+
+        .demo-metrics {
+            font-size: 0.875rem;
+            color: var(--layout-gray-600);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Introduction -->
+    <div class="demo-section">
+        <h2>JuriBank Page Titles & Layout Improvements</h2>
+        <p>Comparison of current verbose titles vs improved concise titles, plus 2-column layout systems to reduce scrolling.</p>
+        
+        <div class="demo-comparison">
+            <div class="demo-card before">
+                <div class="demo-title before">
+                    <i class="fas fa-times-circle"></i>
+                    Before: Verbose Titles
+                </div>
+                <div class="demo-page-title">
+                    JuriBank | Legal & Financial Help by Law Students | Free Legal Guidance Platform
+                </div>
+                <div class="demo-metrics">
+                    ❌ 91 characters • Poor SEO • Hard to read
+                </div>
+            </div>
+            
+            <div class="demo-card after">
+                <div class="demo-title after">
+                    <i class="fas fa-check-circle"></i>
+                    After: Concise Titles
+                </div>
+                <div class="demo-page-title">
+                    JuriBank • Free Legal Help by Students
+                </div>
+                <div class="demo-metrics">
+                    ✅ 36 characters • Great SEO • Clear messaging
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Improved Page Title Examples -->
+    
+    <!-- Example 1: Homepage -->
+    <div class="page-title-section">
+        <div class="page-title-container">
+            <div class="page-title-content">
+                <div class="page-title-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    Student-Led Platform
+                </div>
+                <h1 class="page-title-main">Free Legal Help by Students</h1>
+                <p class="page-title-subtitle">
+                    Get guidance from law students using official UK sources. When you need representation, we connect you with verified solicitors.
+                </p>
+                <div class="page-title-actions">
+                    <a href="#" class="page-title-btn page-title-btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Assessment
+                    </a>
+                    <a href="#" class="page-title-btn page-title-btn-secondary">
+                        <i class="fas fa-play"></i>
+                        See How It Works
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2-Column Layout Example -->
+    <div class="two-column-layout">
+        <!-- Main Content -->
+        <main class="two-column-main">
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-icon blue">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="content-card-meta">
+                        <h2 class="content-card-title">Quick Eligibility Check</h2>
+                        <div class="content-card-subtitle">2 minutes • No signup required</div>
+                    </div>
+                </div>
+                <div class="content-card-body">
+                    <p>Answer a few simple questions to see if you have a valid claim for bank refunds, PPI compensation, or other financial services disputes. Our assessment is based on current FCA guidelines and ombudsman decisions.</p>
+                </div>
+                <div class="content-card-actions">
+                    <a href="#" class="content-card-btn content-card-btn-primary">Start Assessment</a>
+                    <a href="#" class="content-card-btn content-card-btn-secondary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-icon green">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="content-card-meta">
+                        <h2 class="content-card-title">Refund Calculator</h2>
+                        <div class="content-card-subtitle">Instant estimates • Based on FCA data</div>
+                    </div>
+                </div>
+                <div class="content-card-body">
+                    <p>Get an instant estimate of potential refunds for bank charges, PPI claims, packaged accounts, and investment advice compensation. Our calculator uses official success rates and average settlement amounts.</p>
+                </div>
+                <div class="content-card-actions">
+                    <a href="#" class="content-card-btn content-card-btn-primary">Calculate Now</a>
+                    <a href="#" class="content-card-btn content-card-btn-secondary">View Examples</a>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-icon orange">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="content-card-meta">
+                        <h2 class="content-card-title">Personalized Action Plan</h2>
+                        <div class="content-card-subtitle">Step-by-step guidance • Template letters</div>
+                    </div>
+                </div>
+                <div class="content-card-body">
+                    <p>Get a customized roadmap showing exactly what to do next, which forms to complete, and how to present your case effectively. Includes template letters and deadline tracking.</p>
+                </div>
+                <div class="content-card-actions">
+                    <a href="#" class="content-card-btn content-card-btn-primary">Get My Plan</a>
+                    <a href="#" class="content-card-btn content-card-btn-secondary">View Sample</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="two-column-sidebar">
+            <!-- Progress Widget -->
+            <div class="progress-widget">
+                <div class="progress-widget-title">Your Progress</div>
+                <div class="progress-widget-subtitle">2 of 5 steps completed</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+                <div class="progress-text">Keep going! You're making great progress.</div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Quick Stats</div>
+                <div class="quick-stats">
+                    <div class="quick-stat">
+                        <div class="quick-stat-number">78%</div>
+                        <div class="quick-stat-label">Success Rate</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-number">£1,247</div>
+                        <div class="quick-stat-label">Avg. Refund</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-number">14</div>
+                        <div class="quick-stat-label">Days Avg.</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-number">2,847</div>
+                        <div class="quick-stat-label">Cases Won</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Popular Tools</div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link active">
+                            <i class="fas fa-question-circle"></i>
+                            Eligibility Checker
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-calculator"></i>
+                            Refund Calculator
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-file-alt"></i>
+                            Template Letters
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-calendar-alt"></i>
+                            Deadline Tracker
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-chart-line"></i>
+                            Success Stories
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Latest Updates</div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-newspaper"></i>
+                            New FCA Rules
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-gavel"></i>
+                            Court Decisions
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-book"></i>
+                            Legal Guides
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Improved Title Examples -->
+    <div class="demo-section">
+        <h3>Recommended Page Title Improvements</h3>
+        <p>Here are the suggested improvements for all major pages:</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem;">
+            
+            <!-- Homepage -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; background: white; border-radius: 0.5rem; border: 1px solid var(--layout-gray-200);">
+                <div>
+                    <strong>Current:</strong><br>
+                    <span style="color: #dc2626; font-size: 0.875rem;">JuriBank | Legal & Financial Help by Law Students | Free Legal Guidance Platform</span>
+                </div>
+                <div>
+                    <strong>Improved:</strong><br>
+                    <span style="color: var(--layout-success); font-size: 0.875rem;">JuriBank • Free Legal Help by Students</span>
+                </div>
+            </div>
+
+            <!-- Knowledge Hub -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; background: white; border-radius: 0.5rem; border: 1px solid var(--layout-gray-200);">
+                <div>
+                    <strong>Knowledge Hub:</strong><br>
+                    <span style="color: #dc2626; font-size: 0.875rem;">Knowledge Hub | Latest Legal Updates | Gov.UK & FCA Resources</span>
+                </div>
+                <div>
+                    <strong>Improved:</strong><br>
+                    <span style="color: var(--layout-success); font-size: 0.875rem;">Legal Knowledge Hub • JuriBank</span>
+                </div>
+            </div>
+
+            <!-- Claim Wizard -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; background: white; border-radius: 0.5rem; border: 1px solid var(--layout-gray-200);">
+                <div>
+                    <strong>Claim Wizard:</strong><br>
+                    <span style="color: #dc2626; font-size: 0.875rem;">Free Claim Assessment Wizard | Step-by-Step Legal Guidance</span>
+                </div>
+                <div>
+                    <strong>Improved:</strong><br>
+                    <span style="color: var(--layout-success); font-size: 0.875rem;">Free Claim Assessment • JuriBank</span>
+                </div>
+            </div>
+
+            <!-- Community -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; background: white; border-radius: 0.5rem; border: 1px solid var(--layout-gray-200);">
+                <div>
+                    <strong>Community:</strong><br>
+                    <span style="color: #dc2626; font-size: 0.875rem;">Community Forum | Anonymous Legal Support | Moderated by Law Students</span>
+                </div>
+                <div>
+                    <strong>Improved:</strong><br>
+                    <span style="color: var(--layout-success); font-size: 0.875rem;">Community Support • JuriBank</span>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; background: white; border-radius: 0.5rem; border: 1px solid var(--layout-gray-200);">
+                <div>
+                    <strong>How It Works:</strong><br>
+                    <span style="color: #dc2626; font-size: 0.875rem;">How It Works | Student Legal Platform Process | Free to Premium Journey</span>
+                </div>
+                <div>
+                    <strong>Improved:</strong><br>
+                    <span style="color: var(--layout-success); font-size: 0.875rem;">How It Works • JuriBank</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fef3c7; border-radius: 0.75rem; border-left: 4px solid #f59e0b;">
+            <h4 style="color: #92400e; margin-bottom: 0.5rem;">SEO & UX Benefits:</h4>
+            <ul style="color: #92400e; margin: 0; padding-left: 1.5rem;">
+                <li>Reduced title length by 60-70% improves mobile display</li>
+                <li>Clearer messaging increases click-through rates</li>
+                <li>Better SEO ranking for focused keywords</li>
+                <li>Improved social media sharing appearance</li>
+                <li>Faster page loading with shorter meta tags</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Layout Benefits -->
+    <div class="demo-section">
+        <h3>2-Column Layout Benefits</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+            <div>
+                <h4>Content Efficiency</h4>
+                <ul style="padding-left: 1.5rem; line-height: 1.6;">
+                    <li>Reduces vertical scrolling by 40-60%</li>
+                    <li>Better content organization and scanability</li>
+                    <li>Sticky sidebar keeps navigation accessible</li>
+                    <li>Progressive disclosure reduces cognitive load</li>
+                </ul>
+            </div>
+            <div>
+                <h4>User Experience</h4>
+                <ul style="padding-left: 1.5rem; line-height: 1.6;">
+                    <li>Quick access to tools and navigation</li>
+                    <li>Progress tracking always visible</li>
+                    <li>Contextual information in sidebar</li>
+                    <li>Mobile-responsive design maintains usability</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo functionality for progress animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bar on scroll
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            const animateProgress = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    }
+                });
+            };
+
+            const progressObserver = new IntersectionObserver(animateProgress, {
+                threshold: 0.5
+            });
+
+            progressBars.forEach(bar => {
+                progressObserver.observe(bar);
+            });
+
+            // Simulate dynamic stats updates
+            const stats = document.querySelectorAll('.quick-stat-number');
+            stats.forEach(stat => {
+                const finalValue = stat.textContent;
+                let currentValue = 0;
+                const increment = finalValue.includes('£') ? 50 : 
+                                 finalValue.includes('%') ? 3 : 1;
+                const target = parseInt(finalValue.replace(/[£%,]/g, ''));
+                
+                const updateStat = () => {
+                    if (currentValue < target) {
+                        currentValue += increment;
+                        if (currentValue > target) currentValue = target;
+                        
+                        let displayValue = currentValue;
+                        if (finalValue.includes('£')) displayValue = '£' + currentValue.toLocaleString();
+                        if (finalValue.includes('%')) displayValue = currentValue + '%';
+                        if (finalValue.includes(',')) displayValue = currentValue.toLocaleString();
+                        
+                        stat.textContent = displayValue;
+                        setTimeout(updateStat, 30);
+                    }
+                };
+                
+                // Start animation when element is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateStat();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(stat);
+            });
+        });
+    </script>
+</body>
+</html>

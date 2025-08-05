@@ -37,37 +37,100 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     
-    <!-- Icons - Optimized Loading -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Icons - Direct Loading for Reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Backup Font Awesome -->
+    <link rel="preload" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css"></noscript>
     
     <style>
         body { font-family: 'Inter', sans-serif; }
+        /* JuriBank Brand Colors */
         .student-blue { color: #2563eb; }
         .student-green { color: #059669; }
         .student-orange { color: #ea580c; }
         .trust-gray { color: #64748b; }
         .background-cream { background-color: #fefdf8; }
         .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        /* Enhanced Visual Effects */
+        .card-hover { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            cursor: pointer;
+        }
+        .card-hover:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+        }
+        
+        /* Enhanced Progress and Navigation */
         .progress-bar { background: linear-gradient(90deg, #2563eb 0%, #059669 100%); }
-        .tier-card { border: 2px solid transparent; transition: all 0.3s ease; }
-        .tier-card:hover { border-color: #2563eb; }
-        .tier-popular { border-color: #ea580c; position: relative; }
+        .tier-card { 
+            border: 2px solid transparent; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .tier-card:hover { 
+            border-color: #2563eb; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+        }
+        .tier-popular { 
+            border-color: #ea580c; 
+            position: relative;
+            box-shadow: 0 8px 25px -5px rgba(234, 88, 12, 0.25); 
+        }
         .tier-popular::before {
             content: 'MOST POPULAR';
             position: absolute;
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: #ea580c;
+            background: linear-gradient(135deg, #ea580c, #f97316);
             color: white;
             padding: 4px 16px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: 600;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
         }
+        
+        /* Enhanced Button Styles */
+        .btn-enhanced {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-enhanced:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-enhanced:hover:before {
+            left: 100%;
+        }
+        
+        /* Enhanced Icon Styles */
+        .icon-bounce {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-bounce:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* Enhanced Navigation */
+        .nav-enhanced {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
         /* Lazy loading image fade-in */
         .lazy-image {
             opacity: 0;
@@ -76,43 +139,82 @@
         .lazy-image.loaded {
             opacity: 1;
         }
+        
+        /* Icon Loading Fallback */
+        .fa-fallback:before {
+            content: '●';
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="bg-background-cream">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="nav-enhanced shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto">
                     <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
                 </div>
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#tools" class="text-gray-700 hover:text-student-blue font-medium">Free Tools</a>
-                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">Knowledge Hub</a>
-                    <a href="#community" class="text-gray-700 hover:text-student-blue font-medium">Community</a>
-                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium">How It Works</a>
-                    <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
-                        Sign Up Free
-                    </button>
+                    <a href="#tools" class="text-gray-700 hover:text-student-blue font-medium">
+                        <i class="fas fa-tools mr-2"></i>Free Tools
+                    </a>
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">
+                        <i class="fas fa-book-open mr-2"></i>Knowledge Hub
+                    </a>
+                    <a href="#community" class="text-gray-700 hover:text-student-blue font-medium">
+                        <i class="fas fa-users mr-2"></i>Community
+                    </a>
+                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium">
+                        <i class="fas fa-question-circle mr-2"></i>How It Works
+                    </a>
+                </div>
+
+                <!-- User Authentication Section -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Unauthenticated State -->
+                    <div class="nav-auth-buttons flex items-center space-x-3" id="nav-auth-buttons">
+                        <button class="text-gray-700 hover:text-student-blue font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200" onclick="openSignInModal()">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                        </button>
+                        <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 btn-enhanced transition-all duration-200" onclick="openSignUpModal()">
+                            <i class="fas fa-user-plus mr-2 icon-bounce"></i>Sign Up Free
+                        </button>
+                    </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-toggle" class="text-gray-700">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button id="mobile-menu-toggle" class="text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl icon-bounce"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-4 py-2 space-y-2">
-                <a href="#tools" class="block py-2 text-gray-700">Free Tools</a>
-                <a href="#knowledge" class="block py-2 text-gray-700">Knowledge Hub</a>
-                <a href="#community" class="block py-2 text-gray-700">Community</a>
-                <a href="#pricing" class="block py-2 text-gray-700">Pricing</a>
-                <button class="w-full bg-student-blue text-white py-2 rounded-lg font-medium mt-2">
-                    Sign Up Free
-                </button>
+        <!-- Enhanced Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#tools" class="block py-2 text-gray-700 hover:text-student-blue font-medium">
+                    <i class="fas fa-tools mr-3 w-5"></i>Free Tools
+                </a>
+                <a href="knowledge-hub.html" class="block py-2 text-gray-700 hover:text-student-blue font-medium">
+                    <i class="fas fa-book-open mr-3 w-5"></i>Knowledge Hub
+                </a>
+                <a href="#community" class="block py-2 text-gray-700 hover:text-student-blue font-medium">
+                    <i class="fas fa-users mr-3 w-5"></i>Community
+                </a>
+                <a href="how-it-works.html" class="block py-2 text-gray-700 hover:text-student-blue font-medium">
+                    <i class="fas fa-question-circle mr-3 w-5"></i>How It Works
+                </a>
+                
+                <div class="pt-3 border-t border-gray-200">
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg font-medium mb-2 hover:bg-gray-200 transition-colors" onclick="openSignInModal()">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    </button>
+                    <button class="w-full bg-student-blue text-white py-2 rounded-lg font-medium btn-enhanced" onclick="openSignUpModal()">
+                        <i class="fas fa-user-plus mr-2"></i>Sign Up Free
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -147,12 +249,12 @@
                 Get educational guidance from law students studying LLB at a top London university using up-to-date information from Gov.UK, FCA, and ombudsman services. When you need professional representation, we connect you with verified solicitors and legal professionals from our specialist network.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="claim-wizard.html" class="bg-white text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors text-center">
-                    <i class="fas fa-rocket mr-2"></i>
+                <a href="claim-wizard.html" class="bg-white text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors text-center btn-enhanced shadow-lg hover:shadow-xl">
+                    <i class="fas fa-rocket mr-2 icon-bounce"></i>
                     Start Free Assessment
                 </a>
-                <a href="how-it-works.html" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors text-center">
-                    <i class="fas fa-play mr-2"></i>
+                <a href="how-it-works.html" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors text-center btn-enhanced">
+                    <i class="fas fa-play mr-2 icon-bounce"></i>
                     See How It Works
                 </a>
             </div>
@@ -164,30 +266,30 @@
     <section class="bg-white py-12 border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <div class="text-center">
-                    <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-graduation-cap text-student-blue text-2xl"></i>
+                <div class="text-center card-hover p-4 rounded-xl">
+                    <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                        <i class="fas fa-graduation-cap text-student-blue text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Law Students</h3>
                     <p class="text-sm text-trust-gray">Qualified law students</p>
                 </div>
-                <div class="text-center">
-                    <div class="bg-student-green/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-book-open text-student-green text-2xl"></i>
+                <div class="text-center card-hover p-4 rounded-xl">
+                    <div class="bg-student-green/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                        <i class="fas fa-book-open text-student-green text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Solution Focused</h3>
                     <p class="text-sm text-trust-gray">Find your pathway</p>
                 </div>
-                <div class="text-center">
-                    <div class="bg-student-orange/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-database text-student-orange text-2xl"></i>
+                <div class="text-center card-hover p-4 rounded-xl">
+                    <div class="bg-student-orange/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                        <i class="fas fa-database text-student-orange text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Real Gov Data</h3>
                     <p class="text-sm text-trust-gray">Official sources only</p>
                 </div>
-                <div class="text-center">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-user-tie text-purple-600 text-2xl"></i>
+                <div class="text-center card-hover p-4 rounded-xl">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                        <i class="fas fa-user-tie text-purple-600 text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Verified Professionals</h3>
                     <p class="text-sm text-trust-gray">Specialist network</p>
@@ -1103,6 +1205,172 @@
                 });
             }
         })();
+
+        // Authentication Modal Functions
+        function openSignUpModal() {
+            // Create modal if it doesn't exist
+            if (!document.getElementById('signup-modal')) {
+                const modalHTML = `
+                    <!-- Sign Up Modal -->
+                    <div id="signup-modal" class="auth-modal-overlay" style="display: none;">
+                        <div class="auth-modal">
+                            <div class="auth-modal-header">
+                                <div class="auth-logo">
+                                    <img src="/assets/juribank-logo.svg" alt="JuriBank" class="auth-logo-img">
+                                    <span class="auth-logo-text">JuriBank</span>
+                                    <span class="auth-logo-tag">by Students</span>
+                                </div>
+                                <button class="auth-modal-close" onclick="closeModal('signup-modal')">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="auth-modal-content">
+                                <h2 class="auth-modal-title">Join JuriBank Free</h2>
+                                <p class="auth-modal-subtitle">Get free access to educational legal resources and tools</p>
+                                
+                                <form class="auth-form" id="signup-form">
+                                    <div class="auth-form-group">
+                                        <label for="signup-name" class="auth-label">Full Name</label>
+                                        <input type="text" id="signup-name" class="auth-input" placeholder="Enter your full name" required>
+                                    </div>
+                                    
+                                    <div class="auth-form-group">
+                                        <label for="signup-email" class="auth-label">Email Address</label>
+                                        <input type="email" id="signup-email" class="auth-input" placeholder="Enter your email" required>
+                                    </div>
+                                    
+                                    <div class="auth-form-group">
+                                        <label for="signup-password" class="auth-label">Password</label>
+                                        <input type="password" id="signup-password" class="auth-input" placeholder="Create a password" required>
+                                    </div>
+                                    
+                                    <div class="auth-form-group">
+                                        <label class="auth-checkbox-label">
+                                            <input type="checkbox" class="auth-checkbox" required>
+                                            <span class="auth-checkbox-text">
+                                                I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    
+                                    <button type="submit" class="auth-button auth-button-primary">
+                                        <i class="fas fa-user-plus mr-2"></i>Create Free Account
+                                    </button>
+                                </form>
+                                
+                                <div class="auth-divider">
+                                    <span>or</span>
+                                </div>
+                                
+                                <button class="auth-button auth-button-google">
+                                    <i class="fab fa-google mr-2"></i>Continue with Google
+                                </button>
+                                
+                                <p class="auth-footer-text">
+                                    Already have an account? <a href="#" class="auth-link" onclick="closeModal('signup-modal'); openSignInModal();">Sign in</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+            }
+            document.getElementById('signup-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openSignInModal() {
+            // Create modal if it doesn't exist
+            if (!document.getElementById('signin-modal')) {
+                const modalHTML = `
+                    <!-- Sign In Modal -->
+                    <div id="signin-modal" class="auth-modal-overlay" style="display: none;">
+                        <div class="auth-modal">
+                            <div class="auth-modal-header">
+                                <div class="auth-logo">
+                                    <img src="/assets/juribank-logo.svg" alt="JuriBank" class="auth-logo-img">
+                                    <span class="auth-logo-text">JuriBank</span>
+                                    <span class="auth-logo-tag">by Students</span>
+                                </div>
+                                <button class="auth-modal-close" onclick="closeModal('signin-modal')">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="auth-modal-content">
+                                <h2 class="auth-modal-title">Welcome Back</h2>
+                                <p class="auth-modal-subtitle">Sign in to access your educational legal resources</p>
+                                
+                                <form class="auth-form" id="signin-form">
+                                    <div class="auth-form-group">
+                                        <label for="signin-email" class="auth-label">Email Address</label>
+                                        <input type="email" id="signin-email" class="auth-input" placeholder="Enter your email" required>
+                                    </div>
+                                    
+                                    <div class="auth-form-group">
+                                        <label for="signin-password" class="auth-label">Password</label>
+                                        <input type="password" id="signin-password" class="auth-input" placeholder="Enter your password" required>
+                                    </div>
+                                    
+                                    <div class="auth-form-row">
+                                        <label class="auth-checkbox-label">
+                                            <input type="checkbox" class="auth-checkbox">
+                                            <span class="auth-checkbox-text">Remember me</span>
+                                        </label>
+                                        <a href="#" class="auth-link">Forgot password?</a>
+                                    </div>
+                                    
+                                    <button type="submit" class="auth-button auth-button-primary">
+                                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                                    </button>
+                                </form>
+                                
+                                <div class="auth-divider">
+                                    <span>or</span>
+                                </div>
+                                
+                                <button class="auth-button auth-button-google">
+                                    <i class="fab fa-google mr-2"></i>Continue with Google
+                                </button>
+                                
+                                <p class="auth-footer-text">
+                                    Don't have an account? <a href="#" class="auth-link" onclick="closeModal('signin-modal'); openSignUpModal();">Sign up free</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+            }
+            document.getElementById('signin-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('auth-modal-overlay')) {
+                const modal = e.target;
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
     </script>
 </body>
 </html>

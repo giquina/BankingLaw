@@ -25,6 +25,29 @@ async function optimizeBuild() {
         const cssSize = (cssStats.size / 1024).toFixed(1);
         console.log(`   CSS bundle: ${cssSize}KB`);
         
+        // Check authentication component sizes
+        const authComponents = [
+            'src/auth-config.js',
+            'src/auth-storage.js',
+            'src/freemium-controller.js',
+            'src/mock-auth-api.js',
+            'src/auth-dev-config.js',
+            'session-manager.js'
+        ];
+        
+        let totalAuthSize = 0;
+        authComponents.forEach(component => {
+            const componentPath = path.join(__dirname, '..', component);
+            if (fs.existsSync(componentPath)) {
+                const stats = fs.statSync(componentPath);
+                const size = (stats.size / 1024).toFixed(1);
+                console.log(`   ${component}: ${size}KB`);
+                totalAuthSize += stats.size;
+            }
+        });
+        
+        console.log(`   Authentication system total: ${(totalAuthSize / 1024).toFixed(1)}KB`);
+        
         // 3. Check for optimization opportunities
         console.log('\n🔍 Checking optimization status...');
         
@@ -38,7 +61,11 @@ async function optimizeBuild() {
             'Lazy loading': indexContent.includes('IntersectionObserver'),
             'Minified CSS': cssSize < 150, // Target under 150KB
             'Optimized images': indexContent.includes('data:image/svg+xml'),
-            'Debounced events': indexContent.includes('debounce')
+            'Debounced events': indexContent.includes('debounce'),
+            'Authentication system': totalAuthSize > 0,
+            'Session management': fs.existsSync(path.join(__dirname, '..', 'session-manager.js')),
+            'Freemium controls': fs.existsSync(path.join(__dirname, '..', 'src', 'freemium-controller.js')),
+            'Secure storage': fs.existsSync(path.join(__dirname, '..', 'src', 'auth-storage.js'))
         };
         
         let passedOptimizations = 0;
