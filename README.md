@@ -5,7 +5,7 @@
 
 JuriBank is an innovative UK legal and financial help platform created and run by law students studying LLB at a top London university. We guide you through understanding your legal rights and options with comprehensive tools, real-time official content, and peer support - helping you make informed decisions about your situation.
 
-### ✨ **Educational Platform Features v3.1 (2024)**
+### ✨ **Educational Platform Features v3.0 (2024)**
 
 Our student-led platform features:
 - **AI Legal Assistant** with intelligent chatbot for instant guidance
@@ -119,11 +119,12 @@ Our completely redesigned technology platform is built specifically for deliveri
 ### 📚 **Free Information Access**
 **Start exploring our free educational resources**
 
-**Website**: [juribank.co.uk](https://juribank.co.uk)  
+**Website**: [https://banking-law.vercel.app/](https://banking-law.vercel.app/)  
 **Email**: hello@juribank.co.uk  
 **Community**: Join our forum for peer support and information sharing
 
 **Available**: 24/7 online platform with real-time content updates
+**Deployment**: Successfully deployed and optimized on Vercel with enhanced security
 
 ### 🔑 **Platform Access**
 Create your free account to access basic guides and community features. Upgrade to our paid tier for comprehensive tools and priority support.
@@ -197,7 +198,8 @@ We maintain high standards for educational content while staying within regulato
 **JuriBank Educational Platform**  
 Student-Led Legal Information Initiative  
 Email: hello@juribank.co.uk  
-Web: [juribank.co.uk](https://juribank.co.uk) | Platform: [portal.juribank.co.uk](https://portal.juribank.co.uk)
+Web: [https://banking-law.vercel.app/](https://banking-law.vercel.app/)  
+**Platform Status**: ✅ Live and operational with mobile-responsive design
 
 ---
 

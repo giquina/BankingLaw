@@ -1,6 +1,6 @@
 # JuriBank Educational Standards & Compliance
 
-Educational platform standards and compliance requirements for the student-led JuriBank platform, including community features and information delivery standards.
+Educational platform standards and compliance requirements for the student-led JuriBank platform, including community features and information delivery standards. Platform successfully deployed at https://banking-law.vercel.app/ with enhanced security and educational compliance.
 
 ## Educational Information Accuracy
 

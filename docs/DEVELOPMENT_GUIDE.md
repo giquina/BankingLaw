@@ -16,7 +16,7 @@ Complete development guide for the JuriBank UK Legal & Financial Education Platf
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/giquina/juribank.git
+git clone https://github.com/giquina/juribank-educational.git
 cd BankingLaw
 
 # Install dependencies
@@ -26,6 +26,9 @@ npm install
 npm run dev
 
 # Visit http://localhost:8000
+
+# Live deployment available at:
+# https://banking-law.vercel.app/
 ```
 
 ## Development Commands

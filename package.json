@@ -65,7 +65,7 @@
     "type": "git",
     "url": "https://github.com/giquina/juribank-educational.git"
   },
-  "homepage": "https://juribank.vercel.app",
+  "homepage": "https://banking-law.vercel.app",
   "dependencies": {
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
