@@ -338,3 +338,12 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
 }
+
+/* Remove underlines from navigation links */
+.no-underline {
+    text-decoration: none !important;
+}
+
+.no-underline:hover {
+    text-decoration: none !important;
+}
