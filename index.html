@@ -12,6 +12,8 @@
     <meta name="language" content="English">
     <meta name="author" content="JuriBank Student Legal Platform">
     
+    <!-- Content Security Policy managed in vercel.json -->
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://juribank.co.uk/">
@@ -27,26 +29,33 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS with proper configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'student-blue': '#2563eb',
-                        'student-green': '#059669',
-                        'student-orange': '#ea580c',
-                        'trust-gray': '#64748b',
-                        'background-cream': '#fefdf8'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
+        // Configure Tailwind after it loads
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.tailwind && window.tailwind.config) {
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'student-blue': '#2563eb',
+                                'student-green': '#059669',
+                                'student-orange': '#ea580c',
+                                'trust-gray': '#64748b',
+                                'background-cream': '#fefdf8'
+                            },
+                            fontFamily: {
+                                'inter': ['Inter', 'sans-serif']
+                            }
+                        }
                     }
-                }
+                };
             }
-        }
+        });
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
@@ -1005,7 +1014,26 @@
 
     <!-- AI Legal Assistant -->
     <div id="ai-assistant-container"></div>
-    <script src="/src/ai-legal-assistant.js"></script>
+    <script>
+        // Load AI assistant if file exists
+        fetch('/src/ai-legal-assistant.js')
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('AI assistant not found');
+            })
+            .then(script => {
+                const scriptElement = document.createElement('script');
+                scriptElement.textContent = script;
+                document.head.appendChild(scriptElement);
+            })
+            .catch(error => {
+                console.log('AI assistant not loaded:', error.message);
+                // Hide the container if script doesn't exist
+                document.getElementById('ai-assistant-container').style.display = 'none';
+            });
+    </script>
 
     <!-- Mobile Menu Toggle Script -->
     <script>
