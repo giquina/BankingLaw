@@ -450,6 +450,78 @@
             opacity: 1 !important;
             visibility: visible !important;
         }
+        
+        /* Authentication Modal Improvements */
+        .auth-benefits {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .auth-benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+        
+        .auth-benefit:last-child {
+            margin-bottom: 0;
+        }
+        
+        .auth-benefit i {
+            font-size: 1rem;
+        }
+        
+        /* Progress Indicators */
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            border-left: 4px solid #e5e7eb;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active {
+            border-left-color: #3b82f6;
+            background: #f0f9ff;
+        }
+        
+        .progress-step.completed {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+        
+        .step-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        .progress-step.active .step-icon {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .progress-step.completed .step-icon {
+            background: #10b981;
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-background-cream">
@@ -646,6 +718,175 @@
                         Get My Plan
                     </button>
                     <p class="text-sm text-gray-500 mt-2">✓ Free basics • ✓ Upgrade for full plan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claims Process Tracking Preview -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Stay Informed Every Step of the Way</h2>
+                <p class="text-xl text-gray-600 mb-6">See exactly where your claim stands with real-time progress tracking</p>
+                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                    <i class="fas fa-bell mr-2"></i>
+                    Instant notifications for every update
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Progress Timeline -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-900">Your Claim Progress</h3>
+                    <div class="space-y-4">
+                        <!-- Step 1: Completed -->
+                        <div class="progress-step completed">
+                            <div class="step-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Eligibility Assessment Complete</h4>
+                                <p class="text-gray-600 text-sm">You may be eligible for up to £1,200 in refunds</p>
+                                <p class="text-gray-500 text-xs mt-1">Completed 3 days ago</p>
+                            </div>
+                            <div class="text-green-600 text-sm font-medium">✓ Done</div>
+                        </div>
+
+                        <!-- Step 2: Active -->
+                        <div class="progress-step active">
+                            <div class="step-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Document Preparation</h4>
+                                <p class="text-gray-600 text-sm">Gathering bank statements and preparing complaint letter</p>
+                                <div class="mt-2">
+                                    <div class="bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">65% complete</p>
+                                </div>
+                            </div>
+                            <div class="text-blue-600 text-sm font-medium">In Progress</div>
+                        </div>
+
+                        <!-- Step 3: Pending -->
+                        <div class="progress-step">
+                            <div class="step-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Submit Formal Complaint</h4>
+                                <p class="text-gray-600 text-sm">Send complaint to your bank with supporting evidence</p>
+                                <p class="text-gray-500 text-xs mt-1">Estimated: 2-3 days</p>
+                            </div>
+                            <div class="text-gray-500 text-sm font-medium">Pending</div>
+                        </div>
+
+                        <!-- Step 4: Pending -->
+                        <div class="progress-step">
+                            <div class="step-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Bank Response Period</h4>
+                                <p class="text-gray-600 text-sm">Wait for bank's formal response (8 weeks maximum)</p>
+                                <p class="text-gray-500 text-xs mt-1">Estimated: 3-8 weeks</p>
+                            </div>
+                            <div class="text-gray-500 text-sm font-medium">Pending</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Hub -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-900">Recent Updates</h3>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 space-y-4">
+                        <!-- Update 1 -->
+                        <div class="flex items-start gap-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                            <div class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-info-circle text-blue-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Document Template Ready</h4>
+                                <p class="text-gray-600 text-sm">Your personalized complaint letter has been generated</p>
+                                <p class="text-gray-500 text-xs mt-1">2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Update 2 -->
+                        <div class="flex items-start gap-4 p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                            <div class="bg-green-100 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Bank Statements Uploaded</h4>
+                                <p class="text-gray-600 text-sm">Successfully processed 18 months of statements</p>
+                                <p class="text-gray-500 text-xs mt-1">1 day ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Update 3 -->
+                        <div class="flex items-start gap-4 p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                            <div class="bg-yellow-100 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-yellow-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Student Guidance Available</h4>
+                                <p class="text-gray-600 text-sm">Law student Sophie is available for a 15-min consultation</p>
+                                <p class="text-gray-500 text-xs mt-1">3 days ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Next Action -->
+                        <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-lg mt-6">
+                            <h4 class="font-semibold mb-2">
+                                <i class="fas fa-arrow-right mr-2"></i>Your Next Step
+                            </h4>
+                            <p class="text-sm mb-3">Review and approve your complaint letter before submission</p>
+                            <button class="bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100">
+                                Review Document
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communication Preferences -->
+            <div class="mt-16 bg-white rounded-2xl shadow-lg p-8">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">How Do You Want to Stay Informed?</h3>
+                    <p class="text-gray-600">Choose how you'd like to receive updates about your claim</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 border-2 border-blue-200 rounded-xl bg-blue-50">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Email Updates</h4>
+                        <p class="text-gray-600 text-sm mb-4">Get detailed progress reports and documents via email</p>
+                        <div class="text-blue-600 text-sm font-medium">✓ Most Popular</div>
+                    </div>
+
+                    <div class="text-center p-6 border-2 border-gray-200 rounded-xl hover:border-green-200 hover:bg-green-50">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sms text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">SMS Alerts</h4>
+                        <p class="text-gray-600 text-sm mb-4">Quick notifications for important milestones</p>
+                        <div class="text-green-600 text-sm font-medium">Instant Updates</div>
+                    </div>
+
+                    <div class="text-center p-6 border-2 border-gray-200 rounded-xl hover:border-purple-200 hover:bg-purple-50">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tachometer-alt text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Dashboard Only</h4>
+                        <p class="text-gray-600 text-sm mb-4">Check your progress whenever you log in</p>
+                        <div class="text-purple-600 text-sm font-medium">Self-Service</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1730,7 +1971,27 @@
                             
                             <div class="auth-modal-content">
                                 <h2 class="auth-modal-title">Join JuriBank Free</h2>
-                                <p class="auth-modal-subtitle">Get free access to educational legal resources and tools</p>
+                                <p class="auth-modal-subtitle">Get instant access to eligibility checking and legal guidance</p>
+                                
+                                <!-- Sign Up Benefits -->
+                                <div class="auth-benefits">
+                                    <div class="auth-benefit">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span>Free claim eligibility checker</span>
+                                    </div>
+                                    <div class="auth-benefit">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span>Progress tracking dashboard</span>
+                                    </div>
+                                    <div class="auth-benefit">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span>Document templates & guides</span>
+                                    </div>
+                                    <div class="auth-benefit">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span>Connect with legal professionals</span>
+                                    </div>
+                                </div>
                                 
                                 <form class="auth-form" id="signup-form">
                                     <div class="auth-form-group">
