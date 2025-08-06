@@ -1,7 +1,7 @@
 {
-  "name": "juribank-educational-platform",
-  "version": "3.0.0",
-  "description": "JuriBank v3.0 - Student-led UK legal & financial help platform with freemium model, real-time API content from Gov.UK/FCA/Ombudsman, community forum, guided tools, and progress tracking. Educational platform helping people understand their legal rights through accessible resources and peer support.",
+  "name": "juribank-professional-platform",
+  "version": "3.1.0",
+  "description": "JuriBank v3.1 - Professional UK legal & financial help platform with freemium model, real-time API content from Gov.UK/FCA/Ombudsman, community forum, guided tools, and progress tracking. Professional platform helping people understand their legal rights through expert resources and support.",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -l 8000",
@@ -27,11 +27,12 @@
     "ci:test": "npm run lint:security && npm run test && npm run test:performance",
     "ci:build": "npm run build && npm run security:headers"
   },
+  "type": "module",
   "keywords": [
-    "legal-education",
-    "student-led-platform",
-    "financial-rights-education",
-    "banking-dispute-guidance",
+    "legal-platform",
+    "professional-legal-services",
+    "financial-rights-guidance",
+    "banking-dispute-resolution",
     "consumer-rights-information",
     "legal-information-platform",
     "freemium-legal-help",
@@ -39,31 +40,31 @@
     "gov-uk-integration",
     "fca-consumer-guidance",
     "ombudsman-information",
-    "peer-support-community",
-    "legal-learning-platform",
+    "professional-support-community",
+    "legal-guidance-platform",
     "guided-legal-tools",
     "progress-tracking",
-    "educational-compliance",
+    "regulatory-compliance",
     "uk-legal-information",
-    "banking-rights-education",
-    "community-moderation",
-    "student-legal-project",
+    "banking-rights-guidance",
+    "expert-moderation",
+    "professional-legal-project",
     "accessible-legal-info",
-    "mobile-first-education",
-    "responsive-learning-platform",
-    "educational-ai-assistant",
-    "learning-progress-tracking",
-    "interactive-educational-tools",
-    "typescript-educational-components",
-    "react-learning-platform",
+    "mobile-first-platform",
+    "responsive-legal-platform",
+    "ai-legal-assistant",
+    "case-progress-tracking",
+    "interactive-legal-tools",
+    "typescript-components",
+    "react-platform",
     "subscription-management",
     "real-time-api-content"
   ],
-  "author": "JuriBank Educational Initiative - LLB Students",
+  "author": "JuriBank Professional Legal Platform",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/giquina/juribank-educational.git"
+    "url": "https://github.com/giquina/juribank-professional.git"
   },
   "homepage": "https://banking-law.vercel.app",
   "dependencies": {
@@ -100,7 +101,7 @@
     "vercel": "^44.7.3"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": "18.x || 20.x",
     "npm": ">=9.0.0"
   },
   "browserslist": [
