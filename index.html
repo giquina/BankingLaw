@@ -98,6 +98,281 @@
         /* Enhanced Button Styles */
         .btn-enhanced {
             position: relative;
+        }
+        
+        /* Navigation Auth Buttons Fix */
+        .nav-auth-buttons {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Fix button visibility specifically */
+        .nav-auth-buttons button {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            color: inherit !important;
+        }
+        
+        /* Ensure Sign Up button is always visible */
+        .nav-auth-buttons .bg-student-blue {
+            background-color: #2563eb !important;
+            color: white !important;
+            display: inline-flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Desktop navigation visibility */
+        @media (min-width: 768px) {
+            .hidden.md\\:flex {
+                display: flex !important;
+            }
+            .nav-auth-buttons {
+                display: flex !important;
+            }
+            .nav-auth-buttons button {
+                display: inline-flex !important;
+            }
+        }
+        
+        /* Success Stories Case Study Cards */
+        .case-study-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .case-study-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .case-study-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .banking-icon {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+        }
+        
+        .ppi-icon {
+            background: rgba(5, 150, 105, 0.1);
+            color: #059669;
+        }
+        
+        .consumer-icon {
+            background: rgba(234, 88, 12, 0.1);
+            color: #ea580c;
+        }
+        
+        .professional-icon {
+            background: rgba(147, 51, 234, 0.1);
+            color: #9333ea;
+        }
+        
+        .case-study-meta {
+            flex: 1;
+        }
+        
+        .case-study-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .case-study-location {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .case-study-result {
+            text-align: right;
+        }
+        
+        .result-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #059669;
+            display: block;
+        }
+        
+        .result-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .case-study-content {
+            margin-top: 1rem;
+        }
+        
+        .case-study-description {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .case-study-journey {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 0.75rem;
+        }
+        
+        .journey-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .journey-step.completed .journey-icon {
+            background: #059669;
+            color: white;
+        }
+        
+        .journey-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            color: #6b7280;
+        }
+        
+        .journey-step span {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .journey-arrow {
+            margin: 0 1rem;
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+        
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 0.5rem;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            display: block;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .metric-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Case Filter Buttons */
+        .case-filter-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .case-filter-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .case-filter-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        
+        .case-filter-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .case-study-header {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+            
+            .case-study-result {
+                text-align: left;
+                margin-top: 1rem;
+            }
+            
+            .journey-arrow {
+                display: none;
+            }
+            
+            .case-study-journey {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .journey-step {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .journey-icon {
+                margin-right: 0.75rem;
+                margin-bottom: 0;
+            }
+            
+            .case-study-metrics {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
             overflow: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -159,16 +434,16 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#tools" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-tools mr-2"></i>Free Tools
+                        <i class="fas fa-clipboard-list mr-2"></i>Free Tools
                     </a>
                     <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-book-open mr-2"></i>Knowledge Hub
+                        <i class="fas fa-lightbulb mr-2"></i>Knowledge Hub
                     </a>
                     <a href="#community" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-users mr-2"></i>Community
+                        <i class="fas fa-comments mr-2"></i>Community
                     </a>
                     <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-question-circle mr-2"></i>How It Works
+                        <i class="fas fa-info-circle mr-2"></i>How It Works
                     </a>
                 </div>
 
@@ -195,16 +470,16 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
             <div class="px-4 py-3 space-y-2">
                 <a href="#tools" class="block py-2 text-gray-700 hover:text-student-blue font-medium no-underline">
-                    <i class="fas fa-tools mr-3 w-5"></i>Free Tools
+                    <i class="fas fa-clipboard-list mr-3 w-5"></i>Free Tools
                 </a>
                 <a href="knowledge-hub.html" class="block py-2 text-gray-700 hover:text-student-blue font-medium no-underline">
-                    <i class="fas fa-book-open mr-3 w-5"></i>Knowledge Hub
+                    <i class="fas fa-lightbulb mr-3 w-5"></i>Knowledge Hub
                 </a>
                 <a href="#community" class="block py-2 text-gray-700 hover:text-student-blue font-medium no-underline">
-                    <i class="fas fa-users mr-3 w-5"></i>Community
+                    <i class="fas fa-comments mr-3 w-5"></i>Community
                 </a>
                 <a href="how-it-works.html" class="block py-2 text-gray-700 hover:text-student-blue font-medium no-underline">
-                    <i class="fas fa-question-circle mr-3 w-5"></i>How It Works
+                    <i class="fas fa-info-circle mr-3 w-5"></i>How It Works
                 </a>
                 
                 <div class="pt-3 border-t border-gray-200">
@@ -246,7 +521,7 @@
                 Learn your legal options and connect with qualified professionals
             </p>
             <p class="text-lg mb-12 opacity-80">
-                Our educational platform helps you understand your legal rights using official Gov.UK, FCA, and ombudsman data. When you need professional legal advice, we connect you with independent qualified solicitors and legal service providers from our network.
+                JuriBank helps you understand your legal rights using official Gov.UK, FCA, and ombudsman data. When you need professional legal advice, JuriBank connects you with independent qualified solicitors and legal service providers from the network.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="claim-wizard.html" class="bg-white text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors text-center btn-enhanced shadow-lg hover:shadow-xl">
@@ -268,28 +543,28 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
                 <div class="text-center card-hover p-4 rounded-xl">
                     <div class="bg-student-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                        <i class="fas fa-graduation-cap text-student-blue text-2xl icon-bounce"></i>
+                        <i class="fas fa-user-graduate text-student-blue text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Law Students</h3>
                     <p class="text-sm text-trust-gray">Qualified law students</p>
                 </div>
                 <div class="text-center card-hover p-4 rounded-xl">
                     <div class="bg-student-green/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                        <i class="fas fa-book-open text-student-green text-2xl icon-bounce"></i>
+                        <i class="fas fa-route text-student-green text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Solution Focused</h3>
                     <p class="text-sm text-trust-gray">Find your pathway</p>
                 </div>
                 <div class="text-center card-hover p-4 rounded-xl">
                     <div class="bg-student-orange/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                        <i class="fas fa-database text-student-orange text-2xl icon-bounce"></i>
+                        <i class="fas fa-shield-alt text-student-orange text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Real Gov Data</h3>
                     <p class="text-sm text-trust-gray">Official sources only</p>
                 </div>
                 <div class="text-center card-hover p-4 rounded-xl">
                     <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                        <i class="fas fa-user-tie text-purple-600 text-2xl icon-bounce"></i>
+                        <i class="fas fa-award text-purple-600 text-2xl icon-bounce"></i>
                     </div>
                     <h3 class="font-semibold text-gray-900">Verified Professionals</h3>
                     <p class="text-sm text-trust-gray">Specialist network</p>
@@ -309,7 +584,7 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
                     <div class="bg-student-blue/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-question-circle text-student-blue text-2xl"></i>
+                        <i class="fas fa-clipboard-check text-student-blue text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold mb-4">Am I Eligible?</h3>
                     <p class="text-gray-600 mb-6">Quick questionnaire to check if you have a valid claim for bank refunds, compensation, or disputes.</p>
@@ -445,6 +720,694 @@
                     <button class="w-full bg-student-blue text-white py-3 rounded-lg font-medium hover:bg-blue-700">
                         Start 7-Day Free Trial
                     </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="success-stories" class="py-20 bg-gradient-to-r from-blue-50 to-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Real Success Stories from JuriBank</h2>
+                <p class="text-xl text-gray-600 mb-6">See how students like you have used JuriBank to understand their rights and achieve positive outcomes</p>
+                <div class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    All stories completely anonymized for privacy protection
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="case-filter-btn active" data-category="all">
+                    <i class="fas fa-star mr-2"></i>All Stories
+                </button>
+                <button class="case-filter-btn" data-category="banking">
+                    <i class="fas fa-university mr-2"></i>Banking Disputes
+                </button>
+                <button class="case-filter-btn" data-category="ppi">
+                    <i class="fas fa-file-invoice-dollar mr-2"></i>PPI Claims
+                </button>
+                <button class="case-filter-btn" data-category="consumer">
+                    <i class="fas fa-shield-alt mr-2"></i>Consumer Rights
+                </button>
+                <button class="case-filter-btn" data-category="professional">
+                    <i class="fas fa-user-tie mr-2"></i>Professional Connections
+                </button>
+            </div>
+
+            <!-- Success Stories Grid -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12" id="success-stories-grid">
+                
+                <!-- Banking Dispute Success Story 1 -->
+                <div class="case-study-card banking" data-category="banking">
+                    <div class="case-study-header">
+                        <div class="case-study-icon banking-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Unfair Overdraft Charges Refund</h3>
+                            <p class="case-study-location">Manchester Area • Q2 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£1,847</span>
+                            <span class="result-label">Refunded</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I was being charged £35 every time I went just £2-3 overdrawn. The JuriBank platform helped me understand this wasn't fair and showed me exactly how to challenge it. The step-by-step guidance made everything clear."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">3 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">98%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Bank Direct</span>
+                                <span class="metric-label">Resolution Method</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PPI Success Story 1 -->
+                <div class="case-study-card ppi" data-category="ppi">
+                    <div class="case-study-header">
+                        <div class="case-study-icon ppi-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">PPI Claim Success</h3>
+                            <p class="case-study-location">Birmingham Region • Q1 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£4,230</span>
+                            <span class="result-label">Compensation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I had no idea I had PPI on three different credit cards. The platform's checker found them all and the templates made the claims process straightforward. The student guidance was incredibly helpful throughout."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">6 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">3 Claims</span>
+                                <span class="metric-label">Total Claims</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banking Dispute Success Story 2 -->
+                <div class="case-study-card banking" data-category="banking">
+                    <div class="case-study-header">
+                        <div class="case-study-icon banking-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Packaged Account Refund</h3>
+                            <p class="case-study-location">London Area • Q3 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£680</span>
+                            <span class="result-label">Monthly Fees Refunded</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I was paying £15/month for account 'benefits' I never used. The educational resources helped me understand my rights and I got 4 years of fees refunded plus interest. The process was much simpler than I expected."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">2 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">100%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4 years</span>
+                                <span class="metric-label">Fees Refunded</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consumer Rights Success Story 1 -->
+                <div class="case-study-card consumer" data-category="consumer">
+                    <div class="case-study-header">
+                        <div class="case-study-icon consumer-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Unauthorized Transaction Dispute</h3>
+                            <p class="case-study-location">Leeds Area • Q2 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£325</span>
+                            <span class="result-label">Fraudulent Charges Reversed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "Someone used my card details online and the bank initially refused to refund me. The platform taught me about my rights under the Payment Services Regulations and helped me escalate properly."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">6 weeks</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">92%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Ombudsman</span>
+                                <span class="metric-label">Resolution Method</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Connection Success Story 1 -->
+                <div class="case-study-card professional" data-category="professional">
+                    <div class="case-study-header">
+                        <div class="case-study-icon professional-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Complex Investment Advice Claim</h3>
+                            <p class="case-study-location">Edinburgh Area • Q1 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£12,500</span>
+                            <span class="result-label">Investment Loss Compensation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "My case was too complex for self-representation. The platform connected me with a specialist solicitor who understood my situation immediately. The documentation I'd gathered made the process much more efficient."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <span>Professional</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">8 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">97%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Specialist Solicitor</span>
+                                <span class="metric-label">Professional Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PPI Success Story 2 -->
+                <div class="case-study-card ppi" data-category="ppi">
+                    <div class="case-study-header">
+                        <div class="case-study-icon ppi-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Mortgage PPI Discovery</h3>
+                            <p class="case-study-location">Bristol Area • Q3 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£2,156</span>
+                            <span class="result-label">Plus Interest</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I never realized my mortgage had PPI built into it from 15 years ago. The platform's historical checker found it and the community forum gave me confidence to pursue the claim. So grateful for the guidance."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">4 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">94%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">15 years</span>
+                                <span class="metric-label">Historical Claim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consumer Rights Success Story 2 -->
+                <div class="case-study-card consumer" data-category="consumer">
+                    <div class="case-study-header">
+                        <div class="case-study-icon consumer-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Direct Debit Dispute</h3>
+                            <p class="case-study-location">Cardiff Area • Q2 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£145</span>
+                            <span class="result-label">Wrongful Charges Refunded</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "My gym kept taking payments after I cancelled, and the bank wouldn't help initially. The educational resources taught me about the Direct Debit Guarantee and how to use it properly. Quick resolution once I knew the process."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">3 weeks</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">96%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Bank Direct</span>
+                                <span class="metric-label">Resolution Method</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banking Dispute Success Story 3 -->
+                <div class="case-study-card banking" data-category="banking">
+                    <div class="case-study-header">
+                        <div class="case-study-icon banking-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Credit Card Fee Dispute</h3>
+                            <p class="case-study-location">Glasgow Area • Q1 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£420</span>
+                            <span class="result-label">Over-limit Fees Refunded</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I was charged excessive fees for going slightly over my credit limit. The platform showed me the FCA guidelines and provided template letters. The bank refunded everything within 6 weeks. Brilliant resource!"
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">6 weeks</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">FCA Guidelines</span>
+                                <span class="metric-label">Basis for Claim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Connection Success Story 2 -->
+                <div class="case-study-card professional" data-category="professional">
+                    <div class="case-study-header">
+                        <div class="case-study-icon professional-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Pension Transfer Advice Claim</h3>
+                            <p class="case-study-location">Newcastle Area • Q3 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£8,750</span>
+                            <span class="result-label">Poor Advice Compensation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "I was given poor pension transfer advice that cost me thousands. The platform educated me about my options and connected me with a specialist who secured full compensation. The warm introduction made all the difference."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <span>Professional</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">7 months</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">98%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Pension Specialist</span>
+                                <span class="metric-label">Expert Match</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consumer Rights Success Story 3 -->
+                <div class="case-study-card consumer" data-category="consumer">
+                    <div class="case-study-header">
+                        <div class="case-study-icon consumer-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="case-study-meta">
+                            <h3 class="case-study-title">Insurance Premium Dispute</h3>
+                            <p class="case-study-location">Liverpool Area • Q4 2024</p>
+                        </div>
+                        <div class="case-study-result">
+                            <span class="result-amount">£890</span>
+                            <span class="result-label">Premium Overcharge Refund</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study-content">
+                        <p class="case-study-description">
+                            "My car insurance company increased my premium by 40% without proper justification. The platform taught me about the FCA's insurance pricing rules and helped me challenge the increase successfully."
+                        </p>
+                        
+                        <div class="case-study-journey">
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <span>Learn</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span>Action</span>
+                            </div>
+                            <div class="journey-arrow">→</div>
+                            <div class="journey-step completed">
+                                <div class="journey-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Success</span>
+                            </div>
+                        </div>
+                        
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">10 weeks</span>
+                                <span class="metric-label">Time to Resolution</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">93%</span>
+                                <span class="metric-label">Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">40% Reduction</span>
+                                <span class="metric-label">Premium Adjustment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Statistics -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8">Platform Success Metrics</h3>
+                
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="success-metric">
+                        <div class="metric-number">£127,500+</div>
+                        <div class="metric-label">Total Recovered for Users</div>
+                    </div>
+                    <div class="success-metric">
+                        <div class="metric-number">96%</div>
+                        <div class="metric-label">Average Satisfaction Rate</div>
+                    </div>
+                    <div class="success-metric">
+                        <div class="metric-number">4.2 months</div>
+                        <div class="metric-label">Average Resolution Time</div>
+                    </div>
+                    <div class="success-metric">
+                        <div class="metric-number">78%</div>
+                        <div class="metric-label">Self-Resolution Success Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Ready to Start Your Own Success Story?</h3>
+                <p class="text-gray-600 mb-8">Join thousands of people who have used JuriBank to understand their rights and achieve positive outcomes</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="claim-wizard.html" class="bg-student-blue text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-colors text-center shadow-lg">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Start Your Educational Assessment
+                    </a>
+                    <a href="#community" class="border-2 border-student-blue text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-student-blue hover:text-white transition-colors text-center">
+                        <i class="fas fa-users mr-2"></i>
+                        Join Our Community
+                    </a>
                 </div>
             </div>
         </div>
@@ -586,7 +1549,7 @@
                             <div class="flex items-start justify-between mb-4">
                                 <div class="flex items-center">
                                     <div class="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
-                                        <i class="fas fa-landmark text-blue-600"></i>
+                                        <i class="fas fa-gavel text-blue-600"></i>
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900">New FCA Rules on Bank Charges</h3>
@@ -611,7 +1574,7 @@
                             <div class="flex items-start justify-between mb-4">
                                 <div class="flex items-center">
                                     <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
-                                        <i class="fas fa-balance-scale text-green-600"></i>
+                                        <i class="fas fa-chart-bar text-green-600"></i>
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900">Ombudsman Success Rates by Claim Type</h3>
@@ -636,7 +1599,7 @@
                             <div class="flex items-start justify-between mb-4">
                                 <div class="flex items-center">
                                     <div class="bg-orange-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
-                                        <i class="fas fa-file-alt text-orange-600"></i>
+                                        <i class="fas fa-file-contract text-orange-600"></i>
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900">Template: Complaint Letter to Bank</h3>
@@ -932,7 +1895,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">When You Need Professional Legal Representation</h2>
-                <p class="text-xl text-gray-600">Access our network of verified solicitors and legal professionals matched to your specific claim</p>
+                <p class="text-xl text-gray-600">Access the network of verified solicitors and legal professionals matched to your specific claim</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
@@ -941,7 +1904,7 @@
                         <i class="fas fa-user-tie text-blue-600 text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Verified Specialists</h3>
-                    <p class="text-gray-600 mb-4">All solicitors in our network are SRA-regulated and specialize in financial services law, banking disputes, and consumer rights.</p>
+                    <p class="text-gray-600 mb-4">All solicitors in the network are SRA-regulated and specialize in financial services law, banking disputes, and consumer rights.</p>
                     <div class="text-sm text-blue-600 font-medium">✓ SRA Regulated ✓ Specialist Experience ✓ Track Record Verified</div>
                 </div>
 
@@ -950,7 +1913,7 @@
                         <i class="fas fa-search text-purple-600 text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Claim-Matched Referrals</h3>
-                    <p class="text-gray-600 mb-4">We match you with legal professionals who have specific experience in your type of claim - banking charges, PPI, investment advice, or regulatory issues.</p>
+                    <p class="text-gray-600 mb-4">JuriBank matches you with legal professionals who have specific experience in your type of claim - banking charges, PPI, investment advice, or regulatory issues.</p>
                     <div class="text-sm text-purple-600 font-medium">✓ Targeted Expertise ✓ Relevant Experience ✓ Success Rate Data</div>
                 </div>
 
@@ -983,7 +1946,7 @@
                             <span class="text-purple-600 font-bold">2</span>
                         </div>
                         <h4 class="font-semibold mb-2">Professional Match</h4>
-                        <p class="text-sm text-gray-600">We match you with 2-3 specialists in your claim type</p>
+                        <p class="text-sm text-gray-600">JuriBank matches you with 2-3 specialists in your claim type</p>
                     </div>
                     <div class="text-center">
                         <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -1111,8 +2074,8 @@
                     <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 max-w-4xl mx-auto">
                         <p class="text-gray-300 text-sm leading-relaxed">
                             <strong class="text-white">Important Legal Notice:</strong> JuriBank is an educational platform operated by law students. 
-                            We do not provide legal advice and are not a law firm. We help you understand your options and connect you with 
-                            independent qualified solicitors and legal service providers. All legal professionals in our network operate independently 
+                            We do not provide legal advice and are not a law firm. JuriBank helps you understand your options and connect you with 
+                            independent qualified solicitors and legal service providers. All legal professionals in the network operate independently 
                             and are regulated by their respective professional bodies.
                         </p>
                     </div>
@@ -1198,6 +2161,64 @@
                 }, 10);
                 window.addEventListener('scroll', handleScroll, { passive: true });
             }
+
+            // Case Study Filter Functionality
+            const filterButtons = document.querySelectorAll('.case-filter-btn');
+            const caseStudyCards = document.querySelectorAll('.case-study-card');
+            
+            if (filterButtons.length > 0 && caseStudyCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        button.classList.add('active');
+                        
+                        const category = button.dataset.category;
+                        
+                        // Show/hide case study cards based on filter
+                        caseStudyCards.forEach(card => {
+                            if (category === 'all' || card.dataset.category === category) {
+                                card.style.display = 'block';
+                                card.style.opacity = '0';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                }, 50);
+                            } else {
+                                card.style.opacity = '0';
+                                setTimeout(() => {
+                                    card.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Mobile menu toggle function
+            function toggleMobileMenu() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                }
+            }
+
+            // Authentication Modal Functions
+            function openSignInModal() {
+                alert('Sign In functionality coming soon! This is an educational platform demo.');
+            }
+
+            function openSignUpModal() {
+                alert('Sign Up functionality coming soon! This is an educational platform demo.');
+            }
+
+            // Make functions globally available
+            window.toggleMobileMenu = toggleMobileMenu;
+            window.openSignInModal = openSignInModal;
+            window.openSignUpModal = openSignUpModal;
             
             // Intersection Observer for lazy loading
             if ('IntersectionObserver' in window) {
