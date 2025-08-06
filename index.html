@@ -420,6 +420,36 @@
             content: '●';
             font-weight: bold;
         }
+        
+        /* Visibility Fix for CTA and Footer Elements */
+        footer a, 
+        footer button,
+        .gradient-bg button,
+        .gradient-bg a,
+        section button,
+        section a {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Ensure footer links are visible */
+        footer ul li a {
+            color: #9ca3af !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        footer ul li a:hover {
+            color: #ffffff !important;
+        }
+        
+        /* Ensure CTA buttons are always visible */
+        .gradient-bg button,
+        .gradient-bg a {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
     </style>
 </head>
 <body class="bg-background-cream">
@@ -1987,11 +2017,11 @@
                 Join thousands of people getting help from law students with their financial disputes
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg">
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg !opacity-100 !visible !block">
                     <i class="fas fa-rocket mr-2"></i>
                     Start Educational Assessment
                 </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors">
+                <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors !opacity-100 !visible !block">
                     <i class="fas fa-users mr-2"></i>
                     Connect with Legal Professionals
                 </button>
@@ -2039,31 +2069,31 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Free Tools</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Eligibility Checker</a></li>
-                        <li><a href="#" class="hover:text-white">Refund Calculator</a></li>
-                        <li><a href="#" class="hover:text-white">Next Steps Guide</a></li>
-                        <li><a href="#" class="hover:text-white">Document Templates</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Eligibility Checker</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Refund Calculator</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Next Steps Guide</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Document Templates</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Resources</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Knowledge Hub</a></li>
-                        <li><a href="#" class="hover:text-white">Community Forum</a></li>
-                        <li><a href="#" class="hover:text-white">Success Stories</a></li>
-                        <li><a href="#" class="hover:text-white">Legal Guides</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Knowledge Hub</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Community Forum</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Success Stories</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Legal Guides</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Support</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">How It Works</a></li>
-                        <li><a href="#" class="hover:text-white">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white">Find Legal Professionals</a></li>
-                        <li><a href="#" class="hover:text-white">Contact Students</a></li>
-                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">How It Works</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Find Legal Professionals</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Contact Students</a></li>
+                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
