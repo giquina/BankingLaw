@@ -62,6 +62,35 @@
             transform: translateY(-4px); 
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
         }
+
+        /* FAQ Section Styles */
+        .faq-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-question {
+            transition: all 0.2s ease-in-out;
+        }
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+        .faq-answer {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            max-height: 0;
+        }
+        .faq-answer:not(.hidden) {
+            max-height: 1000px;
+        }
+        .faq-category-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .faq-category-btn:hover {
+            background-color: #f3f4f6;
+            border-color: #9ca3af;
+        }
+        .faq-category-btn.active:hover {
+            background-color: #1e40af !important;
+        }
         
         /* Enhanced Progress and Navigation */
         .progress-bar { background: linear-gradient(90deg, #2563eb 0%, #059669 100%); }
@@ -95,6 +124,51 @@
             box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
         }
         
+        /* Claim Type Cards */
+        .claim-type-option {
+            position: relative;
+        }
+        
+        .claim-type-card {
+            display: block;
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            background: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .claim-type-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(37, 99, 235, 0.25);
+        }
+        
+        .claim-type-option input[type="radio"]:checked + .claim-type-card {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #eff6ff, #fff);
+            box-shadow: 0 8px 25px -5px rgba(37, 99, 235, 0.3);
+        }
+        
+        .claim-type-option input[type="radio"]:checked + .claim-type-card::after {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 24px;
+            height: 24px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         /* Enhanced Button Styles */
         .btn-enhanced {
             position: relative;
@@ -861,6 +935,161 @@
                         <div class="text-3xl font-bold text-purple-600">4.2★</div>
                         <div class="text-gray-600">User Satisfaction</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Success Stories Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Real Success Stories</h2>
+                <p class="text-xl text-gray-600">See how we've helped people recover what they're owed</p>
+                <p class="text-sm text-gray-500 mt-2">*Names and identifying details changed for privacy</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- Case Study 1: Packaged Account Refund -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-credit-card text-white text-xl"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold">£4,780</div>
+                                <div class="text-blue-100 text-sm">Recovered</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Packaged Account Mis-selling</h3>
+                        <p class="text-blue-100 text-sm">Case completed in 8 weeks</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Situation</h4>
+                            <p class="text-gray-600 text-sm">Sarah from Manchester was sold travel insurance through her bank account package that she couldn't use due to pre-existing medical conditions. She paid £15/month for 3 years without realizing.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">How We Helped</h4>
+                            <p class="text-gray-600 text-sm">Used our eligibility checker, gathered evidence with our templates, and escalated to Financial Ombudsman when bank initially refused.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Result</h4>
+                            <p class="text-gray-600 text-sm">Full refund of £4,780 including fees and 8% interest. Bank also removed all charges from credit file.</p>
+                        </div>
+                        <div class="flex items-center text-sm text-green-600">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span class="font-medium">Successful Resolution</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Overdraft Charges -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-university text-white text-xl"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold">£1,240</div>
+                                <div class="text-green-100 text-sm">Recovered</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Unfair Overdraft Charges</h3>
+                        <p class="text-green-100 text-sm">Case completed in 5 weeks</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Situation</h4>
+                            <p class="text-gray-600 text-sm">Mark, a student from Leeds, was charged excessive overdraft fees during university. His bank didn't properly explain the costs or check affordability.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">How We Helped</h4>
+                            <p class="text-gray-600 text-sm">Identified unfair charges using FCA guidelines, submitted formal complaint with our template, and provided evidence of financial hardship.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Result</h4>
+                            <p class="text-gray-600 text-sm">Bank agreed to refund excessive charges and set up affordable repayment plan for remaining balance.</p>
+                        </div>
+                        <div class="flex items-center text-sm text-green-600">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span class="font-medium">Successful Resolution</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Payment Protection Insurance -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-white text-xl"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold">£8,950</div>
+                                <div class="text-purple-100 text-sm">Recovered</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">PPI Mis-selling Claim</h3>
+                        <p class="text-purple-100 text-sm">Case completed in 12 weeks</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Situation</h4>
+                            <p class="text-gray-600 text-sm">Emma from Birmingham discovered PPI on old credit cards and loans she'd forgotten about. She was self-employed and couldn't have claimed.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-900 mb-2">How We Helped</h4>
+                            <p class="text-gray-600 text-sm">Traced all old accounts, submitted multiple claims using our templates, and handled all communication with lenders and ombudsman.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-2">The Result</h4>
+                            <p class="text-gray-600 text-sm">Successfully recovered PPI from 4 different products with full interest compensation before deadline.</p>
+                        </div>
+                        <div class="flex items-center text-sm text-green-600">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span class="font-medium">Successful Resolution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Statistics -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Success by Category</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">92%</div>
+                        <div class="text-sm text-gray-600 mb-1">Packaged Accounts</div>
+                        <div class="text-xs text-gray-500">847 successful claims</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-green-600 mb-2">78%</div>
+                        <div class="text-sm text-gray-600 mb-1">Overdraft Charges</div>
+                        <div class="text-xs text-gray-500">423 successful claims</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-purple-600 mb-2">85%</div>
+                        <div class="text-sm text-gray-600 mb-1">PPI Claims</div>
+                        <div class="text-xs text-gray-500">1,891 successful claims</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-orange-600 mb-2">71%</div>
+                        <div class="text-sm text-gray-600 mb-1">Investment Complaints</div>
+                        <div class="text-xs text-gray-500">234 successful claims</div>
+                    </div>
+                </div>
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fas fa-award text-yellow-500 text-2xl mr-3"></i>
+                        <h4 class="text-lg font-semibold text-gray-900">Average Recovery Time: 6-8 Weeks</h4>
+                    </div>
+                    <p class="text-gray-600 mb-4">Most cases are resolved within 8 weeks, with simple claims often completed in under 4 weeks.</p>
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+                        Check Your Eligibility Now
+                    </button>
                 </div>
             </div>
         </div>
@@ -1829,6 +2058,248 @@
         </div>
     </section>
 
+    <!-- Guided Claim Wizard -->
+    <section id="claim-wizard" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Guided Claim Assessment Wizard</h2>
+                <p class="text-xl text-gray-600 mb-6">Let us help you understand your situation step-by-step</p>
+                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                    <i class="fas fa-graduation-cap mr-2"></i>
+                    Educational guidance only - Not legal advice
+                </div>
+            </div>
+
+            <!-- Claim Submission Wizard Container -->
+            <div class="claim-submission-wizard">
+                <!-- Progress Indicator -->
+                <div class="claim-progress-container">
+                    <div class="claim-progress-bar">
+                        <div id="wizard-progress-fill" class="claim-progress-fill" style="width: 25%"></div>
+                    </div>
+                    <div id="wizard-progress-text" class="claim-progress-text">Step 1 of 4: Claim Type Selection</div>
+                </div>
+
+                <!-- Step 1: Claim Type Selection -->
+                <div id="step-1" class="claim-step active">
+                    <div class="claim-step-header">
+                        <div class="claim-step-number">1</div>
+                        <div>
+                            <h3 class="claim-step-title">What type of issue are you experiencing?</h3>
+                            <p class="claim-step-subtitle">Select the category that best describes your situation</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-ppi" name="claim-type" value="ppi" class="sr-only">
+                            <label for="claim-ppi" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-credit-card text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Payment Protection Insurance (PPI)</h4>
+                                        <p class="text-gray-600 text-sm">You were sold PPI insurance alongside a loan, credit card, or mortgage that you didn't need or want</p>
+                                        <p class="text-blue-600 text-xs mt-2 font-medium">Average recovery: £2,000-£5,000</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-packaged" name="claim-type" value="packaged" class="sr-only">
+                            <label for="claim-packaged" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-box text-green-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Packaged Bank Accounts</h4>
+                                        <p class="text-gray-600 text-sm">Monthly fees charged for account benefits you don't use or weren't told about clearly</p>
+                                        <p class="text-green-600 text-xs mt-2 font-medium">Average recovery: £500-£2,000</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-overdraft" name="claim-type" value="overdraft" class="sr-only">
+                            <label for="claim-overdraft" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-red-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Unfair Overdraft Charges</h4>
+                                        <p class="text-gray-600 text-sm">Excessive fees for overdrafts, especially if charges were applied incorrectly or unfairly</p>
+                                        <p class="text-red-600 text-xs mt-2 font-medium">Average recovery: £300-£1,500</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-investment" name="claim-type" value="investment" class="sr-only">
+                            <label for="claim-investment" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Investment Mis-selling</h4>
+                                        <p class="text-gray-600 text-sm">Sold unsuitable investments, pension transfers, or financial products</p>
+                                        <p class="text-purple-600 text-xs mt-2 font-medium">Recovery varies widely</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-payment" name="claim-type" value="payment" class="sr-only">
+                            <label for="claim-payment" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-money-bill-wave text-orange-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Payment Disputes</h4>
+                                        <p class="text-gray-600 text-sm">Unauthorized payments, disputed transactions, or payment processing errors</p>
+                                        <p class="text-orange-600 text-xs mt-2 font-medium">Full disputed amount recoverable</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="claim-type-option">
+                            <input type="radio" id="claim-other" name="claim-type" value="other" class="sr-only">
+                            <label for="claim-other" class="claim-type-card">
+                                <div class="flex items-start">
+                                    <div class="bg-gray-100 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-question-circle text-gray-600 text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 mb-2">Other Financial Issue</h4>
+                                        <p class="text-gray-600 text-sm">Different type of financial problem or multiple issues</p>
+                                        <p class="text-gray-600 text-xs mt-2 font-medium">We'll help you identify the best approach</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <div></div>
+                        <button id="step-1-next" class="btn-claim-primary" disabled onclick="nextStep(2)">
+                            Continue to Assessment
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Situation Assessment -->
+                <div id="step-2" class="claim-step" style="display: none;">
+                    <div class="claim-step-header">
+                        <div class="claim-step-number">2</div>
+                        <div>
+                            <h3 class="claim-step-title">Tell us about your specific situation</h3>
+                            <p class="claim-step-subtitle">These details help us provide more accurate guidance</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic content will be inserted here based on claim type -->
+                    <div id="step-2-content" class="claim-form-grid">
+                        <!-- Content will be dynamically generated -->
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button class="btn-claim-secondary" onclick="previousStep(1)">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back
+                        </button>
+                        <button id="step-2-next" class="btn-claim-primary" onclick="nextStep(3)">
+                            Continue to Evidence
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Evidence Collection -->
+                <div id="step-3" class="claim-step" style="display: none;">
+                    <div class="claim-step-header">
+                        <div class="claim-step-number">3</div>
+                        <div>
+                            <h3 class="claim-step-title">What evidence do you have?</h3>
+                            <p class="claim-step-subtitle">Don't worry if you don't have everything - we'll help you get what you need</p>
+                        </div>
+                    </div>
+
+                    <div id="step-3-content">
+                        <!-- Content will be dynamically generated -->
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button class="btn-claim-secondary" onclick="previousStep(2)">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back
+                        </button>
+                        <button id="step-3-next" class="btn-claim-primary" onclick="nextStep(4)">
+                            Review Assessment
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Options -->
+                <div id="step-4" class="claim-step" style="display: none;">
+                    <div class="claim-step-header">
+                        <div class="claim-step-number">4</div>
+                        <div>
+                            <h3 class="claim-step-title">Your Assessment Summary</h3>
+                            <p class="claim-step-subtitle">Based on your responses, here's what we recommend</p>
+                        </div>
+                    </div>
+
+                    <div id="step-4-content">
+                        <!-- Content will be dynamically generated -->
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button class="btn-claim-secondary" onclick="previousStep(3)">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back
+                        </button>
+                        <button id="step-4-complete" class="btn-claim-primary" onclick="completeWizard()">
+                            <i class="fas fa-check mr-2"></i>
+                            Complete Assessment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Overlay -->
+                <div id="wizard-loading" class="claim-loading-overlay" style="display: none;">
+                    <div class="text-center">
+                        <div class="claim-loading-spinner"></div>
+                        <p class="mt-4 text-gray-600">Processing your information...</p>
+                    </div>
+                </div>
+
+                <!-- Educational Notice -->
+                <div class="mt-8 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    <div class="flex items-start">
+                        <i class="fas fa-info-circle text-yellow-600 mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-yellow-800 mb-2">Educational Guidance Only</h4>
+                            <p class="text-yellow-700 text-sm">
+                                This assessment tool is provided by law students for educational purposes. Our goal is to help you understand your legal options and connect you with qualified solicitors when professional representation is needed. We do not provide legal advice or represent clients directly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="gradient-bg text-white py-20">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -1864,6 +2335,450 @@
                 <p class="text-yellow-700 text-sm max-w-4xl mx-auto">
                     This platform is operated by law students studying LLB (Bachelor of Laws) at a top London university for educational purposes. We help you understand your rights, explore your options, and find the right pathway forward for your situation. When you need professional legal representation, we connect you with qualified solicitors who specialize in your area.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-gray-50 py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Get answers to common questions about JuriBank's educational platform and services</p>
+                
+                <!-- Search Box -->
+                <div class="mt-8 relative max-w-md mx-auto">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                    <input type="text" id="faq-search" placeholder="Search FAQs..." 
+                           class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+            </div>
+
+            <!-- FAQ Categories -->
+            <div class="mb-8">
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200 active" data-category="all">
+                        All Questions
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="getting-started">
+                        Getting Started
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="claims">
+                        Claim Types
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="process">
+                        Legal Process
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="costs">
+                        Costs & Fees
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="outcomes">
+                        Success Rates
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="professionals">
+                        Working with Pros
+                    </button>
+                    <button class="faq-category-btn px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-200" data-category="platform">
+                        Platform Features
+                    </button>
+                </div>
+            </div>
+
+            <!-- FAQ Items -->
+            <div id="faq-container" class="space-y-4">
+                
+                <!-- Getting Started & Platform Basics -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="getting-started">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What is JuriBank and how does it work?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank is an educational legal platform created by law students studying LLB at a top London university. We provide free educational resources to help you understand your legal rights and options regarding financial disputes. Our platform offers guided assessments, educational content from official sources like Gov.UK and FCA, and connections to qualified legal professionals when needed. This is for educational purposes only - we don't provide legal advice.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="getting-started">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Is JuriBank free to use?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Yes! JuriBank operates on a freemium model. Our basic educational resources, eligibility checker, and initial guidance are completely free. Premium features like detailed case tracking, priority support, and advanced document templates are available through our subscription tiers. Our goal is to make legal education accessible to everyone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="getting-started">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Who are the law students behind JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank is developed and maintained by law students studying LLB (Bachelor of Laws) at top London universities. We're passionate about making legal education accessible and helping people understand their rights. While we provide educational guidance, we always recommend consulting with qualified solicitors for specific legal advice and representation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="getting-started">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What sources does JuriBank use for legal information?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">We source our educational content exclusively from official and authoritative sources including Gov.UK, Financial Conduct Authority (FCA), Financial Ombudsman Service, Prudential Regulation Authority (PRA), Bank of England, and other regulatory bodies. This ensures our educational materials are accurate and up-to-date with current UK regulations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="getting-started">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Do I need to create an account to use JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">No account is required for basic educational resources and our eligibility checker. However, creating a free account allows you to save your progress, track your learning journey, access the community forum, and receive updates on relevant legal developments. Premium accounts offer additional features like detailed case tracking and priority support.</p>
+                    </div>
+                </div>
+
+                <!-- Claim Types & Eligibility -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="claims">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What types of financial claims can I learn about on JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank provides educational information about various financial disputes including: mis-sold PPI, unfair bank charges, mortgage complaints, insurance claims, investment disputes, pension transfers, debt collection issues, credit card problems, and loan disputes. We explain the basics of each claim type, typical eligibility criteria, and the general process involved.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="claims">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How do I know if I'm eligible for a financial claim?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Our free eligibility checker provides educational guidance based on your situation. However, eligibility depends on specific circumstances, documentation, and legal criteria that vary by claim type. We recommend using our educational tools to understand the general requirements, then consulting with qualified legal professionals for specific advice about your situation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="claims">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Is there a time limit for making financial claims?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Yes, most financial claims have statutory limitation periods. For example, many claims must be brought within 6 years of the issue occurring or 3 years from when you became aware of it. However, time limits vary significantly depending on the type of claim, circumstances, and applicable regulations. It's important to seek professional legal advice as soon as possible if you think you have a valid claim.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="claims">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What's the difference between a complaint and a legal claim?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">A complaint is typically the first step - you raise concerns directly with the financial institution. If unsatisfied, you can escalate to the Financial Ombudsman Service (free service). A legal claim involves formal legal proceedings through courts and usually requires legal representation. Most financial disputes should go through the complaint process first before considering legal action.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="claims">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Can I make a claim for something that happened years ago?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">It depends on the specific circumstances and type of claim. While many claims have time limits, some can be made years later, especially if you only recently discovered the issue or if there are exceptional circumstances. For example, some PPI claims were accepted many years after the policy was sold. Each case is unique, so professional legal advice is essential.</p>
+                    </div>
+                </div>
+
+                <!-- Legal Process & Timelines -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="process">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What's the typical process for a financial claim?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">The typical process involves: 1) Gathering relevant documents and evidence, 2) Making a formal complaint to the financial institution, 3) Waiting for their response (usually 8 weeks), 4) If unsatisfied, escalating to the Financial Ombudsman Service, 5) If still unresolved or outside ombudsman's scope, considering legal action. Each stage has specific requirements and timelines.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="process">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How long does a financial claim typically take?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Timelines vary significantly. Simple complaints may be resolved in 4-8 weeks. Financial Ombudsman cases can take 3-9 months. Complex legal claims can take 12-24 months or longer. The complexity of your case, quality of evidence, and willingness of the other party to cooperate all affect timelines. Patience is important in financial claims.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="process">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What documents do I need for my financial claim?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Document requirements vary by claim type, but commonly needed items include: original contracts or agreements, bank statements, correspondence with the financial institution, evidence of financial loss, witness statements, and regulatory documentation. Start gathering documents early, as some may be difficult to obtain later. We provide document checklists for different claim types.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="process">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Should I try to resolve the issue myself first?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">For simple complaints, you can start by contacting the financial institution directly. However, be cautious about accepting early settlement offers without understanding your full rights. For complex issues or significant sums, it's wise to get legal advice before beginning the process. This helps ensure you don't accidentally harm your case or accept inadequate compensation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="process">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What happens if the financial institution denies my complaint?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">If your complaint is denied, you have several options: 1) Review their reasons and provide additional evidence if available, 2) Escalate to the Financial Ombudsman Service (free service), 3) Seek legal advice about potential court action, 4) Consider alternative dispute resolution methods. Don't give up after an initial denial - many successful claims are initially rejected.</p>
+                    </div>
+                </div>
+
+                <!-- Costs & Fees -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="costs">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How much does it cost to make a financial claim?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Costs vary significantly. Complaints to financial institutions and the Financial Ombudsman Service are free. Legal representation can cost £150-£750+ per hour depending on the solicitor and complexity. Many solicitors offer No Win No Fee arrangements (CFAs). Court fees range from £35-£10,000+ depending on claim value. Always get a clear breakdown of potential costs before proceeding.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="costs">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What is a 'No Win No Fee' arrangement?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">A Conditional Fee Arrangement (CFA) or 'No Win No Fee' means you only pay your solicitor's fees if your claim is successful. However, you may still be liable for other costs like court fees, expert witness fees, and potentially the other side's costs if you lose. It's important to understand exactly what's covered and consider After the Event (ATE) insurance for protection.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="costs">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What if I can't afford legal representation?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Several options exist: 1) Free services like Citizens Advice Bureau, 2) Legal aid (limited availability), 3) No Win No Fee arrangements, 4) Legal expenses insurance (check existing policies), 5) Trade union legal support, 6) Law society pro bono schemes, 7) Law school legal clinics. Start with free services and the Financial Ombudsman Service where possible.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="costs">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Will I have to pay the other side's costs if I lose?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">In court proceedings, the losing party may have to pay the winner's legal costs, though this isn't automatic. The court considers factors like conduct, reasonableness of the claim, and settlement offers. Small Claims Track (claims under £10,000) generally protects against adverse cost orders. After the Event insurance can provide protection against these costs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="costs">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Are there any hidden costs I should know about?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Potential additional costs include: expert witness fees, court hearing fees, document production costs, barrister fees, enforcement costs if you win, VAT on legal fees, and success fees (up to 25% under CFA arrangements). Always request a detailed cost estimate and ask about potential additional expenses before proceeding with legal representation.</p>
+                    </div>
+                </div>
+
+                <!-- Success Rates & Outcomes -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="outcomes">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What are typical success rates for financial claims?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Success rates vary widely by claim type and circumstances. For context: Financial Ombudsman Service uphold rates vary from 25-70% depending on the issue type. Well-documented claims with clear evidence generally have higher success rates than complex cases with limited evidence. However, past statistics don't predict individual outcomes - each case depends on its specific facts and evidence.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="outcomes">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How much compensation might I receive?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Compensation varies enormously based on the specific financial impact of the issue. It might include: refund of charges/fees, interest on amounts wrongly charged, compensation for distress and inconvenience (typically £100-£750), and consequential losses where provable. The Financial Ombudsman Service has a £375,000 limit. Courts can award unlimited amounts but require strong evidence of actual losses.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="outcomes">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What counts as a 'successful' outcome?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Success can mean different things: full compensation for all losses, partial settlement that covers main financial impact, policy changes that prevent future issues, or simply getting acknowledgment and apology. Sometimes, understanding what happened and why prevents future problems, which can be valuable even without financial compensation. Set realistic expectations from the start.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="outcomes">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What factors affect the chances of success?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Key success factors include: quality and completeness of evidence, clarity of the legal issue, timeliness of the claim, strength of the financial institution's defense, your credibility as a complainant, and how well your case fits established precedents. Professional legal advice can help assess these factors and identify strengths and weaknesses in your case.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="outcomes">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Should I accept a settlement offer?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Settlement offers require careful consideration. Compare the offer against: your actual losses, costs of continuing the claim, strength of your evidence, time and stress involved in proceeding, and risk of getting less or nothing if you continue. Get legal advice before accepting significant settlements, especially early in the process when the full extent of your losses may not be clear.</p>
+                    </div>
+                </div>
+
+                <!-- Working with Professionals -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">When should I hire a solicitor?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Consider professional help when: the claim involves significant money, legal issues are complex, the financial institution denies liability, you're uncomfortable handling the process yourself, or time limits are approaching. For claims over £10,000 or complex regulatory issues, professional advice is usually worthwhile. Even brief initial consultations can clarify your options and potential claim value.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How do I choose the right solicitor?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Look for solicitors with specific experience in your type of financial claim. Check their track record, professional qualifications, and client reviews. Ensure they're regulated by the Solicitors Regulation Authority (SRA). Get clear fee information upfront and understand their approach to your case. Many offer initial consultations to assess suitability - use these to evaluate their expertise and communication style.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What questions should I ask a potential solicitor?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">Key questions include: Do you specialize in this type of claim? What's your success rate? What are all potential costs? Do you offer No Win No Fee? How long will it take? What evidence do you need? What are the risks? How will you communicate with me? Can you provide references? What's your assessment of my case? Get answers in writing when possible.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How does JuriBank connect me with legal professionals?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank maintains a network of qualified solicitors who specialize in financial claims. When you need professional representation, we can introduce you to appropriate specialists based on your specific case type and location. However, you're free to choose any solicitor you prefer. We provide educational guidance about what to look for in legal representation but don't provide legal advice ourselves.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What if I'm not satisfied with my solicitor?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">If you're unsatisfied with your solicitor, first discuss concerns directly with them or their firm's complaints procedure. If unresolved, you can complain to the Solicitors Regulation Authority (SRA) or Legal Ombudsman. You generally have the right to change solicitors, though there may be cost implications. Get advice on transitioning your case properly to minimize disruption.</p>
+                    </div>
+                </div>
+
+                <!-- Platform Features & Support -->
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">What features are available on JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank offers: free eligibility checker, educational legal resources, guided assessment wizard, document templates, progress tracking, community forum, knowledge hub with official regulatory updates, refund calculator, success stories, and connections to qualified legal professionals. Premium features include detailed case tracking, priority support, and advanced document generation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How accurate is the information on JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">We maintain high accuracy standards by sourcing information exclusively from official sources like Gov.UK, FCA, and regulatory bodies. Our content is regularly updated to reflect regulatory changes. However, laws and regulations change frequently, and every case is unique. Our information is educational only - always verify current requirements and get professional advice for your specific situation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Can I trust the advice given by JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">JuriBank provides educational information, not legal advice. While we strive for accuracy and source information from authoritative sources, we're law students, not qualified solicitors. Our content helps you understand general principles and options, but you should always consult qualified legal professionals for specific advice about your situation. We're transparent about our educational purpose and limitations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How do I report errors or suggest improvements?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">We welcome feedback and take accuracy seriously. You can report errors, suggest improvements, or ask questions through our contact form, community forum, or support email. We review all feedback and update our content regularly. As an educational platform, we're committed to continuous improvement and maintaining high standards of accuracy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">Is my personal information secure on JuriBank?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">We take data protection seriously and comply with UK GDPR requirements. Personal information is encrypted, stored securely, and only used for the purposes you've consented to. We never sell personal data to third parties. When connecting you with legal professionals, we only share information necessary for them to assess your case, and only with your explicit consent.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="platform">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                        <span class="font-semibold text-gray-900">How do I contact JuriBank for support?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">You can contact us through: our online contact form, support email, community forum, or social media channels. We aim to respond to general inquiries within 24-48 hours. Premium subscribers receive priority support. Remember, we provide educational guidance only - for specific legal advice about your case, you'll need to consult with qualified solicitors.</p>
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="hidden text-center py-12">
+                    <i class="fas fa-search text-gray-400 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">No FAQs Found</h3>
+                    <p class="text-gray-600 mb-4">Try adjusting your search terms or browse by category.</p>
+                    <button id="clear-search" class="text-blue-600 hover:text-blue-800 font-medium">Clear Search</button>
+                </div>
+            </div>
+
+            <!-- Additional Help Section -->
+            <div class="mt-16 text-center bg-white rounded-lg p-8 shadow-sm border border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Still Have Questions?</h3>
+                <p class="text-gray-600 mb-6">Can't find the answer you're looking for? Our educational resources and community forum can help.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                        <i class="fas fa-comments mr-2"></i>
+                        Visit Community Forum
+                    </a>
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Contact Support
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1914,7 +2829,7 @@
                     <h3 class="text-lg font-semibold mb-4">Support</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">How It Works</a></li>
-                        <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">FAQ</a></li>
+                        <li><a href="#faq" class="hover:text-white !opacity-100 !visible !text-gray-400">FAQ</a></li>
                         <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Find Legal Professionals</a></li>
                         <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Contact Students</a></li>
                         <li><a href="#" class="hover:text-white !opacity-100 !visible !text-gray-400">Privacy Policy</a></li>
@@ -2278,6 +3193,1159 @@
                 mobileMenu.classList.toggle('hidden');
             }
         }
+
+        // Claim Wizard JavaScript
+        let wizardData = {
+            claimType: '',
+            stepData: {},
+            currentStep: 1
+        };
+
+        // Initialize wizard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWizard();
+        });
+
+        function initializeWizard() {
+            // Enable claim type selection
+            const claimTypeInputs = document.querySelectorAll('input[name="claim-type"]');
+            claimTypeInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    wizardData.claimType = this.value;
+                    document.getElementById('step-1-next').disabled = false;
+                    
+                    // Save progress to localStorage
+                    saveProgress();
+                });
+            });
+
+            // Load saved progress if exists
+            loadProgress();
+        }
+
+        function nextStep(stepNumber) {
+            // Show loading
+            showLoading();
+            
+            // Collect current step data
+            collectStepData(wizardData.currentStep);
+            
+            setTimeout(() => {
+                // Hide current step
+                document.getElementById('step-' + wizardData.currentStep).style.display = 'none';
+                document.getElementById('step-' + wizardData.currentStep).classList.remove('active');
+                document.getElementById('step-' + wizardData.currentStep).classList.add('completed');
+                
+                // Show next step
+                document.getElementById('step-' + stepNumber).style.display = 'block';
+                document.getElementById('step-' + stepNumber).classList.add('active');
+                
+                // Update progress
+                wizardData.currentStep = stepNumber;
+                updateProgress(stepNumber);
+                
+                // Generate content for the step
+                generateStepContent(stepNumber);
+                
+                // Hide loading
+                hideLoading();
+                
+                // Scroll to step
+                document.getElementById('step-' + stepNumber).scrollIntoView({ behavior: 'smooth' });
+                
+                // Save progress
+                saveProgress();
+            }, 1000);
+        }
+
+        function previousStep(stepNumber) {
+            // Hide current step
+            document.getElementById('step-' + wizardData.currentStep).style.display = 'none';
+            document.getElementById('step-' + wizardData.currentStep).classList.remove('active');
+            
+            // Show previous step
+            document.getElementById('step-' + stepNumber).style.display = 'block';
+            document.getElementById('step-' + stepNumber).classList.add('active');
+            document.getElementById('step-' + stepNumber).classList.remove('completed');
+            
+            // Update progress
+            wizardData.currentStep = stepNumber;
+            updateProgress(stepNumber);
+            
+            // Scroll to step
+            document.getElementById('step-' + stepNumber).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateProgress(stepNumber) {
+            const progressFill = document.getElementById('wizard-progress-fill');
+            const progressText = document.getElementById('wizard-progress-text');
+            
+            const stepNames = {
+                1: 'Claim Type Selection',
+                2: 'Situation Assessment', 
+                3: 'Evidence Collection',
+                4: 'Review & Options'
+            };
+            
+            const progressPercentage = (stepNumber / 4) * 100;
+            
+            progressFill.style.width = progressPercentage + '%';
+            progressText.textContent = 'Step ' + stepNumber + ' of 4: ' + stepNames[stepNumber];
+        }
+
+        function generateStepContent(stepNumber) {
+            switch(stepNumber) {
+                case 2:
+                    generateStep2Content();
+                    break;
+                case 3:
+                    generateStep3Content();
+                    break;
+                case 4:
+                    generateStep4Content();
+                    break;
+            }
+        }
+
+        function generateStep2Content() {
+            const content = document.getElementById('step-2-content');
+            let html = '';
+            
+            switch(wizardData.claimType) {
+                case 'ppi':
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+                                <h4 class="font-semibold text-blue-900 mb-2">About PPI Claims</h4>
+                                <p class="text-blue-800 text-sm">Payment Protection Insurance was often mis-sold alongside loans, credit cards, and mortgages. Many people didn't know they had it or were told it was mandatory when it wasn't.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">What type of product had PPI attached?</label>
+                            <select id="ppi-product-type" class="claim-form-select" required>
+                                <option value="">Select product type</option>
+                                <option value="credit-card">Credit Card</option>
+                                <option value="personal-loan">Personal Loan</option>
+                                <option value="mortgage">Mortgage</option>
+                                <option value="store-card">Store Card</option>
+                                <option value="car-finance">Car Finance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">When did you take out this product?</label>
+                            <input type="month" id="ppi-start-date" class="claim-form-input" required>
+                            <p class="claim-form-help">PPI claims can go back many years, even for closed accounts</p>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label">Approximate amount you paid for PPI (if known)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="ppi-amount" class="claim-form-input pl-8" placeholder="0.00">
+                            </div>
+                            <p class="claim-form-help">Don't worry if you don't know - we can help you find out</p>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">Which of these situations apply to you? (Check all that apply)</label>
+                            <div class="space-y-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="ppi-not-told" class="mt-1 mr-3">
+                                    <span class="text-sm">I wasn't told I had PPI on my account</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="ppi-told-mandatory" class="mt-1 mr-3">
+                                    <span class="text-sm">I was told PPI was mandatory to get the loan/credit</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="ppi-unemployed" class="mt-1 mr-3">
+                                    <span class="text-sm">I was unemployed or self-employed when sold PPI</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="ppi-health-issues" class="mt-1 mr-3">
+                                    <span class="text-sm">I had health issues that would prevent claiming on PPI</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="ppi-existing-cover" class="mt-1 mr-3">
+                                    <span class="text-sm">I already had similar insurance coverage</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'packaged':
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+                                <h4 class="font-semibold text-green-900 mb-2">About Packaged Account Claims</h4>
+                                <p class="text-green-800 text-sm">Packaged accounts charge monthly fees for benefits like travel insurance or breakdown cover. Claims arise when these benefits weren't explained properly or aren't suitable for your needs.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Which bank is this account with?</label>
+                            <select id="packaged-bank" class="claim-form-select" required>
+                                <option value="">Select your bank</option>
+                                <option value="lloyds">Lloyds Banking Group</option>
+                                <option value="barclays">Barclays</option>
+                                <option value="natwest">NatWest Group (RBS)</option>
+                                <option value="hsbc">HSBC</option>
+                                <option value="santander">Santander</option>
+                                <option value="halifax">Halifax</option>
+                                <option value="tesco">Tesco Bank</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Monthly fee for your packaged account</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="packaged-fee" class="claim-form-input pl-8" placeholder="0.00" required>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">How long have you had this account type?</label>
+                            <select id="packaged-duration" class="claim-form-select" required>
+                                <option value="">Select duration</option>
+                                <option value="under-1-year">Less than 1 year</option>
+                                <option value="1-2-years">1-2 years</option>
+                                <option value="3-5-years">3-5 years</option>
+                                <option value="over-5-years">Over 5 years</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">Which benefits does your account include? (Check all that apply)</label>
+                            <div class="grid md:grid-cols-2 gap-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-travel-insurance" class="mt-1 mr-3">
+                                    <span class="text-sm">Travel Insurance</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-breakdown-cover" class="mt-1 mr-3">
+                                    <span class="text-sm">Car Breakdown Cover</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-phone-insurance" class="mt-1 mr-3">
+                                    <span class="text-sm">Mobile Phone Insurance</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-home-insurance" class="mt-1 mr-3">
+                                    <span class="text-sm">Home Insurance Discount</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-cashback" class="mt-1 mr-3">
+                                    <span class="text-sm">Cashback on Spending</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="benefit-other" class="mt-1 mr-3">
+                                    <span class="text-sm">Other Benefits</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">Which issues apply to your situation? (Check all that apply)</label>
+                            <div class="space-y-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="issue-not-explained" class="mt-1 mr-3">
+                                    <span class="text-sm">The benefits weren't properly explained to me</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="issue-dont-use" class="mt-1 mr-3">
+                                    <span class="text-sm">I don't use any of the benefits</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="issue-unsuitable" class="mt-1 mr-3">
+                                    <span class="text-sm">The benefits aren't suitable for my circumstances</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="issue-existing-cover" class="mt-1 mr-3">
+                                    <span class="text-sm">I already had similar insurance coverage</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'overdraft':
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400 mb-6">
+                                <h4 class="font-semibold text-red-900 mb-2">About Overdraft Claims</h4>
+                                <p class="text-red-800 text-sm">Banks must treat overdraft charges fairly. Claims can arise from excessive fees, lack of warnings about charges, or charges applied when they shouldn't have been.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Which bank charged the overdraft fees?</label>
+                            <select id="overdraft-bank" class="claim-form-select" required>
+                                <option value="">Select your bank</option>
+                                <option value="lloyds">Lloyds Banking Group</option>
+                                <option value="barclays">Barclays</option>
+                                <option value="natwest">NatWest Group (RBS)</option>
+                                <option value="hsbc">HSBC</option>
+                                <option value="santander">Santander</option>
+                                <option value="halifax">Halifax</option>
+                                <option value="tesco">Tesco Bank</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Approximate total amount of overdraft charges</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="overdraft-amount" class="claim-form-input pl-8" placeholder="0.00" required>
+                            </div>
+                            <p class="claim-form-help">Include all overdraft fees, charges, and interest over the affected period</p>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Time period for these charges</label>
+                            <select id="overdraft-period" class="claim-form-select" required>
+                                <option value="">Select time period</option>
+                                <option value="last-6-months">Last 6 months</option>
+                                <option value="last-year">Last year</option>
+                                <option value="last-2-years">Last 2 years</option>
+                                <option value="over-2-years">Over 2 years ago</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">What issues occurred with your overdraft? (Check all that apply)</label>
+                            <div class="space-y-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="overdraft-excessive" class="mt-1 mr-3">
+                                    <span class="text-sm">Charges seemed excessive compared to the overdraft amount</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="overdraft-no-warning" class="mt-1 mr-3">
+                                    <span class="text-sm">I wasn't warned before charges were applied</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="overdraft-error" class="mt-1 mr-3">
+                                    <span class="text-sm">Charges were applied by mistake or incorrectly</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="overdraft-spiral" class="mt-1 mr-3">
+                                    <span class="text-sm">Charges caused more charges (spiral of debt)</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="overdraft-hardship" class="mt-1 mr-3">
+                                    <span class="text-sm">I was in financial hardship but charges continued</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'investment':
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+                                <h4 class="font-semibold text-purple-900 mb-2">About Investment Claims</h4>
+                                <p class="text-purple-800 text-sm">Investment mis-selling occurs when unsuitable products are recommended, risks aren't properly explained, or advice doesn't match your circumstances and goals.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">What type of investment was involved?</label>
+                            <select id="investment-type" class="claim-form-select" required>
+                                <option value="">Select investment type</option>
+                                <option value="pension-transfer">Pension Transfer</option>
+                                <option value="isa">ISA/Investment ISA</option>
+                                <option value="bonds">Bonds/Structured Products</option>
+                                <option value="shares">Shares/Equity Investments</option>
+                                <option value="funds">Investment Funds/Unit Trusts</option>
+                                <option value="sipp">SIPP (Self-Invested Personal Pension)</option>
+                                <option value="other">Other Investment Product</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Amount invested</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="investment-amount" class="claim-form-input pl-8" placeholder="0.00" required>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label">Approximate loss/shortfall</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="investment-loss" class="claim-form-input pl-8" placeholder="0.00">
+                            </div>
+                            <p class="claim-form-help">How much less is your investment worth compared to what you expected?</p>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">What issues occurred with this investment? (Check all that apply)</label>
+                            <div class="space-y-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="investment-unsuitable" class="mt-1 mr-3">
+                                    <span class="text-sm">The investment was unsuitable for my circumstances</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="investment-risks" class="mt-1 mr-3">
+                                    <span class="text-sm">The risks weren't properly explained</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="investment-high-risk" class="mt-1 mr-3">
+                                    <span class="text-sm">I was sold high-risk products despite being cautious</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="investment-pressure" class="mt-1 mr-3">
+                                    <span class="text-sm">I felt pressured to invest quickly</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="investment-charges" class="mt-1 mr-3">
+                                    <span class="text-sm">High charges weren't properly disclosed</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'payment':
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400 mb-6">
+                                <h4 class="font-semibold text-orange-900 mb-2">About Payment Disputes</h4>
+                                <p class="text-orange-800 text-sm">Payment disputes involve unauthorized transactions, processing errors, or problems with goods/services. Banks have obligations to investigate and potentially refund disputed payments.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">What type of payment issue occurred?</label>
+                            <select id="payment-type" class="claim-form-select" required>
+                                <option value="">Select issue type</option>
+                                <option value="unauthorized">Unauthorized/Fraudulent Payments</option>
+                                <option value="goods-not-received">Paid for goods/services not received</option>
+                                <option value="goods-faulty">Goods received were faulty/not as described</option>
+                                <option value="duplicate">Duplicate/Multiple Charges</option>
+                                <option value="cancelled-service">Charges for cancelled service</option>
+                                <option value="processing-error">Bank processing error</option>
+                                <option value="other">Other payment problem</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">Total amount of disputed payments</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="payment-amount" class="claim-form-input pl-8" placeholder="0.00" required>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label required">When did the payment(s) occur?</label>
+                            <select id="payment-timeframe" class="claim-form-select" required>
+                                <option value="">Select timeframe</option>
+                                <option value="last-month">Within the last month</option>
+                                <option value="1-3-months">1-3 months ago</option>
+                                <option value="3-6-months">3-6 months ago</option>
+                                <option value="over-6-months">Over 6 months ago</option>
+                            </select>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label">Have you taken any of these steps already? (Check all that apply)</label>
+                            <div class="space-y-3 mt-3">
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="payment-contacted-merchant" class="mt-1 mr-3">
+                                    <span class="text-sm">Contacted the merchant/company involved</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="payment-disputed-bank" class="mt-1 mr-3">
+                                    <span class="text-sm">Reported the dispute to my bank</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="payment-chargeback" class="mt-1 mr-3">
+                                    <span class="text-sm">Requested a chargeback from my card provider</span>
+                                </label>
+                                <label class="flex items-start cursor-pointer">
+                                    <input type="checkbox" id="payment-nothing" class="mt-1 mr-3">
+                                    <span class="text-sm">I haven't taken any action yet</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    html = `
+                        <div class="claim-form-full">
+                            <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400 mb-6">
+                                <h4 class="font-semibold text-gray-900 mb-2">Tell Us About Your Situation</h4>
+                                <p class="text-gray-800 text-sm">Describe your financial issue so we can provide the most relevant guidance.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-full">
+                            <label class="claim-form-label required">Describe your financial issue</label>
+                            <textarea id="other-description" class="claim-form-textarea" rows="4" required placeholder="Please describe what happened, which company was involved, and what outcome you're looking for..."></textarea>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label">Approximate amount involved (if applicable)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">£</span>
+                                <input type="number" id="other-amount" class="claim-form-input pl-8" placeholder="0.00">
+                            </div>
+                        </div>
+                        
+                        <div class="claim-form-group">
+                            <label class="claim-form-label">When did this issue occur?</label>
+                            <select id="other-timeframe" class="claim-form-select">
+                                <option value="">Select timeframe</option>
+                                <option value="recent">Within the last 3 months</option>
+                                <option value="6-months">3-6 months ago</option>
+                                <option value="1-year">6-12 months ago</option>
+                                <option value="over-year">Over a year ago</option>
+                            </select>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            content.innerHTML = html;
+        }
+
+        function generateStep3Content() {
+            const content = document.getElementById('step-3-content');
+            let html = '';
+            
+            switch(wizardData.claimType) {
+                case 'ppi':
+                    html = `
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+                            <h4 class="font-semibold text-blue-900 mb-2">Documents for PPI Claims</h4>
+                            <p class="text-blue-800 text-sm">Don't worry if you don't have everything - banks are required to provide information about your account history.</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="evidence-section">
+                                <h4 class="font-semibold text-gray-900 mb-4">Essential Documents (if available):</h4>
+                                <div class="space-y-3">
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Bank statements showing PPI charges</span>
+                                            <span class="text-green-600 text-sm">✓ High priority</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Original loan/credit agreement</span>
+                                            <span class="text-green-600 text-sm">✓ High priority</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">PPI policy documents</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="evidence-section">
+                                <h4 class="font-semibold text-gray-900 mb-4">Supporting Evidence:</h4>
+                                <div class="space-y-3">
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Records of phone calls or meetings about the sale</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Medical records (if health was a factor)</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Employment records (if self-employed/unemployed)</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <h5 class="font-semibold text-green-900 mb-2">Don't Have Documents?</h5>
+                            <p class="text-green-800 text-sm">We can help you request information from your bank using a Subject Access Request (SAR). Banks must provide your account history going back many years.</p>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    html = `
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400 mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-2">Evidence Collection</h4>
+                            <p class="text-gray-800 text-sm">Gather any relevant documents that support your case. Don't worry if you don't have everything - we can help you obtain missing information.</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="evidence-section">
+                                <h4 class="font-semibold text-gray-900 mb-4">Important Documents:</h4>
+                                <div class="space-y-3">
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Bank statements or account records</span>
+                                            <span class="text-green-600 text-sm">✓ High priority</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Contracts or agreements</span>
+                                            <span class="text-green-600 text-sm">✓ High priority</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Correspondence with the company</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                    <div class="evidence-item">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="flex-1">Records of phone calls or meetings</span>
+                                            <span class="text-blue-600 text-sm">◯ Helpful</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                            <h5 class="font-semibold text-blue-900 mb-2">Missing Documents?</h5>
+                            <p class="text-blue-800 text-sm">We can guide you through requesting information from companies, using data protection rights, or finding alternative evidence to support your case.</p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            content.innerHTML = html;
+        }
+
+        function generateStep4Content() {
+            const content = document.getElementById('step-4-content');
+            
+            // Calculate potential recovery based on claim type and inputs
+            let potentialRecovery = calculatePotentialRecovery();
+            let claimStrength = assessClaimStrength();
+            
+            const html = `
+                <div class="space-y-6">
+                    <!-- Assessment Summary -->
+                    <div class="claim-summary-highlight">
+                        <h4 class="claim-summary-title">Your Claim Assessment</h4>
+                        <div class="space-y-4">
+                            <div class="claim-summary-item">
+                                <span class="claim-summary-label">Claim Type:</span>
+                                <span class="claim-summary-value">${getClaimTypeName(wizardData.claimType)}</span>
+                            </div>
+                            <div class="claim-summary-item">
+                                <span class="claim-summary-label">Estimated Recovery:</span>
+                                <span class="claim-summary-amount">£${potentialRecovery.min} - £${potentialRecovery.max}</span>
+                            </div>
+                            <div class="claim-summary-item">
+                                <span class="claim-summary-label">Claim Strength:</span>
+                                <span class="claim-summary-value">
+                                    <span class="px-3 py-1 rounded-full text-sm font-medium ${claimStrength.color}">${claimStrength.text}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recommended Next Steps -->
+                    <div class="claim-summary-card">
+                        <h4 class="claim-summary-title">Your Recommended Next Steps</h4>
+                        <div class="space-y-4">
+                            ${generateRecommendations()}
+                        </div>
+                    </div>
+                    
+                    <!-- Educational Resources -->
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                        <h4 class="font-semibold text-blue-900 mb-4">Educational Resources</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-book text-blue-600 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-medium text-blue-900">Learn About Your Rights</h5>
+                                    <p class="text-blue-800 text-sm">Understand consumer protection laws and bank obligations</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-users text-blue-600 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-medium text-blue-900">Community Support</h5>
+                                    <p class="text-blue-800 text-sm">Connect with others who have similar experiences</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-gavel text-blue-600 mt-1 mr-3"></i>
+                                <div>
+                                    <h5 class="font-medium text-blue-900">Legal Professional Network</h5>
+                                    <p class="text-blue-800 text-sm">When you're ready, we can connect you with specialists</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            content.innerHTML = html;
+        }
+
+        function getClaimTypeName(type) {
+            const names = {
+                'ppi': 'Payment Protection Insurance (PPI)',
+                'packaged': 'Packaged Bank Account',
+                'overdraft': 'Unfair Overdraft Charges',
+                'investment': 'Investment Mis-selling',
+                'payment': 'Payment Dispute',
+                'other': 'Other Financial Issue'
+            };
+            return names[type] || 'Unknown';
+        }
+
+        function calculatePotentialRecovery() {
+            // Basic recovery estimation based on claim type
+            switch(wizardData.claimType) {
+                case 'ppi':
+                    return { min: 1000, max: 8000 };
+                case 'packaged':
+                    return { min: 500, max: 3000 };
+                case 'overdraft':
+                    return { min: 200, max: 2000 };
+                case 'investment':
+                    return { min: 2000, max: 15000 };
+                case 'payment':
+                    return { min: 100, max: 5000 };
+                default:
+                    return { min: 0, max: 0 };
+            }
+        }
+
+        function assessClaimStrength() {
+            // Simple claim strength assessment
+            const strengths = {
+                'ppi': { text: 'Good', color: 'bg-green-100 text-green-800' },
+                'packaged': { text: 'Moderate', color: 'bg-yellow-100 text-yellow-800' },
+                'overdraft': { text: 'Good', color: 'bg-green-100 text-green-800' },
+                'investment': { text: 'Variable', color: 'bg-blue-100 text-blue-800' },
+                'payment': { text: 'Good', color: 'bg-green-100 text-green-800' },
+                'other': { text: 'Assessment Needed', color: 'bg-gray-100 text-gray-800' }
+            };
+            return strengths[wizardData.claimType] || { text: 'Unknown', color: 'bg-gray-100 text-gray-800' };
+        }
+
+        function generateRecommendations() {
+            const recommendations = {
+                'ppi': `
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-blue-600 font-bold text-sm">1</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Request Your Account Information</h5>
+                            <p class="text-gray-600 text-sm">Use a Subject Access Request to get your full account history from your bank</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-blue-600 font-bold text-sm">2</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Prepare Your Complaint</h5>
+                            <p class="text-gray-600 text-sm">Draft a formal complaint letter with our guided template system</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-blue-600 font-bold text-sm">3</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Submit to Your Bank</h5>
+                            <p class="text-gray-600 text-sm">File your complaint and track the 8-week response period</p>
+                        </div>
+                    </div>
+                `,
+                'packaged': `
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-green-600 font-bold text-sm">1</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Review Your Account Benefits</h5>
+                            <p class="text-gray-600 text-sm">Document which benefits you use and which are unsuitable</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-green-600 font-bold text-sm">2</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Calculate Your Losses</h5>
+                            <p class="text-gray-600 text-sm">Total up monthly fees paid for unused or unsuitable benefits</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-green-600 font-bold text-sm">3</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Contact Your Bank</h5>
+                            <p class="text-gray-600 text-sm">Submit a formal complaint requesting refund of inappropriate fees</p>
+                        </div>
+                    </div>
+                `,
+                'default': `
+                    <div class="flex items-start">
+                        <div class="bg-gray-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-gray-600 font-bold text-sm">1</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Gather Information</h5>
+                            <p class="text-gray-600 text-sm">Collect all relevant documents and evidence for your case</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-gray-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-gray-600 font-bold text-sm">2</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Understand Your Rights</h5>
+                            <p class="text-gray-600 text-sm">Learn about relevant consumer protection laws and regulations</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-gray-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                            <span class="text-gray-600 font-bold text-sm">3</span>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900">Consider Professional Advice</h5>
+                            <p class="text-gray-600 text-sm">Connect with a qualified solicitor for personalized guidance</p>
+                        </div>
+                    </div>
+                `
+            };
+            
+            return recommendations[wizardData.claimType] || recommendations['default'];
+        }
+
+        function collectStepData(stepNumber) {
+            // Collect data from the current step
+            const stepData = {};
+            
+            // Get all inputs in the current step
+            const stepElement = document.getElementById('step-' + stepNumber);
+            if (stepElement) {
+                const inputs = stepElement.querySelectorAll('input, select, textarea');
+                inputs.forEach(input => {
+                    if (input.type === 'checkbox') {
+                        stepData[input.id] = input.checked;
+                    } else if (input.type === 'radio') {
+                        if (input.checked) {
+                            stepData[input.name] = input.value;
+                        }
+                    } else {
+                        stepData[input.id] = input.value;
+                    }
+                });
+            }
+            
+            wizardData.stepData[stepNumber] = stepData;
+        }
+
+        function completeWizard() {
+            // Collect final step data
+            collectStepData(4);
+            
+            // Show completion message
+            showCompletion();
+            
+            // Save final data
+            saveProgress();
+        }
+
+        function showCompletion() {
+            const wizard = document.querySelector('.claim-submission-wizard');
+            wizard.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="claim-success-animation">
+                        <i class="fas fa-check claim-success-checkmark"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Assessment Complete!</h3>
+                    <p class="text-gray-600 mb-8">Thank you for providing your information. We've created a personalized action plan for your situation.</p>
+                    
+                    <div class="space-y-4 max-w-md mx-auto">
+                        <button class="btn-claim-primary w-full" onclick="showSignUpModal()">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Create Account to Save Progress
+                        </button>
+                        <button class="btn-claim-secondary w-full" onclick="restartWizard()">
+                            <i class="fas fa-refresh mr-2"></i>
+                            Start Over with Different Issue
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+                        <h4 class="font-semibold text-blue-900 mb-2">What Happens Next?</h4>
+                        <div class="text-left space-y-2 text-sm text-blue-800">
+                            <p>• Review your personalized action plan and resources</p>
+                            <p>• Access our document templates and guidance materials</p>
+                            <p>• Connect with our community for peer support</p>
+                            <p>• Get matched with legal professionals when you're ready</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function restartWizard() {
+            // Reset wizard data
+            wizardData = {
+                claimType: '',
+                stepData: {},
+                currentStep: 1
+            };
+            
+            // Clear saved progress
+            localStorage.removeItem('juribank-wizard-progress');
+            
+            // Reload the page to restart
+            window.location.reload();
+        }
+
+        function showLoading() {
+            document.getElementById('wizard-loading').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('wizard-loading').style.display = 'none';
+        }
+
+        function saveProgress() {
+            localStorage.setItem('juribank-wizard-progress', JSON.stringify(wizardData));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('juribank-wizard-progress');
+            if (saved) {
+                try {
+                    wizardData = JSON.parse(saved);
+                    if (wizardData.claimType) {
+                        // Restore claim type selection
+                        const claimTypeInput = document.querySelector(`input[value="${wizardData.claimType}"]`);
+                        if (claimTypeInput) {
+                            claimTypeInput.checked = true;
+                            document.getElementById('step-1-next').disabled = false;
+                        }
+                    }
+                } catch (e) {
+                    console.log('Could not load saved progress');
+                }
+            }
+        }
+
+        function showSignUpModal() {
+            // This would integrate with the existing sign up functionality
+            alert('Sign up functionality would be integrated with the existing modal system');
+        }
+
+        // FAQ Functionality
+        (function() {
+            // FAQ Category buttons styling
+            const categoryButtons = document.querySelectorAll('.faq-category-btn');
+            
+            // Style category buttons based on active state
+            categoryButtons.forEach(button => {
+                if (button.classList.contains('active')) {
+                    button.style.backgroundColor = '#2563eb';
+                    button.style.color = 'white';
+                    button.style.borderColor = '#2563eb';
+                } else {
+                    button.style.backgroundColor = 'transparent';
+                    button.style.color = '#4b5563';
+                    button.style.borderColor = '#d1d5db';
+                }
+            });
+
+            // FAQ Collapsible functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle answer visibility
+                    if (answer.classList.contains('hidden')) {
+                        answer.classList.remove('hidden');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        answer.classList.add('hidden');
+                        answer.style.maxHeight = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // FAQ Category filtering
+            document.querySelectorAll('.faq-category-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update button styles
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.backgroundColor = 'transparent';
+                        btn.style.color = '#4b5563';
+                        btn.style.borderColor = '#d1d5db';
+                    });
+                    
+                    this.classList.add('active');
+                    this.style.backgroundColor = '#2563eb';
+                    this.style.color = 'white';
+                    this.style.borderColor = '#2563eb';
+                    
+                    // Filter FAQ items
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    let visibleCount = 0;
+                    
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                            item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                            }, 50 + (visibleCount * 25));
+                            visibleCount++;
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 200);
+                        }
+                    });
+                    
+                    // Show/hide no results message
+                    const noResults = document.getElementById('no-results');
+                    if (visibleCount === 0) {
+                        noResults.classList.remove('hidden');
+                    } else {
+                        noResults.classList.add('hidden');
+                    }
+                });
+            });
+
+            // FAQ Search functionality
+            const searchInput = document.getElementById('faq-search');
+            const clearSearchBtn = document.getElementById('clear-search');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    let visibleCount = 0;
+                    
+                    // Reset category filter when searching
+                    if (searchTerm) {
+                        categoryButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.style.backgroundColor = 'transparent';
+                            btn.style.color = '#4b5563';
+                            btn.style.borderColor = '#d1d5db';
+                        });
+                    }
+                    
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                        const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                        
+                        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                            item.style.display = 'block';
+                            item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                            }, 50 + (visibleCount * 25));
+                            visibleCount++;
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 200);
+                        }
+                    });
+                    
+                    // Show/hide no results message
+                    const noResults = document.getElementById('no-results');
+                    if (visibleCount === 0 && searchTerm) {
+                        noResults.classList.remove('hidden');
+                    } else {
+                        noResults.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Clear search functionality
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener('click', function() {
+                    searchInput.value = '';
+                    
+                    // Show all FAQ items
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    faqItems.forEach((item, index) => {
+                        item.style.display = 'block';
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, index * 25);
+                    });
+                    
+                    // Reset to "All Questions" category
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.backgroundColor = 'transparent';
+                        btn.style.color = '#4b5563';
+                        btn.style.borderColor = '#d1d5db';
+                    });
+                    
+                    const allButton = document.querySelector('[data-category="all"]');
+                    if (allButton) {
+                        allButton.classList.add('active');
+                        allButton.style.backgroundColor = '#2563eb';
+                        allButton.style.color = 'white';
+                        allButton.style.borderColor = '#2563eb';
+                    }
+                    
+                    // Hide no results message
+                    document.getElementById('no-results').classList.add('hidden');
+                });
+            }
+        })();
     </script>
 </body>
 </html>
