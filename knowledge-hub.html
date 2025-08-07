@@ -279,7 +279,7 @@
 
                 <!-- Content Area -->
                 <div class="lg:col-span-3">
-                    <div id="content-area" class="space-y-8">
+                    <div id="knowledge-content" class="space-y-8">
 
                         
                         <!-- Banking Rights & Regulations Section -->
@@ -687,23 +687,10 @@
             });
         }
 
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', () => {
-            new KnowledgeHubApp();
-            
-            // Override knowledgeHub methods to include UI feedback
-            const originalToggleBookmark = knowledgeHub.toggleBookmark;
-            knowledgeHub.toggleBookmark = function(itemId) {
-                toggleBookmark(itemId);
-                return originalToggleBookmark.call(this, itemId);
-            };
-
-            const originalToggleFavorite = knowledgeHub.toggleFavorite;
-            knowledgeHub.toggleFavorite = function(itemId) {
-                toggleFavorite(itemId);
-                return originalToggleFavorite.call(this, itemId);
-            };
-        });
     </script>
+
+    <!-- Enhanced Knowledge Hub with API Integration -->
+    <script src="/src/api/knowledge-hub-api.js"></script>
+    <script src="/src/knowledge-hub.js"></script>
 </body>
 </html>

@@ -898,57 +898,7 @@
         </div>
     </footer>
 
-    <!-- Include Progress Tracker -->
-    <script src="/src/progress-tracker.js"></script>
-    
-    <script>
-        // Initialize progress tracker if on case tracking page
-        if (window.location.search.includes('track=')) {
-            const trackingContainer = document.createElement('div');
-            trackingContainer.id = 'progress-tracker-container';
-            document.querySelector('.max-w-4xl').appendChild(trackingContainer);
-            
-            // Initialize with current step based on URL parameter
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentStep = parseInt(urlParams.get('step')) || 1;
-            
-            new ProgressTracker('progress-tracker-container', {
-                currentStep: currentStep,
-                caseType: 'banking-dispute'
-            });
-        }
-        
-        // Handle option selection
-        document.querySelectorAll('.option-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const input = this.querySelector('input');
-                if (input.type === 'radio') {
-                    // Remove selected class from all radio options in the same group
-                    document.querySelectorAll(`input[name="${input.name}"]`).forEach(radio => {
-                        radio.closest('.option-card').classList.remove('selected');
-                    });
-                }
-                
-                if (input.type === 'checkbox') {
-                    input.checked = !input.checked;
-                }
-                
-                if (input.checked) {
-                    this.classList.add('selected');
-                } else {
-                    this.classList.remove('selected');
-                }
-            });
-        });
-
-        // Save progress functionality
-        document.querySelector('[data-save]') && document.querySelector('[data-save]').addEventListener('click', function() {
-            // Simulate saving progress
-            this.innerHTML = '<i class="fas fa-check mr-1"></i>Saved!';
-            setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-save mr-1"></i>Save Progress';
-            }, 2000);
-        });
-    </script>
+    <!-- Include Enhanced Claim Wizard JavaScript -->
+    <script src="/src/claim-wizard.js"></script>
 </body>
 </html>
