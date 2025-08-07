@@ -1,19 +1,36 @@
 /**
- * JuriBank Community Forum System v3.0
- * Anonymous peer support platform moderated by law students
- * Educational forum for financial and legal guidance
+ * JuriBank Community Forum System v3.0 - Enhanced Frontend
+ * Real-time anonymous peer support platform with WebSocket integration
+ * Modern interactive features with educational compliance
+ * Student moderated with professional oversight
  */
 
 class CommunityForumAPI {
     constructor() {
         this.apiBase = '/api/forum';
+        this.wsUrl = 'ws://localhost:3001';
         this.posts = new Map();
         this.categories = new Map();
         this.moderators = new Set();
         this.currentUser = null;
+        this.socket = null;
+        this.isConnected = false;
         
+        // Session management
+        this.sessionToken = localStorage.getItem('juribank-forum-session');
+        this.currentCategory = 'all';
+        this.currentPost = null;
+        
+        // UI state
+        this.isTyping = false;
+        this.typingTimeout = null;
+        this.notificationQueue = [];
+        
+        // Initialize systems
         this.initializeModeration();
-        this.setupRealTimeUpdates();
+        this.setupRealTimeConnection();
+        this.initializeUI();
+        this.createAnonymousSession();
     }
 
     /**
@@ -48,14 +65,116 @@ class CommunityForumAPI {
     }
 
     /**
-     * Setup real-time updates for forum
+     * Setup WebSocket connection for real-time updates
      */
-    setupRealTimeUpdates() {
-        // Simulate real-time updates
-        setInterval(() => {
-            this.checkForNewPosts();
-            this.updateModerationQueue();
-        }, 30000); // Check every 30 seconds
+    setupRealTimeConnection() {
+        try {
+            this.socket = new WebSocket(this.wsUrl);
+            
+            this.socket.onopen = () => {
+                console.log('[Forum] WebSocket connected');
+                this.isConnected = true;
+                this.authenticateSocket();
+                this.updateConnectionStatus(true);
+            };
+            
+            this.socket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                this.handleRealtimeMessage(data);
+            };
+            
+            this.socket.onclose = () => {
+                console.log('[Forum] WebSocket disconnected');
+                this.isConnected = false;
+                this.updateConnectionStatus(false);
+                // Attempt reconnection after 5 seconds
+                setTimeout(() => this.setupRealTimeConnection(), 5000);
+            };
+            
+            this.socket.onerror = (error) => {
+                console.error('[Forum] WebSocket error:', error);
+                this.showNotification('Connection error. Some features may not work properly.', 'warning');
+            };
+        } catch (error) {
+            console.error('[Forum] Failed to establish WebSocket connection:', error);
+            // Fall back to polling for updates
+            this.setupPollingFallback();
+        }
+    }
+    
+    /**
+     * Initialize UI components and event listeners
+     */
+    initializeUI() {
+        // Setup notification system
+        this.createNotificationContainer();
+        
+        // Setup typing indicators
+        this.setupTypingIndicators();
+        
+        // Setup keyboard shortcuts
+        this.setupKeyboardShortcuts();
+        
+        // Setup search functionality
+        this.initializeSearch();
+        
+        // Setup infinite scroll
+        this.setupInfiniteScroll();
+        
+        // Setup connection status indicator
+        this.createConnectionIndicator();
+        
+        console.log('[Forum] UI components initialized');
+    }
+    
+    /**
+     * Create anonymous session for privacy protection
+     */
+    async createAnonymousSession() {
+        if (this.sessionToken) {
+            // Validate existing session
+            try {
+                const response = await fetch(`${this.apiBase}/session`, {
+                    headers: {
+                        'Session-Token': this.sessionToken
+                    }
+                });
+                
+                if (response.ok) {
+                    const { session } = await response.json();
+                    this.currentUser = session;
+                    console.log('[Forum] Existing session validated');
+                    return;
+                }
+            } catch (error) {
+                console.log('[Forum] Session validation failed, creating new session');
+            }
+        }
+        
+        try {
+            // Create new anonymous session
+            const response = await fetch(`${this.apiBase}/auth/anonymous`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userAgent: navigator.userAgent,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.sessionToken = data.token;
+                this.currentUser = data.session;
+                localStorage.setItem('juribank-forum-session', this.sessionToken);
+                console.log('[Forum] New anonymous session created');
+            }
+        } catch (error) {
+            console.error('[Forum] Failed to create session:', error);
+            this.showNotification('Failed to establish session. Some features may be limited.', 'warning');
+        }
     }
 
     /**
@@ -595,14 +714,183 @@ class CommunityForumAPI {
         console.log(`Updated stats for category: ${category}`);
     }
 
-    async checkForNewPosts() {
-        // Check for new posts from other users
-        console.log('Checking for new posts...');
+    /**
+     * Handle real-time WebSocket messages
+     */
+    handleRealtimeMessage(data) {
+        switch (data.type) {
+            case 'new-post':
+                this.handleNewPost(data.post);
+                break;
+            case 'new-reply':
+                this.handleNewReply(data.reply, data.postId);
+                break;
+            case 'like-updated':
+                this.handleLikeUpdate(data.postId, data.likes);
+                break;
+            case 'user-typing':
+                this.handleTypingIndicator(data.postId, data.typingCount);
+                break;
+            case 'user-stopped-typing':
+                this.handleStoppedTyping(data.postId, data.typingCount);
+                break;
+            case 'category-user-count-updated':
+                this.updateCategoryUserCount(data.categoryId, data.userCount);
+                break;
+            case 'moderation-action':
+                this.handleModerationAction(data);
+                break;
+            case 'notification':
+                this.showNotification(data.message, data.type);
+                break;
+            case 'connection-established':
+                console.log('[Forum] Connection established with socket ID:', data.socketId);
+                break;
+            case 'heartbeat':
+                // Respond to heartbeat
+                if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+                    this.socket.send(JSON.stringify({ type: 'heartbeat-response', timestamp: Date.now() }));
+                }
+                break;
+        }
     }
-
-    async updateModerationQueue() {
-        // Update moderation queue
-        console.log('Updating moderation queue...');
+    
+    /**
+     * Authenticate WebSocket connection
+     */
+    authenticateSocket() {
+        if (this.socket && this.sessionToken && this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify({
+                type: 'authenticate',
+                sessionToken: this.sessionToken
+            }));
+        }
+    }
+    
+    /**
+     * Join category for real-time updates
+     */
+    joinCategory(categoryId) {
+        this.currentCategory = categoryId;
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify({
+                type: 'join-category',
+                categoryId: categoryId
+            }));
+        }
+    }
+    
+    /**
+     * Join post discussion for real-time updates
+     */
+    joinPost(postId) {
+        this.currentPost = postId;
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify({
+                type: 'join-post',
+                postId: postId
+            }));
+        }
+    }
+    
+    /**
+     * Setup fallback polling if WebSocket fails
+     */
+    setupPollingFallback() {
+        console.log('[Forum] Using polling fallback for real-time updates');
+        setInterval(() => {
+            if (!this.isConnected) {
+                this.checkForNewPosts();
+            }
+        }, 30000);
+    }
+    
+    /**
+     * Create notification container for real-time alerts
+     */
+    createNotificationContainer() {
+        if (document.getElementById('notification-container')) return;
+        
+        const container = document.createElement('div');
+        container.id = 'notification-container';
+        container.className = 'fixed top-20 right-4 z-50 space-y-2';
+        document.body.appendChild(container);
+    }
+    
+    /**
+     * Show notification to user
+     */
+    showNotification(message, type = 'info', duration = 5000) {
+        const container = document.getElementById('notification-container');
+        if (!container) return;
+        
+        const notification = document.createElement('div');
+        notification.className = `transform transition-all duration-300 translate-x-full opacity-0 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden`;
+        
+        const typeStyles = {
+            info: 'border-l-4 border-blue-500',
+            success: 'border-l-4 border-green-500',
+            warning: 'border-l-4 border-yellow-500',
+            error: 'border-l-4 border-red-500'
+        };
+        
+        const typeIcons = {
+            info: 'fa-info-circle text-blue-500',
+            success: 'fa-check-circle text-green-500',
+            warning: 'fa-exclamation-triangle text-yellow-500',
+            error: 'fa-exclamation-circle text-red-500'
+        };
+        
+        notification.className += ' ' + typeStyles[type];
+        
+        notification.innerHTML = `
+            <div class="p-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas ${typeIcons[type]} text-xl"></i>
+                    </div>
+                    <div class="ml-3 w-0 flex-1 pt-0.5">
+                        <p class="text-sm font-medium text-gray-900">${message}</p>
+                    </div>
+                    <div class="ml-4 flex-shrink-0 flex">
+                        <button class="close-notification bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full', 'opacity-0');
+        }, 100);
+        
+        // Setup close button
+        notification.querySelector('.close-notification').addEventListener('click', () => {
+            this.removeNotification(notification);
+        });
+        
+        // Auto-remove after duration
+        setTimeout(() => {
+            this.removeNotification(notification);
+        }, duration);
+        
+        return notification;
+    }
+    
+    /**
+     * Remove notification with animation
+     */
+    removeNotification(notification) {
+        notification.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
     }
 
     async notifyModerators(post) {
@@ -616,8 +904,599 @@ class CommunityForumAPI {
     }
 }
 
-// Initialize Community Forum API
-const communityForumAPI = new CommunityForumAPI();
+    /**
+     * Setup typing indicators for real-time interaction
+     */
+    setupTypingIndicators() {
+        const textareas = document.querySelectorAll('textarea[name="content"]');
+        textareas.forEach(textarea => {
+            let typingTimer;
+            
+            textarea.addEventListener('input', () => {
+                if (!this.isTyping && this.currentPost) {
+                    this.isTyping = true;
+                    this.sendTypingStart();
+                }
+                
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => {
+                    this.isTyping = false;
+                    this.sendTypingStop();
+                }, 2000);
+            });
+            
+            textarea.addEventListener('blur', () => {
+                if (this.isTyping) {
+                    this.isTyping = false;
+                    this.sendTypingStop();
+                }
+            });
+        });
+    }
+    
+    /**
+     * Send typing start notification
+     */
+    sendTypingStart() {
+        if (this.socket && this.socket.readyState === WebSocket.OPEN && this.currentPost) {
+            this.socket.send(JSON.stringify({
+                type: 'typing-start',
+                postId: this.currentPost
+            }));
+        }
+    }
+    
+    /**
+     * Send typing stop notification
+     */
+    sendTypingStop() {
+        if (this.socket && this.socket.readyState === WebSocket.OPEN && this.currentPost) {
+            this.socket.send(JSON.stringify({
+                type: 'typing-stop',
+                postId: this.currentPost
+            }));
+        }
+    }
+    
+    /**
+     * Handle typing indicator from other users
+     */
+    handleTypingIndicator(postId, typingCount) {
+        const indicator = document.getElementById(`typing-indicator-${postId}`);
+        if (indicator && typingCount > 0) {
+            indicator.textContent = `${typingCount} user${typingCount > 1 ? 's' : ''} typing...`;
+            indicator.style.display = 'block';
+        }
+    }
+    
+    /**
+     * Handle stopped typing indicator
+     */
+    handleStoppedTyping(postId, typingCount) {
+        const indicator = document.getElementById(`typing-indicator-${postId}`);
+        if (indicator) {
+            if (typingCount > 0) {
+                indicator.textContent = `${typingCount} user${typingCount > 1 ? 's' : ''} typing...`;
+            } else {
+                indicator.style.display = 'none';
+            }
+        }
+    }
+    
+    /**
+     * Setup keyboard shortcuts
+     */
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K for search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('forum-search');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }
+            
+            // Ctrl/Cmd + Enter to submit forms
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                const activeForm = document.querySelector('form:focus-within');
+                if (activeForm) {
+                    const submitBtn = activeForm.querySelector('button[type="submit"]');
+                    if (submitBtn && !submitBtn.disabled) {
+                        submitBtn.click();
+                    }
+                }
+            }
+        });
+    }
+    
+    /**
+     * Initialize search functionality
+     */
+    initializeSearch() {
+        // Create search input if it doesn't exist
+        this.createSearchInterface();
+        
+        const searchInput = document.getElementById('forum-search');
+        if (searchInput) {
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    this.performSearch(e.target.value);
+                }, 300);
+            });
+        }
+    }
+    
+    /**
+     * Create search interface
+     */
+    createSearchInterface() {
+        const existingSearch = document.getElementById('forum-search');
+        if (existingSearch) return;
+        
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'relative mb-6';
+        searchContainer.innerHTML = `
+            <div class="relative">
+                <input type="text" id="forum-search" 
+                       class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent" 
+                       placeholder="Search discussions... (Ctrl+K)">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+            <div id="search-results" class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden"></div>
+        `;
+        
+        const forumPosts = document.getElementById('forum-posts');
+        if (forumPosts && forumPosts.parentNode) {
+            forumPosts.parentNode.insertBefore(searchContainer, forumPosts);
+        }
+    }
+    
+    /**
+     * Perform search and show results
+     */
+    async performSearch(query) {
+        if (!query || query.length < 2) {
+            this.hideSearchResults();
+            return;
+        }
+        
+        try {
+            const response = await fetch(`${this.apiBase}/search?q=${encodeURIComponent(query)}&category=${this.currentCategory}`, {
+                headers: this.getAuthHeaders()
+            });
+            
+            if (response.ok) {
+                const { results } = await response.json();
+                this.displaySearchResults(results, query);
+            }
+        } catch (error) {
+            console.error('[Forum] Search failed:', error);
+        }
+    }
+    
+    /**
+     * Display search results
+     */
+    displaySearchResults(results, query) {
+        const resultsContainer = document.getElementById('search-results');
+        if (!resultsContainer) return;
+        
+        if (results.length === 0) {
+            resultsContainer.innerHTML = `
+                <div class="p-4 text-center text-gray-500">
+                    <i class="fas fa-search text-2xl mb-2"></i>
+                    <p>No results found for "${query}"</p>
+                </div>
+            `;
+        } else {
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer search-result-item" data-post-id="${result.id}">
+                    <h4 class="font-medium text-gray-900">${this.highlightSearchTerms(result.title, query)}</h4>
+                    <p class="text-sm text-gray-600 mt-1">${this.highlightSearchTerms(result.content.substring(0, 150), query)}...</p>
+                    <div class="flex items-center mt-2 text-xs text-gray-500">
+                        <span class="bg-${this.getCategoryColor(result.category)}-100 text-${this.getCategoryColor(result.category)}-800 px-2 py-1 rounded-full mr-2">${result.category}</span>
+                        <span>${this.formatDate(result.createdAt)}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Add click handlers for search results
+            resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const postId = item.getAttribute('data-post-id');
+                    this.openPost(postId);
+                    this.hideSearchResults();
+                });
+            });
+        }
+        
+        resultsContainer.classList.remove('hidden');
+        
+        // Hide results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!resultsContainer.contains(e.target) && !document.getElementById('forum-search').contains(e.target)) {
+                this.hideSearchResults();
+            }
+        }, { once: true });
+    }
+    
+    /**
+     * Hide search results
+     */
+    hideSearchResults() {
+        const resultsContainer = document.getElementById('search-results');
+        if (resultsContainer) {
+            resultsContainer.classList.add('hidden');
+        }
+    }
+    
+    /**
+     * Highlight search terms in text
+     */
+    highlightSearchTerms(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<mark class="bg-yellow-200 px-1 rounded">$1</mark>');
+    }
+    
+    /**
+     * Setup infinite scroll for posts
+     */
+    setupInfiniteScroll() {
+        let loading = false;
+        let hasMore = true;
+        let currentPage = 1;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !loading && hasMore) {
+                    loading = true;
+                    this.loadMorePosts(currentPage + 1)
+                        .then(result => {
+                            if (result && result.posts.length > 0) {
+                                currentPage++;
+                                hasMore = result.hasMore;
+                            } else {
+                                hasMore = false;
+                            }
+                            loading = false;
+                        })
+                        .catch(() => {
+                            loading = false;
+                        });
+                }
+            });
+        });
+        
+        // Observe load more button or create sentinel
+        const loadMoreBtn = document.querySelector('.load-more-posts');
+        if (loadMoreBtn) {
+            observer.observe(loadMoreBtn);
+        }
+    }
+    
+    /**
+     * Load more posts for infinite scroll
+     */
+    async loadMorePosts(page) {
+        try {
+            const response = await fetch(`${this.apiBase}/posts?page=${page}&category=${this.currentCategory}`, {
+                headers: this.getAuthHeaders()
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.appendPostsToDOM(data.posts);
+                return data;
+            }
+        } catch (error) {
+            console.error('[Forum] Failed to load more posts:', error);
+        }
+        return null;
+    }
+    
+    /**
+     * Create connection status indicator
+     */
+    createConnectionIndicator() {
+        const indicator = document.createElement('div');
+        indicator.id = 'connection-indicator';
+        indicator.className = 'fixed bottom-4 left-4 z-50 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300';
+        document.body.appendChild(indicator);
+        
+        this.updateConnectionStatus(this.isConnected);
+    }
+    
+    /**
+     * Update connection status indicator
+     */
+    updateConnectionStatus(isConnected) {
+        const indicator = document.getElementById('connection-indicator');
+        if (!indicator) return;
+        
+        if (isConnected) {
+            indicator.className = 'fixed bottom-4 left-4 z-50 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-green-500 text-white';
+            indicator.innerHTML = '<i class="fas fa-wifi mr-2"></i>Connected';
+            setTimeout(() => {
+                indicator.style.opacity = '0';
+            }, 3000);
+        } else {
+            indicator.className = 'fixed bottom-4 left-4 z-50 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-red-500 text-white';
+            indicator.innerHTML = '<i class="fas fa-wifi-slash mr-2"></i>Disconnected';
+            indicator.style.opacity = '1';
+        }
+    }
+    
+    /**
+     * Get authentication headers
+     */
+    getAuthHeaders() {
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        
+        if (this.sessionToken) {
+            headers['Session-Token'] = this.sessionToken;
+        }
+        
+        return headers;
+    }
+    
+    /**
+     * Handle new post from WebSocket
+     */
+    handleNewPost(post) {
+        if (post.category === this.currentCategory || this.currentCategory === 'all') {
+            this.prependPostToDOM(post);
+            this.showNotification('New post in this category', 'info');
+        }
+    }
+    
+    /**
+     * Handle new reply from WebSocket
+     */
+    handleNewReply(reply, postId) {
+        if (this.currentPost === postId) {
+            this.appendReplyToDOM(reply, postId);
+            this.showNotification('New reply to this discussion', 'info');
+        }
+    }
+    
+    /**
+     * Handle like update from WebSocket
+     */
+    handleLikeUpdate(postId, likes) {
+        const likeButton = document.querySelector(`[data-post-id="${postId}"] .like-count`);
+        if (likeButton) {
+            likeButton.textContent = likes;
+        }
+    }
+    
+    /**
+     * Utility methods for DOM manipulation
+     */
+    prependPostToDOM(post) {
+        const postsContainer = document.getElementById('forum-posts');
+        if (!postsContainer) return;
+        
+        const postElement = this.createPostElement(post);
+        postsContainer.insertBefore(postElement, postsContainer.firstChild);
+    }
+    
+    appendPostsToDOM(posts) {
+        const postsContainer = document.getElementById('forum-posts');
+        if (!postsContainer) return;
+        
+        posts.forEach(post => {
+            const postElement = this.createPostElement(post);
+            postsContainer.appendChild(postElement);
+        });
+    }
+    
+    createPostElement(post) {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post-item bg-white rounded-xl shadow-lg p-6 cursor-pointer';
+        postDiv.setAttribute('data-post-id', post.id);
+        
+        postDiv.innerHTML = `
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">${post.title}</h3>
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <span>Anonymous User</span>
+                            <span>•</span>
+                            <span>${this.formatDate(post.createdAt)}</span>
+                            <span>•</span>
+                            <span class="bg-${this.getCategoryColor(post.category)}-100 text-${this.getCategoryColor(post.category)}-800 px-2 py-1 rounded-full text-xs">${this.formatCategory(post.category)}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-gray-700 mb-4">${post.content.substring(0, 200)}${post.content.length > 200 ? '...' : ''}</p>
+            
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button class="flex items-center text-gray-600 hover:text-student-blue like-button" data-post-id="${post.id}">
+                        <i class="fas fa-thumbs-up mr-1"></i>
+                        <span class="like-count">${post.likes || 0}</span>
+                    </button>
+                    <span class="flex items-center text-gray-600">
+                        <i class="fas fa-comment mr-1"></i>
+                        <span>${post.replyCount || 0} replies</span>
+                    </span>
+                    <button class="flex items-center text-gray-600 hover:text-student-blue share-button" data-post-id="${post.id}">
+                        <i class="fas fa-share mr-1"></i>
+                        <span>Share</span>
+                    </button>
+                </div>
+                <span class="text-sm text-gray-500">Last activity ${this.formatDate(post.updatedAt || post.createdAt)}</span>
+            </div>
+        `;
+        
+        // Add event listeners
+        const likeButton = postDiv.querySelector('.like-button');
+        likeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.likePost(post.id);
+        });
+        
+        const shareButton = postDiv.querySelector('.share-button');
+        shareButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.sharePost(post.id);
+        });
+        
+        postDiv.addEventListener('click', () => {
+            this.openPost(post.id);
+        });
+        
+        return postDiv;
+    }
+    
+    /**
+     * Like a post
+     */
+    async likePost(postId) {
+        try {
+            const response = await fetch(`${this.apiBase}/posts/${postId}/like`, {
+                method: 'PUT',
+                headers: this.getAuthHeaders()
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to like post');
+            }
+            
+            // WebSocket will handle the UI update
+        } catch (error) {
+            console.error('[Forum] Failed to like post:', error);
+            this.showNotification('Failed to like post', 'error');
+        }
+    }
+    
+    /**
+     * Share a post
+     */
+    sharePost(postId) {
+        const url = `${window.location.origin}/community-forum.html?post=${postId}`;
+        
+        if (navigator.share) {
+            navigator.share({
+                title: 'JuriBank Community Discussion',
+                url: url
+            }).catch(console.error);
+        } else {
+            navigator.clipboard.writeText(url).then(() => {
+                this.showNotification('Post link copied to clipboard', 'success');
+            }).catch(() => {
+                this.showNotification('Failed to copy link', 'error');
+            });
+        }
+    }
+    
+    /**
+     * Get category color for styling
+     */
+    getCategoryColor(category) {
+        const colors = {
+            banking: 'red',
+            payments: 'green', 
+            ppi: 'purple',
+            investment: 'orange',
+            mortgage: 'red',
+            success: 'green'
+        };
+        return colors[category] || 'gray';
+    }
+    
+    /**
+     * Format category name
+     */
+    formatCategory(category) {
+        const names = {
+            banking: 'Banking Issues',
+            payments: 'Payment Problems',
+            ppi: 'PPI Claims', 
+            investment: 'Investment Issues',
+            mortgage: 'Mortgage Help',
+            success: 'Success Story'
+        };
+        return names[category] || category;
+    }
+    
+    /**
+     * Format date for display
+     */
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now - date;
+        
+        if (diff < 60000) return 'Just now';
+        if (diff < 3600000) return `${Math.floor(diff / 60000)} minutes ago`;
+        if (diff < 86400000) return `${Math.floor(diff / 3600000)} hours ago`;
+        if (diff < 604800000) return `${Math.floor(diff / 86400000)} days ago`;
+        
+        return date.toLocaleDateString();
+    }
+    
+    /**
+     * Handle opening a post
+     */
+    openPost(postId) {
+        // In a real implementation, this would navigate to post detail view
+        window.location.href = `post.html?id=${postId}`;
+    }
+
+    /**
+     * Legacy method updates for compatibility
+     */
+    async checkForNewPosts() {
+        // Polling fallback when WebSocket is not available
+        if (!this.isConnected) {
+            try {
+                const response = await fetch(`${this.apiBase}/posts?since=${Date.now() - 30000}`, {
+                    headers: this.getAuthHeaders()
+                });
+                
+                if (response.ok) {
+                    const { posts } = await response.json();
+                    posts.forEach(post => this.handleNewPost(post));
+                }
+            } catch (error) {
+                console.error('[Forum] Polling failed:', error);
+            }
+        }
+    }
+}
+
+// Initialize Community Forum API when DOM is ready
+let communityForumAPI = null;
+
+if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        communityForumAPI = new CommunityForumAPI();
+        
+        // Make API available globally for debugging
+        window.communityForumAPI = communityForumAPI;
+    });
+}
+
+// Export for use in Node.js environment
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = CommunityForumAPI;
+}
 
 // Populate with some initial data
 async function initializeMockData() {

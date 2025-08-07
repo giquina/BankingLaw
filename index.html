@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
-    <title>JuriBank | Professional Legal Platform | Connect with Qualified Solicitors</title>
-    <meta name="title" content="JuriBank | Professional Legal Platform | Connect with Qualified Solicitors">
-    <meta name="description" content="Professional legal platform helping you understand your options and connect with qualified solicitors. Real-time data from Gov.UK, FCA, and ombudsman services for accurate guidance.">
-    <meta name="keywords" content="legal help UK, financial guidance, bank complaint help, legal information platform, professional legal guidance, free legal consultation">
+    <title>JuriBank | Educational Legal Platform | Learn About Your Rights & Options</title>
+    <meta name="title" content="JuriBank | Educational Legal Platform | Learn About Your Rights & Options">
+    <meta name="description" content="Educational legal platform helping you learn about your rights and understand your options. Real-time data from Gov.UK, FCA, and ombudsman services for accurate educational guidance.">
+    <meta name="keywords" content="legal education UK, financial learning, bank complaint guidance, legal information platform, educational legal resources, free legal information">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="author" content="JuriBank Student Legal Platform">
@@ -17,14 +17,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://juribank.co.uk/">
-    <meta property="og:title" content="JuriBank | Professional Legal Platform | Connect with Qualified Solicitors">
-    <meta property="og:description" content="Get professional legal and financial guidance from qualified experts. Real-time information from official sources to help you understand your options.">
+    <meta property="og:title" content="JuriBank | Educational Legal Platform | Learn About Your Rights & Options">
+    <meta property="og:description" content="Learn about your legal rights and financial options through educational guidance. Real-time information from official sources to help you understand your options.">
     <meta property="og:image" content="https://juribank.co.uk/assets/images/juribank-students-preview.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="JuriBank | Professional Legal Platform | Connect with Qualified Solicitors">
-    <meta property="twitter:description" content="Get professional legal and financial guidance from qualified experts. Reliable information to help you understand your options.">
+    <meta property="twitter:title" content="JuriBank | Educational Legal Platform | Learn About Your Rights & Options">
+    <meta property="twitter:description" content="Learn about your legal rights and financial options through educational resources. Reliable information to help you understand your options.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -198,7 +198,7 @@
             visibility: visible !important;
         }
         
-        /* Desktop navigation visibility */
+        /* Desktop navigation visibility and wrapping prevention */
         @media (min-width: 768px) {
             .hidden.md\\:flex {
                 display: flex !important;
@@ -208,6 +208,30 @@
             }
             .nav-auth-buttons button {
                 display: inline-flex !important;
+            }
+            
+            /* Prevent navigation wrapping */
+            nav .flex.justify-between.items-center {
+                min-width: fit-content;
+                flex-wrap: nowrap;
+            }
+            
+            /* Ensure proper spacing on smaller desktop screens */
+            .nav-enhanced .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* Specific breakpoint for preventing wrapping */
+        @media (min-width: 768px) and (max-width: 1200px) {
+            .nav-auth-buttons {
+                flex-shrink: 0;
+            }
+            .nav-auth-buttons button {
+                font-size: 0.875rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
             }
         }
         
@@ -608,35 +632,35 @@
                     <span class="ml-3 text-sm bg-student-blue text-white px-2 py-1 rounded-full">Expert</span>
                 </div>
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#tools" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-clipboard-list mr-2"></i>Free Tools
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-6">
+                    <a href="#tools" class="text-gray-700 hover:text-student-blue font-medium no-underline text-sm lg:text-base">
+                        <i class="fas fa-clipboard-list mr-1 lg:mr-2"></i>Tools
                     </a>
-                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-lightbulb mr-2"></i>Knowledge Hub
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium no-underline text-sm lg:text-base">
+                        <i class="fas fa-lightbulb mr-1 lg:mr-2"></i>Knowledge
                     </a>
-                    <a href="#community" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-comments mr-2"></i>Community
+                    <a href="#community" class="text-gray-700 hover:text-student-blue font-medium no-underline text-sm lg:text-base">
+                        <i class="fas fa-comments mr-1 lg:mr-2"></i>Community
                     </a>
-                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium no-underline">
-                        <i class="fas fa-info-circle mr-2"></i>How It Works
+                    <a href="how-it-works.html" class="text-gray-700 hover:text-student-blue font-medium no-underline text-sm lg:text-base">
+                        <i class="fas fa-info-circle mr-1 lg:mr-2"></i>How It Works
                     </a>
                 </div>
 
                 <!-- User Authentication Section -->
-                <div class="hidden md:flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-3">
                     <!-- Primary CTA -->
-                    <button class="bg-green-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-green-700 transition-all duration-200 shadow-lg border-2 border-green-600 hover:shadow-xl" onclick="scrollToSection('claim-wizard')">
-                        <i class="fas fa-rocket mr-2"></i>Start Your Claim
+                    <button class="bg-green-600 text-white px-3 lg:px-6 py-2 lg:py-2.5 rounded-lg font-semibold hover:bg-green-700 transition-all duration-200 shadow-lg border-2 border-green-600 hover:shadow-xl text-sm lg:text-base" onclick="scrollToSection('claim-wizard')">
+                        <i class="fas fa-rocket mr-1 lg:mr-2"></i>Start Claim
                     </button>
                     
                     <!-- Unauthenticated State -->
-                    <div class="nav-auth-buttons flex items-center space-x-3" id="nav-auth-buttons">
-                        <button class="text-gray-700 hover:text-student-blue font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200" onclick="openSignInModal()">
-                            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    <div class="nav-auth-buttons flex items-center space-x-2" id="nav-auth-buttons">
+                        <button class="text-gray-700 hover:text-student-blue font-medium px-2 lg:px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 text-sm lg:text-base" onclick="openSignInModal()">
+                            <i class="fas fa-sign-in-alt mr-1 lg:mr-2"></i>Sign In
                         </button>
-                        <button class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 btn-enhanced transition-all duration-200" onclick="openSignUpModal()">
-                            <i class="fas fa-user-plus mr-2 icon-bounce"></i>Sign Up Free
+                        <button class="bg-student-blue text-white px-3 lg:px-4 py-2 rounded-lg font-medium hover:bg-blue-700 btn-enhanced transition-all duration-200 text-sm lg:text-base" onclick="openSignUpModal()">
+                            <i class="fas fa-user-plus mr-1 lg:mr-2"></i>Sign Up<span class="hidden lg:inline"> Free</span>
                         </button>
                     </div>
                 </div>
@@ -709,7 +733,7 @@
                 Learn your legal options and connect with qualified professionals
             </p>
             <p class="text-lg mb-12 opacity-80">
-                JuriBank helps you understand your legal rights using official Gov.UK, FCA, and ombudsman data. When you need professional legal advice, JuriBank connects you with independent qualified solicitors and legal service providers from the network.
+                JuriBank helps you understand your legal rights using official Gov.UK, FCA, and ombudsman data. Our educational platform provides learning resources and guidance to help you understand your options and next steps.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="claim-wizard.html" class="bg-white text-student-blue px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors text-center btn-enhanced shadow-lg hover:shadow-xl">
@@ -1986,7 +2010,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">When You Need Professional Legal Representation</h2>
-                <p class="text-xl text-gray-600">Access the network of verified solicitors and legal professionals matched to your specific claim</p>
+                <p class="text-xl text-gray-600">Learn about your options and understand the pathways available for your specific claim type</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
@@ -2004,7 +2028,7 @@
                         <i class="fas fa-search text-purple-600 text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Claim-Matched Referrals</h3>
-                    <p class="text-gray-600 mb-4">JuriBank matches you with legal professionals who have specific experience in your type of claim - banking charges, PPI, investment advice, or regulatory issues.</p>
+                    <p class="text-gray-600 mb-4">JuriBank helps you understand your claim type and learn about the specific pathways available - banking charges, PPI, investment advice, or regulatory issues.</p>
                     <div class="text-sm text-purple-600 font-medium">✓ Targeted Expertise ✓ Relevant Experience ✓ Success Rate Data</div>
                 </div>
 
@@ -2303,7 +2327,7 @@
                         <div>
                             <h4 class="font-semibold text-yellow-800 mb-2">Information Guidance Only</h4>
                             <p class="text-yellow-700 text-sm">
-                                This assessment tool is provided by legal professionals for information purposes. Our goal is to help you understand your legal options and connect you with qualified solicitors when professional representation is needed. We do not provide legal advice or represent clients directly.
+                                This educational assessment tool is provided for information purposes only. Our goal is to help you understand your legal options and learn about the pathways available. We provide educational guidance only and do not provide legal advice or represent clients directly.
                             </p>
                         </div>
                     </div>
@@ -2317,7 +2341,7 @@
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold mb-6">Ready to Get Started?</h2>
             <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Discover if you have a valid claim and connect with qualified legal professionals
+                Learn if you have a valid claim and understand your available options
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg min-w-[240px]" onclick="scrollToSection('claim-wizard')">
@@ -2345,7 +2369,7 @@
                     </div>
                 </div>
                 <p class="text-white/70 text-sm">
-                    No cost to start • Professional legal platform • Expert-moderated community • Independent legal professionals
+                    No cost to start • Educational legal platform • Student-moderated community • Learning-focused resources
                 </p>
             </div>
         </div>
@@ -2357,7 +2381,7 @@
             <div class="text-center">
                 <h3 class="text-lg font-semibold text-yellow-800 mb-2">Important Information Notice</h3>
                 <p class="text-yellow-700 text-sm max-w-4xl mx-auto">
-                    This platform is operated by legal professionals to help you understand your rights, explore your options, and find the right pathway forward for your situation. When you need professional legal representation, we connect you with qualified solicitors who specialize in your area.
+                    This educational platform is operated by law students and supervised by qualified solicitors to help you understand your rights, explore your options, and learn about the pathways available for your situation. We provide educational resources to help you understand when professional representation may be appropriate.
                 </p>
             </div>
         </div>
@@ -2420,7 +2444,7 @@
                         <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-4">
-                        <p class="text-gray-700">JuriBank is a professional legal platform created by legal experts. We provide free resources to help you understand your legal rights and options regarding financial disputes. Our platform offers guided assessments, professional content from official sources like Gov.UK and FCA, and connections to qualified legal professionals when needed. This is for information purposes only - we don't provide legal advice.</p>
+                        <p class="text-gray-700">JuriBank is an educational legal platform created by law students and supervised by qualified solicitors. We provide free learning resources to help you understand your legal rights and options regarding financial disputes. Our platform offers guided educational assessments, information from official sources like Gov.UK and FCA, and learning materials about your options. This is for educational purposes only - we don't provide legal advice.</p>
                     </div>
                 </div>
 
@@ -2440,7 +2464,7 @@
                         <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-4">
-                        <p class="text-gray-700">JuriBank is developed and maintained by legal professionals with extensive experience in UK financial law. We're passionate about making legal information accessible and helping people understand their rights. While we provide information guidance, we always recommend consulting with qualified solicitors for specific legal advice and representation.</p>
+                        <p class="text-gray-700">JuriBank is developed and maintained by law students supervised by qualified solicitors with extensive experience in UK financial law. We're passionate about making legal education accessible and helping people understand their rights. While we provide educational guidance, we always recommend consulting with qualified solicitors for specific legal advice and representation.</p>
                     </div>
                 </div>
 
@@ -2701,11 +2725,11 @@
 
                 <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-200" data-category="professionals">
                     <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
-                        <span class="font-semibold text-gray-900">How does JuriBank connect me with legal professionals?</span>
+                        <span class="font-semibold text-gray-900">How does JuriBank help me understand my legal options?</span>
                         <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-4">
-                        <p class="text-gray-700">JuriBank maintains a network of qualified solicitors who specialize in financial claims. When you need professional representation, we can introduce you to appropriate specialists based on your specific case type and location. However, you're free to choose any solicitor you prefer. We provide professional guidance about what to look for in legal representation but don't provide legal advice ourselves.</p>
+                        <p class="text-gray-700">JuriBank provides educational resources to help you understand the different types of legal pathways available for financial claims. We help you learn about the process, understand your options, and know what to look for when seeking legal representation. You can use this knowledge to make informed decisions about your next steps, but we don't provide legal advice ourselves.</p>
                     </div>
                 </div>
 
@@ -2726,7 +2750,7 @@
                         <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-4">
-                        <p class="text-gray-700">JuriBank offers: free eligibility checker, professional legal resources, guided assessment wizard, document templates, progress tracking, community forum, knowledge hub with official regulatory updates, refund calculator, success stories, and connections to qualified legal professionals. Premium features include detailed case tracking, priority support, and advanced document generation.</p>
+                        <p class="text-gray-700">JuriBank offers: free eligibility checker, educational legal resources, guided learning wizard, document templates, progress tracking, community forum, knowledge hub with official regulatory updates, refund calculator, success stories, and educational guidance about your options. Premium features include detailed progress tracking, priority support, and advanced learning resources.</p>
                     </div>
                 </div>
 
@@ -2746,7 +2770,7 @@
                         <i class="fas fa-chevron-down text-gray-400 transform transition-transform duration-200"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-4">
-                        <p class="text-gray-700">JuriBank provides information guidance, not legal advice. While we strive for accuracy and source information from authoritative sources, our content helps you understand general principles and options, but you should always consult qualified legal professionals for specific advice about your situation. We're transparent about our purpose and limitations.</p>
+                        <p class="text-gray-700">JuriBank provides educational guidance, not legal advice. While we strive for accuracy and source information from authoritative sources, our content helps you learn about general principles and understand your options, but you should always consult qualified legal professionals for specific advice about your situation. We're transparent about our educational purpose and limitations.</p>
                     </div>
                 </div>
 
@@ -2904,7 +2928,7 @@
             <div class="border-t border-gray-800 pt-8 mb-8">
                 <div class="text-center mb-6">
                     <h3 class="text-xl font-semibold text-white mb-2">Platform Impact</h3>
-                    <p class="text-gray-400 text-sm">Connecting users with professional legal services across the UK</p>
+                    <p class="text-gray-400 text-sm">Educational platform helping users understand their legal options across the UK</p>
                 </div>
                 <div class="grid md:grid-cols-4 gap-4 text-center">
                     <div class="p-6 bg-gradient-to-br from-blue-600/20 to-blue-800/20 border border-blue-600/30 rounded-lg hover:border-blue-500/50 transition-colors">
@@ -2935,17 +2959,16 @@
                 <div class="text-center mb-6">
                     <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 max-w-4xl mx-auto">
                         <p class="text-gray-300 text-sm leading-relaxed">
-                            <strong class="text-white">Important Legal Notice:</strong> JuriBank is a professional platform operated by legal experts. 
-                            We do not provide legal advice and are not a law firm. JuriBank helps you understand your options and connect you with 
-                            independent qualified solicitors and legal service providers. All legal professionals in the network operate independently 
-                            and are regulated by their respective professional bodies.
+                            <strong class="text-white">Important Educational Notice:</strong> JuriBank is an educational platform operated by law students supervised by qualified solicitors. 
+                            We do not provide legal advice and are not a law firm. JuriBank helps you understand your options and learn about 
+                            the legal pathways available to you. All educational content is for learning purposes only.
                         </p>
                     </div>
                 </div>
                 
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm">
-                        © 2024 JuriBank. Professional platform connecting you with legal professionals.
+                        © 2024 JuriBank. Educational platform helping you learn about your legal options.
                     </p>
                     <div class="flex items-center space-x-4 mt-4 md:mt-0">
                         <span class="text-gray-400 text-sm">Powered by</span>
@@ -3162,7 +3185,7 @@
                                     </div>
                                     <div class="auth-benefit">
                                         <i class="fas fa-check-circle text-green-600"></i>
-                                        <span>Connect with legal professionals</span>
+                                        <span>Learn about your options</span>
                                     </div>
                                 </div>
                                 
@@ -4233,7 +4256,7 @@
                             <p>• Review your personalized action plan and resources</p>
                             <p>• Access our document templates and guidance materials</p>
                             <p>• Connect with our community for peer support</p>
-                            <p>• Get matched with legal professionals when you're ready</p>
+                            <p>• Understand your options when you're ready to take action</p>
                         </div>
                     </div>
                 </div>

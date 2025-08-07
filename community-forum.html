@@ -108,6 +108,121 @@
             </div>
         </div>
 
+        <!-- Advanced Search and Filters -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0 lg:space-x-6">
+                <!-- Search Bar -->
+                <div class="relative flex-1 w-full">
+                    <input type="text" id="forum-search-main" 
+                           class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent" 
+                           placeholder="Search discussions... (Ctrl+K)">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                    <div id="search-suggestions" class="absolute z-20 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden"></div>
+                </div>
+                
+                <!-- Quick Filters -->
+                <div class="flex items-center space-x-3">
+                    <select id="category-filter" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-student-blue">
+                        <option value="all">All Categories</option>
+                        <option value="banking">Banking Issues</option>
+                        <option value="payments">Payment Problems</option>
+                        <option value="ppi">PPI Claims</option>
+                        <option value="investment">Investment Issues</option>
+                        <option value="mortgage">Mortgage Help</option>
+                        <option value="success">Success Stories</option>
+                    </select>
+                    
+                    <select id="time-filter" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-student-blue">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                    
+                    <button id="advanced-filters" class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 flex items-center">
+                        <i class="fas fa-filter mr-2"></i>
+                        Filters
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Advanced Filters Panel (Initially Hidden) -->
+            <div id="advanced-filters-panel" class="hidden mt-6 pt-6 border-t border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Post Status</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="status-filter" value="answered" checked>
+                                <span class="ml-2 text-sm text-gray-700">Has Answers</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="status-filter" value="unanswered" checked>
+                                <span class="ml-2 text-sm text-gray-700">Unanswered</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="status-filter" value="helpful" checked>
+                                <span class="ml-2 text-sm text-gray-700">Marked as Helpful</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Activity Level</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="activity" value="all" checked>
+                                <span class="ml-2 text-sm text-gray-700">All Activity</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="activity" value="high">
+                                <span class="ml-2 text-sm text-gray-700">High Activity (10+ replies)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="activity" value="trending">
+                                <span class="ml-2 text-sm text-gray-700">Trending Now</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Content Type</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="content-filter" value="questions" checked>
+                                <span class="ml-2 text-sm text-gray-700">Questions</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="content-filter" value="experiences" checked>
+                                <span class="ml-2 text-sm text-gray-700">Shared Experiences</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="content-filter" value="success" checked>
+                                <span class="ml-2 text-sm text-gray-700">Success Stories</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 flex items-center justify-between">
+                    <button id="reset-filters" class="text-student-blue hover:text-blue-700 text-sm font-medium">
+                        Reset All Filters
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <button id="save-search" class="text-student-blue hover:text-blue-700 text-sm font-medium">
+                            <i class="fas fa-bookmark mr-1"></i>
+                            Save Search
+                        </button>
+                        <button id="apply-filters" class="bg-student-blue text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Forum Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white rounded-xl shadow-lg p-6 text-center">
@@ -144,80 +259,172 @@
 
         <!-- Main Content -->
         <div class="grid lg:grid-cols-4 gap-8">
-            <!-- Categories Sidebar -->
+            <!-- Enhanced Categories Sidebar -->
             <div class="lg:col-span-1">
-                <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
-                    <div class="space-y-2">
-                        <button class="category-btn w-full text-left p-3 rounded-lg category-active text-white" data-category="all">
+                <div class="bg-white rounded-2xl shadow-lg sticky top-24">
+                    <!-- Categories Header -->
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900">Categories</h3>
+                            <button id="collapse-categories" class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Active Users Counter -->
+                        <div class="mt-3 flex items-center text-sm text-gray-600">
+                            <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                            <span id="active-users-count">423 users online</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories List -->
+                    <div id="categories-list" class="p-6 space-y-2">
+                        <button class="category-btn w-full text-left p-3 rounded-lg category-active text-white transition-all duration-200" data-category="all">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-home mr-3"></i>
-                                    <span class="font-medium">All Posts</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">All Posts</span>
+                                        <span class="text-xs opacity-70">All discussions</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm opacity-80">247</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm opacity-80">247</span>
+                                    <span class="text-xs opacity-60">+12 today</span>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="banking">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="banking">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-university mr-3 text-blue-600"></i>
-                                    <span class="font-medium">Banking Issues</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Banking Issues</span>
+                                        <span class="text-xs text-gray-500">Overdrafts, charges, disputes</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">142</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">142</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-green-600">+5</span>
+                                        <div class="w-1 h-1 bg-green-400 rounded-full ml-1"></div>
+                                    </div>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="payments">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="payments">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-credit-card mr-3 text-green-600"></i>
-                                    <span class="font-medium">Payment Problems</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Payment Problems</span>
+                                        <span class="text-xs text-gray-500">Card issues, transaction errors</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">89</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">89</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-green-600">+3</span>
+                                        <div class="w-1 h-1 bg-green-400 rounded-full ml-1"></div>
+                                    </div>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="ppi">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="ppi">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-shield-alt mr-3 text-purple-600"></i>
-                                    <span class="font-medium">PPI Claims</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">PPI Claims</span>
+                                        <span class="text-xs text-gray-500">Payment protection advice</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">67</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">67</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-yellow-600">Hot</span>
+                                        <div class="w-1 h-1 bg-yellow-400 rounded-full ml-1"></div>
+                                    </div>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="investment">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="investment">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-chart-line mr-3 text-orange-600"></i>
-                                    <span class="font-medium">Investment Issues</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Investment Issues</span>
+                                        <span class="text-xs text-gray-500">Portfolio, pensions, advice</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">34</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">34</span>
+                                    <span class="text-xs text-gray-400">+1</span>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="mortgage">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="mortgage">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-home mr-3 text-red-600"></i>
-                                    <span class="font-medium">Mortgage Help</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Mortgage Help</span>
+                                        <span class="text-xs text-gray-500">Applications, payments, advice</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">28</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">28</span>
+                                    <span class="text-xs text-gray-400">+2</span>
+                                </div>
                             </div>
                         </button>
                         
-                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50" data-category="success">
+                        <button class="category-btn w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200" data-category="success">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <i class="fas fa-trophy mr-3 text-yellow-600"></i>
-                                    <span class="font-medium">Success Stories</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Success Stories</span>
+                                        <span class="text-xs text-gray-500">Share positive outcomes</span>
+                                    </div>
                                 </div>
-                                <span class="text-sm text-gray-500">23</span>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-sm text-gray-500">23</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-green-600">+4</span>
+                                        <i class="fas fa-fire text-orange-400 ml-1 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </button>
+                    </div>
+                    
+                    <!-- Trending Tags -->
+                    <div class="px-6 pb-6">
+                        <h4 class="text-sm font-semibold text-gray-900 mb-3">Trending Topics</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="trending-tag px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium cursor-pointer hover:bg-blue-200 transition-colors" data-tag="overdraft">
+                                #overdraft
+                            </span>
+                            <span class="trending-tag px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium cursor-pointer hover:bg-green-200 transition-colors" data-tag="refund">
+                                #refund
+                            </span>
+                            <span class="trending-tag px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium cursor-pointer hover:bg-purple-200 transition-colors" data-tag="ppi">
+                                #ppi
+                            </span>
+                            <span class="trending-tag px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium cursor-pointer hover:bg-yellow-200 transition-colors" data-tag="success">
+                                #success
+                            </span>
+                            <span class="trending-tag px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium cursor-pointer hover:bg-red-200 transition-colors" data-tag="charges">
+                                #charges
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Category Guidelines -->
@@ -238,26 +445,59 @@
 
             <!-- Forum Posts -->
             <div class="lg:col-span-3">
-                <!-- Sorting & Filters -->
+                <!-- Enhanced Sorting & Real-time Stats -->
                 <div class="bg-white rounded-xl shadow-lg p-4 mb-6">
-                    <div class="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
+                    <div class="flex flex-col lg:flex-row items-center justify-between space-y-3 lg:space-y-0">
+                        <!-- Sorting Options -->
                         <div class="flex items-center space-x-4">
-                            <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
-                                <option>Most Recent</option>
-                                <option>Most Popular</option>
-                                <option>Most Answered</option>
-                                <option>Trending</option>
-                            </select>
-                            <button class="flex items-center text-sm text-gray-600 hover:text-student-blue">
-                                <i class="fas fa-filter mr-2"></i>
-                                Filter
-                            </button>
+                            <div class="flex items-center space-x-2">
+                                <label class="text-sm font-medium text-gray-700">Sort by:</label>
+                                <select id="sort-select" class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-student-blue">
+                                    <option value="recent">Most Recent</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="answered">Most Answered</option>
+                                    <option value="trending">Trending</option>
+                                    <option value="unanswered">Unanswered First</option>
+                                    <option value="helpful">Most Helpful</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex items-center space-x-2">
+                                <button id="view-grid" class="p-2 rounded-lg text-gray-400 hover:text-student-blue hover:bg-gray-100 transition-colors" title="Grid View">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button id="view-list" class="p-2 rounded-lg text-student-blue bg-blue-100 transition-colors" title="List View">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                                <button id="view-compact" class="p-2 rounded-lg text-gray-400 hover:text-student-blue hover:bg-gray-100 transition-colors" title="Compact View">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-2 text-sm text-gray-600">
-                            <span>247 discussions</span>
-                            <span>•</span>
-                            <span>23 new today</span>
+                        
+                        <!-- Real-time Statistics -->
+                        <div class="flex items-center space-x-4 text-sm">
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-comments mr-2 text-blue-500"></i>
+                                <span id="total-discussions">247 discussions</span>
+                            </div>
+                            <span class="text-gray-300">•</span>
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-plus-circle mr-2 text-green-500"></i>
+                                <span id="new-today">23 new today</span>
+                            </div>
+                            <span class="text-gray-300">•</span>
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                <span id="online-now">12 online now</span>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <!-- Active Filters Display -->
+                    <div id="active-filters" class="mt-4 flex flex-wrap gap-2 hidden">
+                        <span class="text-sm font-medium text-gray-700 mr-2">Active Filters:</span>
+                        <!-- Dynamic filter tags will be inserted here -->
                     </div>
                 </div>
 
@@ -456,73 +696,287 @@
         </div>
     </div>
 
-    <!-- Floating New Post Composer -->
+    <!-- Enhanced Anonymous Post Composer -->
     <div id="post-composer" class="floating-composer fixed inset-x-0 bottom-0 bg-white border-t border-gray-200 shadow-2xl z-50">
-        <div class="max-w-4xl mx-auto p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">Create New Post</h3>
-                <button id="close-composer" class="text-gray-400 hover:text-gray-600">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
+        <div class="max-w-5xl mx-auto p-6">
+            <!-- Composer Header -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-student-blue rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-secret text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Create Anonymous Post</h3>
+                        <p class="text-sm text-gray-600">Share your experience while staying completely private</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="privacy-indicator bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                        <i class="fas fa-shield-alt mr-1"></i>
+                        Privacy Protected
+                    </div>
+                    <button id="close-composer" class="text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
             </div>
             
-            <form id="new-post-form" class="space-y-4">
-                <!-- Category Selection -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                    <select name="category" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent">
-                        <option value="">Select a category...</option>
-                        <option value="banking">Banking Issues</option>
-                        <option value="payments">Payment Problems</option>
-                        <option value="ppi">PPI Claims</option>
-                        <option value="investment">Investment Issues</option>
-                        <option value="mortgage">Mortgage Help</option>
-                        <option value="success">Success Stories</option>
-                    </select>
+            <form id="new-post-form" class="space-y-6">
+                <!-- Category and Tags Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-folder mr-2 text-student-blue"></i>
+                            Category *
+                        </label>
+                        <select name="category" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent" required>
+                            <option value="">Choose the most relevant category...</option>
+                            <option value="banking">🏦 Banking Issues - Overdrafts, charges, account problems</option>
+                            <option value="payments">💳 Payment Problems - Card disputes, transaction issues</option>
+                            <option value="ppi">🛡️ PPI Claims - Payment protection insurance</option>
+                            <option value="investment">📈 Investment Issues - Portfolio, pension, advice complaints</option>
+                            <option value="mortgage">🏠 Mortgage Help - Applications, payments, advice</option>
+                            <option value="success">🏆 Success Stories - Share positive outcomes</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-tags mr-2 text-student-blue"></i>
+                            Tags (Optional)
+                        </label>
+                        <input type="text" id="post-tags" placeholder="e.g. overdraft, refund, complaint" 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent">
+                        <div id="suggested-tags" class="mt-2 flex flex-wrap gap-1"></div>
+                    </div>
                 </div>
 
                 <!-- Title -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-heading mr-2 text-student-blue"></i>
+                        Title *
+                    </label>
                     <input type="text" name="title" placeholder="Briefly describe your question or situation..." 
-                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent">
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent" 
+                           maxlength="200" required>
+                    <div class="mt-1 flex items-center justify-between text-xs text-gray-500">
+                        <span>Make it descriptive but don't include personal details</span>
+                        <span id="title-count">0/200</span>
+                    </div>
                 </div>
 
-                <!-- Content -->
+                <!-- Content with Privacy Checker -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
-                    <textarea name="content" rows="4" placeholder="Share more details about your situation. Remember to keep personal information private..." 
-                              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent resize-none"></textarea>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-edit mr-2 text-student-blue"></i>
+                        Your Message *
+                    </label>
+                    <div class="relative">
+                        <textarea name="content" id="post-content" rows="6" 
+                                  placeholder="Share more details about your situation. Our privacy protection will automatically flag any personal information..." 
+                                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-student-blue focus:border-transparent resize-none" 
+                                  maxlength="2000" required></textarea>
+                        <div class="absolute bottom-3 right-3">
+                            <div id="privacy-status" class="privacy-checking hidden">
+                                <i class="fas fa-shield-alt text-green-500 mr-1"></i>
+                                <span class="text-xs text-green-600">Privacy Protected</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex items-center justify-between">
+                        <div id="privacy-warnings" class="flex-1 text-xs"></div>
+                        <span id="content-count" class="text-xs text-gray-500">0/2000</span>
+                    </div>
+                </div>
+                
+                <!-- Privacy Protection Panel -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-shield text-blue-600 text-lg"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-semibold text-blue-900 mb-2">Privacy Protection Active</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-blue-800">Anonymous posting</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-blue-800">Auto privacy filtering</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-blue-800">Secure transmission</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Post Options -->
-                <div class="flex items-center justify-between">
+                <!-- Post Options and Tools -->
+                <div class="space-y-4">
+                    <!-- Writing Tools -->
+                    <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex items-center space-x-4">
+                            <button type="button" id="format-bold" class="text-gray-600 hover:text-student-blue p-2 rounded hover:bg-white" title="Bold">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" id="format-italic" class="text-gray-600 hover:text-student-blue p-2 rounded hover:bg-white" title="Italic">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" id="add-emoji" class="text-gray-600 hover:text-student-blue p-2 rounded hover:bg-white" title="Add emoji">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <div class="h-6 border-l border-gray-300"></div>
+                            <button type="button" id="privacy-check" class="text-gray-600 hover:text-student-blue p-2 rounded hover:bg-white" title="Check privacy">
+                                <i class="fas fa-user-secret"></i>
+                                <span class="text-sm ml-1">Privacy Check</span>
+                            </button>
+                            <button type="button" id="spell-check" class="text-gray-600 hover:text-student-blue p-2 rounded hover:bg-white" title="Spell check">
+                                <i class="fas fa-spell-check"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span>Auto-save enabled</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Post Settings -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-gray-200 rounded-lg">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Post Visibility</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="visibility" value="public" checked class="text-student-blue">
+                                    <span class="ml-2 text-sm text-gray-700">Public - Visible to all community members</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="visibility" value="category" class="text-student-blue">
+                                    <span class="ml-2 text-sm text-gray-700">Category only - Only in selected category</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Notifications</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="notify-replies" checked class="text-student-blue">
+                                    <span class="ml-2 text-sm text-gray-700">Notify me of replies</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="notify-helpful" class="text-student-blue">
+                                    <span class="ml-2 text-sm text-gray-700">Notify when marked helpful</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200">
                     <div class="flex items-center space-x-4">
-                        <button type="button" class="text-gray-600 hover:text-student-blue" title="Add emoji">
-                            <i class="fas fa-smile"></i>
+                        <button type="button" id="save-draft" class="text-student-blue hover:text-blue-700 text-sm font-medium">
+                            <i class="fas fa-save mr-1"></i>
+                            Save Draft
                         </button>
-                        <button type="button" class="text-gray-600 hover:text-student-blue" title="Anonymous posting">
-                            <i class="fas fa-user-secret"></i>
-                            <span class="text-sm ml-1">Anonymous</span>
+                        <button type="button" id="preview-post" class="text-student-blue hover:text-blue-700 text-sm font-medium">
+                            <i class="fas fa-eye mr-1"></i>
+                            Preview
                         </button>
                     </div>
                     <div class="flex items-center space-x-3">
-                        <button type="button" id="cancel-post" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                        <button type="button" id="cancel-post" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
                             Cancel
                         </button>
-                        <button type="submit" class="px-6 py-2 bg-student-blue text-white rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed" disabled>
+                        <button type="submit" id="submit-post" class="px-8 py-3 bg-student-blue text-white rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center" disabled>
+                            <i class="fas fa-paper-plane mr-2"></i>
                             Post Anonymously
                         </button>
                     </div>
                 </div>
             </form>
 
-            <!-- Guidelines Reminder -->
-            <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p class="text-sm text-yellow-800">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <strong>Remember:</strong> This is an educational platform. Share experiences and ask questions, but don't provide or request specific legal advice. Keep all personal information private.
-                </p>
+            <!-- Educational Guidelines -->
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Privacy Guidelines -->
+                <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Privacy Protection
+                    </h4>
+                    <ul class="text-sm text-green-700 space-y-1">
+                        <li>• Your identity remains completely anonymous</li>
+                        <li>• Personal information is automatically filtered</li>
+                        <li>• No account details or contact info stored</li>
+                        <li>• Secure, encrypted transmission</li>
+                    </ul>
+                </div>
+                
+                <!-- Community Guidelines -->
+                <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">
+                        <i class="fas fa-users mr-2"></i>
+                        Community Guidelines
+                    </h4>
+                    <ul class="text-sm text-yellow-700 space-y-1">
+                        <li>• Share experiences, not specific advice</li>
+                        <li>• Keep discussions educational and helpful</li>
+                        <li>• Be respectful and supportive</li>
+                        <li>• Report inappropriate content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Post Preview Modal -->
+    <div id="post-preview-modal" class="fixed inset-0 bg-black bg-opacity-50 z-60 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900">Post Preview</h3>
+                    <button id="close-preview" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6 overflow-y-auto" style="max-height: calc(90vh - 140px);">
+                <div id="preview-content" class="space-y-4">
+                    <!-- Preview content will be inserted here -->
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-200 flex justify-end space-x-3">
+                <button id="edit-post" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Continue Editing
+                </button>
+                <button id="publish-from-preview" class="px-6 py-2 bg-student-blue text-white rounded-lg font-medium hover:bg-blue-700">
+                    Publish Post
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Emoji Picker Modal -->
+    <div id="emoji-picker-modal" class="fixed inset-0 bg-black bg-opacity-50 z-60 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full">
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900">Add Emoji</h3>
+                    <button id="close-emoji-picker" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="grid grid-cols-8 gap-2 max-h-64 overflow-y-auto">
+                    <!-- Emoji grid will be populated here -->
+                </div>
             </div>
         </div>
     </div>
@@ -539,18 +993,522 @@
         </div>
     </div>
 
+    <!-- Real-time Connection Status -->
+    <div id="connection-status" class="fixed bottom-4 left-4 z-50 px-3 py-2 bg-green-500 text-white rounded-full text-sm font-medium transition-all duration-300 opacity-0">
+        <i class="fas fa-wifi mr-2"></i>
+        <span>Connected</span>
+    </div>
+    
+    <!-- Notification Container -->
+    <div id="notification-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-6 flex items-center space-x-4">
+            <div class="animate-spin w-6 h-6 border-4 border-student-blue border-t-transparent rounded-full"></div>
+            <span class="text-gray-700">Loading...</span>
+        </div>
+    </div>
+
     <!-- Scripts -->
+    <!-- Socket.IO for real-time functionality -->
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
     <script src="/src/community-forum.js"></script>
     <script>
-        // Community Forum Application
+        // Enhanced Community Forum Application with Advanced Features
         class CommunityForum {
             constructor() {
                 this.currentCategory = 'all';
                 this.currentSort = 'recent';
+                this.currentView = 'list';
                 this.posts = [];
+                this.searchQuery = '';
+                this.activeFilters = {};
+                this.isSearching = false;
                 
                 this.initializeEventListeners();
+                this.initializeAdvancedFeatures();
                 this.loadPosts();
+            }
+            
+            /**
+             * Initialize advanced forum features
+             */
+            initializeAdvancedFeatures() {
+                this.setupSearchFunctionality();
+                this.setupAdvancedFilters();
+                this.setupViewToggle();
+                this.setupTrendingTags();
+                this.setupKeyboardShortcuts();
+                this.updateRealTimeStats();
+                
+                // Start periodic updates
+                setInterval(() => this.updateRealTimeStats(), 30000);
+                
+                console.log('[Forum] Advanced features initialized');
+            }
+            
+            /**
+             * Setup enhanced search functionality
+             */
+            setupSearchFunctionality() {
+                const searchInput = document.getElementById('forum-search-main');
+                if (!searchInput) return;
+                
+                let searchTimeout;
+                
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    this.searchQuery = e.target.value;
+                    
+                    if (this.searchQuery.length >= 2) {
+                        searchTimeout = setTimeout(() => {
+                            this.performSearch();
+                        }, 300);
+                    } else if (this.searchQuery.length === 0) {
+                        this.clearSearch();
+                    }
+                });
+                
+                // Search suggestions
+                searchInput.addEventListener('focus', () => {
+                    if (this.searchQuery.length >= 2) {
+                        this.showSearchSuggestions();
+                    }
+                });
+                
+                // Hide suggestions when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('#forum-search-main') && !e.target.closest('#search-suggestions')) {
+                        this.hideSearchSuggestions();
+                    }
+                });
+            }
+            
+            /**
+             * Setup advanced filters panel
+             */
+            setupAdvancedFilters() {
+                const advancedFiltersBtn = document.getElementById('advanced-filters');
+                const advancedPanel = document.getElementById('advanced-filters-panel');
+                const categoryFilter = document.getElementById('category-filter');
+                const timeFilter = document.getElementById('time-filter');
+                const applyFiltersBtn = document.getElementById('apply-filters');
+                const resetFiltersBtn = document.getElementById('reset-filters');
+                
+                // Toggle advanced filters panel
+                if (advancedFiltersBtn && advancedPanel) {
+                    advancedFiltersBtn.addEventListener('click', () => {
+                        advancedPanel.classList.toggle('hidden');
+                        const icon = advancedFiltersBtn.querySelector('i');
+                        icon.classList.toggle('fa-filter');
+                        icon.classList.toggle('fa-filter-slash');
+                    });
+                }
+                
+                // Category filter change
+                if (categoryFilter) {
+                    categoryFilter.addEventListener('change', (e) => {
+                        this.selectCategory(e.target.value);
+                    });
+                }
+                
+                // Time filter change
+                if (timeFilter) {
+                    timeFilter.addEventListener('change', (e) => {
+                        this.activeFilters.timeRange = e.target.value;
+                        this.applyFilters();
+                    });
+                }
+                
+                // Apply filters button
+                if (applyFiltersBtn) {
+                    applyFiltersBtn.addEventListener('click', () => {
+                        this.collectAdvancedFilters();
+                        this.applyFilters();
+                        advancedPanel.classList.add('hidden');
+                    });
+                }
+                
+                // Reset filters button
+                if (resetFiltersBtn) {
+                    resetFiltersBtn.addEventListener('click', () => {
+                        this.resetAllFilters();
+                    });
+                }
+            }
+            
+            /**
+             * Setup view toggle (list/grid/compact)
+             */
+            setupViewToggle() {
+                const viewButtons = {
+                    grid: document.getElementById('view-grid'),
+                    list: document.getElementById('view-list'),
+                    compact: document.getElementById('view-compact')
+                };
+                
+                Object.entries(viewButtons).forEach(([view, button]) => {
+                    if (button) {
+                        button.addEventListener('click', () => {
+                            this.switchView(view);
+                            
+                            // Update button states
+                            Object.values(viewButtons).forEach(btn => {
+                                if (btn) {
+                                    btn.classList.remove('text-student-blue', 'bg-blue-100');
+                                    btn.classList.add('text-gray-400');
+                                }
+                            });
+                            
+                            button.classList.remove('text-gray-400');
+                            button.classList.add('text-student-blue', 'bg-blue-100');
+                        });
+                    }
+                });
+            }
+            
+            /**
+             * Setup trending tags functionality
+             */
+            setupTrendingTags() {
+                const trendingTags = document.querySelectorAll('.trending-tag');
+                trendingTags.forEach(tag => {
+                    tag.addEventListener('click', () => {
+                        const tagValue = tag.getAttribute('data-tag');
+                        this.searchQuery = `#${tagValue}`;
+                        const searchInput = document.getElementById('forum-search-main');
+                        if (searchInput) {
+                            searchInput.value = this.searchQuery;
+                        }
+                        this.performSearch();
+                    });
+                });
+            }
+            
+            /**
+             * Setup keyboard shortcuts
+             */
+            setupKeyboardShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    // Ctrl/Cmd + K for search
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                        e.preventDefault();
+                        const searchInput = document.getElementById('forum-search-main');
+                        if (searchInput) {
+                            searchInput.focus();
+                        }
+                    }
+                    
+                    // Ctrl/Cmd + F for advanced filters
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'f' && e.shiftKey) {
+                        e.preventDefault();
+                        document.getElementById('advanced-filters')?.click();
+                    }
+                    
+                    // ESC to clear search
+                    if (e.key === 'Escape') {
+                        if (this.searchQuery) {
+                            this.clearSearch();
+                        }
+                        this.hideSearchSuggestions();
+                    }
+                });
+            }
+            
+            /**
+             * Perform enhanced search with filters
+             */
+            async performSearch() {
+                if (this.isSearching) return;
+                
+                this.isSearching = true;
+                this.showLoadingState();
+                
+                try {
+                    const params = new URLSearchParams({
+                        q: this.searchQuery,
+                        category: this.currentCategory,
+                        sort: this.currentSort,
+                        ...this.activeFilters
+                    });
+                    
+                    const response = await fetch(`/api/forum/search?${params}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.displaySearchResults(data.results);
+                        this.updateActiveFiltersDisplay();
+                    }
+                } catch (error) {
+                    console.error('Search failed:', error);
+                    this.showNotification('Search failed. Please try again.', 'error');
+                } finally {
+                    this.isSearching = false;
+                    this.hideLoadingState();
+                }
+            }
+            
+            /**
+             * Clear search and reset to normal view
+             */
+            clearSearch() {
+                this.searchQuery = '';
+                const searchInput = document.getElementById('forum-search-main');
+                if (searchInput) {
+                    searchInput.value = '';
+                }
+                this.hideSearchSuggestions();
+                this.loadPosts();
+                this.clearActiveFiltersDisplay();
+            }
+            
+            /**
+             * Switch between different view modes
+             */
+            switchView(viewType) {
+                this.currentView = viewType;
+                const postsContainer = document.getElementById('forum-posts');
+                if (!postsContainer) return;
+                
+                // Remove existing view classes
+                postsContainer.classList.remove('view-grid', 'view-list', 'view-compact');
+                
+                // Add new view class
+                postsContainer.classList.add(`view-${viewType}`);
+                
+                // Re-render posts with new view
+                this.renderPosts();
+            }
+            
+            /**
+             * Collect advanced filter values
+             */
+            collectAdvancedFilters() {
+                // Status filters
+                const statusFilters = Array.from(document.querySelectorAll('.status-filter:checked'))
+                    .map(input => input.value);
+                if (statusFilters.length > 0) {
+                    this.activeFilters.status = statusFilters;
+                }
+                
+                // Activity level
+                const activityFilter = document.querySelector('input[name="activity"]:checked');
+                if (activityFilter && activityFilter.value !== 'all') {
+                    this.activeFilters.activity = activityFilter.value;
+                }
+                
+                // Content type filters
+                const contentFilters = Array.from(document.querySelectorAll('.content-filter:checked'))
+                    .map(input => input.value);
+                if (contentFilters.length > 0) {
+                    this.activeFilters.contentType = contentFilters;
+                }
+            }
+            
+            /**
+             * Apply all active filters
+             */
+            applyFilters() {
+                if (this.searchQuery) {
+                    this.performSearch();
+                } else {
+                    this.loadPosts();
+                }
+                this.updateActiveFiltersDisplay();
+            }
+            
+            /**
+             * Reset all filters to default
+             */
+            resetAllFilters() {
+                this.activeFilters = {};
+                this.searchQuery = '';
+                this.currentCategory = 'all';
+                this.currentSort = 'recent';
+                
+                // Reset form elements
+                const searchInput = document.getElementById('forum-search-main');
+                if (searchInput) searchInput.value = '';
+                
+                const categoryFilter = document.getElementById('category-filter');
+                if (categoryFilter) categoryFilter.value = 'all';
+                
+                const timeFilter = document.getElementById('time-filter');
+                if (timeFilter) timeFilter.value = 'all';
+                
+                // Reset checkboxes and radio buttons
+                document.querySelectorAll('.status-filter, .content-filter').forEach(input => {
+                    input.checked = true;
+                });
+                
+                document.querySelector('input[name="activity"][value="all"]').checked = true;
+                
+                this.loadPosts();
+                this.clearActiveFiltersDisplay();
+                this.showNotification('All filters reset', 'info');
+            }
+            
+            /**
+             * Update active filters display
+             */
+            updateActiveFiltersDisplay() {
+                const container = document.getElementById('active-filters');
+                if (!container) return;
+                
+                const filterTags = [];
+                
+                if (this.searchQuery) {
+                    filterTags.push(`Search: "${this.searchQuery}"`);
+                }
+                
+                if (this.currentCategory !== 'all') {
+                    filterTags.push(`Category: ${this.formatCategory(this.currentCategory)}`);
+                }
+                
+                Object.entries(this.activeFilters).forEach(([key, value]) => {
+                    if (Array.isArray(value)) {
+                        filterTags.push(`${key}: ${value.join(', ')}`);
+                    } else {
+                        filterTags.push(`${key}: ${value}`);
+                    }
+                });
+                
+                if (filterTags.length > 0) {
+                    container.innerHTML = `
+                        <span class="text-sm font-medium text-gray-700 mr-2">Active Filters:</span>
+                        ${filterTags.map(tag => `
+                            <span class="inline-flex items-center px-3 py-1 bg-student-blue text-white text-xs rounded-full">
+                                ${tag}
+                                <button class="ml-2 hover:bg-blue-700 rounded-full p-1" onclick="this.parentElement.remove()">
+                                    <i class="fas fa-times text-xs"></i>
+                                </button>
+                            </span>
+                        `).join('')}
+                        <button class="text-student-blue hover:text-blue-700 text-xs font-medium ml-2" onclick="forum.resetAllFilters()">
+                            Clear All
+                        </button>
+                    `;
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            }
+            
+            /**
+             * Clear active filters display
+             */
+            clearActiveFiltersDisplay() {
+                const container = document.getElementById('active-filters');
+                if (container) {
+                    container.classList.add('hidden');
+                }
+            }
+            
+            /**
+             * Update real-time statistics
+             */
+            updateRealTimeStats() {
+                // Simulate real-time stats updates
+                const stats = {
+                    totalDiscussions: 247 + Math.floor(Math.random() * 10),
+                    newToday: 23 + Math.floor(Math.random() * 5),
+                    onlineNow: 8 + Math.floor(Math.random() * 15),
+                    activeUsers: 420 + Math.floor(Math.random() * 20)
+                };
+                
+                const elements = {
+                    totalDiscussions: document.getElementById('total-discussions'),
+                    newToday: document.getElementById('new-today'),
+                    onlineNow: document.getElementById('online-now'),
+                    activeUsers: document.getElementById('active-users-count')
+                };
+                
+                if (elements.totalDiscussions) {
+                    elements.totalDiscussions.textContent = `${stats.totalDiscussions} discussions`;
+                }
+                
+                if (elements.newToday) {
+                    elements.newToday.textContent = `${stats.newToday} new today`;
+                }
+                
+                if (elements.onlineNow) {
+                    elements.onlineNow.textContent = `${stats.onlineNow} online now`;
+                }
+                
+                if (elements.activeUsers) {
+                    elements.activeUsers.textContent = `${stats.activeUsers} users online`;
+                }
+            }
+            
+            /**
+             * Show/hide search suggestions
+             */
+            showSearchSuggestions() {
+                const suggestions = document.getElementById('search-suggestions');
+                if (suggestions) {
+                    suggestions.classList.remove('hidden');
+                    // Populate with popular searches or recent queries
+                    suggestions.innerHTML = `
+                        <div class="p-3 border-b border-gray-200 text-xs text-gray-500 font-medium">Recent Searches</div>
+                        <div class="p-3 hover:bg-gray-50 cursor-pointer text-sm" onclick="forum.selectSuggestion('overdraft charges')">
+                            <i class="fas fa-search mr-2 text-gray-400"></i>overdraft charges
+                        </div>
+                        <div class="p-3 hover:bg-gray-50 cursor-pointer text-sm" onclick="forum.selectSuggestion('ppi refund')">
+                            <i class="fas fa-search mr-2 text-gray-400"></i>ppi refund
+                        </div>
+                        <div class="p-3 hover:bg-gray-50 cursor-pointer text-sm" onclick="forum.selectSuggestion('mortgage application')">
+                            <i class="fas fa-search mr-2 text-gray-400"></i>mortgage application
+                        </div>
+                    `;
+                }
+            }
+            
+            hideSearchSuggestions() {
+                const suggestions = document.getElementById('search-suggestions');
+                if (suggestions) {
+                    suggestions.classList.add('hidden');
+                }
+            }
+            
+            selectSuggestion(query) {
+                this.searchQuery = query;
+                const searchInput = document.getElementById('forum-search-main');
+                if (searchInput) {
+                    searchInput.value = query;
+                }
+                this.hideSearchSuggestions();
+                this.performSearch();
+            }
+            
+            /**
+             * Show/hide loading states
+             */
+            showLoadingState() {
+                const overlay = document.getElementById('loading-overlay');
+                if (overlay) {
+                    overlay.classList.remove('hidden');
+                    overlay.classList.add('flex');
+                }
+            }
+            
+            hideLoadingState() {
+                const overlay = document.getElementById('loading-overlay');
+                if (overlay) {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('flex');
+                }
+            }
+            
+            /**
+             * Show notification
+             */
+            showNotification(message, type = 'info') {
+                // Implementation would be handled by the CommunityForumAPI
+                if (window.communityForumAPI) {
+                    window.communityForumAPI.showNotification(message, type);
+                } else {
+                    console.log(`[${type.toUpperCase()}] ${message}`);
+                }
             }
 
             initializeEventListeners() {
@@ -785,15 +1743,113 @@
                 const title = form.querySelector('input[name="title"]').value.trim();
                 const content = form.querySelector('textarea[name="content"]').value.trim();
                 const category = form.querySelector('select[name="category"]').value;
+                
+                // Enhanced validation
+                const validationChecks = {
+                    title: title.length >= 10 && title.length <= 200,
+                    content: content.length >= 20 && content.length <= 2000,
+                    category: category !== '',
+                    privacy: this.checkPrivacyCompliance(title, content)
+                };
 
-                const isValid = title.length >= 10 && content.length >= 20 && category;
+                const isValid = Object.values(validationChecks).every(check => check);
                 
                 submitBtn.disabled = !isValid;
                 
+                // Update submit button text and icon based on validation
+                const submitIcon = submitBtn.querySelector('i');
+                const submitText = submitBtn.querySelector('.btn-text') || submitBtn.childNodes[submitBtn.childNodes.length - 1];
+                
                 if (isValid) {
-                    submitBtn.textContent = 'Post Anonymously';
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Post Anonymously';
+                    submitBtn.classList.remove('bg-gray-300');
+                    submitBtn.classList.add('bg-student-blue', 'hover:bg-blue-700');
                 } else {
-                    submitBtn.textContent = 'Complete all fields';
+                    const missingFields = [];
+                    if (!validationChecks.title) missingFields.push('title');
+                    if (!validationChecks.content) missingFields.push('content');
+                    if (!validationChecks.category) missingFields.push('category');
+                    if (!validationChecks.privacy) missingFields.push('privacy review');
+                    
+                    submitBtn.innerHTML = `<i class="fas fa-exclamation-triangle mr-2"></i>Complete ${missingFields.join(', ')}`;
+                    submitBtn.classList.add('bg-gray-300');
+                    submitBtn.classList.remove('bg-student-blue', 'hover:bg-blue-700');
+                }
+                
+                // Update character counters
+                this.updateCharacterCounters(title, content);
+                
+                return validationChecks;
+            }
+            
+            /**
+             * Check privacy compliance of content
+             */
+            checkPrivacyCompliance(title, content) {
+                const combinedText = `${title} ${content}`.toLowerCase();
+                
+                // Privacy violation patterns
+                const privacyPatterns = [
+                    /\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/, // Card numbers
+                    /\b\d{2}[\s-]?\d{2}[\s-]?\d{2}\b/, // Sort codes
+                    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/i, // Email
+                    /\b(?:0|\+44)\d{10,11}\b/, // UK phone numbers
+                    /\bmy name is\b|\bi am\b.*[A-Z][a-z]+\s[A-Z][a-z]+/, // Names
+                    /\b\d+\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:Street|Road|Lane|Avenue|Drive|Close|Way|Place)\b/i // Addresses
+                ];
+                
+                const violations = privacyPatterns.filter(pattern => pattern.test(combinedText));
+                
+                // Update privacy status display
+                this.updatePrivacyStatus(violations);
+                
+                return violations.length === 0;
+            }
+            
+            /**
+             * Update privacy status indicator
+             */
+            updatePrivacyStatus(violations) {
+                const statusElement = document.getElementById('privacy-status');
+                const warningsElement = document.getElementById('privacy-warnings');
+                
+                if (violations.length === 0) {
+                    statusElement.className = 'privacy-checking text-green-600';
+                    statusElement.innerHTML = '<i class="fas fa-shield-alt text-green-500 mr-1"></i><span class="text-xs">Privacy Protected</span>';
+                    warningsElement.innerHTML = '';
+                } else {
+                    statusElement.className = 'privacy-checking text-red-600';
+                    statusElement.innerHTML = '<i class="fas fa-exclamation-triangle text-red-500 mr-1"></i><span class="text-xs">Privacy Issues Found</span>';
+                    warningsElement.innerHTML = `
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-exclamation-triangle text-red-500 mt-0.5"></i>
+                            <div class="text-red-600">
+                                <div class="font-medium">Personal information detected:</div>
+                                <ul class="mt-1 space-y-1">
+                                    ${violations.map((_, i) => `<li>• Please remove personal details (${i + 1} issue${violations.length > 1 ? 's' : ''} found)</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                }
+                statusElement.classList.remove('hidden');
+            }
+            
+            /**
+             * Update character counters
+             */
+            updateCharacterCounters(title, content) {
+                const titleCounter = document.getElementById('title-count');
+                const contentCounter = document.getElementById('content-count');
+                
+                if (titleCounter) {
+                    titleCounter.textContent = `${title.length}/200`;
+                    titleCounter.className = title.length > 180 ? 'text-xs text-red-500' : 'text-xs text-gray-500';
+                }
+                
+                if (contentCounter) {
+                    contentCounter.textContent = `${content.length}/2000`;
+                    contentCounter.className = content.length > 1800 ? 'text-xs text-red-500' : 'text-xs text-gray-500';
                 }
             }
 

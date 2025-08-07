@@ -1,12 +1,41 @@
-# Claude Code Operating Rules for JuriBank Educational Platform v3.0
+# Claude Code Operating Rules for JuriBank Professional Legal Platform v3.0
+
+## Agent Hierarchy & Authority Structure
+
+### Authority Level 1: Product Manager Agent (Executive)
+**Highest Authority - Sets direction for all agents**
+- Strategic product decisions and roadmap management
+- Requirements definition and priority setting
+- Cross-agent coordination and conflict resolution
+- **Must be consulted first** before any major changes
+
+### Authority Level 2: System Architecture Agent (Senior Technical)
+- Technical architecture decisions and technology stack
+- Integration patterns and performance architecture
+- Reports to Product Manager for business alignment
+- Supervises Frontend, Backend, DevOps, and Security agents
+
+### Authority Level 3: Implementation Agents (Development Leads)
+- **Frontend Engineering Agent**: UI/UX implementation, React components
+- **Backend Engineering Agent**: API development, database design, business logic
+
+### Authority Level 4: Quality & Operations Agents  
+- **QA Testing Agent**: Testing strategy, quality gates, can block releases
+- **DevOps Agent**: Infrastructure, deployment, monitoring
+
+### Authority Level 5: Security Analyst Agent (Cross-cutting Security)
+- **Security Override Authority**: Can block any change for security reasons
+- Compliance management, threat detection, incident response
+- Cross-cutting security concerns across all development streams
 
 ## Core Working Principles
 
-### 1. Plan-First Approach
-- First think through the problem thoroughly
-- Read the codebase for relevant files and context
-- Write a comprehensive plan to `tasks/todo.md`
-- The plan should have a list of todo items that can be checked off as completed
+### 1. Agent-First Approach
+- **Product Manager Agent acts first** - provides strategic context and requirements
+- Architecture Agent validates technical approach before implementation
+- Development agents execute according to approved architecture
+- QA and DevOps agents ensure quality and reliable deployment
+- Security Agent can override any decision for security reasons
 
 ### 2. Collaboration & Verification  
 - Before beginning work, check in with the user to verify the plan
