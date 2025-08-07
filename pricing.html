@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>Pricing - JuriBank Educational Legal Platform</title>
+    <meta name="title" content="Pricing - JuriBank Educational Legal Platform">
+    <meta name="description" content="Student-friendly pricing for UK legal education. Free basic access, premium features for dedicated learners. Student discounts available.">
+    <meta name="keywords" content="student legal education pricing, UK law courses, legal education subscription, student discount legal platform">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="JuriBank Student Legal Platform">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://juribank.co.uk/pricing.html">
+    <meta property="og:title" content="Pricing - JuriBank Educational Legal Platform">
+    <meta property="og:description" content="Student-friendly pricing for UK legal education. Free basic access, premium features for dedicated learners.">
+    <meta property="og:image" content="https://juribank.co.uk/assets/images/pricing-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Pricing - JuriBank Educational Legal Platform">
+    <meta property="twitter:description" content="Student-friendly pricing for UK legal education. Free basic access, premium features for dedicated learners.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'student-blue': '#2563eb',
+                        'student-green': '#059669',
+                        'student-orange': '#ea580c',
+                        'trust-gray': '#64748b',
+                        'background-cream': '#fefdf8'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #059669 100%); }
+        .pricing-card { transition: all 0.3s ease; }
+        .pricing-card:hover { transform: translateY(-8px); }
+        .feature-check { color: #059669; }
+        .feature-cross { color: #9ca3af; }
+        .popular-badge { 
+            background: linear-gradient(45deg, #2563eb, #059669);
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.5); }
+        }
+        
+        .toggle-switch {
+            transition: all 0.3s ease;
+        }
+        
+        .billing-toggle:checked + .toggle-switch {
+            background: #2563eb;
+        }
+        
+        .billing-toggle:checked + .toggle-switch .toggle-dot {
+            transform: translateX(1.5rem);
+        }
+    </style>
+</head>
+<body class="bg-background-cream">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-10 w-auto">
+                        <span class="ml-2 text-xl font-semibold text-gray-900">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue text-white px-2 py-1 rounded-full">by Students</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-student-blue font-medium">Home</a>
+                    <a href="claim-wizard.html" class="text-gray-700 hover:text-student-blue font-medium">Free Tools</a>
+                    <a href="knowledge-hub.html" class="text-gray-700 hover:text-student-blue font-medium">Knowledge Hub</a>
+                    <a href="community-forum.html" class="text-gray-700 hover:text-student-blue font-medium">Community</a>
+                    <a href="pricing.html" class="text-student-blue font-semibold">Pricing</a>
+                    <button id="sign-up-btn" class="bg-student-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Sign Up Free
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-700">Home</a>
+                <a href="claim-wizard.html" class="block py-2 text-gray-700">Free Tools</a>
+                <a href="knowledge-hub.html" class="block py-2 text-gray-700">Knowledge Hub</a>
+                <a href="community-forum.html" class="block py-2 text-gray-700">Community</a>
+                <a href="pricing.html" class="block py-2 text-student-blue font-semibold">Pricing</a>
+                <button class="w-full bg-student-blue text-white py-2 rounded-lg font-medium mt-2">
+                    Sign Up Free
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Student-Friendly Legal Education
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Choose the plan that fits your learning journey. Start free, upgrade when you need more advanced features.
+            </p>
+            
+            <!-- Student Verification Banner -->
+            <div class="bg-blue-100 border border-blue-200 rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
+                <div class="flex items-center justify-center mb-3">
+                    <i class="fas fa-graduation-cap text-blue-600 text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold text-blue-900">Student Discount Available</h3>
+                </div>
+                <p class="text-blue-800 mb-4">Verify your student status to get up to 20% off premium plans</p>
+                <button id="verify-student-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Verify Student Status
+                </button>
+            </div>
+            
+            <!-- Billing Toggle -->
+            <div class="flex items-center justify-center space-x-4 mb-12">
+                <span class="text-gray-700 font-medium">Monthly</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="billing-toggle" class="sr-only billing-toggle">
+                    <div class="toggle-switch w-12 h-6 bg-gray-300 rounded-full relative">
+                        <div class="toggle-dot w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 transition-transform duration-300"></div>
+                    </div>
+                </label>
+                <span class="text-gray-700 font-medium">
+                    Annual
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2">Save 20%</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="pricing-container" class="grid lg:grid-cols-3 gap-8">
+                <!-- Pricing cards will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Compare Features</h2>
+                <p class="text-xl text-gray-600">See what's included in each plan</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left py-4 px-6 font-semibold text-gray-900">Features</th>
+                            <th class="text-center py-4 px-6 font-semibold text-gray-900">Free</th>
+                            <th class="text-center py-4 px-6 font-semibold text-student-blue bg-blue-50">Student</th>
+                            <th class="text-center py-4 px-6 font-semibold text-gray-900">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody id="features-table">
+                        <!-- Features will be rendered here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Everything you need to know about our educational platform</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Is this platform free for students?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Yes! Our Free plan provides access to essential educational resources, basic learning modules, and community forum. You can upgrade anytime for advanced features like offline access, priority support, and mentorship sessions.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Do you offer student discounts?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Absolutely! Students with a valid .ac.uk email address can get up to 20% off our premium plans. Simply verify your student status through our verification process to unlock educational pricing.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">What makes this different from other legal education platforms?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>JuriBank is operated by law students for students. We provide real-time content from official UK sources (Gov.UK, FCA, Ombudsman), focus on practical UK law education, and maintain clear educational boundaries. Our content is designed to help you understand your rights and legal processes, not to provide specific legal advice.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Can I cancel anytime?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Yes! You can cancel your subscription at any time with no penalties. Your access will continue until the end of your billing period, and you can always rejoin later. We believe in student-friendly terms and no long-term commitments.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-centers">
+                        <h3 class="text-lg font-semibold text-gray-900">Is the content regularly updated?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Yes! Our platform automatically updates content from official UK sources including Gov.UK, FCA, and the Financial Ombudsman Service. This ensures you're always learning from the most current information and recent regulatory changes.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <button class="faq-toggle w-full text-left flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Do you provide legal advice?</h3>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>No, we do not provide specific legal advice. JuriBank is an educational platform designed to help you understand UK banking and financial law, your rights as a consumer, and general legal processes. For specific legal advice about your situation, we encourage you to consult with a qualified solicitor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Learning?</h2>
+            <p class="text-xl mb-8 text-blue-100">Join thousands of students already using JuriBank to understand UK legal rights and processes.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button id="start-free-btn" class="bg-white text-student-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Start Free Today
+                </button>
+                <button id="contact-support-btn" class="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-student-blue transition-colors">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/juribank-logo.svg" alt="JuriBank" class="h-8 w-auto mr-2">
+                        <span class="text-xl font-semibold">JuriBank</span>
+                        <span class="ml-2 text-sm bg-student-blue px-2 py-1 rounded-full">by Students</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Educational legal platform helping students understand UK banking and financial law.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="claim-wizard.html" class="hover:text-white">Free Tools</a></li>
+                        <li><a href="knowledge-hub.html" class="hover:text-white">Knowledge Hub</a></li>
+                        <li><a href="community-forum.html" class="hover:text-white">Community</a></li>
+                        <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Student Support</a></li>
+                        <li><a href="#" class="hover:text-white">Status</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white">Educational Notice</a></li>
+                        <li><a href="#" class="hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>&copy; 2024 JuriBank Educational Platform. Educational content only - not legal advice.</p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <span class="flex items-center">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            Secure Platform
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fas fa-graduation-cap mr-1"></i>
+                            Student-Led
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Subscription System -->
+    <script src="/src/subscription-system.js"></script>
+    
+    <script>
+        // Pricing Page Implementation
+        class PricingPage {
+            constructor() {
+                this.isAnnualBilling = false;
+                this.studentVerified = localStorage.getItem('studentVerified') === 'true';
+                this.init();
+            }
+            
+            init() {
+                this.renderPricingCards();
+                this.renderFeaturesTable();
+                this.bindEventListeners();
+                this.setupFAQ();
+                this.setupMobileMenu();
+            }
+            
+            bindEventListeners() {
+                // Billing toggle
+                const billingToggle = document.getElementById('billing-toggle');
+                if (billingToggle) {
+                    billingToggle.addEventListener('change', (e) => {
+                        this.isAnnualBilling = e.target.checked;
+                        this.renderPricingCards();
+                    });
+                }
+                
+                // Student verification
+                const verifyBtn = document.getElementById('verify-student-btn');
+                if (verifyBtn) {
+                    verifyBtn.addEventListener('click', () => {
+                        if (typeof subscriptionSystem !== 'undefined') {
+                            subscriptionSystem.verifyStudentStatus();
+                        } else {
+                            this.showStudentVerification();
+                        }
+                    });
+                }
+                
+                // CTA buttons
+                document.getElementById('start-free-btn')?.addEventListener('click', () => {
+                    this.startFreeTrial();
+                });
+                
+                document.getElementById('contact-support-btn')?.addEventListener('click', () => {
+                    this.contactSupport();
+                });
+            }
+            
+            renderPricingCards() {
+                const container = document.getElementById('pricing-container');
+                if (!container) return;
+                
+                const tiers = {
+                    'free': {
+                        name: 'Free',
+                        price: 0,
+                        description: 'Perfect for getting started with legal education',
+                        features: [
+                            '5 basic learning modules',
+                            '3 resource bookmarks',
+                            'Community forum access',
+                            '100 API calls per day',
+                            'Community support'
+                        ],
+                        limitations: [
+                            'No offline access',
+                            'No advanced modules',
+                            'No mentorship'
+                        ],
+                        buttonText: 'Start Free',
+                        buttonClass: 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    },
+                    'student': {
+                        name: 'Student',
+                        price: this.isAnnualBilling ? 96 : 9.99,
+                        originalPrice: this.isAnnualBilling ? 120 : 9.99,
+                        billing: this.isAnnualBilling ? 'year' : 'month',
+                        description: 'Enhanced learning for dedicated students',
+                        popular: true,
+                        features: [
+                            'All learning modules',
+                            '50 resource bookmarks',
+                            'Priority forum access',
+                            '1,000 API calls per day',
+                            'Priority email support',
+                            'Offline content access',
+                            'Advanced legal topics',
+                            'Completion certificates'
+                        ],
+                        buttonText: 'Upgrade to Student',
+                        buttonClass: 'bg-student-blue text-white hover:bg-blue-700'
+                    },
+                    'premium': {
+                        name: 'Premium',
+                        price: this.isAnnualBilling ? 192 : 19.99,
+                        originalPrice: this.isAnnualBilling ? 240 : 19.99,
+                        billing: this.isAnnualBilling ? 'year' : 'month',
+                        description: 'Complete access for serious learners',
+                        features: [
+                            'Everything in Student',
+                            'Unlimited bookmarks',
+                            'Unlimited forum access',
+                            '10,000 API calls per day',
+                            '24/7 priority support',
+                            'Full offline library',
+                            '2 mentor sessions/month',
+                            'Professional certificates',
+                            'Custom learning paths'
+                        ],
+                        buttonText: 'Upgrade to Premium',
+                        buttonClass: 'bg-green-600 text-white hover:bg-green-700'
+                    }
+                };
+                
+                container.innerHTML = Object.entries(tiers).map(([id, tier]) => this.renderPricingCard(id, tier)).join('');
+            }
+            
+            renderPricingCard(id, tier) {
+                const showDiscount = this.studentVerified && tier.price > 0;
+                const displayPrice = showDiscount ? Math.round(tier.price * 0.8 * 100) / 100 : tier.price;
+                
+                return `
+                    <div class="pricing-card relative bg-white rounded-2xl shadow-lg border ${tier.popular ? 'border-student-blue border-2' : 'border-gray-200'} p-8">
+                        ${tier.popular ? `
+                            <div class="popular-badge absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 text-white text-sm font-medium rounded-full">
+                                Most Popular
+                            </div>
+                        ` : ''}
+                        
+                        <!-- Plan Header -->
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">${tier.name}</h3>
+                            <p class="text-gray-600 text-sm mb-6">${tier.description}</p>
+                            
+                            <div class="mb-6">
+                                ${tier.price === 0 ? `
+                                    <div class="text-4xl font-bold text-gray-900">Free</div>
+                                ` : `
+                                    <div class="flex items-baseline justify-center">
+                                        ${showDiscount && tier.originalPrice !== displayPrice ? `
+                                            <span class="text-lg text-gray-500 line-through mr-2">£${tier.originalPrice}</span>
+                                        ` : ''}
+                                        <span class="text-4xl font-bold text-gray-900">£${displayPrice}</span>
+                                        <span class="text-gray-600 ml-2">/${tier.billing}</span>
+                                    </div>
+                                    ${showDiscount ? `
+                                        <div class="text-sm text-green-600 font-medium mt-1">20% student discount applied</div>
+                                    ` : ''}
+                                    ${this.isAnnualBilling ? `
+                                        <div class="text-sm text-green-600 font-medium mt-1">Save 20% with annual billing</div>
+                                    ` : ''}
+                                `}
+                            </div>
+                        </div>
+                        
+                        <!-- Features List -->
+                        <div class="space-y-4 mb-8">
+                            ${tier.features.map(feature => `
+                                <div class="flex items-start">
+                                    <i class="fas fa-check feature-check mt-0.5 mr-3 flex-shrink-0"></i>
+                                    <span class="text-gray-700">${feature}</span>
+                                </div>
+                            `).join('')}
+                            
+                            ${tier.limitations ? tier.limitations.map(limitation => `
+                                <div class="flex items-start">
+                                    <i class="fas fa-times feature-cross mt-0.5 mr-3 flex-shrink-0"></i>
+                                    <span class="text-gray-500">${limitation}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <!-- Action Button -->
+                        <button onclick="pricingPage.selectPlan('${id}')" class="w-full py-3 px-6 rounded-lg font-semibold transition-colors ${tier.buttonClass}">
+                            ${tier.buttonText}
+                        </button>
+                        
+                        ${tier.price > 0 ? `
+                            <div class="text-center text-xs text-gray-500 mt-4">
+                                Cancel anytime • Student-friendly terms
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+            
+            renderFeaturesTable() {
+                const features = [
+                    { name: 'Learning Modules', free: '5 basic', student: 'All modules', premium: 'All + exclusive' },
+                    { name: 'Resource Bookmarks', free: '3', student: '50', premium: 'Unlimited' },
+                    { name: 'API Calls per Day', free: '100', student: '1,000', premium: '10,000' },
+                    { name: 'Community Forum', free: 'Basic access', student: 'Priority access', premium: 'VIP access' },
+                    { name: 'Support', free: 'Community', student: 'Email priority', premium: '24/7 priority' },
+                    { name: 'Offline Access', free: '✗', student: '✓', premium: '✓' },
+                    { name: 'Advanced Modules', free: '✗', student: '✓', premium: '✓' },
+                    { name: 'Certificates', free: '✗', student: 'Basic', premium: 'Professional' },
+                    { name: 'Mentorship', free: '✗', student: '✗', premium: '2 sessions/month' },
+                    { name: 'Custom Learning', free: '✗', student: '✗', premium: '✓' }
+                ];
+                
+                const tableBody = document.getElementById('features-table');
+                if (!tableBody) return;
+                
+                tableBody.innerHTML = features.map(feature => `
+                    <tr class="border-b border-gray-100">
+                        <td class="py-4 px-6 font-medium text-gray-900">${feature.name}</td>
+                        <td class="py-4 px-6 text-center text-gray-600">${feature.free}</td>
+                        <td class="py-4 px-6 text-center text-student-blue font-medium bg-blue-50">${feature.student}</td>
+                        <td class="py-4 px-6 text-center text-gray-600">${feature.premium}</td>
+                    </tr>
+                `).join('');
+            }
+            
+            setupFAQ() {
+                document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', () => {
+                        const content = toggle.nextElementSibling;
+                        const icon = toggle.querySelector('i');
+                        
+                        content.classList.toggle('hidden');
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    });
+                });
+            }
+            
+            setupMobileMenu() {
+                const toggleBtn = document.getElementById('mobile-menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (toggleBtn && mobileMenu) {
+                    toggleBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                }
+            }
+            
+            selectPlan(planId) {
+                if (typeof subscriptionSystem !== 'undefined') {
+                    if (planId === 'free') {
+                        subscriptionSystem.downgradeToFree();
+                    } else {
+                        subscriptionSystem.upgradeToPlan(planId);
+                    }
+                } else {
+                    // Fallback for when subscription system isn't loaded
+                    if (planId === 'free') {
+                        this.startFreeTrial();
+                    } else {
+                        this.showSubscriptionModal(planId);
+                    }
+                }
+            }
+            
+            startFreeTrial() {
+                alert('Starting free account! You\'ll have access to basic learning modules and community features.\n\nThis would redirect to the registration flow.');
+                // In real app: window.location.href = '/register';
+            }
+            
+            showSubscriptionModal(planId) {
+                alert(`Upgrading to ${planId} plan!\n\nThis would open the subscription flow with payment processing.\n\nNote: This is a demo - no actual payment will be processed.`);
+            }
+            
+            showStudentVerification() {
+                alert('Student verification would open here!\n\nYou would verify your student status using your .ac.uk email to unlock educational discounts.');
+            }
+            
+            contactSupport() {
+                alert('Contact support would open here!\n\nYou can reach our student support team for questions about pricing, features, or technical issues.');
+            }
+        }
+        
+        // Initialize pricing page
+        let pricingPage;
+        document.addEventListener('DOMContentLoaded', () => {
+            pricingPage = new PricingPage();
+        });
+    </script>
+</body>
+</html>
