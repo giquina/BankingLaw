@@ -2975,11 +2975,26 @@
                 };
             }
             
-            // Mobile menu toggle
+            // Mobile menu toggle - enhanced with debugging
             const menuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             if (menuToggle && mobileMenu) {
-                menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Mobile menu toggle clicked');
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            console.log('Mobile menu closed by outside click');
+                        }
+                    }
+                });
             }
 
             // Optimized smooth scroll
@@ -3038,11 +3053,15 @@
                 });
             }
 
-            // Mobile menu toggle function
+            // Mobile menu toggle function - enhanced
             function toggleMobileMenu() {
+                console.log('toggleMobileMenu called');
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu) {
                     mobileMenu.classList.toggle('hidden');
+                    console.log('Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
+                } else {
+                    console.error('Mobile menu element not found');
                 }
             }
 
@@ -3279,13 +3298,7 @@
             }
         });
 
-        // Mobile menu toggle function
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-            }
-        }
+        // Removed duplicate toggleMobileMenu function - using the enhanced version above
 
         // Claim Wizard JavaScript
         let wizardData = {
