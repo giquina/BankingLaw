@@ -44,7 +44,23 @@
     <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css"></noscript>
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; }
+        
+        /* Enhanced mobile responsiveness and alignment fixes */
+        @media (max-width: 768px) {
+            .text-4xl { font-size: 2.25rem !important; }
+            .text-5xl { font-size: 2.5rem !important; }
+            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+        }
+        
+        /* Ensure proper contrast and visibility */
+        .text-gray-900 { color: #111827 !important; }
+        .text-gray-800 { color: #1f2937 !important; }
+        
+        /* Enhanced section alignment */
+        section { position: relative; }
+        .max-w-7xl { margin-left: auto; margin-right: auto; }
         /* JuriBank Brand Colors */
         .student-blue { color: #2563eb; }
         .student-green { color: #059669; }
@@ -977,17 +993,21 @@
     </section>
 
     <!-- Real Success Stories Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Real Success Stories</h2>
-                <p class="text-xl text-gray-600">See how we've helped people recover what they're owed</p>
-                <p class="text-sm text-gray-500 mt-2">*Names and identifying details changed for privacy</p>
+                <div class="inline-block bg-gradient-to-r from-blue-100 to-green-100 px-4 py-2 rounded-full text-sm font-medium text-gray-800 mb-4">
+                    <i class="fas fa-trophy mr-2"></i>
+                    Success Stories
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Real Success Stories</h2>
+                <p class="text-xl text-gray-600 mb-4">See how we've helped people recover what they're owed</p>
+                <p class="text-sm text-gray-500">*Names and identifying details changed for privacy</p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8 mb-12">
                 <!-- Case Study 1: Packaged Account Refund -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
                     <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
                         <div class="flex items-center justify-between mb-4">
                             <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
@@ -1022,7 +1042,7 @@
                 </div>
 
                 <!-- Case Study 2: Overdraft Charges -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
                     <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
                         <div class="flex items-center justify-between mb-4">
                             <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
@@ -1057,7 +1077,7 @@
                 </div>
 
                 <!-- Case Study 3: Payment Protection Insurance -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
                     <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6 text-white">
                         <div class="flex items-center justify-between mb-4">
                             <div class="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
@@ -1093,37 +1113,43 @@
             </div>
 
             <!-- Success Statistics -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
-                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Success by Category</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div>
-                        <div class="text-3xl font-bold text-blue-600 mb-2">92%</div>
-                        <div class="text-sm text-gray-600 mb-1">Packaged Accounts</div>
-                        <div class="text-xs text-gray-500">847 successful claims</div>
+            <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl shadow-lg p-8">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Success by Category</h3>
+                    <p class="text-gray-600">Our track record across different claim types</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-4xl font-bold text-blue-600 mb-3">92%</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">Packaged Accounts</div>
+                        <div class="text-sm text-gray-600">847 successful claims</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-bold text-green-600 mb-2">78%</div>
-                        <div class="text-sm text-gray-600 mb-1">Overdraft Charges</div>
-                        <div class="text-xs text-gray-500">423 successful claims</div>
+                    <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-4xl font-bold text-green-600 mb-3">78%</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">Overdraft Charges</div>
+                        <div class="text-sm text-gray-600">423 successful claims</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-bold text-purple-600 mb-2">85%</div>
-                        <div class="text-sm text-gray-600 mb-1">PPI Claims</div>
-                        <div class="text-xs text-gray-500">1,891 successful claims</div>
+                    <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-4xl font-bold text-purple-600 mb-3">85%</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">PPI Claims</div>
+                        <div class="text-sm text-gray-600">1,891 successful claims</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-bold text-orange-600 mb-2">71%</div>
-                        <div class="text-sm text-gray-600 mb-1">Investment Complaints</div>
-                        <div class="text-xs text-gray-500">234 successful claims</div>
+                    <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-4xl font-bold text-orange-600 mb-3">71%</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">Investment Complaints</div>
+                        <div class="text-sm text-gray-600">234 successful claims</div>
                     </div>
                 </div>
-                <div class="mt-8 bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
+                
+                <div class="bg-white rounded-xl p-6 text-center shadow-sm">
                     <div class="flex items-center justify-center mb-4">
-                        <i class="fas fa-award text-yellow-500 text-2xl mr-3"></i>
-                        <h4 class="text-lg font-semibold text-gray-900">Average Recovery Time: 6-8 Weeks</h4>
+                        <i class="fas fa-clock text-yellow-500 text-2xl mr-3"></i>
+                        <h4 class="text-xl font-bold text-gray-900">Average Recovery Time: 6-8 Weeks</h4>
                     </div>
-                    <p class="text-gray-600 mb-4">Most cases are resolved within 8 weeks, with simple claims often completed in under 4 weeks.</p>
-                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+                    <p class="text-gray-600 mb-6 text-lg">Most cases are resolved within 8 weeks, with simple claims often completed in under 4 weeks.</p>
+                    <button class="bg-student-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg">
+                        <i class="fas fa-search mr-2"></i>
                         Check Your Eligibility Now
                     </button>
                 </div>
